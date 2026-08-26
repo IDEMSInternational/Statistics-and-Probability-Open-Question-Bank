@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz><question type="stack">
+    <name>
+      <text>Counting Permutations</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Find the number of permutation of the word {@word@}</p>
+<p>[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+[[ if test='K=4' ]]
+<p>The word {@word@}  has  {@word1@} different letters; \({@W1-n1@}\,, {@W2-n2@}\,, {@W3-n3@}\).</p>
+<p>\(k=4\, , n_1=1 \, , n_2=2 \, , n_3=1\)</p>
+<p>We get that the total number of arrangements is</p>
+<p>\(\displaystyle=\frac{4!}{1! \, 2!\, 1!}\)</p>
+<p>\(={@ta@}\)</p>
+[[ elif test='K=6' ]]
+<p>The word {@word@} has {@word1@} different letters; \({@W1-n1@}\,, {@W2-n2@}\,, {@W3-n3@}\,, {@W4-n4@}\).</p>
+<p>\(k=6\, , n_1=2 \, , n_2=2 \, , n_3=1 \, , n_4=1 \)</p>
+<p>We get that the total number of arrangements is</p>
+<p>\(\displaystyle=\frac{6!}{2! \, 2!\, 1! \, 1!}\)</p>
+<p>\(={@ta@}\)</p>
+[[ elif test='K=8' ]]
+<p>The word {@word@} has {@word1@} different letters; \({@W1-n1@}\,, {@W2-n2@}\,, {@W3-n3@}\,, {@W4-n4@}\,,{@W5-n5@}\).</p>
+<p>\(k=8\, , n_1=1 \, , n_2=2 \, , n_3=2\, , n_4=2\, , n_5=1\)</p>
+<p>We get that the total number of arrangements is</p>
+<p>\(\displaystyle=\frac{8!}{1! \, 2!\, 2!\, 2!\, 1!}\)</p>
+<p>\(={@ta@}\)</p>
+[[ else ]]
+<p>The word {@word@} has {@word1@} different letters; \({@W1-n1@}\,, {@W2-n2@}\,, {@W3-n3@}\,, {@W4-n4@},{@W5-n5@},{@W6-n6@}\).</p>
+<p>\(k=8\, , n_1=2 \, , n_2=2 \, , n_3=1\, , n_4=1\, , n_5=1\, , n_6=1\)</p>
+<p>We get that the total number of arrangements is</p>
+<p>\(\displaystyle=\frac{8!}{2! \, 2!\, 1!\, 1!\, 1!}\)</p>
+<p>\(={@ta@}\)</p>
+[[/ if]]]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[K:rand([4,6,8,9]);
+k:if K=4 then 4 elseif K=6 then 6 elseif K=8 then 8 else 8;
+n1:if K=4 then 1 elseif K=6 then 2 elseif K=8 then 1 else 2;
+n2:2;
+n3:if K=4 then 1 elseif K=6 then 1 elseif K=8 then 2 else 1;
+n4:if K=6 then 1 elseif K=8 then 2 else 1;
+n5:1;
+n6:1;
+a2:rand(["GOOGLE","ENGINE"]);
+w1:if a2="GOOGLE" then "G" else "E";
+w2:if a2="GOOGLE" then "O" else "N";
+w3:if a2="GOOGLE" then "L" else "G";
+w4:if a2="GOOGLE" then "E" else "I";
+W1:if K=4 then "L" elseif K=6 then w1 elseif K=8 then "I" else "R";
+W2:if K=4 then "O" elseif K=6 then w2 elseif K=8 then "N" else "E";
+W3:if K=4 then "K" elseif K=6 then w3 elseif K=8 then "T" else "S";
+W4:if K=6 then w4 elseif K=8 then "E" else "A";
+W5:if K=8 then "R" else "C";
+W6:"H";
+word1:if K=4 then "three" elseif K=6 then "four" elseif K=8 then "five" else "six";
+word:if K=4 then "LOOK" elseif K=6 then a2 elseif K=8 then "INTERNET" else "RESEARCH";
+ta:if K=4 then ((factorial(K))/((factorial(n1))*(factorial(n2))*(factorial(n3)))) elseif K=6 then ((factorial(K))/((factorial(n1))*(factorial(n2))*(factorial(n3))*(factorial(n4)))) elseif K=8 then ((factorial(K))/((factorial(n1))*(factorial(n2))*(factorial(n3))*(factorial(n4))*(factorial(n5)))) else ((factorial(8))/((factorial(n1))*(factorial(n2))*(factorial(n3))*(factorial(n4))*(factorial(n5))*(factorial(n6))));]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>The number of permutation of the word {@word@}\(={@ta@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Nixson Kiplagat</p>
+<p id="concept">https://docs.google.com/document/d/1J_1bmNe-4Ujf3Qywn7eUGKwhPtyeXwFDv98TJp74w6E/edit#heading=h.vy8x1tbmoha9</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">[Reviewer 2 Name]</p>
+<p id="description">This question requires the student to determine the total number of permutations of the word </p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>6</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1568524777</deployedseed>
+    <deployedseed>1563055653</deployedseed>
+    <deployedseed>1506847774</deployedseed>
+    <deployedseed>1212706682</deployedseed>
+    <deployedseed>48384393</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+</quiz>

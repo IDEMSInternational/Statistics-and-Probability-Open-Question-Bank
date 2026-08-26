@@ -1,0 +1,195 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz><question type="stack">
+    <name>
+      <text>FERTILITY (Factors and Determinants)_q4</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Which of the following is <b>NOT</b> a major Problem experienced in the Measurement of Fertility
+</p>
+<p>[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked solution</h3>
+
+[[ if test="member(1, ta_index)" ]]
+<p>The correct answer is <strong> It is an assumption that some women are not fertile.</strong></p>
+<p>Fertility assumes that all women of \(15-49\) years are fertile and are giving birth..</p>
+
+[[/ if ]]
+
+[[ if test="member(2, ta_index)" ]]
+<p>The correct answer is <strong> It is assumed that fertility is a deterministic  event, in that, every woman between the ages \(15-49\) years is not birth. </strong></p>
+<p>Fertility is assumed to be a random event in that every woman between ages \(15-49\) is giving birth.
+</p>
+[[/ if ]]
+
+[[ if test="member(3, ta_index)" ]]
+<p>The correct answer is <strong>There is an assumption that a woman can give birth to twins at any given  time
+. </strong></p>
+<p>Fertility assume that no woman can have multiple births
+.</p>
+[[/ if ]]]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[correct_answer:rand_selection([
+[1, true, "It is an assumption that some women are not fertile
+."],
+[2, true, "It is assumed that fertility is a deterministic  event, in that, every woman between the ages \\(15-49\\) years is not birth."],
+[3, true, "There is an assumption that a woman can give birth to twins at any given  time
+."]],1);
+
+incorrect_answers:rand_selection([
+[4, false, "Birth involves two parents who are of the opposite sex, estimation of fertility normally focuses on the mother while ignoring the father."],
+[5, false, "There is an assumption that the mother gives birth to only one child at a time, multiple births is usually ignored."],
+[6, false, "Demographers have not addressed polygamy in the estimation of fertility; it is normally assumed that one man normally has only one wife."],
+[7, false, "Women  aging below \\(15\\) years or above \\(49\\) years are assumed not to be giving birth and ignored in the calculation of fertility.
+"]], 3);
+ta: random_permutation(append(correct_answer,incorrect_answers));
+
+ta_index: sort(makelist(x[1], x, ta));
+ta_largest: last(ta_index);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>{@ta@}</text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Emmaculate Odhiambo<p>
+<p id="concept">https://docs.google.com/document/d/1qL32P5Occ_i1gWhikdCMGgG0uvPMWT6uDs0r4D1DvmI/edit#heading=h.vy8x1tbmoha9</p>
+<p id="reviewer">Godfrey Wabwire</p>
+<p id="reviewer"></p>
+<p id="description">The question requires atudents to choose the a factor which is not a major problem experienced in the measurement of fertility</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>radio</type>
+      <tans>ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>nonotanswered</options>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct option</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>[ans1]</sans>
+        <tans>mcq_correct(ta)</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1389702616</deployedseed>
+    <deployedseed>1911374358</deployedseed>
+    <deployedseed>909315698</deployedseed>
+    <deployedseed>766475518</deployedseed>
+    <deployedseed>832716951</deployedseed>
+    <deployedseed>1616073759</deployedseed>
+    <deployedseed>1935858763</deployedseed>
+    <deployedseed>2068099497</deployedseed>
+    <deployedseed>1680802713</deployedseed>
+    <deployedseed>941138849</deployedseed>
+    <deployedseed>54851786</deployedseed>
+    <deployedseed>2055518971</deployedseed>
+    <deployedseed>1274795342</deployedseed>
+    <deployedseed>1284143262</deployedseed>
+    <deployedseed>2036918283</deployedseed>
+    <deployedseed>530786681</deployedseed>
+    <deployedseed>364142135</deployedseed>
+    <deployedseed>659010115</deployedseed>
+    <deployedseed>2112161025</deployedseed>
+    <deployedseed>741802598</deployedseed>
+    <deployedseed>1984116046</deployedseed>
+    <deployedseed>1738710298</deployedseed>
+    <deployedseed>1236079172</deployedseed>
+    <deployedseed>1425560098</deployedseed>
+    <deployedseed>863408125</deployedseed>
+    <deployedseed>651543113</deployedseed>
+    <deployedseed>123368566</deployedseed>
+    <deployedseed>1737579532</deployedseed>
+    <deployedseed>718803716</deployedseed>
+    <deployedseed>1487179282</deployedseed>
+    <deployedseed>123670216</deployedseed>
+    <deployedseed>855371929</deployedseed>
+    <deployedseed>123152204</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>first(mcq_correct(ta))</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+</quiz>

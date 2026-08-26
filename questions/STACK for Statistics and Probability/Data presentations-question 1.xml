@@ -1,0 +1,398 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz><question type="stack">
+    <name>
+      <text>Data presentations-question 1</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Study the following histogram and answer the questions given below
+</p>
+<p>
+[[jsxgraph input-ref-ans1='ans1Ref']]
+ var board = JXG.JSXGraph.initBoard(divid, { 
+          boundingbox: [-3, 18, 10, -5],
+            axis: true,
+               defaultAxes: {
+                x: {
+                    visible: false,
+                    showLabel: true // Hide the default x-axis labels
+                }
+            },
+            keepaspectratio: false,
+            showCopyright: false,
+            showNavigation: false,
+            fixed: true,
+            x: {
+                label: { position: 'rt' } // Position the x-axis label to the top-right corner
+            }
+        });
+
+        board.create('text', [-1, 8,   'No of students'], {
+            anchorX: 'middle',
+            anchorY: 'middle',
+            fixed: true
+        });
+
+        board.create('text', [3.5, -4, 'Height'], {
+            anchorX: 'middle',
+            anchorY: 'middle',
+            fixed: true
+        });
+
+        // Data
+        var heights = ["0-20", "20-40", "40-60", "60-80", "80-100"];
+        var frequencies = [{#aa#},{#bb#}, {#cc#}, {#dd#}, {#ee#},12];
+        var x = 0; // Initial x-coordinate
+        var barWidth = 1; // Width of each bar
+        var spacing = 1; // Spacing between bars
+        var gridStep = 1; // Grid step for snapping tops of bars
+
+        // Create rectangles for the histogram
+        for (var i = 0; i < heights.length; i++) {
+            var heightRange = heights[i];
+            var frequency = frequencies[i];
+
+            // Calculate rectangle coordinates
+            var x1 = x;
+            var x2 = x + barWidth;
+            var y1 = 0; // Fixed bottom at y=0
+            var y2 = Math.round(frequency / gridStep) * gridStep; // Snap the top to the nearest whole number
+
+            // Create movable points for the top corners and snap them to grid
+            var p1 = board.create('point', [x1, y2], { fixed: true, withLabel: false });
+            var p2 = board.create('point', [x2, y2], { fixed: true, withLabel: false });
+
+            // Create fixed points for the bottom corners
+            var p3 = board.create('point', [x1, y1], { fixed: true, visible: false });
+            var p4 = board.create('point', [x2, y1], { fixed: true, visible: false });
+
+            // Create the rectangle using the movable points and fixed points
+            var rect = board.create('polygon', [p1, p2, p4, p3], {
+                fillColor: 'blue',
+                fillOpacity: 0.7,
+                highlightFillColor: 'blue',
+                highlightFillOpacity: 0.9,
+                strokeColor: 'black',
+                strokeWidth: 1
+            });
+
+            // Label the x-axis with the height range
+            board.create('text', [x + barWidth / 2, -2, heightRange], {
+                anchorX: 'middle'
+            });
+
+            x += barWidth + spacing; // Increase x-coordinate for the next bar
+        }
+        stack_jxg.bind_point(ans1Ref, student);
+        board.update();
+[[/jsxgraph]]
+<hr>
+<p>How many students scored below \({@quest_percent1@}\%?\)</p>
+<p>[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>
+<p>How many students scored above  \({@quest_percent2@}\%?\)</p>
+<p>[[input:ans2]] [[validation:ans2]][[feedback:prt2]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>The x-axis (horizontal) represents the score ranges or categories.</p>
+<p>The y-axis (vertical) represents the number of students in each score range or category.</p>
+<p>Each bar represents a specific range of scores.</p>
+<p>For each bar, look at the corresponding height on the y-axis. This tells you how many students fall into that score range.</p>
+<p>So, for the first on the number of students who scored below \(60\%?\)</p>
+<p>The bars range from \(0-20, 20-40,\) and \(40-60\) we read the y-axis the number of students against the bars and sum it all to have the total number of students who scored below \(60\%?={@ta1@}\)</p>
+<p>We repeat the same procedure for the next question for students who scored above \(80\%?={@ta2@}\)</p>
+<p></p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*stat 1*/
+aa:rand(2)+2;
+bb:rand(3)+3;
+cc:rand(6)+6;
+dd:rand(5)+4;
+ee:rand(3)+2;
+quest_percent1:rand([20,40,60,80]);
+quest_percent2:rand([40,60,80]);
+/*model answer*/
+sol1:aa;
+sol2:aa+bb;
+sol3:aa+bb+cc;
+sol4:aa+bb+cc+dd;
+ta1:if quest_percent1=20 then sol1 else if quest_percent1=40 then sol2 else if quest_percent1=60 then sol3 else if quest_percent1=80 then sol4;
+sol5:cc+dd+ee;
+sol6:dd+ee;
+sol7:ee;
+ta2:if quest_percent2=40 then sol5 else if quest_percent2=60 then sol6 else if quest_percent2=80 then sol7;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>
+[[jsxgraph input-ref-ans1='ans1Ref']]
+ var board = JXG.JSXGraph.initBoard(divid, { 
+          boundingbox: [-3, 35, 10, -5],
+            axis: true,
+               defaultAxes: {
+                x: {
+                    visible: false,
+                    showLabel: true // Hide the default x-axis labels
+                }
+            },
+            keepaspectratio: false,
+            showCopyright: false,
+            showNavigation: true,
+    
+            x: {
+                label: { position: 'rt' } // Position the x-axis label to the top-right corner
+            }
+        });
+
+        board.create('text', [-1, 8,   'No of students'], {
+            anchorX: 'middle',
+            anchorY: 'middle',
+        });
+
+        board.create('text', [3.5, -4, 'Height'], {
+            anchorX: 'middle',
+            anchorY: 'middle'
+        });
+
+        // Data
+        var heights = ["0-20", "20-40", "40-60", "60-80", "80-100"];
+        var frequencies = [{#aa#},{#bb#}, {#cc#}, {#dd#}, {#ee#},12];
+        var x = 0; // Initial x-coordinate
+        var barWidth = 1; // Width of each bar
+        var spacing = 1; // Spacing between bars
+        var gridStep = 1; // Grid step for snapping tops of bars
+
+        // Create rectangles for the histogram
+        for (var i = 0; i < heights.length; i++) {
+            var heightRange = heights[i];
+            var frequency = frequencies[i];
+
+            // Calculate rectangle coordinates
+            var x1 = x;
+            var x2 = x + barWidth;
+            var y1 = 0; // Fixed bottom at y=0
+            var y2 = Math.round(frequency / gridStep) * gridStep; // Snap the top to the nearest whole number
+
+            // Create movable points for the top corners and snap them to grid
+            var p1 = board.create('point', [x1, y2], { snapToGrid: true, snapSizeX: gridStep, withLabel: false });
+            var p2 = board.create('point', [x2, y2], { snapToGrid: true, snapSizeX: gridStep, withLabel: false });
+
+            // Create fixed points for the bottom corners
+            var p3 = board.create('point', [x1, y1], { fixed: true, visible: false });
+            var p4 = board.create('point', [x2, y1], { fixed: true, visible: false });
+
+            // Create the rectangle using the movable points and fixed points
+            var rect = board.create('polygon', [p1, p2, p4, p3], {
+                fillColor: 'blue',
+                fillOpacity: 0.7,
+                highlightFillColor: 'blue',
+                highlightFillOpacity: 0.9,
+                strokeColor: 'black',
+                strokeWidth: 1
+            });
+
+            // Label the x-axis with the height range
+            board.create('text', [x + barWidth / 2, -2, heightRange], {
+                anchorX: 'middle'
+            });
+
+            x += barWidth + spacing; // Increase x-coordinate for the next bar
+        }
+        stack_jxg.bind_point(ans1Ref, student);
+        board.update();
+[[/jsxgraph]]
+</p>
+<p>How many students scored below \({@quest_percent1@}\%?\)</p>
+<p>\({@ta1@}\)</p>
+<p>How many students scored above  \({@quest_percent2@}\%?\)</p>
+<p>\({@ta2@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Godfrey Wabwire</p>
+<p id="reviewer">Juma Zevick</p>
+<p id="description">The question focuses on finding  the number of students who scored between a given range of marks from a histogram of number students against scores</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>460760737</deployedseed>
+    <deployedseed>2107884110</deployedseed>
+    <deployedseed>1322568534</deployedseed>
+    <deployedseed>1230827267</deployedseed>
+    <deployedseed>933949503</deployedseed>
+    <deployedseed>303552934</deployedseed>
+    <deployedseed>193739405</deployedseed>
+    <deployedseed>883696868</deployedseed>
+    <deployedseed>2080288167</deployedseed>
+    <deployedseed>647530445</deployedseed>
+    <deployedseed>1268940101</deployedseed>
+    <deployedseed>962496912</deployedseed>
+    <deployedseed>1386264235</deployedseed>
+    <deployedseed>1437001457</deployedseed>
+    <deployedseed>1008996620</deployedseed>
+    <deployedseed>374705748</deployedseed>
+    <deployedseed>141545659</deployedseed>
+    <deployedseed>192731553</deployedseed>
+    <deployedseed>1345077633</deployedseed>
+    <deployedseed>2069563719</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+</quiz>

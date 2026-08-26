@@ -1,0 +1,219 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz><question type="stack">
+    <name>
+      <text>Algebra of Sets: Identifying Laws in Set Operations</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[[[ if test='is(question_test=1)' ]]
+<p>Which <b>law of sets</b> states that for any set \(A,\)</p>
+<ul>
+  <li>\( A \cap A = A \)</li>
+  <li>\( A \cup A = A \)</li>
+</ul>
+[[ elif test='is(question_test=7)']]
+<p>Which <b>law of sets</b> states that for any sets \(A, \, B\) and \(C,\)</p>
+<ul>
+  <li>\( A \cap (B \cup C) = (A \cap B) \cup (A \cap C) \)</li>
+  <li>\( A \cup (B \cap C) = (A \cup B) \cap (A \cup C) \)</li>
+</ul>
+[[ else ]]
+<p>Which <b>law of sets</b> states that for any sets \(A\) and \(B,\)</p>
+<ul>
+  <li>\( A \cap B = B \cap A \)</li>
+  <li>\( A \cup B = B \cup A \)</li>
+</ul>
+[[/ if]]
+
+<p>[[input:ans1]] [[validation:ans1]]</p>
+<p>[[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+[[ if test='is(question_test=1)' ]]
+<p>Idempotent Law:</p>
+<p>This law states that for a set \(A\):</p>
+<ul>
+  <li>\(  A \cap A = A \)</li>
+  <li>\(  A \cup A = A \)</li>
+</ul>
+<p>These laws imply that the result of taking the intersection or union of a set with itself is simply the set itself.</p>
+[[ elif test='is(question_test=7)']]
+<p>Distributive Law:</p>
+   <p>This law states that for any sets \(A, \, B\) and \(C,\)</p>
+<ul>
+  <li>\( A \cap (B \cup C) = (A \cap B) \cup (A \cap C) \)</li>
+  <li>\( A \cup (B \cap C) = (A \cup B) \cap (A \cup C) \)</li>
+<p>These laws distribute the intersection and union operations over each other.</p>
+</ul>
+[[ else ]]
+<p>Commutative Law:</p>
+<p>This law states that for sets \(A\) and \(B,\)</p>
+<ul>
+  <li>\( A \cap B = B \cap A \)</li>
+  <li>\( A \cup B = B \cup A \)</li>
+</ul>
+   <p>These laws indicate that the order of sets in the intersection and union operations doesn't matter.</p>
+[[/ if]]]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/* correct answer */
+corr_ans1:[[1, true, "Idempotent Law"]];
+corr_ans2:[[7, true, "Distributive Law"]];
+corr_ans3:[[8, true, "Commutative Law"]];
+
+/* wrong answers */
+incorr_ans: rand_selection([
+[2, false, "Complement Law"],
+[3, false, "Symmetric Difference Law"],
+[4, false, "Associative Law"],
+[5, false, "Absorption Law"],
+[6, false, "De Morgan's Laws"]], 3);
+
+ma1: random_permutation(append(corr_ans1, incorr_ans));
+ma2: random_permutation(append(corr_ans2, incorr_ans));
+ma3: random_permutation(append(corr_ans3, incorr_ans));
+
+/*Worked Soln*/
+question_test: rand([1,7,8]);
+ma: if question_test=1 then ma1  elseif question_test =7 then ma2 else ma3;
+ta_index: sort(makelist(x[1], x, ma));]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<br>Set law:
+[[ if test='is(question_test=1)' ]]
+<p>Idempotent Law:</p>
+[[ elif test='is(question_test=7)']]
+<p>Distributive Law:</p>
+[[ else ]]
+<p>Commutative Law:</p>
+[[/ if]]
+<p>{@ta_index@}</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>
+<p id="concept">https://docs.google.com/document/d/1cm9PA1Qt4ZeNQEZ989JsoMPi1IcOdvARs5KafRmZ-Ls/edit#heading=h.vy8x1tbmoha9</p>
+<p id="reviewer">Nixson Kiplagat</p>
+<p id="reviewer">Santiago Borio</p>
+<p id="description">This question requires the student to determine the algebraic property of sets represented by A among options given, emphasizing the application of fundamental set operation principles.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>radio</type>
+      <tans>ma</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>nonotanswered</options>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mcq_correct(ma)[1]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>652797835</deployedseed>
+    <deployedseed>293674980</deployedseed>
+    <deployedseed>2049402188</deployedseed>
+    <deployedseed>1448521648</deployedseed>
+    <deployedseed>1655449182</deployedseed>
+    <deployedseed>840554886</deployedseed>
+    <deployedseed>102291961</deployedseed>
+    <deployedseed>1611364349</deployedseed>
+    <deployedseed>1118293498</deployedseed>
+    <deployedseed>1141632647</deployedseed>
+    <deployedseed>1062808036</deployedseed>
+    <deployedseed>1794166318</deployedseed>
+    <deployedseed>1904160364</deployedseed>
+    <deployedseed>480002423</deployedseed>
+    <deployedseed>1022088859</deployedseed>
+    <deployedseed>135926342</deployedseed>
+    <deployedseed>1359115745</deployedseed>
+    <deployedseed>315820316</deployedseed>
+    <deployedseed>831879108</deployedseed>
+    <deployedseed>1953333702</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>first(mcq_correct(ma))</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+</quiz>

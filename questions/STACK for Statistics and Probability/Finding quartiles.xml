@@ -1,0 +1,637 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz><question type="stack">
+    <name>
+      <text>Finding quartiles</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Find \(Q_1,Q_2\) and \(Q_3\) of the following distribution.(Note: Leave your answer in \(2\) decimal places when necessary).</p>
+<p><table cellspacing="0" cellpadding="0" border="1" align="centre">
+ <tbody><tr>
+  <td  width="25%", style="text-align:center">
+  <p><span lang="EN-US"><b>Class Interval</b></span></p>
+  </td>
+  <td width="25%", style="text-align:center">
+  <p><span lang="EN-US" style="text-align:center"><b>Frequency</b></span></p>
+  </td>
+ <td width="25%", style="text-align:center">
+  <p><span lang="EN-US"><b>Cumulative frequencies</b></span></p>
+  </td>
+ </tr>
+ <tr>
+
+<th width="25%", style="text-align:center">{@x1@} – {@x1_1@}</th>
+  </td>
+<th width="25%", style="text-align:center">{@f1@}</th>
+  </td>
+ <th width="25%", style="text-align:center">{@cf_1@}</th>
+  </td>
+ </tr>
+ <tr>
+  <th width="25%", style="text-align:center">{@x2@} – {@x2_1@}</th>
+  </td>
+  <th width="25%", style="text-align:center">{@f2@}</th>
+  </td>
+ <th width="25%", style="text-align:center">{@cf_2@}</th>
+  </td>
+ </tr>
+ <tr>
+  <th width="25%", style="text-align:center">{@x3@} – {@x3_1@}</th>
+  </td>
+<th width="25%", style="text-align:center">{@f3@}</th>
+  </td>
+  <th width="25%", style="text-align:center">{@cf_3@}</th>
+  </td>
+ </tr>
+ <tr>
+ <th width="25%", style="text-align:center">{@x4@} – {@x4_1@}</th>
+  </td>
+ <th width="25%", style="text-align:center">{@f4@}</th>
+  </td>
+<th width="25%", style="text-align:center">{@cf_4@}</th>
+  </td>
+ </tr>
+ <tr>
+  <th width="25%", style="text-align:center">{@x5@} – {@x5_1@}</th>
+  </td>
+ <th width="25%", style="text-align:center">{@f5@}</th>
+  </td>
+<th width="25%", style="text-align:center">{@cf_5@}</th>
+  </td>
+ </tr>
+</tbody></table></p>
+<p>Compute the following statistics</p>
+<p>\(Q_1=\) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>
+<p>\(Q_2=\) [[input:ans2]] [[validation:ans2]][[feedback:prt2]]</p>
+<p>\(Q_3=\) [[input:ans3]] [[validation:ans3]][[feedback:prt3]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3><b>Worked Solution</b></h3>
+<p>To find the quartiles, we use this formula \(q=L+\left(\frac{\frac{1}{4}\times n-cf}{f}\right )\times i\)</p>
+<p>Where \(L\) is the upper class boundary for the immediate class, \(n (i.e. n={@cf_5@})\) is the total frequencies, \(cf\) is the cumulative frequency for the immediate class, \(f\) is the frequency in that class and \(i\) is the class size</p>
+<hr>
+<p>Finding \(Q_1\)</p>
+<p>\(Q_1\) is \(\left (\frac{{@total_frequencies@}}{4}\right )\) item i.e \({@q1@}^{th}\) item which falls in the \({@class_q1@}^{@power_Q1@}\)class, \(cf={@choosing_cf@},f={@choosing_freq@}\) and \(i={@class_size@}\)
+</p>
+<p>\(Q_1={@bd_q1@}+\left(\frac{\frac{{@total_frequencies@}}{4}-{@choosing_cf@}}{{@choosing_freq@}}\right )\times {@class_size@}\)</p>
+<p>\(Q_1={@bd_q1@}+{@soln2@}\)</p>
+<p>\(Q_1={@ta1@}\)</p>
+<hr>
+<p>Finding \(Q_2\)</p>
+<p>\(Q_2\) is \(\left (\frac{2}{4}\times{@total_frequencies@}\right )\) item i.e \({@q2@}^{th}\) item which falls in the \({@class_q2@}^{@power_Q2@}\)class, \(cf={@choosing_cf_q2@},f={@choosing_freq_q2@}\) and\(i={@class_size@}\)
+</p>
+<p>\(Q_2={@bd_q2@}+\left(\frac{\frac{{2}}{4}\times{@total_frequencies@}-{@choosing_cf_q2@}}{{@choosing_freq_q2@}}\right )\times {@class_size@}\)</p>
+<p>\(Q_2={@bd_q2@}+{@soln4@}\)</p>
+<p>\(Q_1={@ta2@}\)</p>
+<hr>
+<p>Finding \(Q_3\)</p>
+<p>\(Q_3\) is \(\left ( \frac{3}{4} \times{@total_frequencies@}\right )\) item i.e \({@q3@}^{th}\) item which falls in the \({@class_q3@}^{@power_Q3@}\)class, \(cf={@choosing_cf_q3@},f={@choosing_freq_q3@}\) and \(i={@class_size@}\)
+</p>
+<p>\(Q_3={@bd_q3@}+\left(\frac{\frac{{3}}{4}\times{@total_frequencies@}-{@choosing_cf_q3@}}{{@choosing_freq_q3@}}\right )\times {@class_size@}\)</p>
+<p>\(Q_3={@bd_q3@}+{@soln6@}\)</p>
+<p>\(Q_3={@ta3@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/*finding quartile*/
+aa: rand(2)+2;
+bb: rand_with_step(4,6,1);/*class limit*/
+class_size:bb+1;/*class size*/
+/*class intervals*/
+x1:aa;/*1st lower class limit*/
+x1_1:x1+bb;/*1st upper class limit*/
+x2:x1_1+1;/*2nd class lower limit*/
+x2_1:x2+bb;/*2nd class upper limit*/
+x3:x2_1+1;/*3rd class lower limit*/
+x3_1:x3+bb;/*3rd class upper limit*/
+x4:x3_1+1;/*4th class lower limit*/
+x4_1:x4+bb;/*4th class upper limit*/
+x5:x4_1+1;/*5th class lower limit*/
+x5_1:x5+bb;/*5th class upper limit*/
+/*frequencies*/
+f1:rand(2)+2;/* first frequency*/
+f2:rand_with_prohib(1,4,[f1]);/* second frequency*/
+f3:rand_with_prohib(2,6,[f1,f2]);/* 3rd frequency*/
+f4:rand_with_prohib(2,6,[f1,f2,f3]);/* 4th frequency*/
+partial_sum:f1+f2+f3+f4;
+total_frequencies:rand_with_step(20,60,4);/*n*/
+f5:total_frequencies-partial_sum;/* 5th frequency*/
+/*Identification of classes*/
+class_1:1;
+class_2:2;
+class_3:3;
+class_4:4;
+class_5:5;
+class_6:6;
+/*Pick up correct boundaries*/
+bd_class1: x1-0.5;
+bd_class2: x1_1+0.5;
+bd_class3: x2_1+0.5;
+bd_class4: x3_1+0.5;
+bd_class5: x4_1+0.5;
+bd_class6:x5_1+0.5;
+/*cumulative frequencies*/
+cf_1:f1;
+cf_2:cf_1+f2;
+cf_3:cf_2+f3;
+cf_4:cf_3+f4;
+cf_5:cf_4+f5;
+/* q1 variables and conditions*/
+q1:total_frequencies/4;
+class_q1:if  q1> cf_5 then class_6 elseif q1> cf_4 then class_5 elseif q1> cf_3 then class_4 elseif q1>cf_2 then class_3 elseif q1> cf_1 then class_2 else class_1;
+bd_q1: if class_q1=class_6 then bd_class6 elseif class_q1=class_5 then bd_class5 elseif class_q1=class_4 then bd_class4 elseif class_q1=class_3 then bd_class3 elseif class_q1=class_2 then bd_class1 elseif class_q1=class_1 then bd_class1;
+choosing_cf: if class_q1=class_6 then cf_5 elseif class_q1=class_5 then cf_4 elseif class_q1=class_4 then cf_3 elseif class_q1=class_3 then cf_2 elseif class_q1=class_2 then cf_1 else cf_1;/*Choose cumulative frequency depending on class*/
+choosing_freq: if class_q1=class_6 then f5 elseif class_q1=class_5 then f5 elseif class_q1=class_4 then f4 elseif class_q1=class_3 then f3 elseif class_q1=class_2 then f2 elseif  class_q1=class_1 then f1; /*Choice of frequency */
+soln1:((q1-choosing_cf)/choosing_freq);
+soln2:soln1*class_size;
+ta1:decimalplaces((bd_q1+soln2),2);
+
+/*q2*/
+q2:2/4*total_frequencies;
+class_q2:if  q2> cf_5 then class_6 elseif q2> cf_4 then class_5 elseif q2> cf_3 then class_4 elseif q2>cf_2 then class_3 elseif q2> cf_1 then class_2 else class_1;
+bd_q2: if class_q2=class_6 then bd_class6 elseif class_q2=class_5 then bd_class5 elseif class_q2=class_4 then bd_class4 elseif class_q2=class_3 then bd_class3 elseif class_q2=class_2 then bd_class1 elseif class_q2=class_1 then bd_class1;
+choosing_cf_q2: if class_q2=class_6 then cf_5 elseif class_q2=class_5 then cf_4 elseif class_q2=class_4 then cf_3 elseif class_q2=class_3 then cf_2 elseif class_q2=class_2 then cf_1 else cf_1;/*Choose cumulative frequency depending on class*/
+choosing_freq_q2: if class_q2=class_6 then f5 elseif class_q2=class_5 then f5 elseif class_q2=class_4 then f4 elseif class_q2=class_3 then f3 elseif class_q2=class_2 then f2 elseif  class_q2=class_1 then f1; /*Choice of frequency */
+soln3:((q2-choosing_cf_q2)/choosing_freq_q2);
+soln4:soln3*class_size;
+ta2:decimalplaces((bd_q2+soln4),2);
+
+/*q3*/
+q3:3/4*total_frequencies;
+class_q3:if  q3> cf_5 then class_6 elseif q3> cf_4 then class_5 elseif q3> cf_3 then class_4 elseif q3>cf_2 then class_3 elseif q3> cf_1 then class_2 else class_1;
+bd_q3: if class_q3=class_6 then bd_class6 elseif class_q3=class_5 then bd_class5 elseif class_q3=class_4 then bd_class4 elseif class_q3=class_3 then bd_class3 elseif class_q3=class_2 then bd_class1 elseif class_q3=class_1 then bd_class1;
+choosing_cf_q3: if class_q3=class_6 then cf_5 elseif class_q3=class_5 then cf_4 elseif class_q3=class_4 then cf_3 elseif class_q3=class_3 then cf_2 elseif class_q3=class_2 then cf_1 else cf_1;/*Choose cumulative frequency depending on class*/
+choosing_freq_q3: if class_q3=class_6 then f5 elseif class_q3=class_5 then f5 elseif class_q3=class_4 then f4 elseif class_q3=class_3 then f3 elseif class_q3=class_2 then f2 elseif  class_q3=class_1 then f1; /*Choice of frequency */
+soln5:((q3-choosing_cf_q3)/choosing_freq_q3);
+soln6:soln5*class_size;
+ta3:decimalplaces((bd_q3+soln6),2);
+
+/*possible mistakes*/
+mistake1:((q3-choosing_freq)/choosing_cf);
+inpt1:mistake1*class_size;
+mistake_1:decimalplaces((bd_q3+inpt1),2);
+/*input mistake 2*/
+mistake2:((q2-choosing_freq_q2)/choosing_cf_q2);
+inpt2:mistake2*class_size;
+mistake_2:decimalplaces((bd_q2+inpt2),2);
+/*input mistake 3*/
+mistake3:((q2-choosing_freq_q3)/choosing_cf_q3);
+inpt3:mistake3*class_size;
+mistake_3:decimalplaces((bd_q2+inpt3),2);
+/*Power of each class*/
+power_Q1: if class_q1=class_1 then "st" elseif class_q1=class_2 then "nd" elseif class_q1=class_3 then "rd" else "th";
+power_Q2: if class_q2=class_1 then "st" elseif class_q2=class_2 then "nd" elseif class_q2=class_3 then "rd" else "th";
+power_Q3: if class_q2=class_1 then "st" elseif class_q2=class_2 then "nd" elseif class_q2=class_3 then "rd" else "th";]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>class size={@class_size@},
+total frequenicies={@total_frequencies@},
+q1={@ta1@},
+q2={@ta2@},
+q3={@ta3@}</text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Nixson Kiplagat</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Mary Sayuni</p>
+<p id="reviewer">Wastalas</p>
+<p id="description">Given a table with grouped data find the first,second and third Quartiles</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>ta3</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*noode 1:checks for the correct answer*/
+/*node 2: Interchanging the position of frequency with cumulative frequency*/
+mistake_1:decimalplaces((bd_q3+inpt1),2);
+/*node 3: Input correct answer in terms of fraction*/
+ta1_s: bd_q1+soln2;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Interchanging the position of frequency with cumulative frequency</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>Input correct answer in terms of fraction</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1_s</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*noode 1:checks for the correct answer*/
+/*node 2:Interchanging the position of frequency with cumulative frequency*/
+mistake_2:decimalplaces((bd_q2+inpt2),2);
+/*node 3: Check alternative correct answer, which is in exact form*/
+ta2_s: bd_q2+soln4;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Interchanging the position of frequency with cumulative frequency</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have interchanged the position of cumulative frequency with  frequency while doing your computation.
+Hint:check the worked solution
+</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description> Check alternative correct answer, which is in exact form</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta2_s</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*noode 1:checks for the correct answer*/
+/*node 2:Interchanging the position of frequency with cumulative frequency*/
+mistake_3:decimalplaces((bd_q2+inpt3),2);
+/*node 3: Check alternative correct answer, which is in exact form*/
+ta3_s: bd_q3+soln6;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>ta3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Interchanging the position of frequency with cumulative frequency</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>mistake_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have interchanged the position of cumulative frequency with  frequency while doing your computation.
+Hint:check the worked solution
+
+</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>Check alternative correct answer, which is in exact form</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta3_s</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt3-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1948986049</deployedseed>
+    <deployedseed>1035930533</deployedseed>
+    <deployedseed>1019488845</deployedseed>
+    <deployedseed>515970800</deployedseed>
+    <deployedseed>1040449970</deployedseed>
+    <deployedseed>1348138957</deployedseed>
+    <deployedseed>1270514616</deployedseed>
+    <deployedseed>873894862</deployedseed>
+    <deployedseed>218394866</deployedseed>
+    <deployedseed>1147469399</deployedseed>
+    <deployedseed>439356317</deployedseed>
+    <deployedseed>2065350332</deployedseed>
+    <deployedseed>1407823569</deployedseed>
+    <deployedseed>340097128</deployedseed>
+    <deployedseed>1434027331</deployedseed>
+    <deployedseed>499264043</deployedseed>
+    <deployedseed>1668306828</deployedseed>
+    <deployedseed>618649205</deployedseed>
+    <deployedseed>417561924</deployedseed>
+    <deployedseed>1294158541</deployedseed>
+    <deployedseed>1796489093</deployedseed>
+    <deployedseed>595604623</deployedseed>
+    <deployedseed>1871140924</deployedseed>
+    <deployedseed>85693852</deployedseed>
+    <deployedseed>1986918045</deployedseed>
+    <deployedseed>1975721310</deployedseed>
+    <deployedseed>411700846</deployedseed>
+    <deployedseed>2002448380</deployedseed>
+    <deployedseed>135471481</deployedseed>
+    <deployedseed>603359223</deployedseed>
+    <deployedseed>672884956</deployedseed>
+    <deployedseed>1831356884</deployedseed>
+    <deployedseed>1950970069</deployedseed>
+    <deployedseed>1910541250</deployedseed>
+    <deployedseed>2058241988</deployedseed>
+    <deployedseed>131048249</deployedseed>
+    <deployedseed>970640420</deployedseed>
+    <deployedseed>162580691</deployedseed>
+    <deployedseed>1977608399</deployedseed>
+    <deployedseed>1313738067</deployedseed>
+    <deployedseed>1610077561</deployedseed>
+    <deployedseed>1160494757</deployedseed>
+    <deployedseed>1323954893</deployedseed>
+    <deployedseed>315552784</deployedseed>
+    <deployedseed>54223049</deployedseed>
+    <deployedseed>752980881</deployedseed>
+    <deployedseed>407271838</deployedseed>
+    <deployedseed>184357307</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>ta3</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+</quiz>

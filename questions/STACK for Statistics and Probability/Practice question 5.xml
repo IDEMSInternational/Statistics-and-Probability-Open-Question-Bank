@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz><question type="multichoice">
+    <name>
+      <text>Practice question 5</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Can the statement, “Price decreases with increasing production”, be referred to as statistics?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Your answer is correct.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Your answer is partially correct.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Your answer is incorrect.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="100" format="html">
+      <text>No</text>
+      <feedback format="html">
+        <text><![CDATA[<p>It is a statement or an assertion that suggests a relationship or pattern between two variables, specifically price and production.</p>
+<p>To turn this statement into a statistic, you would need to gather relevant data on price and production levels, perform statistical analyses, and potentially calculate statistics that measure the strength and direction of the relationship between these variables, such as correlation coefficients or regression coefficients. </p>
+<p>The statement is a hypothesis or claim that can be explored and tested using statistical tools and methodologies.</p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Yes</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+  </question>
+
+</quiz>

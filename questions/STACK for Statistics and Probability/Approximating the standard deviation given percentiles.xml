@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz><question type="multichoice">
+    <name>
+      <text>Approximating the standard deviation given percentiles</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>The yield of a variety of wheat was measured on a series of small plots.  The  2nd  and  98th  percentile  were found  to  be  29 bushels/acre and  41 bushels/acre respectively.    The standard deviation (bushels/acre) is approximately:</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text/>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text/>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text/>
+    </incorrectfeedback>
+    <answer fraction="0" format="html">
+      <text>12</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>6</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>4</text>
+      <feedback format="html">
+        <text><![CDATA[<p>(a)   (b) 6 (c) 3 (d) 4 (e) 2</p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>3</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>2</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+  </question>
+
+</quiz>

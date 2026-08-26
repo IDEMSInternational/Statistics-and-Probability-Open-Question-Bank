@@ -1,0 +1,265 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz><question type="stack">
+    <name>
+      <text>Calculate the probability values of selecting without replacement</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p> There are \({@total_beads@}\) colored beads in a bag; \({@red_beads@}\) beads are red, \({@blue_beads@}\) are blue, and \({@green_beads@}\) are green. \({@selected_beads@}\) beads are selected at random from the bag and not replaced.</p>
+<p>Find the probability that:</p>
+<p> a) The first and the second beads are chosen are red and the third bead is blue or green.</p>
+<p>[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>
+<p> b) One red, one blue, and one green beads are chosen.</p>
+<p>[[input:ans2]][[validation:ans2]][[feedback:prt2]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p><b>Worked solution</b></p>
+a) <p>Find the probability that the first and the second beads are chosen are red and the third bead is blue or green.</p>
+<p>We observed that:</p>
+<p>the first draw of red color has the probability \(\frac{\mbox{number of red beads}}{\mbox{total number of coloured beads}}\), let \(\frac{{@red_beads@}}{{@total_beads@}}\).
+</p>
+<p>for the second draw of red, the number of red beads is reduced by \(1\) and the total number of coloured beads is also reduced by \(1\), because of the first draw. Then, the second draw of red has the probability \( \frac{{@red_beads-1@}}{{@total_beads-1@}}\).
+</p>
+<p>the third drawing which is a blue colour beads, the total number of coloured beads is reduced by \(2\) because of the first and second draws. Same remark for the green color beads, the total number of coloured beads is reduced by \(2\) because of the first and second red draws.</p>
+<p>
+</p>
+<p>It results to the following formula:</p>
+<p>\(P(\mbox{2 red and third blue})= \frac{\mbox{number of red beads}}{\mbox{total number of coloured beads}} \cdot \frac{\mbox{number of red beads-1}}{\mbox{total number of coloured beads-1}} \cdot \frac{\mbox{number of blue beads}}{\mbox{total number of coloured beads-2}}.\)</p>
+<p>\(P(\mbox{2 red and third green})=\frac{\mbox{number of red beads}}{\mbox{total number of coloured beads}}\cdot \frac{\mbox{number of red beads-1}}{\mbox{total number of coloured beads-1}} \cdot \frac{\mbox{number of green beads}}{\mbox{total number of coloured beads-2}}\).</p>
+<p>Hence</p>
+<p>\(P(\mbox{2 red and third blue})+P(\mbox{2 red and third green})=\frac{{@red_beads@}}{{@total_beads@}} \cdot \frac{{@red_beads-1@}}{{@total_beads-1@}} \cdot \frac{{@blue_beads@}}{{@total_beads-2@}} + \frac{{@red_beads@}}{{@total_beads@}} \cdot \frac{{@red_beads-1@}}{{@total_beads-1@}} \cdot \frac{{@green_beads@}}{{@total_beads-2@}}\) </p>
+<p>\(P(\mbox{2 red and third blue})+P(\mbox{2 red and third green})={@ta1@}\)
+</p>
+<hr>
+<p>b) Find the probability that one red, one blue, and one green beads are chosen</p>
+<p>Consider the following events:</p>
+<p>\(R\): "The chosen bead at random has red color".</p>
+<p>\(B\): "The chosen bead at random has blue color".</p>
+<p>\(G\): "The chosen bead at random has green color".</p>
+<p>\(A\) "one red, one blue, and one green beads are chosen".</p>
+<p>Taking into account that the order in which the selection of these 3 beads at random from the bag is arbitrary; by direct enumeration we see that there are 6, namely, RBG, RGB, BRG, BGR, GRB, and GBR.</p>
+<p>In other word, we have \(3!=6\) different permutations of these 3 color beads.</p>
+<p>Then \(P(A)= P(RBG)+P(RGB)+P(BRG)+P(BGR)+P(GRB)+P(GBR)\).</p>
+<p>It noted that \(P(RBG)=P(RGB)=P(BRG)=P(BGR)=P(GRB)=P(GBR)\).</p>
+<p> So,\( P(A)= 3! \cdot P(RBG)\)</p>
+<p>\(P(A)= 3! \cdot \frac{\mbox{number of red beads}}{\mbox{total number of coloured beads}} \cdot \frac{\mbox{number of blue beads}}{\mbox{total number of coloured beads-1}} \cdot \frac{\mbox{number of green beads}}{\mbox{total number of coloured beads-2}}\)</p>
+<p> \(P(A)= 3! \cdot \frac{{@red_beads@}}{{@total_beads@}} \cdot \frac{{@blue_beads@}}{{@total_beads-1@}} \cdot \frac{{@green_beads@}}{{@total_beads-2@}} \)</p>
+<p> Therefore, \(P(A)={@ta2@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2022071300</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Randomly generate and calculate the initial probabilities*/
+red_beads: rand([3,4,5,6,7]); /*the number of red beads*/
+blue_beads:rand([2,3,4]); /* the number of blue beads */
+green_beads:rand([3,4,5]); /* the number of green beads*/
+selected_beads:3;/* the number of beads selected from the bag*/
+total_beads:red_beads+blue_beads+green_beads ; /*the total number of beads*/
+
+/*model answers*/
+ta1:((red_beads/total_beads)*((red_beads-1)/(total_beads-1))*(blue_beads/(total_beads-2))) + ((red_beads/total_beads)*((red_beads-1)/(total_beads-1))*(green_beads/(total_beads-2)));
+
+ta2: (selected_beads)! *(red_beads/total_beads)*(blue_beads/(total_beads-1)*(green_beads/(total_beads-2)));</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>{@red_beads@}
+{@blue_beads@}
+{@green_beads@}</text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: check for correct answer*/
+
+/*Node 2: mistake: adding P(2*red *blue) + P(2*red *green) */
+mistake_2:((red_beads/total_beads)*((red_beads)/(total_beads))*(blue_beads/(total_beads))) + ((red_beads/total_beads)*((red_beads)/(total_beads))*(green_beads/(total_beads)))</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You calculated without considering it as a probability without replacement, the sample size reduces once an item is drawn. Hint: P(2 red and third blue) + P(2 red and third green) = \( \frac{red beads}{total beads} \cdot \frac{red beads-1}{total beads-1} \cdot \frac{blue beads}{total_beads-2} + \frac{red beads}{total beads} \cdot \frac{red beads-1}{total beads-1} \cdot \frac{green beads}{total beads-2} \)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: check for correct answer*/
+
+/*Node 2: mistake: not multiplying the P(one red, one blue and one green) by 3*/
+mistake_2:(red_beads/total_beads) *(blue_beads/(total_beads-1)*(green_beads/(total_beads-2)));
+/*Node 3: mistake*/
+ta4:decimalplaces(float((selected_beads !) *  (red_beads/total_beads) *(blue_beads/(total_beads-1)*(green_beads/(total_beads-2)))),2);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You forgot to multiply the P(one red, one blue and one green by 3! To take into account that the order in which you draw the 3 colors is arbitrary. Hint: P( one red, one blue and one green bead) =  All possible outcomes i.e selected beads ! \(\cdot \frac{red beads}{total beads} \cdot \frac{blue beads}{total beads-1} \cdot \frac{green beads}{total beads-2} \)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+  </question>
+
+</quiz>

@@ -1,0 +1,330 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz><question type="stack">
+    <name>
+      <text>Determining marriage rates for men and women</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Use the given data below to answer the questions that follow.</p>
+<p>
+<table border="solid">
+  <tr>
+    <th>Number of Marriages</th>
+    <th>\({@no_marriages@}\)</th>
+  </tr>
+  <tr>
+    <td>Total Population \(15+\)</td>
+    <td>\({@total_popn@}\)</td>
+  </tr>
+  <tr>
+    <td>Total Female Population</td>
+    <td>\({@females@}\)</td>
+  </tr>
+ 
+</table>
+</p>
+<br>
+<p>Note: Leave your correct to \(2\) dp</p>
+<p>Determine: </p>
+<p>a). General marriage rate for women [[input:ans1]] \(‰\) [[validation:ans1]][[feedback:prt1]]</p>
+<p>b). General marriage rate for men [[input:ans2]]  \(‰\) [[validation:ans2]][[feedback:prt2]]</p>
+<p></p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>The general rates of marriage are determined as follows;</p>
+<p>The General marriage rate for women </p>
+<p>
+\(\begin{align}
+\text{GMR}^{f} \text{ per 1000}&=\displaystyle \frac{\text {total number of marriages}}{\text{Total female population}} \times 1000\\
+&=\displaystyle \frac{{@no_marriages@}}{{@females@}} \times 1000\\
+&={@gmr_females@} ‰\\
+\end{align}\)
+</p>
+<p>The General marriage rate for men</p>
+<p>
+\(\begin{align}
+\text{GMR}^{m} \text{ per 1000}&=\displaystyle \frac{\text {total number of marriages}}{\text{Total male population}} \times 1000\\
+&=\displaystyle \frac{{@no_marriages@}}{{@men@}} \times 1000\\
+&={@gmr_males@} ‰\\
+\end{align}\)
+</p>
+<p></p>
+<p></p>]]></text>
+    </generalfeedback>
+    <defaultgrade>0.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*topic 9 STA 246*/
+no_marriages:(rand(800)+100)*1000;
+total_popn:(rand_with_step(90000,100000,1000))*1000;
+females:(rand_with_step(40000,50000,1000))*1000;
+men:total_popn-females;
+/*worked solution*/
+sol1:(no_marriages/females)*1000; 
+gmr_females:decimalplaces(sol1,2);
+sol2:(no_marriages/men)*1000;
+gmr_males:decimalplaces(sol2,2);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Number of marriages \(={@no_marriages@}\)</p>
+<p>Total Population \(15+ ={@total_popn@}\) </p>
+<p>Total Female Population \(={@females@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept">https://docs.google.com/document/d/1wKEQZM-sIJBGrCNuZLONkmGG5dwqrUhhVh_IS_PJl3A/edit</p>
+<p id="reviewer">Nixson Kiplagat</p>
+<p id="reviewer"></p>
+<p id="description">This question requires the student to calculate the  general rates of marriage for men and women from a given data on the number of marriages and population.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>gmr_females</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>gmr_males</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>gmr_females</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for the number of dp</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans1</sans>
+        <tans>gmr_females</tans>
+        <testoptions>0.01</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.25</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Your answer is partially correct because it's not given to the right number of decimal places</p></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>gmr_males</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for the number of dp</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans2</sans>
+        <tans>gmr_males</tans>
+        <testoptions>0.01</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.25</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Your answer is partially correct because it's not given to the right number of decimal places</p></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1986071973</deployedseed>
+    <deployedseed>1979342461</deployedseed>
+    <deployedseed>1083925617</deployedseed>
+    <deployedseed>883164274</deployedseed>
+    <deployedseed>413167846</deployedseed>
+    <deployedseed>68921182</deployedseed>
+    <deployedseed>1613475260</deployedseed>
+    <deployedseed>1025063997</deployedseed>
+    <deployedseed>675512419</deployedseed>
+    <deployedseed>1255923418</deployedseed>
+    <deployedseed>52681441</deployedseed>
+    <deployedseed>932924968</deployedseed>
+    <deployedseed>1893083210</deployedseed>
+    <deployedseed>1278002851</deployedseed>
+    <deployedseed>799356185</deployedseed>
+    <deployedseed>1925791578</deployedseed>
+    <deployedseed>1367485493</deployedseed>
+    <deployedseed>787616763</deployedseed>
+    <deployedseed>131563718</deployedseed>
+    <deployedseed>423166347</deployedseed>
+    <deployedseed>1373486143</deployedseed>
+    <deployedseed>1971483370</deployedseed>
+    <deployedseed>1667523270</deployedseed>
+    <deployedseed>435319114</deployedseed>
+    <deployedseed>1800860139</deployedseed>
+    <deployedseed>584586429</deployedseed>
+    <deployedseed>1394163979</deployedseed>
+    <deployedseed>1436515846</deployedseed>
+    <deployedseed>1008193502</deployedseed>
+    <deployedseed>486857282</deployedseed>
+    <deployedseed>1450906646</deployedseed>
+    <deployedseed>795012309</deployedseed>
+    <deployedseed>1861127870</deployedseed>
+    <deployedseed>1903841626</deployedseed>
+    <deployedseed>761193795</deployedseed>
+    <deployedseed>1400012738</deployedseed>
+    <deployedseed>664004130</deployedseed>
+    <deployedseed>735321784</deployedseed>
+    <deployedseed>636932862</deployedseed>
+    <deployedseed>336491126</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>gmr_females</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>gmr_males</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+</quiz>

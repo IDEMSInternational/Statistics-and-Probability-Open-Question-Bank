@@ -1,0 +1,544 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz><question type="stack">
+    <name>
+      <text>Linear Regression Analysis for Company's Cost and Output Data</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>For a period of three years, a company monitors the number of units of output produced per quarter and the total cost of producing the units. The table below shows their results</p>
+<table border="solid">
+  <tr>
+      <th width="28%", style="text-align:center">Unit of output (x)</th>
+       <th width="6%", style="text-align:center">\({@x1@}\)</th>
+       <th width="6%", style="text-align:center">\({@x2@}\)</th>
+       <th width="6%", style="text-align:center">\({@x3@}\)</th>
+      <th width="6%", style="text-align:center">\({@x4@}\)</th>
+       <th width="6%", style="text-align:center">\({@x5@}\)</th>
+      <th width="6%", style="text-align:center">\({@x6@}\)</th>
+       <th width="6%", style="text-align:center">\({@x7@}\)</th>
+       <th width="6%", style="text-align:center">\({@x8@}\)</th>
+       <th width="6%", style="text-align:center">\({@x9@}\)</th>
+      <th width="6%", style="text-align:center">\({@x10@}\)</th>
+       <th width="6%", style="text-align:center">\({@x11@}\)</th>
+       <th width="6%", style="text-align:center">\({@x12@}\)</th>
+  </tr>
+   <tr>
+      <th width="28%", style="text-align:center">Total cost (y)</th>
+       <th width="6%", style="text-align:center">\({@y1@}\)</th>
+       <th width="6%", style="text-align:center">\({@y2@}\)</th>
+       <th width="6%", style="text-align:center">\({@y3@}\)</th>
+      <th width="6%", style="text-align:center">\({@y4@}\)</th>
+       <th width="6%", style="text-align:center">\({@y5@}\)</th>
+      <th width="6%", style="text-align:center">\({@y6@}\)</th>
+       <th width="6%", style="text-align:center">\({@y7@}\)</th>
+       <th width="6%", style="text-align:center">\({@y8@}\)</th>
+       <th width="6%", style="text-align:center">\({@y9@}\)</th>
+      <th width="6%", style="text-align:center">\({@y10@}\)</th>
+       <th width="6%", style="text-align:center">\({@y11@}\)</th>
+       <th width="6%", style="text-align:center">\({@y12@}\)</th>
+  </tr>
+ </table>
+<p><b>Note:</b> Write your answers correct to \(2\) decimal places</p>
+<ol>
+<li>
+<p>Write the equation of regression line \(y\) on \(x\) .</p>
+<p>\(y=\) [[input:ans1]] x \(+\) [[input:ans2]] [[validation:ans1]][[validation:ans2]][[feedback:prt1]][[feedback:prt2]]</p>
+</li>
+<li>
+<p>Calculate the total cost when the unit price is \({@x13@}\)</p>
+<p>Total cost \(= \)Ksh [[input:ans3]] [[validation:ans3]][[feedback:prt3]]</p>
+
+</li>
+<ol>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<table border="solid">
+  <tr>
+      <th width="17%", style="text-align:center">\(x\)</th>
+       <th width="22%", style="text-align:center">\(x^2\)</th>
+       <th width="17%", style="text-align:center">\(y\)</th>
+       <th width="22%", style="text-align:center">\(y^2\)</th>
+      <th width="22%", style="text-align:center">\(x y\)</th>
+  </tr>
+  <tr>
+      <th width="17%", style="text-align:center">\({@x1@}\)</th>
+       <th width="22%", style="text-align:center">\({@x1^2@}\)</th>
+       <th width="17%", style="text-align:center">\({@y1@}\)</th>
+       <th width="22%", style="text-align:center">\({@y1^2@}\)</th>
+      <th width="22%", style="text-align:center">\({@x1*y1@}\)</th>
+  </tr>
+  <tr>
+      <th width="17%", style="text-align:center">\({@x2@}\)</th>
+       <th width="22%", style="text-align:center">\({@x2^2@}\)</th>
+       <th width="17%", style="text-align:center">\({@y2@}\)</th>
+       <th width="22%", style="text-align:center">\({@y2^2@}\)</th>
+      <th width="22%", style="text-align:center">\({@x2*y2@}\)</th>
+  </tr>
+  <tr>
+      <th width="17%", style="text-align:center">\({@x3@}\)</th>
+       <th width="22%", style="text-align:center">\({@x3^2@}\)</th>
+       <th width="17%", style="text-align:center">\({@y3@}\)</th>
+       <th width="22%", style="text-align:center">\({@y3^2@}\)</th>
+      <th width="22%", style="text-align:center">\({@x3*y3@}\)</th>
+  </tr>
+  <tr>
+      <th width="17%", style="text-align:center">\({@x4@}\)</th>
+       <th width="22%", style="text-align:center">\({@x4^2@}\)</th>
+       <th width="17%", style="text-align:center">\({@y4@}\)</th>
+       <th width="22%", style="text-align:center">\({@y4^2@}\)</th>
+      <th width="22%", style="text-align:center">\({@x4*y4@}\)</th>
+  </tr>
+  <tr>
+      <th width="17%", style="text-align:center">\({@x5@}\)</th>
+       <th width="22%", style="text-align:center">\({@x5^2@}\)</th>
+       <th width="17%", style="text-align:center">\({@y5@}\)</th>
+       <th width="22%", style="text-align:center">\({@y5^2@}\)</th>
+      <th width="22%", style="text-align:center">\({@x5*y5@}\)</th>
+  </tr>
+  <tr>
+      <th width="17%", style="text-align:center">\({@x6@}\)</th>
+       <th width="22%", style="text-align:center">\({@x6^2@}\)</th>
+       <th width="17%", style="text-align:center">\({@y6@}\)</th>
+       <th width="22%", style="text-align:center">\({@y6^2@}\)</th>
+      <th width="22%", style="text-align:center">\({@x6*y6@}\)</th>
+  </tr>
+   <tr>
+      <th width="17%", style="text-align:center">\({@x7@}\)</th>
+       <th width="22%", style="text-align:center">\({@x7^2@}\)</th>
+       <th width="17%", style="text-align:center">\({@y7@}\)</th>
+       <th width="22%", style="text-align:center">\({@y7^2@}\)</th>
+      <th width="22%", style="text-align:center">\({@x7*y7@}\)</th>
+  </tr>
+   <tr>
+      <th width="17%", style="text-align:center">\({@x8@}\)</th>
+       <th width="22%", style="text-align:center">\({@x8^2@}\)</th>
+       <th width="17%", style="text-align:center">\({@y8@}\)</th>
+       <th width="22%", style="text-align:center">\({@y8^2@}\)</th>
+      <th width="22%", style="text-align:center">\({@x8*y8@}\)</th>
+  </tr>
+  <tr>
+      <th width="17%", style="text-align:center">\({@x9@}\)</th>
+       <th width="22%", style="text-align:center">\({@x9^2@}\)</th>
+       <th width="17%", style="text-align:center">\({@y9@}\)</th>
+       <th width="22%", style="text-align:center">\({@y9^2@}\)</th>
+      <th width="22%", style="text-align:center">\({@x9*y9@}\)</th>
+  </tr>
+  <tr>
+      <th width="17%", style="text-align:center">\({@x10@}\)</th>
+       <th width="22%", style="text-align:center">\({@x10^2@}\)</th>
+       <th width="17%", style="text-align:center">\({@y10@}\)</th>
+       <th width="22%", style="text-align:center">\({@y10^2@}\)</th>
+      <th width="22%", style="text-align:center">\({@x10*y10@}\)</th>
+  </tr>
+  <tr>
+      <th width="17%", style="text-align:center">\({@x11@}\)</th>
+       <th width="22%", style="text-align:center">\({@x11^2@}\)</th>
+       <th width="17%", style="text-align:center">\({@y11@}\)</th>
+       <th width="22%", style="text-align:center">\({@y11^2@}\)</th>
+      <th width="22%", style="text-align:center">\({@x11*y11@}\)</th>
+  </tr>
+  <tr>
+      <th width="17%", style="text-align:center">\({@x12@}\)</th>
+       <th width="22%", style="text-align:center">\({@x12^2@}\)</th>
+       <th width="17%", style="text-align:center">\({@y12@}\)</th>
+       <th width="22%", style="text-align:center">\({@y12^2@}\)</th>
+      <th width="22%", style="text-align:center">\({@x12*y12@}\)</th>
+  </tr>  
+  <tr>
+      <th width="17%", style="text-align:center">\(\sum x={@sum_x@}\)</th>
+       <th width="22%", style="text-align:center">\(\sum x^2={@sum_x_sq@}\)</th>
+       <th width="17%", style="text-align:center">\(\sum y={@sum_y@}\)</th>
+       <th width="22%", style="text-align:center">\(\sum y^2={@sum_y_sq@}\)</th>
+      <th width="22%", style="text-align:center">\(\sum xy={@sum_xy@}\)</th>
+  </tr>  
+ </table>
+<ol>
+<li>
+<p>\(n=12\)</p>
+<p>The equation of regression line \(y\) on \(x\) is given by \(\hat{y}=\hat{\alpha}+\hat{\beta} x\).</p>
+<p>where \(\displaystyle \hat{\alpha}=\frac{\sum y \sum x^2-\sum x \sum xy}{n \sum x^2-(\sum x)^2}=\frac{({@sum_y@}) ({@sum_x_sq@})-({@sum_x@})({@sum_xy@})}{12({@sum_x_sq@})-({@sum_x@})^2}={@alpha@}={@decimalplaces(alpha,2)@}\)</p>
+<p>and</p>
+<p>\(\displaystyle \hat{\beta}=\frac{n\sum xy -\sum x \sum y}{n \sum x^2-(\sum x)^2}=\frac{12({@sum_xy@})-({@sum_x@})({@sum_y@})}{12({@sum_x_sq@})-({@sum_x@})^2}={@beta@}={@decimalplaces(beta,2)@}\)</p>
+<p>Therefore, the equation of the regression line is given by: \(\hat{y}={@decimalplaces(alpha,2)@}+{@decimalplaces(beta,2)@} x\)</p>
+</li>
+<li>
+<p>\(\hat{y}={@decimalplaces(alpha,2)@}+{@decimalplaces(beta,2)@} ({@x13@})\)</p>
+<p>Therefore, the total cost will be \(Ksh {@ta3@}\)</p>
+</li>
+<ol>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>x1:rand_with_step(10,20,1);
+x2:x1+15;
+x3:x2+26;
+x4:x3+19;
+x5:x4-63;
+x6:x5+12;
+x7:x6+24;
+x8:x7+22;
+x9:x8-51;
+x10:x9+18;
+x11:x10+25;
+x12:x11+18;
+x13:rand_with_step(20,40,1);
+y1:rand_with_step(25,45,1);
+y2:y1+15;
+y3:y2+23;
+y4:y3+20;
+y5:y4-62;
+y6:y5+11;
+y7:y6+23;
+y8:y7+21;
+y9:y8-48;
+y10:y9+16;
+y11:y10+27;
+y12:y11+15;
+sum_x:x1+x2+x3+x4+x5+x6+x7+x8+x9+x10+x11+x12;
+sum_y:y1+y2+y3+y4+y5+y6+y7+y8+y9+y10+y11+y12;
+sum_xy:(x1*y1)+(x2*y2)+(x3*y3)+(x4*y4)+(x5*y5)+(x6*y6)+(x7*y7)+(x8*y8)+(x9*y9)+(x10*y10)+(x11*y11)+(x12*y12);
+sum_x_sq:x1^2+x2^2+x3^2+x4^2+x5^2+x6^2+x7^2+x8^2+x9^2+x10^2+x11^2+x12^2;
+sum_y_sq:y1^2+y2^2+y3^2+y4^2+y5^2+y6^2+y7^2+y8^2+y9^2+y10^2+y11^2+y12^2;
+alpha:(sum_y*sum_x_sq-sum_x*sum_xy)/(12*sum_x_sq-(sum_x)^2);
+beta:(12*sum_xy-sum_x*sum_y)/(12*sum_x_sq-sum_x^2);
+ta1:decimalplaces(beta,2);
+ta2:decimalplaces(alpha,2);
+ta3:decimalplaces(alpha+beta*x13,2);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>The equation of regression line \(y\) on \(x\) is given by.</p>
+<p>\(y={@ta1*x+ta2@}\)</p>
+<p>b)  The total cost when the unit price is \({@x13@}\)</p>
+<p>\(y={@ta3@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Nixson Kiplagat</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Godfrey Wabwire</p>
+<p id="reviewer">[Juma Zevick]</p>
+<p id="description">This question requires the student to calculate the equation of the regression line for total cost (\(y\)) as a function of unit output (\(x\)) based on a three-year dataset, and also find the total cost when the unit price is given.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>7</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>7</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>ta3</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1:Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions>2</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1:Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions>2</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1:Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans3</sans>
+        <tans>ta3</tans>
+        <testoptions>2</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1837314822</deployedseed>
+    <deployedseed>731942106</deployedseed>
+    <deployedseed>239796888</deployedseed>
+    <deployedseed>1579221385</deployedseed>
+    <deployedseed>1615979120</deployedseed>
+    <deployedseed>127152485</deployedseed>
+    <deployedseed>979456558</deployedseed>
+    <deployedseed>93315998</deployedseed>
+    <deployedseed>1155861483</deployedseed>
+    <deployedseed>129114381</deployedseed>
+    <deployedseed>714217370</deployedseed>
+    <deployedseed>682176564</deployedseed>
+    <deployedseed>49053088</deployedseed>
+    <deployedseed>567261546</deployedseed>
+    <deployedseed>1295780418</deployedseed>
+    <deployedseed>188897039</deployedseed>
+    <deployedseed>809717668</deployedseed>
+    <deployedseed>137119141</deployedseed>
+    <deployedseed>1284728059</deployedseed>
+    <deployedseed>527832986</deployedseed>
+    <deployedseed>1383474876</deployedseed>
+    <deployedseed>1410631787</deployedseed>
+    <deployedseed>95230115</deployedseed>
+    <deployedseed>2059193095</deployedseed>
+    <deployedseed>1737115731</deployedseed>
+    <deployedseed>1199862307</deployedseed>
+    <deployedseed>191874849</deployedseed>
+    <deployedseed>1465239737</deployedseed>
+    <deployedseed>126680560</deployedseed>
+    <deployedseed>814850464</deployedseed>
+    <deployedseed>1702782711</deployedseed>
+    <deployedseed>469014418</deployedseed>
+    <deployedseed>1937283064</deployedseed>
+    <deployedseed>553897458</deployedseed>
+    <deployedseed>965978439</deployedseed>
+    <deployedseed>1827479405</deployedseed>
+    <deployedseed>626241460</deployedseed>
+    <deployedseed>1483153536</deployedseed>
+    <deployedseed>1539808420</deployedseed>
+    <deployedseed>975402332</deployedseed>
+    <deployedseed>953322689</deployedseed>
+    <deployedseed>162304965</deployedseed>
+    <deployedseed>960958919</deployedseed>
+    <deployedseed>1145291025</deployedseed>
+    <deployedseed>416446156</deployedseed>
+    <deployedseed>2017734300</deployedseed>
+    <deployedseed>124779846</deployedseed>
+    <deployedseed>2120855289</deployedseed>
+    <deployedseed>1512868266</deployedseed>
+    <deployedseed>1879547728</deployedseed>
+    <deployedseed>302532676</deployedseed>
+    <deployedseed>1737937640</deployedseed>
+    <deployedseed>709754845</deployedseed>
+    <deployedseed>1902119927</deployedseed>
+    <deployedseed>1173254929</deployedseed>
+    <deployedseed>1318509700</deployedseed>
+    <deployedseed>1264156841</deployedseed>
+    <deployedseed>800434502</deployedseed>
+    <deployedseed>960802323</deployedseed>
+    <deployedseed>2108093503</deployedseed>
+    <deployedseed>649664543</deployedseed>
+    <deployedseed>1828726767</deployedseed>
+    <deployedseed>433089181</deployedseed>
+    <deployedseed>342935020</deployedseed>
+    <deployedseed>1279102917</deployedseed>
+    <deployedseed>43566671</deployedseed>
+    <deployedseed>1825044993</deployedseed>
+    <deployedseed>1015345332</deployedseed>
+    <deployedseed>188434999</deployedseed>
+    <deployedseed>258214119</deployedseed>
+    <deployedseed>679976473</deployedseed>
+    <deployedseed>1061448125</deployedseed>
+    <deployedseed>721027735</deployedseed>
+    <deployedseed>263551481</deployedseed>
+    <deployedseed>1753251863</deployedseed>
+    <deployedseed>146919405</deployedseed>
+    <deployedseed>1265413364</deployedseed>
+    <deployedseed>2060935693</deployedseed>
+    <deployedseed>744434716</deployedseed>
+    <deployedseed>1819745939</deployedseed>
+    <deployedseed>407673684</deployedseed>
+    <deployedseed>918564364</deployedseed>
+    <deployedseed>1331934444</deployedseed>
+    <deployedseed>1297528094</deployedseed>
+    <deployedseed>1681812063</deployedseed>
+    <deployedseed>479991888</deployedseed>
+    <deployedseed>1228493372</deployedseed>
+    <deployedseed>1202070454</deployedseed>
+    <deployedseed>1340998744</deployedseed>
+    <deployedseed>1965618550</deployedseed>
+    <deployedseed>112953684</deployedseed>
+    <deployedseed>618745063</deployedseed>
+    <deployedseed>1834842076</deployedseed>
+    <deployedseed>594711701</deployedseed>
+    <deployedseed>90999968</deployedseed>
+    <deployedseed>2114232643</deployedseed>
+    <deployedseed>2129241653</deployedseed>
+    <deployedseed>1933622854</deployedseed>
+    <deployedseed>1184982419</deployedseed>
+    <deployedseed>1883847666</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>ta3</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+</quiz>

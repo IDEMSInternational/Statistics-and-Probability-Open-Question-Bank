@@ -1,0 +1,1520 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz><question type="stack">
+    <name>
+      <text>Find the mean, median, mode, sd, variance-q3</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Suppose that a sample of \({@n@}\) batches of different whooping cough vaccines were tested on groups of children to assess their protective immunizing activity. The following data give immunity percentage in home exposure (IPHE) values: Fill the blanks in the table and answer the questions that follow.</p>
+<p><b>Note: Give your answer to \(2\) decimal places where necessary in all your calculations.</b></p>
+<p>
+<table border="solid">
+  <tr>
+    <th width="15%", style="text-align:center">IPHE values CI(\(\%\))</th>
+    <th width="15%", style="text-align:center">IPHE boundaries CI(\(\%\))</th>
+     <th width="15%", style="text-align:center">Midpoint of intervals \((X_i)\)</th>
+     <th width="15%", style="text-align:center">Number of children \((f)\)</th>
+    <th width="15%", style="text-align:center">Cumulative frequency \((cf)\)</th>
+     <th width="30%", style="text-align:center">\(fX_i\)</th>
+     <th width="60%", style="text-align:center">\(f(X_i-\mu)^2\)</th>
+  </tr>
+  <tr>
+    <td style="text-align:center">\({@lower_range1@}-{@upper_range1@}\)</td>
+    <td style="text-align:center">\({@float(lower_bound1)@}-{@float(upper_bound1)@}\)</td>
+    <td style="text-align:center">\({@midpoints[1]@}\)</td>
+    <td style="text-align:center">\({@f1@}\)</td>
+    <td style="text-align:center">\({@cf[1]@}\)</td>
+    <td style="text-align:center"> [[input:ans1]][[validation:ans1]][[feedback:prt1]]</td>
+    <td style="text-align:center">\({@mean_fdiffs[1]@}\)</td>
+  </tr>
+  <tr>
+   <td style="text-align:center">\({@lower_range2@}-{@upper_range2@}\)</td>
+    <td style="text-align:center">\({@float(lower_bound2)@}-{@float(upper_bound2)@}\)</td>
+     <td style="text-align:center">[[input:ans2]][[validation:ans2]][[feedback:prt2]]</td>
+    <td style="text-align:center">\({@f2@}\)</td>
+    <td style="text-align:center">\({@cf[2]@}\)</td>
+    <td style="text-align:center">\({@fxi[2]@}\)</td>
+    <td style="text-align:center"> [[input:ans3]][[validation:ans3]][[feedback:prt3]]</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">\({@lower_range3@}-{@upper_range3@}\)</td>
+    <td style="text-align:center">\({@float(lower_bound3)@}-{@float(upper_bound3)@}\)</td>
+    <td style="text-align:center">\({@midpoints[3]@}\)</td>
+    <td style="text-align:center">\({@f3@}\)</td>
+    <td style="text-align:center">[[input:ans4]][[validation:ans4]][[feedback:prt4]]</td>
+    <td style="text-align:center">[[input:ans5]][[validation:ans5]][[feedback:prt5]]</td>
+    <td style="text-align:center">[[input:ans6]][[validation:ans6]][[feedback:prt6]]</td>
+  </tr>
+  <tr>
+   <td style="text-align:center">\({@lower_range4@}-{@upper_range4@}\)</td>
+    <td style="text-align:center">\({@float(lower_bound4)@}-{@float(upper_bound4)@}\)</td>
+    <td style="text-align:center">[[input:ans7]][[validation:ans7]][[feedback:prt7]]</td>
+    <td style="text-align:center">\({@f4@}\)</td>
+    <td style="text-align:center">\({@cf[4]@}\)</td>
+    <td style="text-align:center">[[input:ans8]][[validation:ans8]][[feedback:prt8]]</td>
+    <td style="text-align:center">\({@mean_fdiffs[4]@}\)</td>
+  </tr>
+  <tr>
+   <td style="text-align:center">\({@lower_range5@}-{@upper_range5@}\)</td>
+    <td style="text-align:center">\({@float(lower_bound5)@}-{@float(upper_bound5)@}\)</td>
+    <td style="text-align:center">\({@midpoints[5]@}\)</td>
+    <td style="text-align:center">\({@f5@}\)</td>
+    <td style="text-align:center">[[input:ans9]][[validation:ans9]][[feedback:prt9]]</td>
+    <td style="text-align:center">[[input:ans10]][[validation:ans10]][[feedback:prt10]]</td>
+    <td style="text-align:center">\({@mean_fdiffs[5]@}\)</td>
+  </tr>
+    <tr>
+   <td style="text-align:center"></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center">\( \sum f =\) [[input:ans11]][[validation:ans11]][[feedback:prt11]]</td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center">\(\sum fX_i=\) [[input:ans12]][[validation:ans12]][[feedback:prt12]]</td>
+    <td style="text-align:center">\(\sum{f(X_i-\mu)^2}=\) [[input:ans13]][[validation:ans13]][[feedback:prt13]]</td>
+  </tr>
+</table>
+</p>
+<p>Using the information in the table above, compute the following statistics:</p>
+
+<p>(a) Mean \( \displaystyle \bar{x}=\frac{\sum{fX}}{\sum{f}}=\) [[input:ans14]][[validation:ans14]][[feedback:prt14]]</p>
+
+<p>(b) Median \(=\) [[input:ans15]][[validation:ans15]][[feedback:prt15]]</p>
+
+<p>(c) Mode\(=\) [[input:ans16]][[validation:ans16]][[feedback:prt16]]</p>
+
+<p>(d) Standard deviation \( \displaystyle  \sigma = \sqrt{\frac{\sum{f(x-\bar{x})^2}}{\sum f}}=\)  [[input:ans17]][[validation:ans17]][[feedback:prt17]]</p>
+
+<p>(e) Variance \({ \sigma^2}=\) [[input:ans18]][[validation:ans18]][[feedback:prt18]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<p><b><h3>Worked Solution</h3></b></p>
+<p>
+<table border="solid">
+  <tr>
+    <th width="15%", style="text-align:center">IPHE values CI(\(\%\))</th>
+    <th width="15%", style="text-align:center">IPHE boundaries CI(\(\%\))</th>
+     <th width="25%", style="text-align:center">Midpoint of intervals \((X_i)\)</th>
+     <th width="25%", style="text-align:center">Number of children \((f)\)</th>
+    <th width="30%", style="text-align:center">Cumulative frequency \((cf)\)</th>
+     <th width="40%", style="text-align:center">\(fX_i\)</th>
+     <th width="40%", style="text-align:center">\(f(X_i-\mu)^2\)</th>
+  </tr>
+  <tr>
+    <td style="text-align:center">\({@lower_range1@}-{@upper_range1@}\)</td>
+    <td style="text-align:center">\({@float(lower_bound1)@}-{@float(upper_bound1)@}\)</td>
+    <td style="text-align:center">\({@midpoints[1]@}\)</td>
+    <td style="text-align:center">\({@f1@}\)</td>
+    <td style="text-align:center">\({@cf[1]@}\)</td>
+    <td style="text-align:center">\({@fxi[1]@}\)</td>
+    <td style="text-align:center">\({@mean_fdiffs[1]@}\)</td>
+  </tr>
+  <tr>
+   <td style="text-align:center">\({@lower_range2@}-{@upper_range2@}\)</td>
+    <td style="text-align:center">\({@float(lower_bound2)@}-{@float(upper_bound2)@}\)</td>
+     <td style="text-align:center">\({@midpoints[2]@}\)</td>
+    <td style="text-align:center">\({@f2@}\)</td>
+    <td style="text-align:center">\({@cf[2]@}\)</td>
+    <td style="text-align:center">\({@fxi[2]@}\)</td>
+    <td style="text-align:center">\({@mean_fdiffs[2]@}\)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">\({@lower_range3@}-{@upper_range3@}\)</td>
+    <td style="text-align:center">\({@float(lower_bound3)@}-{@float(upper_bound3)@}\)</td>
+    <td style="text-align:center">\({@midpoints[3]@}\)</td>
+    <td style="text-align:center">\({@f3@}\)</td>
+    <td style="text-align:center">\({@cf[3]@}\)</td>
+    <td style="text-align:center">\({@fxi[3]@}\)</td>
+    <td style="text-align:center">\({@mean_fdiffs[3]@}\)</td>
+  </tr>
+  <tr>
+   <td style="text-align:center">\({@lower_range4@}-{@upper_range4@}\)</td>
+    <td style="text-align:center">\({@float(lower_bound4)@}-{@float(upper_bound4)@}\)</td>
+    <td style="text-align:center">\({@midpoints[4]@}\)</td>
+    <td style="text-align:center">\({@f4@}\)</td>
+    <td style="text-align:center">\({@cf[4]@}\)</td>
+    <td style="text-align:center">\({@fxi[4]@}\)</td>
+    <td style="text-align:center">\({@mean_fdiffs[4]@}\)</td>
+  </tr>
+  <tr>
+   <td style="text-align:center">\({@lower_range5@}-{@upper_range5@}\)</td>
+    <td style="text-align:center">\({@float(lower_bound5)@}-{@float(upper_bound5)@}\)</td>
+    <td style="text-align:center">\({@midpoints[5]@}\)</td>
+    <td style="text-align:center">\({@f5@}\)</td>
+    <td style="text-align:center">\({@cf[5]@}\)</td>
+    <td style="text-align:center">\({@fxi[5]@}\)</td>
+    <td style="text-align:center">\({@mean_fdiffs[5]@}\)</td>
+  </tr>
+    <tr>
+   <td style="text-align:center"></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center">\(\sum f={@n@}\)</td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center">\(\sum fX_i={@sum_fxi@}\)</td>
+    <td style="text-align:center">\(\sum{f(X_i-\mu)^2}={@mean_squared_diffs@}\)</td>
+  </tr>
+</table>
+</p>
+<p>Using the information in the table above, we will compute the following statistics:</p>
+
+<p>(a) Mean \( \displaystyle \bar{x}=\frac{\sum{fX}}{\sum{f}}=\frac{{@sum_fxi@}}{{@n@}}={@mean@}\)</p>
+
+<p>(b) Median</p>
+<p>The median class is that class containing the \( \displaystyle  \left( \frac{{@total_f@}}{2}\right)\) item \(={@median_cf@}^{\text{th}}\)item.</p>
+<p>Therefore, the median class is \({@float(lower_bound)@}-{@float(upper_bound)@}\).</p>
+<p>Thus \(B_L={@float(lower_bound)@}, \, \displaystyle  \left( \frac{n}{2}\right)={@median_cf@}, \, f_c={@f_median@}, \, i={@float(upper_bound)@}-{@float(lower_bound)@}={@width@}, \, cf_b={@cf_lower@} \) </p>
+<p>Therefore,</p><p> \( \begin{align} \displaystyle md &=B_L+  \left( \frac{\frac{N}{2}-cf_b}{f_c}\right) \cdot i \\
+                                                                             &={@float(lower_bound)@}+  \left( \frac{\frac{{@total_f@}}{2}-{@cf_lower@}}{{@f_median@}}\right) \cdot  {@width@} \\
+                                                           &={@float(lower_bound)@}+{@md1@} \\
+                                                           &={@ta@} \end{align}\)</p>
+<p>The median immunity percentage in home exposure is the value \({@ta@}\).</p>
+
+<p>(c) Mode</p>
+<p>When dealing with grouped data, the mode represents the value or values in a dataset that have the highest frequency. </p>
+<p>To calculate the mode for our grouped data, we will use the following formula:</p>
+
+<p>\(\displaystyle \text{Mode}=L+\left( \frac{f_1 - f_0}{(f_1 - f_0)+(f_1 - f_2)}\right )\cdot h\)</p>
+
+<p>Where:</p>
+<p>-\( L={@float(Lm)@}\): Lower boundary of the modal class (class with the highest frequency)</p>
+<p>- \(f_1={@f1m@}\): Frequency of the modal class</p>
+<p>- \(f_0={@f0m@}\): Frequency of the class preceding the modal class</p>
+<p>- \(f_2={@f2m@}\): Frequency of the class succeeding the modal class</p>
+<p>- \(h={@hm@}\): Class width (the difference between upper and lower boundaries of each class)</p>
+<p>\(\displaystyle \text{Mode}={@float(Lm)@}+\left( \frac{{@f1m@}- {@f0m@}}{({@f1m@}- {@f0m@})+({@f1m@} - {@f2m@})}\right )\cdot {@hm@}={@Mode@}\)</p>
+<p>This formula allows us to estimate the mode for grouped data by taking into account the relative frequencies of the modal class and its neighboring classes.</p>
+
+<p>It's important to note that the mode for grouped data is an estimate and may not represent an exact value within the dataset.</p>
+
+<p>(d) Standard deviation \( \displaystyle  \sigma = \sqrt{\frac{\sum{f(x-\bar{x})^2}}{\sum f}}= \sqrt{\frac{{@mean_squared_diffs@}}{{@n@}}}={@standard_deviation@}\) </p>
+
+<p>(e) Variance \( \displaystyle { \sigma^2}=\frac{{@mean_squared_diffs@}}{{@n@}}={@variance@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[class_widths:rand(15)+5;
+/*randomly generating class intervals*/
+aa:rand(200)+10;
+lower_range1: aa+ class_widths;  /*Adding 5 on each variable to ensure the subsequent class width is the same*/
+upper_range1: lower_range1 + class_widths;
+
+lower_range2: upper_range1 + 1;
+upper_range2: lower_range2 + class_widths;
+
+lower_range3: upper_range2 + 1;
+upper_range3: lower_range3 + class_widths;
+
+lower_range4: upper_range3 + 1;
+upper_range4: lower_range4 + class_widths;
+
+lower_range5: upper_range4 + 1;
+upper_range5: lower_range5 + class_widths;
+
+error_bound:((lower_range2-upper_range1)/2);
+
+lower_bound1: lower_range1-error_bound;  /*Adding 0.5 and subtracting 0.5 as the correcting factor for class boundaries*/
+upper_bound1: upper_range1+error_bound;
+
+lower_bound2:  lower_range2-error_bound;
+upper_bound2: upper_range2+error_bound;
+
+lower_bound3:  lower_range3-error_bound;
+upper_bound3: upper_range3+error_bound;
+
+lower_bound4:  lower_range4-error_bound;
+upper_bound4: upper_range4+error_bound;
+
+lower_bound5:  lower_range5-error_bound;
+upper_bound5: upper_range5+error_bound;
+
+lower_boundaries: [lower_bound1, lower_bound2, lower_bound3, lower_bound4, lower_bound5];
+upper_boundaries: [upper_bound1, upper_bound2, upper_bound3,upper_bound4, upper_bound5];
+class_widths: upper_boundaries - lower_boundaries;
+
+midpoints: (float(lower_boundaries + class_widths / 2));
+
+frequencies:makelist(rand_with_step(2,20,2),5);/*create a list with 5 elements randomly picked between 2-20 for even N*/
+f1:frequencies[1];         
+f2:frequencies[2]+6;
+f3:frequencies[3]+2; 
+f4:frequencies[4]+4;
+f5:frequencies[5];    
+frequencies:[f1,f2,f3,f4,f5]; 
+
+/*cumulative frequencies*/
+cf: makelist(sum(frequencies[i], i, 1, j), j, 1, length(frequencies));
+/*sum(frequencies);*/
+n:sum(frequencies[i],i,1,5); 
+total_f:n;
+
+midpointss: lower_boundaries + class_widths / 2;
+midpoints1:decimalplaces(midpointss,2);
+mptd1:round(midpoints1);
+mptd_1:is(abs((midpoints1-mptd1)[1])=0.0);
+midpoints: if mptd_1=true then mptd1 else midpoints1;
+
+fxis:(midpoints * frequencies);
+fxis1:decimalplaces(fxis,2);
+fxis11:round(fxis);
+fxis_1:is(abs((fxis1-fxis11)[1])=0.0);
+fxi: if fxis_1=true then fxis11 else fxis1;
+sum_fxi:sum(fxi[i],i,1,5);
+
+/* Mean */
+sum_fx:sum((midpoints * frequencies)[i], i, 1, 5);
+means: sum_fx / n;
+meanss:decimalplaces(means,2);
+mean1:round(mean);
+mean_1:is(abs((meanss-mean1))=0.0);
+mean: if mean_1=true then mean1 else meanss;
+
+/*median*/
+median_cf: n / 2;
+
+i: 1;
+while cf[i] < median_cf do i: i + 1;
+
+median_cf;
+lower_bound:lower_boundaries[i];/*L is the lower limit of the median class.*/
+upper_bound: upper_boundaries[i];
+cf_lower: cf[i-1]; /*cf is the cumulative frequency of the class before the median class.*/
+f_median: frequencies[i]; /*f is the frequency of the median class.*/
+width: upper_range2 - upper_range1; /*w is the interval width (the difference between the upper and lower limits of each class).*/
+
+median_height: lower_boundaries[i] + (median_cf - cf[i-1]) * class_widths[i] / frequencies[i];
+md1: float( (median_cf - cf[i-1]) * class_widths[i] / frequencies[i]);
+
+/*closest median height integer*/
+median_height1:decimalplaces(median_height,2);
+ta1:round(median_height1);
+ta_1:is(abs(round(median_height1)-median_height1)=0.0);
+ta: if ta_1=true then ta1 else median_height1;
+
+/*mode*/
+max_freq: apply('max, frequencies);
+modal_class_index: 1;
+max_value: frequencies[1];
+
+for i: 2 thru length(frequencies) do (
+    if frequencies[i] > max_value then (
+        max_value: frequencies[i],
+        modal_class_index: i
+    )
+);
+
+Lm: lower_boundaries[modal_class_index];
+f1m: frequencies[modal_class_index];
+f0m: frequencies[modal_class_index-1];
+f2m: frequencies[modal_class_index+1];
+hm: upper_boundaries[modal_class_index] - lower_boundaries[modal_class_index];
+
+Mode: Lm + ((f1m - f0m) / ((f1m - f0m) + (f1m - f2m))) * hm;
+
+Modes: Mode;
+Modess:decimalplaces(Modes,2);
+Modes1:round(Modes);
+Modes_1:is(abs((Modess-Modes1))=0.0);
+Mode: if Modes_1=true then Modes1 else Modess;
+
+mean_fdiffss:(midpoints - mean)^2 * frequencies;
+mean_fdiffs1:decimalplaces(mean_fdiffss,2);
+mean_fdiffs11:round(mean_fdiffss);
+mean_fdiffs_1:is(abs((mean_fdiffs1-mean_fdiffs11)[1])=0.0);
+mean_fdiffs: if mean_fdiffs_1=true then mean_fdiffs11 else mean_fdiffs1;
+
+/* Variance */
+mean_squared_diffs: sum((mean_fdiffs)[i],i,1,5);
+variances: mean_squared_diffs / n;
+variancess:decimalplaces(variances,2);
+variance1:round(variances);
+variance_1:is(abs((variancess-variance1))=0.0);
+variance: if variance_1=true then variance1 else variancess;
+
+/* Standard Deviation */
+standard_deviations: sqrt(variance);
+standard_deviationss:decimalplaces(standard_deviations,2);
+standard_deviation1:round(standard_deviations);
+standard_deviation_1:is(abs((standard_deviationss-standard_deviation1))=0.0);
+standard_deviation: if standard_deviation_1=true then standard_deviation1 else standard_deviationss;]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Number of children \(={@n@}\)</p>
+<p>(a) Mean \( \displaystyle \bar{x}=\frac{\sum{fX}}{\sum{f}}={@mean@}\)</p>
+
+<p>(b) Median \(={@ta@}\)</p>
+
+<p>(c) Mode\(={@Mode@}\)</p>
+
+<p>(d) Standard deviation \( \displaystyle  \sigma = \sqrt{\frac{\sum{f(x-\bar{x})^2}}{\sum f}}={@standard_deviation@}\) </p>
+
+<p>(e) Variance \({ \sigma^2}={@variance@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Godfrey Wabwire.</p>
+<p id="concept">N/A</p>
+<p id="reviewer">[1]</p>
+<p id="reviewer">[2]</p>
+<p id="description"> Finding the mean, median, mode, sd, variance and filling in the table for a frequency table with \(5\) classes.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>fxi[1]</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans10</name>
+      <type>algebraic</type>
+      <tans>fxi[5]</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans11</name>
+      <type>algebraic</type>
+      <tans>n</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans12</name>
+      <type>algebraic</type>
+      <tans>sum_fxi</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans13</name>
+      <type>algebraic</type>
+      <tans>mean_squared_diffs</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans14</name>
+      <type>algebraic</type>
+      <tans>mean</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans15</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans16</name>
+      <type>algebraic</type>
+      <tans>Mode</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans17</name>
+      <type>algebraic</type>
+      <tans>standard_deviation</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans18</name>
+      <type>algebraic</type>
+      <tans>variance</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>midpoints[2]</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>mean_fdiffs[2]</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>algebraic</type>
+      <tans>cf[3]</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans5</name>
+      <type>algebraic</type>
+      <tans>fxi[3]</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans6</name>
+      <type>algebraic</type>
+      <tans>mean_fdiffs[3]</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans7</name>
+      <type>algebraic</type>
+      <tans>midpoints[4]</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans8</name>
+      <type>algebraic</type>
+      <tans>fxi[4]</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans9</name>
+      <type>algebraic</type>
+      <tans>cf[5]</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>fxi[1]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt10</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans10</sans>
+        <tans>fxi[5]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt10-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt10-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt11</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans11</sans>
+        <tans>n</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt11-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt11-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt12</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans12</sans>
+        <tans>sum_fxi</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt12-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt12-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt13</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans13</sans>
+        <tans>mean_squared_diffs</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt13-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt13-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt14</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans14</sans>
+        <tans>mean</tans>
+        <testoptions>2</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt14-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt14-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt15</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans15</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt15-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt15-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt16</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans16</sans>
+        <tans>Mode</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt16-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt16-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt17</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans17</sans>
+        <tans>standard_deviation</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt17-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt17-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt18</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans18</sans>
+        <tans>variance</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt18-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt18-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>midpoints[2]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>mean_fdiffs[2]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>cf[3]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt5</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5</sans>
+        <tans>fxi[3]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt5-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt6</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans6</sans>
+        <tans>mean_fdiffs[3]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt6-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt6-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt7</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans7</sans>
+        <tans>midpoints[4]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt7-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt7-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt8</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans8</sans>
+        <tans>fxi[4]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt8-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt8-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt9</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans9</sans>
+        <tans>cf[5]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt9-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt9-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1254099694</deployedseed>
+    <deployedseed>361267886</deployedseed>
+    <deployedseed>736450061</deployedseed>
+    <deployedseed>1137644940</deployedseed>
+    <deployedseed>1814204003</deployedseed>
+    <deployedseed>871774896</deployedseed>
+    <deployedseed>727738617</deployedseed>
+    <deployedseed>105017837</deployedseed>
+    <deployedseed>481094135</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>fxi[1]</value>
+      </testinput>
+      <testinput>
+        <name>ans10</name>
+        <value>fxi[5]</value>
+      </testinput>
+      <testinput>
+        <name>ans11</name>
+        <value>n</value>
+      </testinput>
+      <testinput>
+        <name>ans12</name>
+        <value>sum_fxi</value>
+      </testinput>
+      <testinput>
+        <name>ans13</name>
+        <value>mean_squared_diffs</value>
+      </testinput>
+      <testinput>
+        <name>ans14</name>
+        <value>mean</value>
+      </testinput>
+      <testinput>
+        <name>ans15</name>
+        <value>ta</value>
+      </testinput>
+      <testinput>
+        <name>ans16</name>
+        <value>Mode</value>
+      </testinput>
+      <testinput>
+        <name>ans17</name>
+        <value>standard_deviation</value>
+      </testinput>
+      <testinput>
+        <name>ans18</name>
+        <value>variance</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>midpoints[2]</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>mean_fdiffs[2]</value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value>cf[3]</value>
+      </testinput>
+      <testinput>
+        <name>ans5</name>
+        <value>fxi[3]</value>
+      </testinput>
+      <testinput>
+        <name>ans6</name>
+        <value>mean_fdiffs[3]</value>
+      </testinput>
+      <testinput>
+        <name>ans7</name>
+        <value>midpoints[4]</value>
+      </testinput>
+      <testinput>
+        <name>ans8</name>
+        <value>fxi[4]</value>
+      </testinput>
+      <testinput>
+        <name>ans9</name>
+        <value>cf[5]</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt10</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt10-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt11</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt11-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt12</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt12-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt13</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt13-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt14</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt14-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt15</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt15-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt16</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt16-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt17</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt17-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt18</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt18-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt4-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt5</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt5-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt6</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt6-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt7</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt7-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt8</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt8-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt9</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt9-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+</quiz>

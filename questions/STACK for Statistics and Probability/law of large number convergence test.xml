@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz><question type="truefalse">
+    <name>
+      <text>law of large number convergence test</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>If a fair coin is tossed infinitely many times, is it true that the proportion of heads will almost surely converge to 0.5?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>yes</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>1.0000000</penalty>
+    <hidden>0</hidden>
+    <idnumber>39111111</idnumber>
+    <answer fraction="100" format="moodle_auto_format">
+      <text>true</text>
+      <feedback format="html">
+        <text><![CDATA[<p>Correct , well done</p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="moodle_auto_format">
+      <text>false</text>
+      <feedback format="html">
+        <text><![CDATA[<p>Ops, Kindly try again</p>]]></text>
+      </feedback>
+    </answer>
+  </question>
+
+</quiz>

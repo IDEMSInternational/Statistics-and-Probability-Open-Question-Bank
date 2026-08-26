@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz><question type="multichoice">
+    <name>
+      <text>Completing a phrase for use of statistical methods</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Choose the appropriate phrase that completes the sentence below.</p><p>Statistical methods are used to extract information from data. However ____________________</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Your answer is correct.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Your answer is partially correct.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Your answer is incorrect.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>the methods themselves are not the goal<br></p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[<p>Correct. So often, people get too caught up in the question of which methods to use and forget their actual goal. Never lose sight of what research questions you are trying to answer.<br></p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>only a statistician knows the correct method to use<br></p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[<p>Not quite - remember, so many people get caught up with the specifics of statistical methods, that they forget their research objectives.<br></p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>we must find a p-value to achieve that goal<br></p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[<p>Not quite - remember, so many people get caught up with the specifics of statistical methods, that they forget their research objectives.<br></p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>it is important to know every statistical method in order to make an informed choice<br></p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[<p>Not quite - remember, so many people get caught up with the specifics of statistical methods, that they forget their research objectives.<br></p>]]></text>
+      </feedback>
+    </answer>
+  </question>
+
+</quiz>

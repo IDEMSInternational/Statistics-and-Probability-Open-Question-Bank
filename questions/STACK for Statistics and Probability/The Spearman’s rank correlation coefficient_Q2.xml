@@ -1,0 +1,259 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz><question type="stack">
+    <name>
+      <text>The Spearman’s rank correlation coefficient_Q2</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>The table below shows marks obtained by eight students in a mathematics and physics exam. Calculate the Spearman’s coefficient of rank correlation.</p>
+<p><b>Note:</b> Give your answers correct to \(3\) decimal places.</p>
+<table border="solid">
+  <tr>
+      <th width="16%", style="text-align:center">Mathematics</th>
+       <th width="10%", style="text-align:center">\({@x1@}\)</th>
+       <th width="10%", style="text-align:center">\({@x2@}\)</th>
+       <th width="10%", style="text-align:center">\({@x3@}\)</th>
+      <th width="10%", style="text-align:center">\({@x4@}\)</th>
+       <th width="10%", style="text-align:center">\({@x5@}\)</th>
+      <th width="10%", style="text-align:center">\({@x6@}\)</th>
+       <th width="10%", style="text-align:center">\({@x7@}\)</th>
+       <th width="10%", style="text-align:center">\({@x8@}\)</th>
+  </tr>
+   <tr>
+      <th width="16%", style="text-align:center">
+Physics 
+
+</th>
+       <th width="10%", style="text-align:center">\({@y1@}\)</th>
+       <th width="10%", style="text-align:center">\({@y2@}\)</th>
+       <th width="10%", style="text-align:center">\({@y3@}\)</th>
+      <th width="10%", style="text-align:center">\({@y4@}\)</th>
+       <th width="10%", style="text-align:center">\({@y5@}\)</th>
+      <th width="10%", style="text-align:center">\({@y6@}\)</th>
+       <th width="10%", style="text-align:center">\({@y7@}\)</th>
+       <th width="10%", style="text-align:center">\({@y8@}\)</th>
+  </tr>
+  
+ </table>
+<p></p>
+
+<p>Spearman’s coefficient of rank correlation \(r=\) [[input:ans1]]. [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<table border="solid">
+  <tr>
+      <th width="10%", style="text-align:center">Mathematics</th>
+       <th width="10%", style="text-align:center">Physics</th>
+       <th width="15%", style="text-align:center">Rank(Mathematics) </th>
+       <th width="15%", style="text-align:center">Rank(Physics)</th>
+      <th width="40%", style="text-align:center">d \(=\) Rank(Mathematics)\(-\)Rank(Physics)</th>
+       <th width="10%", style="text-align:center">\(\text{d}^2\)</th>
+  </tr>
+  <tr>
+    <th width="10%", style="text-align:center">\({@x1@}\)</th>
+    <th width="10%", style="text-align:center">\({@y1@}\)</th>
+    <th width="15%", style="text-align:center">\(4\)</th>
+    <th width="15%", style="text-align:center">\(5\)</th>
+    <th width="40%", style="text-align:center">\(-1\)</th>
+    <th width="10%", style="text-align:center">\(1\)</th>
+  </tr>
+  <tr>
+    <th width="10%", style="text-align:center">\({@x2@}\)</th>
+    <th width="10%", style="text-align:center">\({@y2@}\)</th>
+    <th width="15%", style="text-align:center">\(5\)</th>
+    <th width="15%", style="text-align:center">\(6\)</th>
+    <th width="40%", style="text-align:center">\(-1\)</th>
+    <th width="10%", style="text-align:center">\(1\)</th>
+  </tr>
+  <tr>
+    <th width="10%", style="text-align:center">\({@x3@}\)</th>
+    <th width="10%", style="text-align:center">\({@y3@}\)</th>
+    <th width="15%", style="text-align:center">\(1\)</th>
+    <th width="15%", style="text-align:center">\(4\)</th>
+    <th width="40%", style="text-align:center">\(-3\)</th>
+       <th width="10%", style="text-align:center">\(9\)</th>
+  </tr>
+  <tr>
+       <th width="10%", style="text-align:center">\({@x4@}\)</th>
+       <th width="10%", style="text-align:center">\({@y4@}\)</th>
+       <th width="15%", style="text-align:center">\(8\)</th>
+       <th width="15%", style="text-align:center">\(8\)</th>
+       <th width="40%", style="text-align:center">\(0\)</th>
+       <th width="10%", style="text-align:center">\(0\)</th>
+  </tr>
+  <tr>
+       <th width="10%", style="text-align:center">\({@x5@}\)</th>
+       <th width="10%", style="text-align:center">\({@y5@}\)</th>
+       <th width="15%", style="text-align:center">\(7\)</th>
+       <th width="15%", style="text-align:center">\(1\)</th>
+       <th width="40%", style="text-align:center">\(6\)</th>
+       <th width="10%", style="text-align:center">\(36\)</th>
+  </tr>
+  <tr>
+       <th width="10%", style="text-align:center">\({@x6@}\)</th>
+       <th width="10%", style="text-align:center">\({@y6@}\)</th>
+       <th width="15%", style="text-align:center">\(3\)</th>
+       <th width="15%", style="text-align:center">\(7\)</th>
+       <th width="40%", style="text-align:center">\(-4\)</th>
+       <th width="10%", style="text-align:center">\(16\)</th>
+  </tr>
+  <tr>
+       <th width="10%", style="text-align:center">\({@x7@}\)</th>
+       <th width="10%", style="text-align:center">\({@y7@}\)</th>
+       <th width="15%", style="text-align:center">\(2\)</th>
+       <th width="15%", style="text-align:center">\(2\)</th>
+       <th width="40%", style="text-align:center">\(0\)</th>
+       <th width="10%", style="text-align:center">\(0\)</th>
+  </tr>
+  <tr>
+       <th width="10%", style="text-align:center">\({@x8@}\)</th>
+       <th width="10%", style="text-align:center">\({@y8@}\)</th>
+       <th width="15%", style="text-align:center">\(6\)</th>
+       <th width="15%", style="text-align:center">\(3\)</th>
+       <th width="40%", style="text-align:center">\(3\)</th>
+       <th width="10%", style="text-align:center">\(9\)</th>
+  </tr>
+  
+ </table>
+
+<p>\(\displaystyle \sum d^2=72\)</p>
+<p>\(m_1=\) no. of times rank repeated \(X=1\)</p>
+<p>\(m_2=\) no. of times rank repeated \(Y=1\)</p>
+<p>\(n=\) no. of ranks \(=10\)</p>
+<p>Sperman rank correlation  coefficient \(\displaystyle =r=1- \frac{ 6\sum d^2}{n(n^2-1)}\)</p>
+<p>\(\displaystyle r=1- \frac{6(72)}{8(64-1)}\)</p>
+<p>\(r=1-\frac{432}{504}=1-0.857142857=0.142857143 \approx {@ta1@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>x1:rand_with_step(40,60,1);
+x2:x1+8;
+x3:x2-23;
+x4:x3+51;
+x5:x4-10;
+x6:x5-33;
+x7:x6-3;
+x8:x7+20;
+y1:rand_with_step(55,75,1);
+y2:y1+7;
+y3:y2-18;
+y4:y3+28;
+y5:y4-50;
+y6:y5+42;
+y7:y6-34;
+y8:y7+13;
+ta1:0.143;
+</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Sperman rank correlation  coefficient \(r={@ta1@}\)</p>
+]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Emmaculate Odhiambo</p>
+<p id="concept">N/A</p>
+<p id="reviewer">[Reviewer 1 Name]</p>
+<p id="reviewer">[Reviewer 2 Name]</p>
+<p id="description">This question requires the student to calculate the Spearman's rank correlation coefficient between two sets of variables (X and Y) and determine the coefficient of determination. The question also asks the student to interpret the results in terms of the ranks of the variables.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>7</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions>0.01</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>847698618</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+</quiz>

@@ -1,0 +1,724 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz><question type="stack">
+    <name>
+      <text>Interpret the text and use the information to calculate conditional probabilities</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p><br> </p><p>(a) A garage sells three types of fuel; V-Power, Super and diesel. In a survey of {@motorists@} motorists buying fuel at the garage, {@female_motorists@} are female and the rest are male. Of the {@v_power@} motorists buying ‘V-Power’ fuel, {@female_v@} were female and of the {@diesel_fuel@} motorists buying diesel, {@male_diesel@} were male. A motorist does not buy more than one type of fuel.</p>
+<p> Find the probability that a randomly chosen motorist</p>
+<p> i. buys Super fuel: [[input:ans1]](rounded off to 2 decimal places) [[validation:ans1]][[feedback:prt1]]</p>
+<p> ii. is male given that the motorist buys Super fuel: [[input:ans2]](rounded off to 2 decimal places)[[validation:ans2]][[feedback:prt2]]</p>
+<hr>
+<p> (b) The garage records indicate that {@v_power_car_servived@}% of the motorists buying V-Power fuel, {@super_fuel_car_servived@}% of the motorists buying Super fuel, and {@diesel_fuel_car_servived@}% of the motorists buying diesel have their car serviced by the garage. A motorist is chosen at random</p>
+<p> i. Find the probability that this motorist has his or her car serviced by the garage: [[input:ans3]](rounded off to 2 decimal places)[[validation:ans3]][[feedback:prt3]]</p>
+<p>ii. Given the motorist has his or her car serviced by the garage, find the probability that the motorist buys diesel fuel: [[input:ans4]](rounded off to 2 decimal places)[[validation:ans4]][[feedback:prt4]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p><b>Worked out solution</b></p>
+<p><b>Part (a).</b></p>
+<p>Before we begin answering this question, let's take a moment and summarize the information provided in the question.</p>
+<p>Total motorists = {@motorists@}</p>
+<p>Female motorists = {@female_motorists@}<br></p>
+<p>
+</p>
+<p>Male motorists = {@motorists@}- {@female_motorists@} = {@male_motorists@}</p>
+<p></p>
+<table width="500" cellspacing="0" cellpadding="0" border="1">
+    <tbody>
+        <tr>
+            <td valign="top">
+                <p>Fuel type</p>
+            </td>
+            <td valign="top">
+                <p>V-power</p>
+            </td>
+            <td valign="top">
+                <p>Super</p>
+            </td>
+            <td valign="top">
+                <p>Diesel</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <p>number of motorists buying</p>
+            </td>
+            <td valign="top">
+                <p>{@v_power@}</p>
+            </td>
+            <td valign="top">
+                <p>{@motorists@}-({@v_power@}+{@diesel_fuel@})={@super_fuel@}</p>
+            </td>
+            <td valign="top">
+                <p>{@diesel_fuel@}</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <p>Male motorists</p>
+            </td>
+            <td valign="top">
+                <p>{@v_power@}-{@female_v@}= {@male_v@}</p>
+            </td>
+            <td valign="top">
+                <p>{@male_motorists@}-({@male_v@}+{@male_diesel@})={@male_super_fuel@}</p>
+            </td>
+            <td valign="top">
+                <p>{@male_diesel@}</p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <p>Female motorists</p>
+            </td>
+            <td valign="top">
+                <p>{@female_v@}<br></p>
+            </td>
+            <td valign="top">
+                <p>{@super_fuel@}-{@male_super_fuel@}= {@female_super_fuel@}<br></p>
+            </td>
+            <td valign="top">
+                <p>{@diesel_fuel@}-{@male_diesel@}={@female_diesel@}</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p><br></p>
+<p>From here, we can compute:</p>
+<p>(i) Probability that a randomly chosen motorist buys Super fuel. </p>
+<p>\(P(\mbox{Buy Super fuel})=\frac{\mbox{total number of motorists buying Super fuel}}{\mbox{total number of motorists}}= \frac{@super_fuel@}{@motorists@}={@ta1@}\)</p>
+<p></p>
+<hr>
+<p>(ii) Probability that a randomly chosen motorist is male given that the motorist buys Super fuel </p>
+<p>Recall that this is a conditional probability and can be expressed as follows;</p>
+<p>\(\text{P(Male|Buys super fuel)}=\frac{\text{Number of motorists who are male buying Super fuel}}{\text{Total number of motorists buying super fuel}}= \frac{@male_super_fuel@}{@super_fuel@} = {@ta2@} \)</p>
+<hr>
+<p><b>Part (b)</b></p>
+<p>Let us summarize the proportion of motorists who visit the garage as follows;</p>
+<p></p>
+<table width="500" cellspacing="0" cellpadding="0" border="1">
+    <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+    </colgroup>
+    <tbody>
+        <tr>
+            <td>
+                <p dir="ltr">Type of fuel bought by the motorist<br></p>
+            </td>
+            <td>
+                <p dir="ltr">V-power</p>
+            </td>
+            <td>
+                <p dir="ltr">Super</p>
+            </td>
+            <td>
+                <p dir="ltr">Diesel</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p dir="ltr"><span id="docs-internal-guid-037f7af2-7fff-1e68-a0b7-202f23eee8cc">Proportion visiting the garage</span><br></p>
+            </td>
+            <td>
+                <p dir="ltr">{@v_power_car_servived@}% of {@v_power@} ={@v_power_car_servived*v_power/100@} <br></p>
+            </td>
+            <td>
+                <p dir="ltr">{@super_fuel_car_servived@}% of {@super_fuel@} = {@super_fuel_car_servived*super_fuel/100@}<br></p>
+            </td>
+            <td>
+                <p dir="ltr">{@diesel_fuel_car_servived@}% of {@diesel_fuel@} = {@diesel_fuel_car_servived*diesel_fuel/100@}<br></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p></p>
+<p>The proportion of motorists who have their cars serviced in the garage will be {@car_serviced@}</p>
+<p>(i) Probability that a motorist has his or her car serviced by the garage.</p>
+<p>\( P(\mbox{Car serviced by the garage})=\frac{@car_serviced@}{@motorists@}={@ta3@} \)</p>
+<hr>
+<p>(ii) Probability that the motorist buys diesel fuel given his or her car is serviced by the garage</p>
+<p>\(P(\mbox{Buys diesel|Car serviced by the garage})=\frac{P(\mbox{Buys diesel and has car serviced by the garage})}{P(\mbox{Car serviced by the garage})}\), which is equivalent to</p>
+<p>\(P(\mbox{Buys diesel|Car serviced by the garage})=\frac{\mbox{Proportion of motorists who bought diesel visiting the garage}}{\mbox{Proportion of motorists who has their cars serviced in the garage}}\)</p><p>\(P(\mbox{Buys diesel|Car serviced by the garage})=\frac{@diesel_fuel_car_servived*diesel_fuel/100@}{@car_serviced@}= {@ta4@}\)<br></p>
+<p></p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2022071300</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Part (a) of the question*/
+motorists:rand(300)+250; /*Total number of motorists*/
+female_motorists:rand(100)+100; /*number of female motorist*/
+male_motorists:motorists-female_motorists; /*total number of male motorists*/
+
+v_power:rand(50)+10 ; /*total number of motorist buying v_power*/
+female_v:rand_with_step(10,v_power,10); /*female motorist buying v_power*/
+male_v:v_power-female_v; /*male motorist buying v_power*/
+
+diesel_fuel:rand(50)+40; /*total number of motorist buying diesel*/
+male_diesel:rand_with_step(10,diesel_fuel,10); /*male motorist buying diesel*/
+female_diesel:diesel_fuel-male_diesel;/*female motorist buying diesel*/
+
+super_fuel:motorists-(v_power+diesel_fuel);/*total number of motorist buying super fuel*/
+male_super_fuel: male_motorists-(male_v+male_diesel); /*male motorist buying super fuel*/
+female_super_fuel: female_motorists-(female_v+female_diesel); /*female motorist buying super fuel*/
+/*model answers for part a*/
+ta1:decimalplaces(super_fuel/motorists,2); /*Probability motorist buys super fuel*/
+ta2: decimalplaces((male_super_fuel/motorists)/(super_fuel/motorists),2) ;/*Probability motorist is male given he buys super fuel*/
+/*Part b of the question*/
+v_power_car_servived:rand_with_step(5,20,2);
+super_fuel_car_servived:rand_with_step(5,20,3);
+diesel_fuel_car_servived:rand_with_step(5,20,4);
+car_serviced: decimalplaces(((v_power_car_servived*v_power)/100)+((super_fuel_car_servived*super_fuel)/100)+ ((diesel_fuel_car_servived*diesel_fuel)/100) ,2);
+ta3:decimalplaces(car_serviced/motorists,2); /*probability motorist has his or her car serviced by the garage*/
+ta4: decimalplaces(((diesel_fuel_car_servived*diesel_fuel)/100)/(car_serviced),2);  /*Probability that the motorist buys diesel fuel given his or her car is serviced*/</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>1</text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>numerical</type>
+      <tans>ta1</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>numerical</type>
+      <tans>ta2</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>numerical</type>
+      <tans>ta3</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>numerical</type>
+      <tans>ta4</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:checks correct answers*/
+
+/*node 2:Choosing the total number of female motorist alone without considering the male motorists that buys super fuel*/
+mistake_2:decimalplaces(female_super_fuel/motorists,2);
+
+/*node 3:Choosing the total number of male motorist alone without considering the female motorists that buys super fuel*/
+mistake_3:decimalplaces(male_super_fuel/motorists,2);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.25</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Recall we were asked to calculate the probability that a randomly chosen motorist buys super fuel, not the probability that a randomly chosen female motorist buys super fuel as you have done.
+Hint: You can compute this probability as follows</p>, 
+<p>\(= \frac{ \text {total number of motorists buying super}}{\text {total number of motorists}}\)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.25</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Recall we were asked to calculated  the probability that a randomly chosen motorist buys super fuel, not the probability that a randomly chosen female motorist buys super fuel as you have done.</p>
+<p>\(= \frac{ \text {total number of motorists buying super}}{\text {total number of motorists}}\)</p>&gt;]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:checks correct answers*/
+
+/*node 2:Choosing a male motorist given that the motorist buys V-Power*/
+mistake_2:decimalplaces(male_v/super_fuel,2);
+
+/*node 3:Choosing a male motorist given that the motorist buys diesel.*/
+mistake_3:decimalplaces(male_diesel/super_fuel,2);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have calculated the probability that a randomly chosen motorist is male given that the motorist buys V-Power. Incorrect!!</p>
+<p>Recall that this is a conditional probability and can be expressed as follows;</p>
+<p>\( \text{P(Male|Buys super)} = \frac{\text{P(Male and buys Super fuel)}}{\text{P(Buys Super fuel)}}\)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mistake_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have calculated the probability that a randomly chosen motorist is male given that the motorist buys diesel. Incorrect!!</p>
+<p>Recall that this is a conditional probability and can be expressed as follows;</p>
+<p>\(\text{P(Male|Buys super)} = \frac{\text{P(Male and buys Super fuel)}}{\text{P(Buys Super fuel)}}\)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:checks correct answers*/
+
+/*node 2:Computing the probability that a motorist has his or her car not serviced by the garage*/
+mistake_2:decimalplaces(1-car_serviced,2);
+
+/*node 3:Calculating the probability that a motorist has his or her car serviced by the garage and buys V-Power.*/
+mistake_3:decimalplaces(v_power_car_servived/motorists,2);
+
+/*node 4:Calculating the probability that a motorist has his or her car serviced by the garage and buys super.*/
+mistake_4:decimalplaces(super_fuel_car_servived/motorists,2);
+
+/*node 5:Computing the probability that a motorist has his or her car serviced by the garage and buys diesel.*/
+mistake_5:decimalplaces(diesel_fuel_car_servived/motorists,2);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>ta3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have calculated the probability that a motorist has his or her car not serviced by the garage. </p>
+<p>Here is a hint: </p>
+<p>\(\text{P(Motorist has his or her car serviced by the garage)} = \frac{
+ \text{Total number of motorists who have their cars serviced in the garage}}{\text{Total number of motorists}}. \)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt3-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>mistake_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have calculated the probability that a motorist has his or her car serviced by the garage and buys V-Power. </p>
+<p>Here is a hint: </p>
+<p>\(\text{P(Motorist has his or her car serviced by the garage)} = \frac{
+ \text{Total number of motorists who have their cars serviced in the garage}}{\text{Total number of motorists}}. \)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt3-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>mistake_4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have calculated the probability that a motorist has his or her car serviced by the garage and buys super. </p>
+<p>Here is a hint: </p>
+<p>\(\text{P(Motorist has his or her car serviced by the garage)} = \frac{
+ \text{Total number of motorists who have their cars serviced in the garage}}{\text{Total number of motorists}}. \)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>4</falsenextnode>
+        <falseanswernote>prt3-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>4</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>mistake_5</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-5-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have computed the probability that a motorist has his or her car serviced by the garage and buys diesel. </p>
+<p>Here is a hint: </p>
+<p>\(\text{P(Motorist has his or her car serviced by the garage)} = \frac{
+ \text{Total number of motorists who have their cars serviced in the garage}}{\text{Total number of motorists}}. \)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-5-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:checks for correct answers*/
+
+/*node 2:Calculating the probability that a motorist has his or her car serviced by the garage and buys V-Power*/
+mistake_1:decimalplaces(v_power_car_servived/motorists,2);
+
+/*node 3:Calculating the probability that a motorist has his or her car serviced by the garage and buys super*/
+mistake_2:decimalplaces(super_fuel_car_servived/motorists,2);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>ta4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>mistake_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have computed the probability that a motorist has his or her car serviced by the garage and buys \(V-Power\). Here is a hint: P(Motorist has his or her car serviced by the garage) = 
+  \text{Total number of motorists who have their cars serviced in the garage/Total number of motorists. </p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt4-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have computed the probability that a motorist has his or her car serviced by the garage and buys super. Here is a hint: P(Motorist has his or her car serviced by the garage) = 
+ \textTotal number of motorists who have their cars serviced in the garage/ \text{Total number of motorists.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+  </question>
+
+</quiz>

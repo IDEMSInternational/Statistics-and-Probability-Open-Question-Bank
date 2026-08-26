@@ -1,0 +1,220 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz><question type="stack">
+    <name>
+      <text>Determining Conditional Probability on given events</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Suppose that \(P(A | B^c)={@p_a_b_prime@}\), \(P(A)={@p_a@}\) and \(P(B^c)={@p_b_prime@}\) </p>
+<p>Determine \(P(B|A)\)</p>
+<p>(Note: Leave your answer to \(1\)dp where necessary).</p>
+<p> \(P(B|A)=\) [[input:ans1]] [[validation:ans1]]</p>
+<p>[[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>\(
+\begin{align}
+P(B|A)&=\displaystyle \frac{P(B^c)\times P(A|B^c)}{P(B^c)\times P(A|B^c))+P(B) \times P(A|B) }\\
+&=\displaystyle \frac{{@decimalplaces(p_b_prime,1)@} \times {@decimalplaces(p_a_b_prime,1)@}} {({@decimalplaces(p_b_prime,1)@}\times {@decimalplaces(p_a_b_prime,1)@})+({@decimalplaces(p_b,1)@} \times {@decimalplaces(p_a_b,1)@}) }\\
+&=\displaystyle \frac{{@decimalplaces(p_b_prime*p_a_b_prime,2)@}} {{@decimalplaces(p_b_prime*p_a_b_prime,2)@}+{@decimalplaces(p_b*p_a_b,2)@}}\\
+&={@ta1@}\\
+\end{align}
+\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.0000000</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*probability of events*/
+p_a_b_prime:float((rand(7)+1)/10)+0.1;
+p_a:float((rand(5)+1)/10);
+p_b_prime:float((rand(3)+1)/10);
+
+
+/*worked solution variables*/
+p_b:1-p_b_prime;
+p_a_b:1-p_a_b_prime;
+sol1:(p_a_b_prime*p_b_prime)/((p_b_prime*p_a_b_prime)+(p_b*p_a_b));
+
+/*correcting to 1dp*/
+ta: sol1;
+modess:decimalplaces(ta,1);
+modes1:round(ta);
+modes_1:is(abs((modess-modes1))=0.0);
+ta1: if modes_1=true then modes1 else modess;
+
+/*prt test*/
+s1:rat(sol1);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(P(A\) | \(B^\prime)={@p_a_b_prime@}\)</p>
+<p>\(P(A)={@p_a@}\) and \(P(B^\prime)={@p_b_prime@}\)</p>
+<p>\(P(B|A)={@ta1@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Godfrey  Wabwire</p>
+<p id="reviewer"></p>
+<p id="description">This question involves finding the probability of P(B|A) given \(P(A\) | \(B^\prime)={@p_a_b_prime@}\), \(P(A)={@p_a@}\) and \(P(B^\prime)={@@}\)</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks if the answer is a fraction</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>rat(sol1)</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>checks if the answer has more than 1dp</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions>0.01</testoptions>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Your answer is partially correct because the instructions require you to leave your answer in float form up to \(1\) dp.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>137462242</deployedseed>
+    <deployedseed>1282734703</deployedseed>
+    <deployedseed>567553687</deployedseed>
+    <deployedseed>1205441653</deployedseed>
+    <deployedseed>703603434</deployedseed>
+    <deployedseed>902345048</deployedseed>
+    <deployedseed>1872552122</deployedseed>
+    <deployedseed>1375038464</deployedseed>
+    <deployedseed>1685671200</deployedseed>
+    <deployedseed>824748564</deployedseed>
+    <deployedseed>1914609780</deployedseed>
+    <deployedseed>599928182</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+</quiz>

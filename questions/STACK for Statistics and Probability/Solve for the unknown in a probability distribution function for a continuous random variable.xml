@@ -1,0 +1,207 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz><question type="stack">
+    <name>
+      <text>Solve for the unknown in a probability distribution function for a continuous random variable</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>The graph of the probability density function \(f(x)\), given by</p>
+
+<p>
+\[ f(x)= \begin{cases} 
+  {@f_disp_1@} & 0 \leq x < {@aa-1@} \\
+  {@f_disp_2@} & {@aa-1@} \leq x \leq {@aa@} \\
+  0 & \text{otherwise} 
+   \end{cases}
+\]
+</p>
+
+<p>where \(k\) is a constant and \(x\) is continuous random variable, is shown below.</p>
+
+<p>
+[[jsxgraph]]
+var a = {#aa#};
+
+var k = {#kk#};
+
+var y_max = 0;
+
+var i = 0;
+
+for (i = 0; i < a - 1;) {
+    if (k * (i ** 2 - a * i + 2 * a) >= y_max) {
+        y_max = k * (i ** 2 - a * i + 2 * a)
+    };
+    i = i + 0.1;
+}
+
+var board = JXG.JSXGraph.initBoard(divid, {
+    boundingbox: [-0.5, y_max * 1.1, a + 1, - 0.2],
+    showCopyright: false,
+    axis: true,
+    showNavigation: false
+});
+
+var f_1 = board.create('functiongraph',
+    [function (x) { return k * (x ** 2 - a * x + 2 * a); }, 0, a - 1]
+);
+
+var f_2 = board.create('functiongraph',
+        [function (x) { return k * (a + 1); }, a - 1, a]
+);
+[[/jsxgraph]]
+</p>
+
+<p>Find the value of \(k\). Give your answer as a fraction in its lowest terms.</p>
+
+<p>\(k=\) [[input:ans1]] [[validation:ans1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Generate initial values*/
+/*Random Parameters*/
+aa:rand(6)+3;
+
+/*Calculated values:*/
+kk:-6/(aa^3-12*aa^2+3*aa-4);
+f_1:kk*(x^2-aa*x+2*aa);
+f_2:(aa+1)*kk;
+f_disp_1:k*(x^2-aa*x+2*aa);
+f_disp_2:k*(aa+1);
+
+/*Model answers*/
+ta_1:kk;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text>[[feedback:prt1]]</text>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>1</text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta_1</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>1</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>For a continuous random variable \(x\) with probability density function \(f(x)\) where \(a\leq x \leq b\), \(\displaystyle \int_{a}^{b} f(x) = 1\). So, in this case,</p>
+
+<p>\[\displaystyle \int_{0}^{{@aa-1@}} {@f_disp_1@} \cdot dx + \int_{{@aa-1@}}^{{@aa@}} {@f_disp_2@} \cdot dx = 1\]</p>
+
+<p>\[\displaystyle \int_{0}^{{@aa-1@}} kx^2 - {@aa@}k x+{@2*aa@}k \cdot dx + \int_{{@aa-1@}}^{{@aa@}} {@f_disp_2@} \cdot dx = 1\]</p>
+
+<p>\[\displaystyle \left[ {@1/3@} kx^3 - {@aa/2@}k x^2+{@2*aa@}kx \right]_{0}^{{@aa-1@}} + \left[ {@k*(aa+1)@}x \right]_{{@aa-1@}}^{{@aa@}} = 1\]</p>
+
+<p>\[\displaystyle  \left( {@1/3@} k\cdot {@aa-1@}^3 - {@aa/2@}k \cdot {@aa-1@}^2+{@2*aa@}k \cdot {@aa-1@} \right) - \left( {@1/3@} k\cdot 0^3 - {@aa/2@}k \cdot 0^2+{@2*aa@}k \cdot 0 \right) + {@k*(aa+1)@} \cdot {@aa@} - {@k*(aa+1)@} \cdot {@aa-1@} = 1 \] </p>
+
+<p>\[\displaystyle  {@(aa-1)^3/3@} k - {@aa*(aa-1)^2/2@}k +{@2*aa*(aa-1)@}k + {@k*(aa+1)*aa@} - {@k*(aa+1)*(aa-1)@} = 1 \] </p>
+
+<p>\[\displaystyle  {@(aa-1)^3/3 - aa*(aa-1)^2/2 + 2*aa*(aa-1) + (aa+1)*aa - (aa+1)*(aa-1)@} k = 1 \] </p>
+
+<p>\[\displaystyle k = {@ta_1@} \]</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+  </question>
+
+</quiz>

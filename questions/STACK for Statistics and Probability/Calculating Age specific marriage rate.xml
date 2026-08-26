@@ -1,0 +1,220 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz><question type="stack">
+    <name>
+      <text>Calculating Age specific marriage rate</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Use the data given below to answer the question that follows.</p>
+<p>
+<table border="solid">
+  <tr>
+    <th>Number of Marriages \((25-29)\)</th>
+    <th>\({@no_marriages@}\)</th>
+  </tr>
+  <tr>
+    <td>Female Population \((25-29)\)</td>
+    <td>\({@females@}\)</td>
+  </tr>
+
+</table>
+</p>
+<p>Note: Leave your answer correct to \(2\) dp where necessary</p>
+<p> Calculate Age specific marriage rate for women aged \((25-29)\) for Brazil \((1988)\)</p>
+ <p>[[input:ans1]] \(‰\) (i.e. per 1000)  [[validation:ans1]] [[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>To find the age specific marriage rate \(\text{ASMR}\) we proceed as follows</p>
+<p>
+\(\begin{align}
+\text{ASMR per 1000}&=\displaystyle \frac{\text{Number of marriages}}{\text{Female population}} \times 1000\\
+&=\displaystyle \frac{{@no_marriages@}}{{@females@}} \times 1000\\
+&={@sol1@} ‰\\
+\end{align}\)
+</p>
+<p></p>]]></text>
+    </generalfeedback>
+    <defaultgrade>0.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*quest 2*/
+no_marriages:(rand(500)+100)*1000;
+females:(rand_with_step(5000,10000,1000))*1000;
+/*worked solution*/
+sol1:decimalplaces((no_marriages/females)*1000,2);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Number of marriages \(={@no_marriages@}\)</p>
+<p>Total Female Population \(={@females@}\)</p>
+<p>\(\text {ASMR}={@sol1@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept">https://docs.google.com/document/d/1wKEQZM-sIJBGrCNuZLONkmGG5dwqrUhhVh_IS_PJl3A/edit</p>
+<p id="reviewer">Nixson Kiplagat</p>
+<p id="reviewer"></p>
+<p id="description">This question requires the student age specific marriage rate for women as per the data given in the table.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>sol1</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>sol1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for number of dp</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans1</sans>
+        <tans>sol1</tans>
+        <testoptions>0.01</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.25</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Your answer is partially correct because it's not given to the right number of decimal places</p></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1380197990</deployedseed>
+    <deployedseed>1188998537</deployedseed>
+    <deployedseed>1793850043</deployedseed>
+    <deployedseed>866317596</deployedseed>
+    <deployedseed>1704961413</deployedseed>
+    <deployedseed>1458364676</deployedseed>
+    <deployedseed>47353673</deployedseed>
+    <deployedseed>520990811</deployedseed>
+    <deployedseed>1800100097</deployedseed>
+    <deployedseed>429656117</deployedseed>
+    <deployedseed>1287006309</deployedseed>
+    <deployedseed>86102865</deployedseed>
+    <deployedseed>389156090</deployedseed>
+    <deployedseed>435068129</deployedseed>
+    <deployedseed>1575994177</deployedseed>
+    <deployedseed>183304315</deployedseed>
+    <deployedseed>1920027707</deployedseed>
+    <deployedseed>112424032</deployedseed>
+    <deployedseed>1655617221</deployedseed>
+    <deployedseed>1627327251</deployedseed>
+    <deployedseed>1036307467</deployedseed>
+    <deployedseed>2031935899</deployedseed>
+    <deployedseed>2039538217</deployedseed>
+    <deployedseed>1284276170</deployedseed>
+    <deployedseed>1991816785</deployedseed>
+    <deployedseed>1997795194</deployedseed>
+    <deployedseed>1236272078</deployedseed>
+    <deployedseed>357380318</deployedseed>
+    <deployedseed>1735939399</deployedseed>
+    <deployedseed>448393733</deployedseed>
+    <deployedseed>1116584929</deployedseed>
+    <deployedseed>1258841531</deployedseed>
+    <deployedseed>194488499</deployedseed>
+    <deployedseed>302249465</deployedseed>
+    <deployedseed>567515586</deployedseed>
+    <deployedseed>175812282</deployedseed>
+    <deployedseed>1475390567</deployedseed>
+    <deployedseed>1453789695</deployedseed>
+    <deployedseed>889858360</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>sol1</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+</quiz>

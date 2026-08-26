@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz><question type="stack">
+    <name>
+      <text>Counting Ways to Choose Three Balls of Differing Colors from a Bag</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>A bag contains \({@number_balls@}\) balls, \({@red_balls@}\) of which are red, \({@green_balls@}\) are green and \({@blue_balls@}\) are blue. In how many ways can three balls be chosen such that among those three balls, two balls are of the same colour and the third ball is of a different color? </p>
+<p>Number of ways \(= \) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked solution</h3>
+<p>We can choose 1 red/2 green, or 1 red/2 blue, or 1 green/2 blue, or 1 green/2 red, or 1 blue/2 red, or 1 blue/2 green.</p>
+<p>There are \({}^{{@red_balls@}}C_{1} \times {}^{{@green_balls@}}C_{2} \) ways to choose 1 red ball and 2 green balls.</p>
+<p>Similarly for the rest, so we get:</p>
+<p> \(\left  (^{{@red_balls@}}C_{1} \times {}^{{@green_balls@}}C_{2}\right ) + \left (^{{@red_balls@}}C_{1} \times {} ^{{@blue_balls@}}C_{2}\right ) +  \left (^{{@blue_balls@}}C_{2} \times {}^{{@green_balls@}}C_{1}\right ) + \left (^{{@red_balls@}}C_{2} \times {} ^{{@green_balls@}}C_{1}\right )+  \left (^{{@red_balls@}}C_{2} \times {} ^{{@blue_balls@}}C_{1}\right )+  \left (^{{@blue_balls@}}C_{1} \times {}^{{@green_balls@}}C_{2}\right ) \)</p>
+<p>\(={@first@}+{@second@}+{@third@}+{@fourth@}+{@fifth@}+{@sixth@}={@ta@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>red_balls:rand(9)+3;
+green_balls:rand_with_prohib(4, 8, [red_balls]);
+blue_balls:rand_with_prohib(3, 8, [green_balls, red_balls]);
+number_balls:red_balls+green_balls+blue_balls;
+first:(binomial(red_balls, 1)*binomial(green_balls, 2));second:(binomial(red_balls, 1)*binomial(blue_balls, 2));third:(binomial(blue_balls, 2)*binomial(green_balls, 1));fourth:(binomial(red_balls, 2)*binomial(green_balls, 1));fifth:(binomial(red_balls, 2)*binomial(blue_balls, 1));sixth:(binomial(blue_balls, 1)*binomial(green_balls, 2));ta:first+second+third+fourth+fifth+sixth;
+</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Number of balls \(={@number_balls@}\) </p><p>Red balls\(={@red_balls@}\) </p><p>Green \(={@green_balls@}\) </p><p>Blue \(={@blue_balls@}\)</p>
+<p>Number of ways \(= {@ta@}\) </p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Emmaculate Odhiambo<p>
+<p id="concept"></p>
+<p id="reviewer">Nixson Kiplagat</p>
+<p id="reviewer">Georg Osang</p>
+<p id="description">This question requires the student to determine the number of ways to select three balls from a bag containing 15 balls, with specific quantities of red, green, and blue balls, ensuring that only two balls share the same color.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1680431414</deployedseed>
+    <deployedseed>1667892188</deployedseed>
+    <deployedseed>835941989</deployedseed>
+    <deployedseed>422502705</deployedseed>
+    <deployedseed>94817612</deployedseed>
+    <deployedseed>513202222</deployedseed>
+    <deployedseed>1787361491</deployedseed>
+    <deployedseed>1716396090</deployedseed>
+    <deployedseed>1960335931</deployedseed>
+    <deployedseed>1164811538</deployedseed>
+    <deployedseed>712045069</deployedseed>
+    <deployedseed>1520240438</deployedseed>
+    <deployedseed>485699351</deployedseed>
+    <deployedseed>647823066</deployedseed>
+    <deployedseed>1075739160</deployedseed>
+    <deployedseed>641832137</deployedseed>
+    <deployedseed>621614484</deployedseed>
+    <deployedseed>1343633550</deployedseed>
+    <deployedseed>1829117404</deployedseed>
+    <deployedseed>1177190567</deployedseed>
+    <deployedseed>1053193740</deployedseed>
+    <deployedseed>1173980698</deployedseed>
+    <deployedseed>1044516924</deployedseed>
+    <deployedseed>399428074</deployedseed>
+    <deployedseed>516070410</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description>Test case assuming the teacher's input gets full marks.</description>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+</quiz>

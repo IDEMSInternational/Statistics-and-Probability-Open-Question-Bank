@@ -1,0 +1,359 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz><question type="stack">
+    <name>
+      <text>Infant Mortality and its Measures_q1</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Given below is the data relating to infant deaths and births in Guatemala, taking the unit of measurement as \('000'\) for live births and deaths .</p>
+<br>
+<p>
+<table border="solid">
+  <tr>
+    <th>1959</th>
+    <th>1960</th>
+  </tr>
+  <tr>
+    <td>{@d2@} (Late neonatal deaths in \(1959\))</td>
+    <td>{@d4@} (Late neonatal deaths in \(1960\))</td>
+  </tr>
+  <tr>
+    <td>{@d1@} (Early neonatal deaths in \(1959\))</td>
+    <td>{@d3@} (Early neonatal deaths in \(1960\))</td>
+  </tr>
+ 
+</table>
+</p>
+<p></p>
+<p>Given the total number of live births in Guatemala in the year \(1959\) and \(1960\) as {@b1@} and {@b2@} respectfully, answer the questions below.</p>
+<br>
+<p>Note: Leave your answer to correct \(2\) dp</p>
+<p></p>
+<p>a) Calculate crude infant mortality rate \(=\) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>
+<p>b) Determine Infant mortality rate by product formula \(=\) [[input:ans2]] [[validation:ans2]][[feedback:prt2]]</p>
+<p></p>
+<p></p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>
+<table border="solid">
+  <tr>
+    <th>1959</th>
+    <th>1960</th>
+  </tr>
+  <tr>
+    <td>\({@d2@} \,\, D_{2}\) (Late neonatal deaths in \(1959\) )</td>
+    <td>\({@d4@} \,D_{4}\) (Late neonatal deaths in \(1960\) )</td>
+  </tr>
+  <tr>
+    <td>\({@d1@} \,D_{1}\) (Early neonatal deaths in \(1959\))</td>
+    <td>\({@d3@} \,D_{3}\) (Early neonatal deaths in \(1960\))</td>
+  </tr>
+ 
+</table>
+</p>
+<p>a). Crude infant mortality rate </p>
+<p>To find Crude infant mortality rate, we use the formula \(\displaystyle\left [ \frac{D_1+D_2}{B_1}  \right ] \times 1000\) </p>
+<p>Applying the formula </p>
+<p>
+\(\begin{align}
+\displaystyle\left [ \frac{D_1+D_2}{B_1}  \right ] \times 1000&=\displaystyle \frac{{@d1@}+{@d2@}}{{@b1@}} \times 1000\\
+&=\displaystyle \frac{{@d1+d2@}}{{@b1@}} \times 1000\\
+&={@ta1@}
+\end{align}\)
+</p>
+<br>
+<p>b). Determining Infant mortality rate by product formula</p>
+<p>Infant mortality rate by product formula is given the formula below</p>
+<p>
+\(\begin{align}
+\displaystyle \left [ 1-\left [ \displaystyle \frac{B_2-D_4}{B_2} \right ] \left [ \displaystyle \frac{B_1-D_2-D_3}{B_1-D_2} \right ]  \right ] \times 1000&=\displaystyle \left [ 1-\left [ \displaystyle \frac{{@b2@}-{@d4@}}{{@b2@}} \right ] \left [ \displaystyle \frac{{@b1@}-{@d2@}-{@d3@}}{{@b1@}-{@d2@}} \right ]  \right ] \times 1000\\
+&=\displaystyle \left [ 1-\left [ \displaystyle \frac{{@b2-d4@}}{{@b2@}} \right ] \left [ \displaystyle \frac{{@b1-d2-d3@}}{{@b1-d2@}} \right ]  \right ] \times 1000\\
+&={@ta2@}\\
+\end{align}\)
+</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>0.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*topic 8*/
+deaths:makelist((rand_with_step(5000,5500,100)),i,1,2);
+d1:deaths[1];
+d3:deaths[2]+rand(500);
+/*d2 and d4*/
+deaths_2:makelist((rand_with_step(10000,12000,1000)),i,1,2);
+d2:deaths_2[1];
+d4:deaths_2[2]+rand(500);
+/*live births*/
+births:makelist((rand_with_step(180000,200000,1000)),i,1,2);
+b1:births[1];
+b2:births[2]+rand(1000);
+/*worked solution variables*/
+sol1:decimalplaces(((d1+d2)/b1)*1000,2);
+sol2:decimalplaces((1-(b2-d4)/b2)*((b1-d2-d3)/(b1-d2))*1000,2);
+/*model answers*/
+ta1:sol1;
+ta2:sol2;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Calculate crude infant mortality rate \(={@ta1@}\)</p>
+<p>Determine Infant mortality rate by product formula \(={@ta2@}\) </p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Nixon</p>
+<p id="reviewer">Wastalas</p>
+<p id="description">This question requires the student to calculate the crude infant mortality rate  and Determine Infant mortality rate by product formula given the deaths and live births for years \(1959\) and \(1960\)</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for no of dp</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions>0.01</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.25</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Your answer is partially correct because it's not given to the right number of decimal places</p></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct anser</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for no of decimal places</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions>0.01</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.25</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Your answer is partially correct because it's not given to the right number of decimal places</p></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>156240307</deployedseed>
+    <deployedseed>1454072180</deployedseed>
+    <deployedseed>1025795627</deployedseed>
+    <deployedseed>1604321800</deployedseed>
+    <deployedseed>1568157735</deployedseed>
+    <deployedseed>1191199899</deployedseed>
+    <deployedseed>498797983</deployedseed>
+    <deployedseed>1502009378</deployedseed>
+    <deployedseed>624549600</deployedseed>
+    <deployedseed>1753272398</deployedseed>
+    <deployedseed>1149605827</deployedseed>
+    <deployedseed>2109331527</deployedseed>
+    <deployedseed>1213748922</deployedseed>
+    <deployedseed>2102292918</deployedseed>
+    <deployedseed>1897551306</deployedseed>
+    <deployedseed>1867895922</deployedseed>
+    <deployedseed>1201581314</deployedseed>
+    <deployedseed>1997041327</deployedseed>
+    <deployedseed>1927189658</deployedseed>
+    <deployedseed>677397895</deployedseed>
+    <deployedseed>90631866</deployedseed>
+    <deployedseed>1258778839</deployedseed>
+    <deployedseed>224934040</deployedseed>
+    <deployedseed>2092370997</deployedseed>
+    <deployedseed>1391088368</deployedseed>
+    <deployedseed>159652976</deployedseed>
+    <deployedseed>989731351</deployedseed>
+    <deployedseed>1878614022</deployedseed>
+    <deployedseed>348363402</deployedseed>
+    <deployedseed>144622392</deployedseed>
+    <deployedseed>2114875479</deployedseed>
+    <deployedseed>861664639</deployedseed>
+    <deployedseed>1844872393</deployedseed>
+    <deployedseed>1883047550</deployedseed>
+    <deployedseed>186534608</deployedseed>
+    <deployedseed>257786537</deployedseed>
+    <deployedseed>926561440</deployedseed>
+    <deployedseed>97665012</deployedseed>
+    <deployedseed>716770123</deployedseed>
+    <deployedseed>584443536</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+</quiz>

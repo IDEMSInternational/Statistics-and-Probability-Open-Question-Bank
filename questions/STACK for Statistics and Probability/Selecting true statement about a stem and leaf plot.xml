@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz><question type="multichoice">
+    <name>
+      <text>Selecting true statement about a stem and leaf plot</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>A single stem and leaf plot is a useful tool because:</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p><br _mce_bogus="1"></p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text><![CDATA[<p><br _mce_bogus="1"></p>]]></text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text><![CDATA[<p><br _mce_bogus="1"></p>]]></text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text><![CDATA[<p><br _mce_bogus="1"></p>]]></text>
+    </incorrectfeedback>
+    <answer fraction="0" format="html">
+      <text>It includes the average and the standard deviation</text>
+      <feedback format="html">
+        <text><![CDATA[<p><br></p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>It shows the percentage distribution of the data values</text>
+      <feedback format="html">
+        <text><![CDATA[<p><br _mce_bogus="1"></p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>It enables us examine the data values for the presence of trends, cycles and seasonal variation</text>
+      <feedback format="html">
+        <text><![CDATA[<p><br _mce_bogus="1"></p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>It enables us to locate the centre of the data, see the overall shape of the distribution and look to marked deviations from the overall shape</text>
+      <feedback format="html">
+        <text><![CDATA[<p><br _mce_bogus="1"></p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>It enables us to compare this dataset against others of a similar kind</text>
+      <feedback format="html">
+        <text><![CDATA[<p><br _mce_bogus="1"></p>]]></text>
+      </feedback>
+    </answer>
+  </question>
+
+</quiz>

@@ -1,0 +1,908 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz><question type="stack">
+    <name>
+      <text>unbalanced data</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>A survey is conducted in four out of ten of these villages shown below.</p> 
+
+<p>The aim of the survey is to determine variables that affect the yield of rice. There are six other variables in the resulting data set from the survey: village, field, size, fertiliser, fertiliser group and variety.</p>
+
+<ul>
+    <li><b>Village</b> is the village where the survey was performed.</li>
+    <li><b>Field</b> is the field within a village where the crop was grown.</li>
+    <li><b>Size</b> is a measurement of the field size in acres.</li>
+    <li><b>Fertiliser</b> is the fertiliser amount. This is a numerical variable.</li>
+    <li><b>Fertiliser Group</b> is the fertiliser variable categorised as a factor.</li>
+    <li><b>Variety</b> is the type of variety of rice - there are three varieties: Old, New, and Traditional.</li>
+</ul>
+
+<br>
+
+<center>
+<p><button onclick="exportToCsv()">Download Data</button></p>
+<img src="https://github.com/IDEMSInternational/wxmaxima-stack/blob/main/data-files/unbalanced-data.jpg?raw=true">
+</center>
+
+<br>
+
+<p>Here we work through some questions to illustrate unbalanced data.
+</p>
+
+<br>
+
+<p>1. Fit a pivot table containing Village and Fertiliser Group, looking at the frequency sizes for each group. Would you say this data is balanced?</p>
+<p>[[input:ans1]] [[validation:ans1]]</p>
+<p>[[feedback:prt1]]</p>
+
+<br>
+
+<p>2. &nbsp; (a) Which village accounts for the highest yield?</p>
+<p style="margin-left:24px">[[input:ans2a]] [[validation:ans2a]]</p>
+<p style="margin-left:24px">(b) Which fertiliser group accounts for the highest yield?</p>
+<p style="margin-left:24px">[[input:ans2b]] [[validation:ans2b]]</p>
+<p>[[feedback:prt2]]</p>
+
+<br>
+
+<p>3. An ANOVA table divides the variability into the part that is accounted for, and the residual. When the residual variability – the part that is not accounted for – is low, then the information from the data becomes clear. In the ANOVA table, the mean squares are roughly variances (a common measure of variation).</p>
+<p>[[input:ans3]] [[validation:ans3]]</p>
+<p>[[feedback:prt3]]</p>
+
+<br>
+
+<p>4. Add fertiliser to the model, with village fitted before fertiliser. Now what variation does the village account for in the data?</p>
+<p>[[input:ans4]] [[validation:ans4]]</p>
+<p>[[feedback:prt4]]</p>
+
+<br>
+
+<p>5. Switch around the two explanatory variables, fitting fertiliser before village. Now what variation does the village account for in the data?</p>
+<p>[[input:ans5]] [[validation:ans5]]</p>
+<p>[[feedback:prt5]]</p>
+
+<script>
+var Results;
+fetch("https://raw.githubusercontent.com/IDEMSInternational/wxmaxima-stack/main/data-files/rice_survey.txt")
+  .then(res => res.json())
+  .then(data => {
+    Results = data;
+   })
+
+exportToCsv = function(file_name) {
+  var CsvString = "";
+  Results.forEach(function(RowItem, RowIndex) {
+    RowItem.forEach(function(ColItem, ColIndex) {
+             CsvString += ColItem;
+             if( ColIndex < RowItem.length - 1){
+                 CsvString += ',';
+                } 
+    });
+    CsvString += "\r\n";
+  });
+  CsvString = "data:application/csv," + encodeURIComponent(CsvString);
+ var x = document.createElement("A");
+ x.setAttribute("href", CsvString );
+ x.setAttribute("download","data_set.csv");
+ document.body.appendChild(x);
+ x.click();
+}
+</script>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[ma_1: [["Yes", false], ["No", true]];
+ma_2a: [
+    ["Sabey", true],
+    ["Kesen", false],
+    ["Niko", false],
+    ["Nanda", false]
+];
+ma_2b: [
+    ["Low", false],
+    ["Medium", false],
+    ["High", true]
+];
+ta_3: 464
+ta_4: 464
+ta_5: 49]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>1. Fit a pivot table containing Village and Fertiliser Group, looking at the frequency sizes for each group. Would you say this data is balanced?</p>
+<p>{@mcq_correct(ma_1)[1]@}</p>
+
+<br>
+
+<p>2. &nbsp; (a) Which village accounts for the highest yield?</p>
+<p>{@mcq_correct(ma_2a)[1]@}</p>
+<p style="margin-left:24px">(b) Which fertiliser group accounts for the highest yield?</p>
+<p>{@mcq_correct(ma_2b)[1]@}</p>
+
+<br>
+
+<p>3. An ANOVA table divides the variability into the part that is accounted for, and the residual. When the residual variability – the part that is not accounted for – is low, then the information from the data becomes clear. In the ANOVA table, the mean squares are roughly variances (a common measure of variation).</p>
+<p>{@ta_3@}</p>
+
+<br>
+
+<p>4. Add fertiliser to the model, with village fitted before fertiliser. Now what variation does the village account for in the data?</p>
+<p>{@ta_4@}</p>
+
+<br>
+
+<p>5. Switch around the two explanatory variables, fitting fertiliser before village. Now what variation does the village account for in the data?</p>
+<p>{@ta_5@}</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Dan Kelly</p>
+<p id="concept">https://docs.google.com/document/d/17bclGmXHEi9FX16GNbkfZfLXd3QILNt8QQKjqjdq05A/edit</p>
+<p id="reviewer"></p>
+<p id="description"></p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>dropdown</type>
+      <tans>ma_1</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2a</name>
+      <type>dropdown</type>
+      <tans>ma_2a</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2b</name>
+      <type>dropdown</type>
+      <tans>ma_2b</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>ta_3</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>algebraic</type>
+      <tans>ta_4</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans5</name>
+      <type>algebraic</type>
+      <tans>ta_5</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>check correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans><![CDATA["No"]]></tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Great! We can see that the data is unbalanced by a simple frequency table. Here we have the villages as rows, and the fertiliser level as columns.</p>
+
+<table> 
+  <tbody><tr>
+    <td width="100px"></td>
+    <td width="100px"><b>Low</b></td>
+    <td width="100px"><b>Medium</b></td>
+    <td width="100px"><b>High</b></td>
+    <td width="100px"><b>Total</b></td>
+  </tr>
+  <tr>
+    <td><b>Sabey</b></td>
+    <td>1</td>
+    <td>3</td>
+    <td>6</td>
+    <td>10</td>
+  </tr>
+  <tr>
+    <td><b>Kesen</b></td>
+    <td>3</td>
+    <td>2</td>
+    <td>2</td>
+    <td>7</td>
+  </tr>
+  <tr>
+    <td><b>Niko</b></td>
+    <td>4</td>
+    <td>1</td>
+    <td>0</td>
+    <td>5</td>
+  </tr>
+  <tr>
+    <td><b>Nanda</b></td>
+    <td>1</td>
+    <td>4</td>
+    <td>9</td>
+    <td>14</td>
+  </tr>
+  <tr>
+    <td><b>Total</b></td>
+    <td>9</td>
+    <td>10</td>
+    <td>17</td>
+    <td>36</td>
+  </tr>
+</tbody></table>
+<br>
+
+<p>Looking at this table, it is clear that the group sizes vary between fertiliser group and village; a higher fertiliser is used frequently in Nanda, but is never used in the Niko village. This unbalanced data leads to the question: is the variability in the yield because of a higher fertiliser, or because they’re in that village?</p>
+
+<p>An investigation into the data can help clarify the answer. We can look at the mean yield by village, and the mean yield by fertiliser group.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Not quite. We can see that the data is unbalanced by a simple frequency table. Here we have the villages as rows, and the fertiliser level as columns.</p>
+
+<br>
+<table>
+    <tbody>
+        <tr>
+            <td width="100px"></td>
+            <td width="100px"><b>Low</b></td>
+            <td width="100px"><b>Medium</b></td>
+            <td width="100px"><b>High</b></td>
+            <td width="100px"><b>Total</b></td>
+        </tr>
+        <tr>
+            <td><b>Sabey</b></td>
+            <td>1</td>
+            <td>3</td>
+            <td>6</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td><b>Kesen</b></td>
+            <td>3</td>
+            <td>2</td>
+            <td>2</td>
+            <td>7</td>
+        </tr>
+        <tr>
+            <td><b>Niko</b></td>
+            <td>4</td>
+            <td>1</td>
+            <td>0</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td><b>Nanda</b></td>
+            <td>1</td>
+            <td>4</td>
+            <td>9</td>
+            <td>14</td>
+        </tr>
+        <tr>
+            <td><b>Total</b></td>
+            <td>9</td>
+            <td>10</td>
+            <td>17</td>
+            <td>36</td>
+        </tr>
+    </tbody>
+</table>
+<br>
+
+<p>Looking at this table, it is clear that the group sizes vary between fertiliser group and village; a higher fertiliser is used frequently in Nanda, but is never used in the Niko village. The table is not giving the same values in the cells throughout, therefore it is not balanced.</p>
+<p><br></p>
+<p>You can practice checking for balanced or unbalanced data <a href="https://ecampus.idems.international/mod/quiz/view.php?id=11242">here</a></p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text><![CDATA[/* node 1: check both parts correct */
+node1_test: if ans2a="Sabey" and ans2b="High" then 1 else 0;
+
+/* node 2: correct (a) and incorrect (b) */
+node2_test: if ans2a="Sabey" and not(ans2b="High") then 1 else 0;
+
+/* node 3: correct (b) and incorrect (a) */
+node3_test: if not(ans2a="Sabey") and ans2b="High" then 1 else 0;]]></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>check both parts correct</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>node1_test</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>We can see that Sabey accounts for the highest yield.
+<br>We can see that the villages vary in mean yield between them.</p>
+
+<table>
+  <tbody><tr>
+    <td width="100px"><b>Village</b></td>
+    <td width="100px"><b>Mean yield</b></td>
+  </tr>
+  <tr>
+    <td><b>Sabey</b></td>
+    <td>45.33</td>
+  </tr>
+  <tr>
+    <td><b>Kesen</b></td>
+    <td>32.76</td>
+  </tr>
+  <tr>
+    <td><b>Niko</b></td>
+    <td>30.56</td>
+  </tr>
+  <tr>
+    <td><b>Nanda</b></td>
+    <td>44.68</td>
+  </tr>
+</tbody></table>
+<br>
+
+<p>We can also see that the highest fertiliser level results in the largest yield on average, and the lowest fertiliser level results in the smallest average yield.</p>
+
+<p>Comparing the mean yields with the table of frequencies, we can see that villages that use the high fertiliser level more often result in a higher mean yield. In Sabey, 6 of 10 fertiliser levels are high, and in Nanda it is 9 of 14. Could this explain why Sabey and Nanda had high yields?</p>
+
+<table> 
+  <tbody><tr>
+    <td width="100px"></td>
+    <td width="100px"><b>Low</b></td>
+    <td width="100px"><b>Medium</b></td>
+    <td width="100px"><b>High</b></td>
+    <td width="100px"><b>Total</b></td>
+  </tr>
+  <tr>
+    <td><b>Sabey</b></td>
+    <td>1</td>
+    <td>3</td>
+    <td><b>6</b></td>
+    <td>10</td>
+  </tr>
+  <tr>
+    <td><b>Kesen</b></td>
+    <td>3</td>
+    <td>2</td>
+    <td>2</td>
+    <td>7</td>
+  </tr>
+  <tr>
+    <td><b>Niko</b></td>
+    <td>4</td>
+    <td>1</td>
+    <td>0</td>
+    <td>5</td>
+  </tr>
+  <tr>
+    <td><b>Nanda</b></td>
+    <td>1</td>
+    <td>4</td>
+    <td><b>9</b></td>
+    <td>14</td>
+  </tr>
+  <tr>
+    <td><b>Total</b></td>
+    <td>9</td>
+    <td>10</td>
+    <td>17</td>
+    <td>36</td>
+  </tr>
+</tbody></table>
+<br>
+
+<p>Hence, in this data set, the variation between the villages can be explained by village or the fertiliser level.</p>
+
+<table>
+  <tbody><tr>
+    <td width="120px"><b>Fertiliser Level</b></td>
+    <td width="100px"><b>Mean yield</b></td>
+  </tr>
+  <tr>
+    <td><b>Low</b></td>
+    <td>27.42</td>
+  </tr>
+  <tr>
+    <td><b>Medium</b></td>
+    <td>37.69</td>
+  </tr>
+  <tr>
+    <td><b>High</b></td>
+    <td>49.25</td>
+  </tr>
+</tbody></table>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>correct (a), incorrect (b)</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>node2_test</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You are correct that Sabey has the highest yield on average. 
+<br>However, the fertiliser group is incorrect. Try again.</p>
+<p>Try with PivotTables, using the Fertiliser Level as a Column or Row, and setting Yield as the Value. Make sure you change the Value Field Settings to be mean.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>correct (b), incorrect (a)</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>node3_test</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You are correct that the “High” fertiliser resulting in the highest yield on average. 
+<br>However, the village is incorrect. Try again.</p>
+<p>Try with PivotTables, using the Village as a Column or Row, and setting Yield as the Value. Make sure you change the Value Field Settings to be mean.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Not quite. Try with PivotTables, using the Village as a Column or Row, and setting Yield as the Value. Make sure you change the Value Field Settings to be mean.</p>
+<p>See <a href="https://ecampus.idems.international/course/view.php?id=238&amp;section=38" target="_blank">here</a> for how to use a PivotTable.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/* node 2: check other values in table */
+node2_errors: [111.36, 1391.2, 3563.6, 3, 32, 4.1642, 0.01343];
+node2_test: if member(ans3, node2_errors) then 1 else 0;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>check correct answer</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans3</sans>
+        <tans>ta_3</tans>
+        <testoptions>0.5</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>The variation is the Mean Squared Error for Village. If just village is fitted, the village is found to significantly affect the outcome variable. The variation between the villages is quite large, 464, compared with the residual value of 111.</p>
+
+<table>
+  <tbody><tr>
+    <td width="100px"></td>
+    <td width="80px"><b>Df</b></td>
+    <td width="80px"><b>Sum Sq</b></td>
+    <td width="80px"><b>Mean Sq</b></td>
+    <td width="80px"><b>F value</b></td>
+    <td width="80px"><b>Pr (&gt;F)</b></td>
+  </tr>
+  <tr>
+    <td><b>Village</b></td>
+    <td>3</td>
+    <td>1391.2</td>
+    <td>463.73</td>
+    <td>4.1642</td>
+    <td>0.01343</td>
+  </tr>
+  <tr>
+    <td><b>Residuals</b></td>
+    <td>32</td>
+    <td>3563.6</td>
+    <td>111.36</td>
+    <td></td>
+    <td></td>
+  </tr>
+</tbody></table>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>gives other value from table</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>node2_test</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>It looks as if you’ve fitted the correct model but responded with the wrong value from the table. 
+<br>The variation is the “Mean Squared Error” for Village.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p hidden="">Not quite. 
+<br>See <a>here</a> for information on fitting an ANOVA in Excel.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/* node 2: check other values in table */
+node2_errors: [3, 1391, 7.37, 0.00077, 2, 1675, 837, 13.30, 0.000073, 30, 1889, 63];
+node2_test: if member(ans3, node2_errors) then 1 else 0;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>check correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>ta_4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>If we then add fertiliser to the model, then more of the variability is accounted for, from both the village and fertiliser variables.</p>
+
+<table>
+  <tbody><tr>
+    <td width="100px"></td>
+    <td width="80px"><b>Df</b></td>
+    <td width="80px"><b>Sum Sq</b></td>
+    <td width="80px"><b>Mean Sq</b></td>
+    <td width="80px"><b>F value</b></td>
+    <td width="80px"><b>Pr (&gt;F)</b></td>
+  </tr>
+  <tr>
+    <td><b>Village</b></td>
+    <td>3</td>
+    <td>1391</td>
+    <td>464</td>
+    <td>7.37</td>
+    <td>0.00077</td>
+  </tr>
+  <tr>
+    <td><b>Fertiliser</b></td>
+    <td>2</td>
+    <td>1675</td>
+    <td>837</td>
+    <td>13.30</td>
+    <td>7.3e-05</td>
+  </tr>
+  <tr>
+    <td><b>Residuals</b></td>
+    <td>30</td>
+    <td>1889</td>
+    <td>63</td>
+    <td></td>
+    <td></td>
+  </tr>
+</tbody></table>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>gives other value from table</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>node2_test</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>It looks as if you’ve fitted the correct model but responded with the wrong value from the table. 
+<br>The variation is the “Mean Squared Error” for Village.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p hidden="">Not quite. 
+<br>See <a>here</a> for information on fitting an ANOVA in Excel.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt5</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/* node 2: check other values in table */
+node2_errors: [2, 2919, 1459, 23.18, 0.0000008.2, 3, 147, 0.78, 0.51, 30, 1889, 63];
+node2_test: if member(ans3, node2_errors) then 1 else 0;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>check correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5</sans>
+        <tans>ta_5</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>If instead, fertiliser is fitted before village, the fertiliser is found to affect the outcome variable, and village does not.</p>
+
+<table>
+  <tbody><tr>
+    <td width="100px"></td>
+    <td width="80px"><b>Df</b></td>
+    <td width="80px"><b>Sum Sq</b></td>
+    <td width="80px"><b>Mean Sq</b></td>
+    <td width="80px"><b>F value</b></td>
+    <td width="80px"><b>Pr (&gt;F)</b></td>
+  </tr>
+  <tr>
+    <td><b>Fertiliser</b></td>
+    <td>2</td>
+    <td>2919</td>
+    <td>1459</td>
+    <td>23.18</td>
+    <td>8.2e-07</td>
+  </tr>
+  <tr>
+    <td><b>Village</b></td>
+    <td>3</td>
+    <td>147</td>
+    <td>49</td>
+    <td>0.78</td>
+    <td>0.51</td>
+  </tr>
+  <tr>
+    <td><b>Residuals</b></td>
+    <td>30</td>
+    <td>1889</td>
+    <td>63</td>
+    <td></td>
+    <td></td>
+  </tr>
+</tbody></table>
+<br>
+
+<p>Hence, the order that village and variable are inputted into the model changes the model itself. The reason for this is that the data is unbalanced.</p>
+
+<p><strong>This is because in some villages, a higher proportion of those surveyed use high fertiliser. Hence, it looks like village has an effect when fertiliser is omitted from the model, when actually it is fertiliser.</strong></p>
+
+<p>Note that we are lucky. In other data sets, the variation could be down to a variable that isn't measured in the data set, such as the soil type or the climate!</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt5-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>gives other value in the table</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>node2_test</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>It looks as if you’ve fitted the correct model but responded with the wrong value from the table. 
+<br>The variation is the “Mean Squared Error” for Village.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt5-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p hidden="">Not quite. 
+<br>See <a>here</a> for information on fitting an ANOVA in Excel.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+  </question>
+
+</quiz>

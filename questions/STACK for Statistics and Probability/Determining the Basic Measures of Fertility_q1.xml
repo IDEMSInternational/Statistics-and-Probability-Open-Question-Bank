@@ -1,0 +1,941 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz><question type="stack">
+    <name>
+      <text>Determining the Basic Measures of Fertility_q1</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Compute the crude and standard death rates of the two populations \(A\) and \(B\) from the following data;</p>
+<br>
+<p>Note: Leave your answer correct to \(2\) dp.</p>
+<br>
+<p>
+<table border="solid">
+    <thead>
+        <tr>
+            <th rowspan="2">Age group (years)</th>
+            <th colspan="3">A</th>
+            <th colspan="3">B</th>
+        </tr>
+        <tr>
+            <th width="15%", style="text-align:center">Population</th>
+            <th width="15%", style="text-align:center">Deaths</th>
+            <th width="15%", style="text-align:center">Death rate per thousand</th>
+            <th width="15%", style="text-align:center">Population</th>
+            <th width="15%", style="text-align:center">Deaths</th>
+            <th width="15%", style="text-align:center">Death rate per thousand</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:center">Below \(5\)</td>
+            <td style="text-align:center">\({@popn1a@}\)</td>
+            <td style="text-align:center">\({@death1a@}\)</td>
+            <td style="text-align:center">\({@rate_1a@}\)</td>
+            <td style="text-align:center">\({@popn1b@}\)</td>
+            <td style="text-align:center">\({@death1b@}\)</td>
+            <td style="text-align:center">[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</td>
+        </tr>
+        <tr>
+            <td style="text-align:center">\(5 –30\)</td>
+            <td style="text-align:center">\({@popn2a@}\)</td>
+            <td style="text-align:center">\({@death2a@}\)</td>
+            <td style="text-align:center">[[input:ans2]] [[validation:ans2]][[feedback:prt2]]</td>
+            <td style="text-align:center">\({@popn2b@}\)</td>
+            <td style="text-align:center">\({@death2b@}\)</td>
+            <td style="text-align:center">\({@rate_2b@}\)</td>
+        </tr>
+        <tr>
+         <td style="text-align:center">\(30–40\)</td>
+         <td style="text-align:center">\({@popn3a@}\)</td>
+         <td style="text-align:center">\({@death3a@}\)</td>
+         <td style="text-align:center">\({@rate_3a@}\)</td>
+         <td style="text-align:center">\({@popn3b@}\)</td>
+        <td style="text-align:center">\({@death3b@}\)</td>
+        <td style="text-align:center">[[input:ans3]] [[validation:ans3]][[feedback:prt3]]</td>
+        </tr>
+ <tr>
+             <td style="text-align:center">\(40 –50\)</td>
+             <td style="text-align:center">\({@popn4a@}\)</td>
+             <td style="text-align:center">\({@death4a@}\)</td>
+             <td style="text-align:center">\({@rate_4a@}\)</td>
+            <td style="text-align:center">\({@popn4b@}\)</td>
+            <td style="text-align:center">\({@death4b@}\)</td>
+            <td style="text-align:center">\({@rate_4b@}\)</td>
+        </tr>
+ <tr>
+             <td style="text-align:center">\(50 –60\)</td>
+             <td style="text-align:center">\({@popn5a@}\)</td>
+             <td style="text-align:center">\({@death5a@}\)</td>
+             <td style="text-align:center">\({@rate_5a@}\)</td>
+            <td style="text-align:center">\({@popn5b@}\)</td>
+            <td style="text-align:center">\({@death5b@}\)</td>
+             <td style="text-align:center">\({@rate_5b@}\)</td>
+        </tr>
+       <tr>
+  <td style="text-align:center"><strong>Total</strong></td>
+  <td style="text-align:center">\(\sum={@sum_popn_a@}\)</td>
+  <td style="text-align:center">\(\sum={@sum_death_a@}\)</td>
+  <td style="text-align:center"></td>
+  <td style="text-align:center">\(\sum={@sum_popn_b@}\)</td>
+  <td style="text-align:center">\(\sum={@sum_death_b@}\)</td>
+  <td style="text-align:center"></td>
+</tr>
+
+    </tbody>
+</table>
+</p>
+<br>
+<p>Crude death rate \((CDR)\) for town \(A=\) [[input:ans4]] [[validation:ans4]][[feedback:prt4]]</p>
+<p>Crude death rate \((CDR)\) for town \(B=\) [[input:ans5]] [[validation:ans5]][[feedback:prt5]]</p>
+<p>Determine Standardized death rate of the town \(A\) and \(B\) taking population of town \(A\) as standard population</p>
+<p>Standardized death rate (for town \(A)=\) [[input:ans6]] [[validation:ans6]][[feedback:prt6]]</p>
+<p>Standardized death rate (for town \(B)=\) [[input:ans7]] [[validation:ans7]][[feedback:prt7]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>Compute the crude and standard death rates of the two populations \(A\) and \(B\) from the following data;</p>
+<br>
+<p>
+<table border="solid">
+    <thead>
+        <tr>
+            <th rowspan="2">Age group (years)</th>
+            <th colspan="3">A</th>
+            <th colspan="3">B</th>
+        </tr>
+        <tr>
+            <th width="15%", style="text-align:center">Population</th>
+            <th width="15%", style="text-align:center">Deaths</th>
+            <th width="15%", style="text-align:center">Death rate per thousand</th>
+            <th width="15%", style="text-align:center">Population</th>
+            <th width="15%", style="text-align:center">Deaths</th>
+            <th width="15%", style="text-align:center">Death rate per thousand</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:center">Below \(5\)</td>
+            <td style="text-align:center">\({@popn1a@}\)</td>
+            <td style="text-align:center">\({@death1a@}\)</td>
+            <td style="text-align:center">\({@rate_1a@}\)</td>
+            <td style="text-align:center">\({@popn1b@}\)</td>
+            <td style="text-align:center">\({@death1b@}\)</td>
+            <td style="text-align:center">\({@rate_1b@}\)</td>
+        </tr>
+        <tr>
+            <td style="text-align:center">\(5 –30\)</td>
+            <td style="text-align:center">\({@popn2a@}\)</td>
+            <td style="text-align:center">\({@death2a@}\)</td>
+            <td style="text-align:center">\({@rate_2a@}\)</td>
+            <td style="text-align:center">\({@popn2b@}\)</td>
+            <td style="text-align:center">\({@death2b@}\)</td>
+            <td style="text-align:center">\({@rate_2b@}\)</td>
+        </tr>
+        <tr>
+         <td style="text-align:center">\(30–40\)</td>
+         <td style="text-align:center">\({@popn3a@}\)</td>
+         <td style="text-align:center">\({@death3a@}\)</td>
+         <td style="text-align:center">\({@rate_3a@}\)</td>
+         <td style="text-align:center">\({@popn3b@}\)</td>
+        <td style="text-align:center">\({@death3b@}\)</td>
+        <td style="text-align:center">\({@rate_3b@}\)</td>
+        </tr>
+ <tr>
+             <td style="text-align:center">\(40 –50\)</td>
+             <td style="text-align:center">\({@popn4a@}\)</td>
+             <td style="text-align:center">\({@death4a@}\)</td>
+             <td style="text-align:center">\({@rate_4a@}\)</td>
+            <td style="text-align:center">\({@popn4b@}\)</td>
+            <td style="text-align:center">\({@death4b@}\)</td>
+            <td style="text-align:center">\({@rate_4b@}\)</td>
+        </tr>
+ <tr>
+             <td style="text-align:center">\(50 –60\)</td>
+             <td style="text-align:center">\({@popn5a@}\)</td>
+             <td style="text-align:center">\({@death5a@}\)</td>
+             <td style="text-align:center">\({@rate_5a@}\)</td>
+            <td style="text-align:center">\({@popn5b@}\)</td>
+            <td style="text-align:center">\({@death5b@}\)</td>
+             <td style="text-align:center">\({@rate_5b@}\)</td>
+        </tr>
+       <tr>
+  <td style="text-align:center"><strong>Total</strong></td>
+  <td style="text-align:center">\(\sum={@sum_popn_a@}\)</td>
+  <td style="text-align:center">\(\sum={@sum_death_a@}\)</td>
+  <td style="text-align:center"></td>
+  <td style="text-align:center">\(\sum={@sum_popn_b@}\)</td>
+  <td style="text-align:center">\(\sum={@sum_death_b@}\)</td>
+  <td style="text-align:center"></td>
+</tr>
+
+    </tbody>
+</table>
+</p>
+<br>
+<p>Crude death rate \((CDR)=\displaystyle \frac{N}{P} \times 1000\) where \(N\) is the number of deaths and \(P\) is the population</p>
+<p>a). Crude death rate \((CDR)\) for town \(A=\displaystyle \frac{{@sum_death_a@}}{{@sum_popn_a@}} \times 1000={@cdr_A@}\) </p>
+<p>b). Crude death rate \((CDR)\) for town \(B=\displaystyle \frac{{@sum_death_b@}}{{@sum_popn_b@}} \times 1000={@cdr_B@}\)</p>
+<p>To Determine Standardized death rate of the town \(A\) and \(B\) taking population of town \(A\) as standard population:</p>
+<p>c). Standardized death rate (for town \(A\)) taking population of town \(A\) as standard population (this yields the same result as part (a) ):</p>
+<p>\(=\displaystyle \frac{({@popn1a@}\times {@rate_1a@})+({@popn2a@}\times {@rate_2a@})+({@popn3a@}\times {@rate_3a@})+({@popn4a@}\times {@rate_4a@})+({@popn5a@}\times {@rate_5a@})}{{@popn1a@}+{@popn2a@}+{@popn3a@}+{@popn4a@}+{@popn5a@}}={@std_rate_A@}\) </p>
+<p>d). Standardized death rate (for town \(B)\) taking population of town \(A\) as standard population (here we need to multiply the respective death rates of town \(B\) with the population of town \(A\) in each group):</p>
+<p>\(=\displaystyle \frac{({@popn1a@}\times {@rate_1b@})+({@popn2a@}\times {@rate_2a@})+({@popn3a@}\times {@rate_3b@})+({@popn4a@}\times {@rate_4b@})+({@popn5a@}\times {@rate_5b@})}{{@popn1a@}+{@popn2a@}+{@popn3a@}+{@popn4a@}+{@popn5a@}}={@std_rate_B@}\) </p>]]></text>
+    </generalfeedback>
+    <defaultgrade>0.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/*mortality*/
+popn1a:rand_with_step(10000,15000,500);/*population 1*/
+popn2a:popn1a+2000;
+popn3a:popn2a+2000;
+popn4a:popn3a+2000;
+popn5a:popn4a+2000;
+sum_popn_a:popn1a+popn2a+popn3a+popn4a+popn5a;
+
+/*death in A*/
+aa:makelist((rand_with_step(50,1000,100)),i,1,5);
+death1a:aa[1];
+death2a:aa[2];
+death3a:aa[3];
+death4a:aa[4];
+death5a:aa[5];
+sum_death_a:death1a+death2a+death3a+death4a+death5a;
+
+/*population 2*/
+popn1b:rand_with_step(20000,50000,1000);/*population 1*/
+popn2b:popn1b+2000;
+popn3b:popn2b+2000;
+popn4b:popn3b+2000;
+popn5b:popn4b+2000;
+sum_popn_b:popn1b+popn2b+popn3b+popn4b+popn5b;
+
+/*deaths in B*/
+aa:makelist((rand_with_step(200,2500,100)),i,1,5);
+death1b:aa[1];
+death2b:aa[2];
+death3b:aa[3];
+death4b:aa[4];
+death5b:aa[5];
+sum_death_b:death1b+death2b+death3b+death4b+death5b;
+
+/*death rates in A*/
+rate_1a:decimalplaces((death1a/popn1a)*1000,2);
+rate_2a:decimalplaces((death2a/popn2a)*1000,2);
+rate_3a:decimalplaces((death3a/popn3a)*1000,2);
+rate_4a:decimalplaces((death4a/popn4a)*1000,2);
+rate_5a:decimalplaces((death5a/popn5a)*1000,2);
+/*death rates in B*/
+rate_1b:decimalplaces((death1b/popn1b)*1000,2);
+rate_2b:decimalplaces((death2b/popn2b)*1000,2);
+rate_3b:decimalplaces((death3b/popn3b)*1000,2);
+rate_4b:decimalplaces((death4b/popn4b)*1000,2);
+rate_5b:decimalplaces((death5b/popn5b)*1000,2);
+
+/*worked solution variables*/
+cdr_A:decimalplaces((sum_death_a/sum_popn_a)*1000,2);
+cdr_B:decimalplaces((sum_death_b/sum_popn_b)*1000,2);
+std_rate_A:decimalplaces(((popn1a*rate_1a)+(popn2a*rate_2a)+(popn3a*rate_3a)+(popn4a*rate_4a)+(popn5a*rate_5a))/(sum_popn_a),2);
+std_rate_B:decimalplaces(((popn1a*rate_1b)+(popn2a*rate_2b)+(popn3a*rate_3b)+(popn4a*rate_4b)+(popn5a*rate_5b))/(sum_popn_a),2);
+sol1:if std_rate_A > std_rate_B then "higher" elseif std_rate_B > std_rate_A then "lower";
+is_lower: if sol1="lower" then true else false;
+ta8: [["Lower", is_lower],["higher", not lower]];]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>a). Crude death rate \((CDR)\) for town \(A={@cdr_A@}\) </p>
+<p>b). Crude death rate \((CDR)\) for town \(B={@cdr_B@}\)</p>
+<p>c). Standardized death rate (for town \(A={@std_rate_A@}\) </p>
+<p>d). Standardized death rate (for town \(B={@std_rate_B@}\) </p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept">https://docs.google.com/document/d/1iT91k2UHb1x2J9Puox1_rZ0yeHCvbhE9c4BmF2qSXKo/edit#heading=h.9eiwmuujj647</p>
+<p id="reviewer">Nixson Kiplagat</p>
+<p id="reviewer"></p>
+<p id="description">Given a table with age group,populations, deaths and death rate of town \(A\) and \(B\), the question focuses on finding the standardized death rates of the two towns and comparing their health.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>rate_1b</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>rate_2a</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>rate_3b</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>algebraic</type>
+      <tans>cdr_A</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans5</name>
+      <type>algebraic</type>
+      <tans>cdr_B</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans6</name>
+      <type>algebraic</type>
+      <tans>std_rate_A</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans7</name>
+      <type>algebraic</type>
+      <tans>std_rate_B</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>rate_1b</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks if the dp are more than 2</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans1</sans>
+        <tans>rate_1b</tans>
+        <testoptions>0.01</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.25</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Your answer is partially correct because you didn't leave it to the correct number of decimalplaces as required in the instructions.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer rate_2a</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>rate_2a</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks if the dp are more than 2</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans2</sans>
+        <tans>rate_2a</tans>
+        <testoptions>0.01</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.25</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Your answer is partially correct because you didn't leave it to the correct number of decimal places as required in the instructions.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer rate_3b</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>rate_3b</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks if the dp are more than 2</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans3</sans>
+        <tans>rate_3b</tans>
+        <testoptions>0.01</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.25</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Your answer is partially correct because you didn't leave it to the correct number of decimal places as required in the instructions.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer cdr_A</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>cdr_A</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks if the dp are more than 2</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans4</sans>
+        <tans>cdr_A</tans>
+        <testoptions>0.01</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.25</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Your answer is partially correct because you didn't leave it to the correct number of decimal places as required in the instructions.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt5</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer cdr_B</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5</sans>
+        <tans>cdr_B</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt5-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks if the dp are more than 2</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans5</sans>
+        <tans>cdr_B</tans>
+        <testoptions>0.01</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.25</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Your answer is partially correct because you didn't leave it to the correct number of decimal places as required in the instructions.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt5-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt6</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer std_rate_A</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans6</sans>
+        <tans>std_rate_A</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt6-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt6-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks if the dp are more than 2</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans6</sans>
+        <tans>std_rate_A</tans>
+        <testoptions>0.01</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.25</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt6-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Your answer is partially correct because you didn't leave it to the correct number of decimal places as required in the instructions.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt6-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt7</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer std_rate_B</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans7</sans>
+        <tans>std_rate_B</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt7-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt7-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks if the dp are more than 2</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans7</sans>
+        <tans>std_rate_B</tans>
+        <testoptions>0.01</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.25</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt7-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Your answer is partially correct because you didn't leave it to the correct number of decimal places as required in the instructions.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt7-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1691453728</deployedseed>
+    <deployedseed>1434625146</deployedseed>
+    <deployedseed>517596859</deployedseed>
+    <deployedseed>869405402</deployedseed>
+    <deployedseed>885024427</deployedseed>
+    <deployedseed>1016246433</deployedseed>
+    <deployedseed>351077822</deployedseed>
+    <deployedseed>1593989698</deployedseed>
+    <deployedseed>92927702</deployedseed>
+    <deployedseed>1578000130</deployedseed>
+    <deployedseed>824184340</deployedseed>
+    <deployedseed>566187149</deployedseed>
+    <deployedseed>800532916</deployedseed>
+    <deployedseed>1674473891</deployedseed>
+    <deployedseed>262048380</deployedseed>
+    <deployedseed>1953440569</deployedseed>
+    <deployedseed>1889197800</deployedseed>
+    <deployedseed>1587774428</deployedseed>
+    <deployedseed>1686841487</deployedseed>
+    <deployedseed>1550499796</deployedseed>
+    <deployedseed>1144792863</deployedseed>
+    <deployedseed>107903939</deployedseed>
+    <deployedseed>1750874570</deployedseed>
+    <deployedseed>2023024576</deployedseed>
+    <deployedseed>2077685435</deployedseed>
+    <deployedseed>1076813101</deployedseed>
+    <deployedseed>1976288290</deployedseed>
+    <deployedseed>1074439551</deployedseed>
+    <deployedseed>1438205403</deployedseed>
+    <deployedseed>1277696687</deployedseed>
+    <deployedseed>1460970395</deployedseed>
+    <deployedseed>617094222</deployedseed>
+    <deployedseed>1387861866</deployedseed>
+    <deployedseed>355079829</deployedseed>
+    <deployedseed>823351864</deployedseed>
+    <deployedseed>1066925389</deployedseed>
+    <deployedseed>1797956567</deployedseed>
+    <deployedseed>2094867940</deployedseed>
+    <deployedseed>1156212022</deployedseed>
+    <deployedseed>1926896261</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>rate_1b</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>rate_2a</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>rate_3b</value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value>cdr_A</value>
+      </testinput>
+      <testinput>
+        <name>ans5</name>
+        <value>cdr_B</value>
+      </testinput>
+      <testinput>
+        <name>ans6</name>
+        <value>std_rate_A</value>
+      </testinput>
+      <testinput>
+        <name>ans7</name>
+        <value>std_rate_B</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt4-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt5</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt5-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt6</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt6-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt7</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt7-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+</quiz>

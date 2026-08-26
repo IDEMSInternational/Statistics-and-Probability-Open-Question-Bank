@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz><question type="stack">
+    <name>
+      <text>Identifying Types of Variables</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Select the pair of terms that represent different types of variables</p>
+<p>[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked solution</h3>
+
+[[ if test="member(1, ta_index)" ]]
+<p>The correct answer is Discrete and continuous.</p>
+<p>These terms refer to types of variables. Discrete variables have distinct, separate values, often counted in whole numbers, while continuous variables can take any value within a range and are often measured with real numbers.
+</p>
+
+[[/ if ]]
+
+[[ if test="member(2, ta_index)" ]]
+<p>The correct answer is Qualitative and Quantitative variables.</p>
+<p>Qualitative variables, also known as categorical variables, are variables that represent categories, labels, or attributes. These categories are often non-numeric and describe different characteristics or qualities of items or individuals in a dataset. 
+</p>
+<p>Quantitative variables, also known as numeric variables, represent measurable quantities or numerical values. These variables are inherently numeric and can be subjected to mathematical operations, including addition, subtraction, multiplication, and division.
+</p>
+
+[[/ if ]]]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/*STA 141 week2 quizes*/
+correct_answer:rand_selection([
+[1, true, "Discrete and continuous"],
+[2, true, "Qualitative and Quantitative"]
+], 1);
+incorrect_answers:rand_selection([
+[3, false, "Population and sample"],
+[4, false, "Ratio and Interval"],
+[5, false, "Nominal and ordinal"],
+[6, false, "Descriptive and Inferential"],
+[7, false, "Probabilistic and non-probabilistic"],
+[8, false, "Quota and cluster"]
+], 3);
+ta: random_permutation(append(correct_answer,incorrect_answers));
+
+ta_index: sort(makelist(x[1], x, ta));
+ta_largest: last(ta_index);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Which of the following represent types of variables?</p>
+[[ if test="member(1, ta_index)" ]]
+
+<p>Discrete and continuous</p>
+
+[[/ if ]]
+
+[[ if test="member(2, ta_index)" ]]
+
+<p>Qualitative and Quantitative</p>
+
+[[/ if ]]]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Mary Sayuni<p>
+<p id="concept">N/A</p>
+<p id="reviewer">Godfrey Wabwire</p>
+<p id="reviewer">Juma Zevick</p>
+<p id="description">The question focuses on Identify the types of variables.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>radio</type>
+      <tans>ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>nonotanswered</options>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>[ans1]</sans>
+        <tans>mcq_correct(ta)</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>836658762</deployedseed>
+    <deployedseed>1179125409</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>first(mcq_correct(ta))</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+</quiz>

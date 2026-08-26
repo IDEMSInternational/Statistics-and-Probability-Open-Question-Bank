@@ -1,0 +1,542 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz><question type="stack">
+    <name>
+      <text>Analyzing Factory B's Wastage Rate and Workforce Management</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>The wastage rate in factory \(B\) has been found to be as follows.</p>
+<p>
+<table border="solid">
+  <tr>
+    <th width="50%", style="text-align:center">Year</th>
+    <th width="50%", style="text-align:center">Factory \(B\)</th>
+    </tr>
+ <tr>
+    <td width="50%", style="text-align:center">\(0\)</td>
+    <td width="50%", style="text-align:center">\({@wst_rt_y0@}\)</td>
+    </tr>
+ <tr>
+    <td width="50%", style="text-align:center">\(1\)</td>
+    <td width="50%", style="text-align:center">\({@wst_rt_y1@}\)</td>
+    </tr>
+ <tr>
+    <td width="50%", style="text-align:center">\(2\)</td>
+    <td width="50%", style="text-align:center">\({@wst_rt_y2@}\)</td>
+    </tr>
+ <tr>
+    <td width="50%", style="text-align:center">\(3\)</td>
+    <td width="50%", style="text-align:center">\({@wst_rt_y3@}\)</td>
+    </tr>
+ <tr>
+    <td width="50%", style="text-align:center">\(4\)</td>
+    <td width="50%", style="text-align:center">\({@wst_rt_y4@}\)</td>
+    </tr>
+ <tr>
+    <td width="50%", style="text-align:center">\(5\)</td>
+    <td width="50%", style="text-align:center">\({@wst_rt_y5@}\)</td>
+    </tr>
+ <tr>
+    <td width="50%", style="text-align:center">\(6\)</td>
+    <td width="50%", style="text-align:center">\({@wst_rt_y6@}\)</td>
+    </tr>
+</table>
+</p>
+<p>Calculate the average length of service of an employee and the annual intake required to maintain the staff at \({@no_of_staff@}\) persons.</p>
+<p><b>Note: </b> <b>Compute the answer using a life table with a radix of 1000; round off the values in your table to the nearest integer.</b></p>
+<p>a) The average length of service of an employee \(=\) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]\(years\)  <b>(Give your answer correct to 3 decimal places)</b></p>
+<p>b) The annual intake required to maintain the staff at \({@no_of_staff@}\) persons \(=\) [[input:ans2]] [[validation:ans2]][[feedback:prt2]] \(persons\) <b>(Give your answer to the nearest whole number)</b></p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution </h3>
+<p>Always assume the radix of  \(l_0=1000\) and that withdrawals are uniformly spread over the year.</p>
+<p>For factory \(B\), we have:</p>
+<p>\(d_x = l_x * q_x\): this is the number of deaths between ages \(x\) and \(x+1\).</p>
+<p>\(l_{x+1} = l_x - d_x\): this is the number of survivors to exact age \(x\).</p>
+<p> \(L_x =\frac{l_{x+1}+l_x}{2}\): this is the number of persons now alive (present in the factory) and aged (has worked) between \(x\) and \(x+1\) years exactly (also called survivors between \(x\) and \(x+1\)).</p>
+<p>\(T_x = L_x + L_{x+1} + ...\): this is the total number of person years lived between ages \(x\) and \(x+n\).</p>
+<p></p>
+<p>Therefore, the total number of years lived between each age interval is:</p>
+<p>\(L_0 + L_1 + L_2 + L_3 +………..+L_n = T_0\)</p>
+<p> Similarly,</p>
+<p>\( T_x = L_x + L_{x+1} + L_{x+2} +…………+  L_{x+n}\)</p>
+<p>\(T_x = L_x + T_{x+1} \) hence, \(T_x\) is also known as the number of persons aged \(x\) and over in a stationary population.</p>
+<p>We can also write \(T_x\) as follows;</p>
+<p>\(T_x =\sum_{i=1}^n\) and so, \(T_x\) can also mean the life table total population.</p>
+<p>(withdrawals are taken to be deaths)</p>
+<p>For factory \(B\), we have:</p>
+<table border="solid">
+  <tr>
+    <th width="16.7%", style="text-align:center">Year</th>
+    <th width="16.66%", style="text-align:center">\(q_x\)</th>
+     <th width="16.66%", style="text-align:center">\(l_x\)</th>
+     <th width="16.66%", style="text-align:center">\(d_x\)</th>
+    <th width="16.66%", style="text-align:center">\(L_x\)</th>
+     <th width="16.66%", style="text-align:center">\(T_x\)</th>
+  </tr>
+   <tr>
+    <td width="16.7%", style="text-align:center">\(0\)</td>
+    <td width="16.66%", style="text-align:center">\({@wst_rt_y0@}\)</td>
+     <td width="16.66%", style="text-align:center">\({@l0@}\)</td>
+     <td width="16.66%", style="text-align:center">\({@d0@}\)</td>
+    <td width="16.66%", style="text-align:center">\({@L0@}\)</td>
+     <td width="16.66%", style="text-align:center">\({@T0@}\)</td>
+  </tr>
+   <tr>
+    <td width="16.7%", style="text-align:center">\(1\)</td>
+    <td width="16.66%", style="text-align:center">\({@wst_rt_y1@}\)</td>
+     <td width="16.66%", style="text-align:center">\({@l1@}\)</td>
+     <td width="16.66%", style="text-align:center">\({@d1@}\)</td>
+    <td width="16.66%", style="text-align:center">\({@L1@}\)</td>
+     <td width="16.66%", style="text-align:center">\({@T1@}\)</td>
+  </tr>
+    <tr>
+    <td width="16.7%", style="text-align:center">\(2\)</td>
+    <td width="16.66%", style="text-align:center">\({@wst_rt_y2@}\)</td>
+     <td width="16.66%", style="text-align:center">\({@l2@}\)</td>
+     <td width="16.66%", style="text-align:center">\({@d2@}\)</td>
+    <td width="16.66%", style="text-align:center">\({@L2@}\)</td>
+     <td width="16.66%", style="text-align:center">\({@T2@}\)</td>
+  </tr>
+   <tr>
+    <td width="16.7%", style="text-align:center">\(3\)</td>
+    <td width="16.66%", style="text-align:center">\({@wst_rt_y3@}\)</td>
+     <td width="16.66%", style="text-align:center">\({@l3@}\)</td>
+     <td width="16.66%", style="text-align:center">\({@d3@}\)</td>
+    <td width="16.66%", style="text-align:center">\({@L3@}\)</td>
+     <td width="16.66%", style="text-align:center">\({@T3@}\)</td>
+  </tr>
+   <tr>
+    <td width="16.7%", style="text-align:center">\(4\)</td>
+    <td width="16.66%", style="text-align:center">\({@wst_rt_y4@}\)</td>
+     <td width="16.66%", style="text-align:center">\({@l4@}\)</td>
+     <td width="16.66%", style="text-align:center">\({@d4@}\)</td>
+    <td width="16.66%", style="text-align:center">\({@L4@}\)</td>
+     <td width="16.66%", style="text-align:center">\({@T4@}\)</td>
+  </tr>
+   <tr>
+    <td width="16.7%", style="text-align:center">\(5\)</td>
+    <td width="16.66%", style="text-align:center">\({@wst_rt_y5@}\)</td>
+     <td width="16.66%", style="text-align:center">\({@l5@}\)</td>
+     <td width="16.66%", style="text-align:center">\({@d5@}\)</td>
+    <td width="16.66%", style="text-align:center">\({@L5@}\)</td>
+     <td width="16.66%", style="text-align:center">\({@T5@}\)</td>
+  </tr>
+   <tr>
+    <td width="16.7%", style="text-align:center">\(6\)</td>
+    <td width="16.66%", style="text-align:center">\({@wst_rt_y6@}\)</td>
+     <td width="16.66%", style="text-align:center">\({@l6@}\)</td>
+     <td width="16.66%", style="text-align:center">\({@d6@}\)</td>
+    <td width="16.66%", style="text-align:center">\({@L6@}\)</td>
+     <td width="16.66%", style="text-align:center">\({@T6@}\)</td>
+  </tr>
+   <tr>
+    <td width="16.7%", style="text-align:center">\(7\)</td>
+    <td width="16.66%", style="text-align:center">\({@0@}\)</td>
+     <td width="16.66%", style="text-align:center">\({@l7@}\)</td>
+     <td width="16.66%", style="text-align:center">\({@d7@}\)</td>
+    <td width="16.66%", style="text-align:center">\({@L7@}\)</td>
+     <td width="16.66%", style="text-align:center">\({@T7@}\)</td>
+  </tr>
+</table>
+<p></p>
+<p>(a) Computing the average length of service:</p>
+<p>\(e^0_x=\frac{{@T0@}}{{@l0@}}={@ta1@}\)</p>
+<p></p>
+<p>(b) A steady intake of \(l_o={@l0@}\) new employees would produce a staff of \(T_o= {@T0@}\) for company B.</p>
+<p>Hence, for the total staff in this case is to be maintained at \({@no_of_staff@}\),
+the annual intake should be \(=l_0 (\frac{\text{required employees}}{T_o}) ={@l0@} \times \frac{{@no_of_staff@}}{{@T0@}}={@ta2@}\)  persons.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>wasterate_y0:rand_with_step(1,9,1);
+wasterate_y1:rand_with_prohib(1,9,[wasterate_y0]);
+wasterate_y2:rand_with_prohib(1,9,[wasterate_y0,wasterate_y1]);
+wasterate_y3:rand_with_prohib(1,9,[wasterate_y0,wasterate_y1,wasterate_y2]);
+wasterate_y4:rand_with_prohib(1,9,[wasterate_y0,wasterate_y1,wasterate_y2,wasterate_y3]);
+wasterate_y5:rand_with_prohib(1,9,[wasterate_y0,wasterate_y1,wasterate_y2,wasterate_y3,wasterate_y4]);
+wasterate_y6:10;
+
+wst_rt_y0:decimalplaces(((wasterate_y0*100)/1000),3);
+wst_rt_y1:decimalplaces(((wasterate_y1*100)/1000),3);
+wst_rt_y2:decimalplaces(((wasterate_y2*100)/1000),3);
+wst_rt_y3:decimalplaces(((wasterate_y3*100)/1000),3);
+wst_rt_y4:decimalplaces(((wasterate_y4*100)/1000),3);
+wst_rt_y5:decimalplaces(((wasterate_y5*100)/1000),3);
+wst_rt_y6:decimalplaces(((wasterate_y6*100)/1000),3);
+no_of_staff:rand_with_step(1000,2000,100);
+
+l0:1000;
+l1:round(l0-(wst_rt_y0*l0));
+l2:round(l1-(wst_rt_y1*l1));
+l3:round(l2-(wst_rt_y2*l2));
+l4:round(l3-(wst_rt_y3*l3));
+l5:round(l4-(wst_rt_y4*l4));
+l6:round(l5-(wst_rt_y5*l5));
+l7:0;
+
+d0:round((l0-l1));
+d1:round((l1-l2));
+d2:round((l2-l3));
+d3:round((l3-l4));
+d4:round((l4-l5));
+d5:round((l5-l6));
+d6:round((l6-l7));
+d7:0;
+
+L0:round(((l0+l1)/2));
+L1:round(((l1+l2)/2));
+L2:round(((l2+l3)/2));
+L3:round(((l3+l4)/2));
+L4:round(((l4+l5)/2));
+L5:round(((l5+l6)/2));
+L6:round(((l6+l7)/2));
+L7:0;
+
+T0:(L0+L1+L2+L3+L4+L5+L6+L7);
+T1:(L1+L2+L3+L4+L5+L6+L7);
+T2:(L2+L3+L4+L5+L6+L7);
+T3:(L3+L4+L5+L6+L7);
+T4:(L4+L5+L6+L7);
+T5:(L5+L6+L7);
+T6:(L6+L7);
+T7:L7;
+/*Model Answers*/
+ta1:decimalplaces((T0/1000),3);
+ta2:round(1000*(no_of_staff/T0));</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>
+<table border="solid">
+  <tr>
+    <th width="50%", style="text-align:center">Year</th>
+    <th width="50%", style="text-align:center">Factory \(B\)</th>
+    </tr>
+ <tr>
+    <th width="50%", style="text-align:center">\(0\)</th>
+    <th width="50%", style="text-align:center">\({@wst_rt_y0@}\)</th>
+    </tr>
+ <tr>
+    <th width="50%", style="text-align:center">\(1\)</th>
+    <th width="50%", style="text-align:center">\({@wst_rt_y1@}\)</th>
+    </tr>
+ <tr>
+    <th width="50%", style="text-align:center">\(2\)</th>
+    <th width="50%", style="text-align:center">\({@wst_rt_y2@}\)</th>
+    </tr>
+ <tr>
+    <th width="50%", style="text-align:center">\(3\)</th>
+    <th width="50%", style="text-align:center">\({@wst_rt_y3@}\)</th>
+    </tr>
+ <tr>
+    <th width="50%", style="text-align:center">\(4\)</th>
+    <th width="50%", style="text-align:center">\({@wst_rt_y4@}\)</th>
+    </tr>
+ <tr>
+    <th width="50%", style="text-align:center">\(5\)</th>
+    <th width="50%", style="text-align:center">\({@wst_rt_y5@}\)</th>
+    </tr>
+ <tr>
+    <th width="50%", style="text-align:center">\(6\)</th>
+    <th width="50%", style="text-align:center">\({@wst_rt_y6@}\)</th>
+    </tr>
+</table>
+</p>
+<p>The average length of service of an employee \(={@ta1@} \, years\) </p>
+<p>The annual intake required to maintain the staff at {@no_of_staff@} persons \(={@ta2@} \, persons\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Nixson Kiplagat</p>
+<p id="concept">https://docs.google.com/document/d/1pBRXhxfxjLw0NfGCdz3Irl2i4sWRVN0ukuqETMdPew4/edit</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">[Reviewer 2 Name]</p>
+<p id="description">This question requires the student to calculate the average length of service of an employee and the annual intake required to maintain the staff at a specified number of persons based on the given wastage rates in Factory B over seven years.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>6</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>6</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>NumRelative</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions>0.05</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/
+/*Node 2: This checks whether the student correctly evaluated the second answer despite having provided an incorrect answer previously.*/
+ta2_1:round(1000*(no_of_staff/(ans1*1000)));</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>NumRelative</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions>0.05</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>This checks whether the student correctly evaluated the second answer despite having provided an incorrect answer previously.</description>
+        <answertest>NumRelative</answertest>
+        <sans>ans2</sans>
+        <tans>ta2_1</tans>
+        <testoptions>0.05</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Your answer is correct based on your previous wrong evaluation.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>2028309428</deployedseed>
+    <deployedseed>1344374496</deployedseed>
+    <deployedseed>915646050</deployedseed>
+    <deployedseed>711060241</deployedseed>
+    <deployedseed>1656530166</deployedseed>
+    <deployedseed>363721739</deployedseed>
+    <deployedseed>417046233</deployedseed>
+    <deployedseed>208011165</deployedseed>
+    <deployedseed>577656700</deployedseed>
+    <deployedseed>1496126413</deployedseed>
+    <deployedseed>1308814517</deployedseed>
+    <deployedseed>1832381971</deployedseed>
+    <deployedseed>375311844</deployedseed>
+    <deployedseed>2091307192</deployedseed>
+    <deployedseed>1466954844</deployedseed>
+    <deployedseed>276203056</deployedseed>
+    <deployedseed>867380231</deployedseed>
+    <deployedseed>601552743</deployedseed>
+    <deployedseed>185094542</deployedseed>
+    <deployedseed>1482616053</deployedseed>
+    <deployedseed>613829934</deployedseed>
+    <deployedseed>708966474</deployedseed>
+    <deployedseed>1782768158</deployedseed>
+    <deployedseed>249325360</deployedseed>
+    <deployedseed>270176843</deployedseed>
+    <deployedseed>1294189404</deployedseed>
+    <deployedseed>651171574</deployedseed>
+    <deployedseed>56889500</deployedseed>
+    <deployedseed>943978318</deployedseed>
+    <deployedseed>868814077</deployedseed>
+    <deployedseed>674742288</deployedseed>
+    <deployedseed>1579788139</deployedseed>
+    <deployedseed>188741231</deployedseed>
+    <deployedseed>2006202849</deployedseed>
+    <deployedseed>1365748216</deployedseed>
+    <deployedseed>443498520</deployedseed>
+    <deployedseed>833166574</deployedseed>
+    <deployedseed>1178725085</deployedseed>
+    <deployedseed>2147429666</deployedseed>
+    <deployedseed>457235640</deployedseed>
+    <deployedseed>845635527</deployedseed>
+    <deployedseed>2029701897</deployedseed>
+    <deployedseed>307415991</deployedseed>
+    <deployedseed>400161112</deployedseed>
+    <deployedseed>1266989842</deployedseed>
+    <deployedseed>1209052960</deployedseed>
+    <deployedseed>1032375616</deployedseed>
+    <deployedseed>1778897641</deployedseed>
+    <deployedseed>891522979</deployedseed>
+    <deployedseed>621015991</deployedseed>
+    <deployedseed>1624949581</deployedseed>
+    <deployedseed>1865890103</deployedseed>
+    <deployedseed>1264611388</deployedseed>
+    <deployedseed>1770443237</deployedseed>
+    <deployedseed>140572995</deployedseed>
+    <deployedseed>310653074</deployedseed>
+    <deployedseed>32825414</deployedseed>
+    <deployedseed>1810421050</deployedseed>
+    <deployedseed>1931648010</deployedseed>
+    <deployedseed>819387318</deployedseed>
+    <deployedseed>802919879</deployedseed>
+    <deployedseed>1247774248</deployedseed>
+    <deployedseed>175884322</deployedseed>
+    <deployedseed>2009114250</deployedseed>
+    <deployedseed>1026002269</deployedseed>
+    <deployedseed>1744880553</deployedseed>
+    <deployedseed>664060587</deployedseed>
+    <deployedseed>2031544827</deployedseed>
+    <deployedseed>1471766605</deployedseed>
+    <deployedseed>1415272453</deployedseed>
+    <deployedseed>971938288</deployedseed>
+    <deployedseed>434702089</deployedseed>
+    <deployedseed>26377675</deployedseed>
+    <deployedseed>1696390382</deployedseed>
+    <deployedseed>758008119</deployedseed>
+    <deployedseed>1975721617</deployedseed>
+    <deployedseed>1396757186</deployedseed>
+    <deployedseed>64077826</deployedseed>
+    <deployedseed>629421513</deployedseed>
+    <deployedseed>85913976</deployedseed>
+    <deployedseed>1126660818</deployedseed>
+    <deployedseed>1682956444</deployedseed>
+    <deployedseed>410047127</deployedseed>
+    <deployedseed>408509602</deployedseed>
+    <deployedseed>1546222004</deployedseed>
+    <deployedseed>16775182</deployedseed>
+    <deployedseed>700997548</deployedseed>
+    <deployedseed>1096742080</deployedseed>
+    <deployedseed>1813838406</deployedseed>
+    <deployedseed>1578129488</deployedseed>
+    <deployedseed>2975761</deployedseed>
+    <deployedseed>646908132</deployedseed>
+    <deployedseed>1798659406</deployedseed>
+    <deployedseed>3791761</deployedseed>
+    <deployedseed>1858299764</deployedseed>
+    <deployedseed>861554460</deployedseed>
+    <deployedseed>981096545</deployedseed>
+    <deployedseed>863023263</deployedseed>
+    <deployedseed>1662605771</deployedseed>
+    <deployedseed>1307542995</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+</quiz>

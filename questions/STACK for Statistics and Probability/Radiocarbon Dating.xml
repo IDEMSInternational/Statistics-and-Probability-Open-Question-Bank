@@ -1,0 +1,251 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz><question type="stack">
+    <name>
+      <text>Radiocarbon Dating</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>One of the most common applications of an exponential decay model is carbon dating. 
+Carbon-14 decays (emits a radioactive particle) at a regular and consistent exponential rate. Therefore, if we know how much carbon was originally present in an object and how much carbon remains, we can determine the age of the object. The half-life of carbon-14 is approximately \({@carbon_age@}\) years—meaning, after that many years, half the material has converted from the original carbon-14 to the new nonradioactive nitrogen-14. If we have \({@carbon_gram_originally@}\) g carbon-14 today, how much is left in \({@time_yr@}\) years? If an artifact that originally contained \({@carbon_gram_originally@}\) g of carbon now contains \({@carbon_gram_now@}\)  g of carbon, how old is it? Round the answer to the nearest hundred years.   </p>
+<p>In  \({@time_yr@}\) years, how much carbon-14 remains?<p>
+
+<p>[[input:ans1]]grams [[validation:ans1]][[feedback:prt1]]</p>
+<p> Determine the age  of the artifact.</p>
+<p>Age of the artifact \(=\) [[input:ans2]] years [[validation:ans2]][[feedback:prt2]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked solution</h3>
+ <p>To determine how much carbon-\(14\) is left in {@time_yr@} years, we can use the exponential decay formula:</p>
+
+    <p>\[ \displaystyle N(t) = N_0 \cdot e^{-k t}\]</p>
+
+    <p>Where:</p>
+    <ul>
+        <li>\(N(t)\) is the amount of carbon-\(14\) remaining at time \(t\).</li>
+        <li>\(N_0\) is the initial amount of carbon-\(14\).</li>
+        <li>\(k\) is the decay constant, which is related to the half-life (\(\displaystyle t_{\textbf{half}}\)).</li>
+        <li>\(t\) is the time in years.</li>
+    </ul>
+
+<p>We have</p>
+<p>\(\displaystyle {@carbon_age@}=\frac{\ln 2}{k}\)</p>
+<p>\(\displaystyle k=\frac{\ln 2}{{@carbon_age@}}\)</p>
+<p>So, the model says</p>
+<p>\(\displaystyle y={@carbon_gram_originally@}e^{-(\frac{\ln 2}{{@carbon_age@}}t)}\)</p>
+<p>In \({@time_yr@}\) years, we have</p>
+<p>\(\displaystyle y={@carbon_gram_originally@}e^{-(\frac{\ln 2}{{@carbon_age@}})({@time_yr@})}\)</p>
+<p>\( \displaystyle \quad \approx {@ta_1@}\) </p>
+<p>Therefore, in \({@time_yr@}\) years, \(\displaystyle  {@ta_1@}\) g of carbon-14 remains.</p>
+<p>To determine the age of the artifact, we must solve</p>
+<p>\(\displaystyle {@carbon_gram_now@}={@carbon_gram_originally@}e^{-(\frac{\ln 2}{{@carbon_age@}}t)}\)</p>
+<p>\(\displaystyle {@carbon_gram_now/carbon_gram_originally@}=e^{-(\frac{\ln 2}{{@carbon_age@}}t)}\)</p>
+<p>\(t \approx {@ta_2c@}\) </p>
+<p>The artifact is about  \({@ta_2@}\) years old.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>carbon_age:rand_with_step(1730,7730,1000);
+carbon_gram_originally:rand_with_step(100,500,50);
+carbon_gram_now:carbon_gram_originally/10;
+time_yr:rand_with_step(20,70,10);
+ta_1:decimalplaces(carbon_gram_originally*(e^-((ln(2)/carbon_age)*time_yr)),2);
+ta_2a:carbon_gram_now/carbon_gram_originally=(e^-((ln(2)/carbon_age)*t));
+ta_2b:rhs(float(solve(ta_2a,t)[1]));
+ta_2c:round(ta_2b);
+ta_2:significantfigures(ta_2c,2);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>The half-life of carbon-14 is approximately \({@carbon_age@}\) years</p>
+<p>The carbon-14 we have originally is  \({@carbon_gram_originally@}\) g</p>
+<p>Time of decay is  \({@time_yr@}\) years</p>
+<p>The artifact is about  \({@ta_2@}\)
+  years old.</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Emmaculate Odhiambo</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Godfrey Wabwire</p>
+<p id="reviewer">Wastalas Motognon</p>
+<p id="description"> The question is on applications of an exponential decay model is carbon dating,Carbon-14 decays (emits a radioactive particle) at a regular and consistent exponential rate, it requires to find the student the remains of the decay over a given period of time in years.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta_1</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta_2</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>181245069</deployedseed>
+    <deployedseed>1911454365</deployedseed>
+    <deployedseed>1369613250</deployedseed>
+    <deployedseed>1019888119</deployedseed>
+    <deployedseed>677247468</deployedseed>
+    <deployedseed>314124864</deployedseed>
+    <deployedseed>570997047</deployedseed>
+    <deployedseed>328421855</deployedseed>
+    <deployedseed>879340929</deployedseed>
+    <deployedseed>2012478853</deployedseed>
+    <deployedseed>540387935</deployedseed>
+    <deployedseed>1453911066</deployedseed>
+    <deployedseed>605837774</deployedseed>
+    <deployedseed>339587706</deployedseed>
+    <deployedseed>1824082674</deployedseed>
+    <deployedseed>1061886727</deployedseed>
+    <deployedseed>1263195184</deployedseed>
+    <deployedseed>1070327306</deployedseed>
+    <deployedseed>319987028</deployedseed>
+    <deployedseed>176200851</deployedseed>
+    <deployedseed>514400107</deployedseed>
+    <deployedseed>93948307</deployedseed>
+    <deployedseed>2092078068</deployedseed>
+    <deployedseed>218440835</deployedseed>
+    <deployedseed>652769340</deployedseed>
+    <deployedseed>1583161571</deployedseed>
+    <deployedseed>717097920</deployedseed>
+    <deployedseed>1135308931</deployedseed>
+    <deployedseed>752830307</deployedseed>
+    <deployedseed>451023973</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description>Test case assuming the teacher's input gets full marks.</description>
+      <testinput>
+        <name>ans1</name>
+        <value>ans1</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>prt1-1-F</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+</quiz>

@@ -1,0 +1,203 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz><question type="stack">
+    <name>
+      <text>Basic Demographic Measures_Q1</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Which of the following is <b> NOT </b> a characteristic of a population pyramid ?</p>
+<p>[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked solution</h3>
+
+[[ if test="member(1, ta_index)" ]]
+<p>The correct answer is <i> It has male population of various age groups  shown on the positive  side  and the corresponding female population  shown on the negative side of the x-axis. </i></p>
+<p> It has male population of various age groups shown on the positive side and the corresponding female population shown on the negative side of the x-axis" does not represent a characteristic of a typical population pyramid.
+A population pyramid is a graphical representation of the age and sex distribution of a population. </p>
+
+[[/ if ]]
+
+[[ if test="member(2, ta_index)" ]]
+<p>The correct answer is <i> It has life expectancy of the individuals shown on the pyramid.</i> </p>
+<p>When a population pyramid includes information about the life expectancy of individuals, it means that the graphical representation not only shows the distribution of age groups but also provides an indication of the average lifespan within that population.</p>
+[[/ if ]]
+
+[[ if test="member(3, ta_index)" ]]
+<p>The correct answer is <i>It can be used to project population growth.</i></p>
+<p>A population pyramid is a graphical representation of the age and sex distribution of a population at a specific point in time. While it primarily provides a snapshot of the existing population structure, it can also be used to project population growth and make inferences about future demographic trends.
+</p>
+[[/ if ]]]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[correct_answer:rand_selection([
+[1, true, "It has male population of various age groups  shown on the positive  side  and the corresponding female population  shown on the negative side of the x-axis.
+"],
+[2, true, "It has life expectancy of the individuals shown on the pyramid
+"],
+[3, true, "It can be used to project population growth
+"]],1);
+incorrect_answers:rand_selection([
+[4, false, "It is a triangular solid body having triangular sides meeting in a point at the top"],
+[5, false, "It has Age sex distribution of the population presented in a graphical form"],
+[6, false, " It has the height of each horizontal bar representing the age group while the length shows the population in each age group"],
+[7, false, "It has ages  marked off at the y-axis with ‘0’ as the origin"]], 3);
+ta: random_permutation(append(correct_answer,incorrect_answers));
+
+ta_index: sort(makelist(x[1], x, ta));
+ta_largest: last(ta_index);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Which of the following is not a characteristic of a population pyramid ?</p>
+<p>{@ta@}</p>
+
+[[ if test="member(1, ta_index)" ]]
+<p>It has male population of various age groups  shown on the positive  side  and the corresponding female population  shown on the negative side of the x-axis.</p>
+[[/ if ]]
+
+[[ if test="member(2, ta_index)" ]]
+<p>It has life expectancy of the individuals shown on the pyramid.</p>
+
+[[/ if ]]
+
+[[ if test="member(3, ta_index)" ]]
+<p>It can be used to project population growth.</p>
+[[/ if ]]]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Mary Sayuni<p>
+<p id="concept">https://docs.google.com/document/d/1dn03Buumm_POFugBru-xnhyuEXMewHYtefsrEY_H9KM/edit#heading=h.j3chgt1zcto0</p>
+<p id="reviewer">Godfrey Wabwire</p>
+<p id="reviewer"></p>
+<p id="description">The question focuses on which of the following is not a characteristic of a population pyramid ?</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>radio</type>
+      <tans>ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>nonotanswered</options>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct option</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>[ans1]</sans>
+        <tans>mcq_correct(ta)</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1588513741</deployedseed>
+    <deployedseed>782779142</deployedseed>
+    <deployedseed>1185456700</deployedseed>
+    <deployedseed>1538833399</deployedseed>
+    <deployedseed>723201539</deployedseed>
+    <deployedseed>1768569383</deployedseed>
+    <deployedseed>1254849449</deployedseed>
+    <deployedseed>1536709676</deployedseed>
+    <deployedseed>1773303590</deployedseed>
+    <deployedseed>1424263204</deployedseed>
+    <deployedseed>723730150</deployedseed>
+    <deployedseed>1935467606</deployedseed>
+    <deployedseed>592844122</deployedseed>
+    <deployedseed>1144029470</deployedseed>
+    <deployedseed>1435628726</deployedseed>
+    <deployedseed>1808979689</deployedseed>
+    <deployedseed>892609862</deployedseed>
+    <deployedseed>795336433</deployedseed>
+    <deployedseed>1704985456</deployedseed>
+    <deployedseed>1333554606</deployedseed>
+    <deployedseed>57843210</deployedseed>
+    <deployedseed>69473265</deployedseed>
+    <deployedseed>634001438</deployedseed>
+    <deployedseed>1617233035</deployedseed>
+    <deployedseed>1594421898</deployedseed>
+    <deployedseed>879536584</deployedseed>
+    <deployedseed>466744600</deployedseed>
+    <deployedseed>1097262400</deployedseed>
+    <deployedseed>958974742</deployedseed>
+    <deployedseed>976468360</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>first(mcq_correct(ta))</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+</quiz>

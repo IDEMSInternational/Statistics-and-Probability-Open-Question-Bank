@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz><question type="multichoice">
+    <name>
+      <text>Approximate the percentile value for grouped data</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Recently, the City of Winnipeg has been criticized for its excessive discharges of untreated sewage into the Red River.  A microbiologist takes 45 samples of water downstream from the treated sewage outlet and measures the number of coliform bacteria present. A summary table is as follows:</p>
+<p>No. of      No. of</p>
+<p>Bacteria   Samples</p>
+<p>20-30         5</p>
+<p>30-40        20</p>
+<p>40-50        15</p>
+<p>50-60         5</p>
+<p>The 80th percentile is approximately:</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text/>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text/>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text/>
+    </incorrectfeedback>
+    <answer fraction="0" format="html">
+      <text>45</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>47</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>80</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>48</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>36</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+  </question>
+
+</quiz>

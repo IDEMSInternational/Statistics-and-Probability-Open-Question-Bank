@@ -1,0 +1,274 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz><question type="stack">
+    <name>
+      <text>Effect of moving averages in SD</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>If the standard deviation of \(\displaystyle x_1,x_2,x_3,...,x_n\) is \({@given_stddev@}\), then what is the standard deviation of \(\displaystyle {@a@},\,  {@b@}, \,..., \, {@c@}?\)</p>
+<p>The new standard deviation \(= \) [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>To find the standard deviation of a new set of values obtained by applying a linear transformation to the original set, we can use the following formula:</p>
+<p>If \( \displaystyle X = [x_1, x_2, x_3, ..., x_n]\) is the original set of values with standard deviation \( \sigma \), and \( \displaystyle  Y= [y_1, y_2, y_3, ..., y_n]\)  is the new set of values obtained by applying the linear transformation \(aX + b\), then the standard deviation of \(Y\) is given by:</p>
+<p>\( \displaystyle  \sigma_y = \left|a \right| \cdot \sigma_x \)</p>
+<p>where \(\sigma_y \) is the standard deviation of \(Y\), \(\sigma_x\) is the standard deviation of \(X\), and \( \displaystyle  \left|a \right|\) denotes the absolute value of \(a\).</p>
+<p>In this case, we have the original set of values \( \displaystyle X = [x_1, x_2, x_3, ..., x_n]\) with a standard deviation of \({@given_stddev@}\).</p>
+<p>We want to find the standard deviation of the new set of values \( \displaystyle  Y = [{@a@},\,  {@b@}, \,..., \, {@c@}]\).</p>
+<p>Here, \( \displaystyle  a = {@transformation_factor@}\) and \(b = {@shift_factor@}\). Applying the formula, we have:</p>
+<p>\(  \displaystyle  \sigma_y = \left| {@transformation_factor@} \right| \cdot \sigma_x ={@abs(transformation_factor)@} \cdot {@shift_factor@} = {@new_stddev@} \)</p>
+<p>Therefore, the standard deviation of the new set of values \( \displaystyle  {@a@},\,  {@b@}, \,..., \, {@c@}\) is \( {@new_stddev@} \).
+</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Question variables*/
+list1: [x_1,x_2,x_3,x_n];
+given_stddev:rand(10)+3;
+transformation_factor:rand_with_prohib(-5,10,[0,given_stddev]);  
+shift_factor: given_stddev; /*3*/
+a:transformation_factor*x_1+shift_factor;
+b:transformation_factor*x_2+shift_factor;
+c:transformation_factor*x_n+shift_factor;
+new_stddev: given_stddev * abs(transformation_factor);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(x_1,x_2,x_3,...,x_n\) \(\sigma_1 = {@given_stddev@}\),</p>
+<p> \({@a@},\,  {@b@}, \,..., \, {@c@}\) \(\sigma_2={@new_stddev@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Nixson Kiplagat</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">Wastalas</p>
+<p id="description">The question focuses on finding standard deviation of a non grouped data </p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>new_stddev</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*possible mistake*/
+/*node 1 checks for correct answer*/
+/*node 2 mistake:Neglecting to account for absolute value*/
+mistake_2:given_stddev * (transformation_factor);
+/*node 3 mistake: Not including the shift factor:*/
+mistake_3:transformation_factor;
+/*node 4 mistake: Not including the transformation factor:*/
+mistake_4:given_stddev;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>new_stddev</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Neglecting to account for absolute value</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.25</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Your  standard deviation is negative.</p>
+<p>Note that the standard deviation is always a positive value, so it's important to consider the <b>absolute value</b> of the <b>transformation factor</b> to ensure you have the correct calculation.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>Not including the shift factor</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.25</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>In your answer you did not include the <b>shift factor</b>. Take a look at the worked solution.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>Not including the transformation factor</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.25</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>In your answer you did not include the <b>transformation factor</b>. Take a look at the worked solution.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1433788164</deployedseed>
+    <deployedseed>759778761</deployedseed>
+    <deployedseed>373419820</deployedseed>
+    <deployedseed>1667765717</deployedseed>
+    <deployedseed>174043556</deployedseed>
+    <deployedseed>1102267691</deployedseed>
+    <deployedseed>796955013</deployedseed>
+    <deployedseed>563604078</deployedseed>
+    <deployedseed>1835697523</deployedseed>
+    <deployedseed>427871070</deployedseed>
+    <deployedseed>328581171</deployedseed>
+    <deployedseed>633724226</deployedseed>
+    <deployedseed>1175534302</deployedseed>
+    <deployedseed>275623264</deployedseed>
+    <deployedseed>1732763858</deployedseed>
+    <deployedseed>1668128928</deployedseed>
+    <deployedseed>1352799817</deployedseed>
+    <deployedseed>361462909</deployedseed>
+    <deployedseed>2019084065</deployedseed>
+    <deployedseed>1678652827</deployedseed>
+    <deployedseed>1808029389</deployedseed>
+    <deployedseed>179084565</deployedseed>
+    <deployedseed>915448216</deployedseed>
+    <deployedseed>1248748786</deployedseed>
+    <deployedseed>830748025</deployedseed>
+    <deployedseed>1970966304</deployedseed>
+    <deployedseed>542838274</deployedseed>
+    <deployedseed>936891924</deployedseed>
+    <deployedseed>1461106006</deployedseed>
+    <deployedseed>697919679</deployedseed>
+    <deployedseed>880059070</deployedseed>
+    <deployedseed>457837902</deployedseed>
+    <deployedseed>1148024308</deployedseed>
+    <deployedseed>449808885</deployedseed>
+    <deployedseed>1708625712</deployedseed>
+    <deployedseed>1771789133</deployedseed>
+    <deployedseed>1696482651</deployedseed>
+    <deployedseed>821256585</deployedseed>
+    <deployedseed>8555902</deployedseed>
+    <deployedseed>559590424</deployedseed>
+    <deployedseed>1939028557</deployedseed>
+    <deployedseed>413437716</deployedseed>
+    <deployedseed>1352153265</deployedseed>
+    <deployedseed>2021615199</deployedseed>
+    <deployedseed>1231097159</deployedseed>
+    <deployedseed>1054279785</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>new_stddev</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+</quiz>

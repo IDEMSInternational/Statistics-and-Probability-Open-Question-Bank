@@ -1,0 +1,545 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz><question type="stack">
+    <name>
+      <text>Finding the probability of intersection and union of two events and their complements</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>\(A\) and \(B\) are two events and \(P(A) ={@p_a@},  P(B) ={@p_b@}\) and \(P(A\cap B)={@p_anb@}\)</p>
+<p>\(\text{Find:}\)</p>
+<p>(a) \(P(A\cup B)=\) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>
+<p>(b) \(P(B^C)=\) [[input:ans2]] [[validation:ans2]][[feedback:prt2]]</p>
+<p>(c) \(P(A\cap B^C)=\) [[input:ans3]] [[validation:ans3]][[feedback:prt3]]</p>
+<p>(d) \(P(A\cup B^C)=\) [[input:ans4]] [[validation:ans4]][[feedback:prt4]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Worked out solution</p>
+
+<p>(a) Recall that for any two sets \(X\) and \(Y\), \(P(X\cup Y)=P(X)+P(Y)-P(X\cap Y)\)
+Therefore;
+ \(P(A\cup B) = P(A) + P(B) – P(A\cap B) = {@p_a@}+{@p_b@}-{@p_anb@}={@ta1@}\)</p>
+
+<p>(b) For any set \(X\), its complement \(X^C\) represents all elements, not in \(X\) but are within the probability space and \(P(X)+P(X)^C=1\). Therefore;
+ \( P(B^C) = P(S)-P(B)\)</p>
+<p>\(\text{The probability of sample space is always 1}\)</p>
+<p>OR \(1-P(B) = 1-{@p_b@} = {@ta2@}\)</p>
+
+<p>(c) Recall, for any two sets \(X\) and \(Y\), elements not in \(X\) and are in \(Y\) can be represented as \(Y\cap X^C\). Therefore;
+\( P(A\cap B^C) = P(A) – P(A\cap B) = {@p_a@}-{@p_anb@}={@ta3@}\)</p>
+
+<p>(d) Recall, for any two sets \(X\) & \(Y\), elements in \(X\) are also in \(Y^C\) and can represented as \(X\cup Y^C\) Therefore;
+ \(P(A\cup B^C) =  P(A) + P(A\cup B)^C = {@p_a@}+{@p_not@} = {@ta4@}\) </p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2022071300</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Randomly generate and calculate the initial probabilities*/
+p_anb:float((rand(4)+1)/10);  /*P(AnB)*/
+p_a:float((rand(2)+2)/10+p_anb); /*P(A)*/
+p_b:float((rand(2)+1)/10+p_anb);  /*P(B)*/
+p_aub:decimalplaces(p_a+p_b-p_anb,2);  /*P(AUB)*/
+p_not:decimalplaces(1-p_aub,2); /*the complement of the set AUB*/
+
+/*model answers*/
+ta1:decimalplaces(p_aub,2);
+ta2:decimalplaces(1-p_b,2); /* prob(B^c)*/
+ta3:decimalplaces(p_a-p_anb,2);  /*prob(AnB^c)*/
+ta4:decimalplaces(p_a+p_not,2); /*prob(AUB^c)*/</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(A\) and \(B\) are two events and \(P(A) ={@p_a@}, P(B) ={@p_b@}\) and \(P(A \cap B)={@p_anb@}\) Find </p>
+
+<p>(a) \(P(A \cup B)\) = {@ta1@}</p>
+<p>(b) \( P(B^C) \) = {@ta2@}</p>
+<p>(c)\(  P(A \cap B^C) \) = {@ta3@}</p>
+<p>(d)\(P(A \cup B^C)\) = {@ta4@}</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>numerical</type>
+      <tans>ta1</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>numerical</type>
+      <tans>ta2</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>numerical</type>
+      <tans>ta3</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>numerical</type>
+      <tans>ta4</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/* Node 1: Check for correct answer */
+
+/* Node 2: mistake:Computing P(A)+P(B)+P(AnB) to find P(AuB)*/
+student_ans_2:decimalplaces(p_a+p_b+p_anb,2);    
+
+/*Node 3: mistake:Computing P(A)+P(B) to find P(AuB) */
+student_ans_3:decimalplaces(p_a+p_b,2);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>student_ans_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>In this case you have computed \(P(A)+P(B)+P(A \cap B)\). You should  have done this instead \(P(A)+P(B)-P(A \cap B)\) </p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>student_ans_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>In this case you have added \(P(A)\) and \(P(B)\) directly without subtracting the intersection</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/* Node 1: Check for correct answer */
+
+/* Node 2: mistake: Subtracting P(AuB)-P(B) to find  P(B^C)*/
+mistake_2:decimalplaces(p_aub-p_b,2);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>In this case you have subtracted \(P(B)\) from \(P(A\cup B)\). You should  have done this \(1-P(B)\) OR \(P(A)+P(A \cup B)^C-P(A \cap B)\) </p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/* Node 1: Check for correct answer */
+
+/* Node 2: mistake:Adding P(A)+P(AnB) to find P(AnB^C)*/
+mistake_2:decimalplaces(p_a+p_anb,2);    
+
+/*Node 3: mistake:Submitting the whole P(A) */
+mistake_3:decimalplaces(p_a,2);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>ta3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>In this case you have computed \(P(A)+P(A\cap B)\). Which should not be the case, here is a hint:  \(P(A)-P(A\cap B)\)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt3-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>mistake_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>It seems that you only considered the whole \(P(A)\). You should also subtract \(P(A\cap B)\) as you are double-counting the intersection (the intersection is also part of set \(A\)). You should have done this \(P(A)-P(A\cap B)\)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/* Node 1: Check for correct answer */
+
+/* Node 2: mistake:Adding all P(A)+P(AuB) to find P(AuB^C)*/
+mistake_2:decimalplaces(p_a+p_aub,2);    
+
+/*Node 3: mistake:Adding P(A)+P(B) to find P(A∪B^C)*/
+mistake_3:decimalplaces(p_a+p_b,2); 
+
+/*Node 4: mistake:Computing P(A)+(1-P(B)) to find  P(A∪B^C) */
+mistake_4:decimalplaces(p_a+(1-p_b),2);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>ta4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>In this case you have added \(P(A)\) to \(P(A\cup B)\). You should  have done this \(P(A)+P(A\cup B)^C\)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt4-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>mistake_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have added \(P(A)\) and \(P(B)\).
+Here is a hint:
+\(P(A\cup B^C) = P(A)+P(A\cup B)^C\)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt4-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>mistake_4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have added  \(P(A)\) and \(P(B^C)\) without considering the intersection as you are double-counting the intersection. Here is a hint: \(P(A)+(1-P(B))-P(A\cap B)\) OR \(P(A\cup B^C) = P(A)+P(A\cup B)^C\)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>458208825</deployedseed>
+    <deployedseed>2031517958</deployedseed>
+    <deployedseed>1465256505</deployedseed>
+    <deployedseed>2127809766</deployedseed>
+    <deployedseed>1530231864</deployedseed>
+    <deployedseed>1442114135</deployedseed>
+    <deployedseed>1553008161</deployedseed>
+    <deployedseed>2062861186</deployedseed>
+    <deployedseed>271649822</deployedseed>
+    <deployedseed>1948534873</deployedseed>
+    <deployedseed>330700988</deployedseed>
+    <deployedseed>882999264</deployedseed>
+    <deployedseed>547680534</deployedseed>
+    <deployedseed>62166816</deployedseed>
+    <deployedseed>1908976351</deployedseed>
+    <deployedseed>2100961065</deployedseed>
+    <deployedseed>1383361927</deployedseed>
+    <deployedseed>165788924</deployedseed>
+    <deployedseed>1738320916</deployedseed>
+    <deployedseed>1012239640</deployedseed>
+  </question>
+
+</quiz>

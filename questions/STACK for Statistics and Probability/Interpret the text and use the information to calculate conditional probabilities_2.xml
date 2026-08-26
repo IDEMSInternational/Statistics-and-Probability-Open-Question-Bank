@@ -1,0 +1,422 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz><question type="stack">
+    <name>
+      <text>Interpret the text and use the information to calculate conditional probabilities</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>There are \({@Total@}\) diners in a restaurant who were surveyed to find out if they had ordered garlic bread, beer, or cheesecake.</p>
+<p>\({@t1@}\) diners had ordered all three items</p> 
+<p>\({@t5@}\) diners had ordered garlic bread</p>
+<p>\({@t7@}\) diners had ordered beer</p>
+<p>\({@t6@}\) diners had ordered cheesecake</p>
+<p>\({@t2@}\) had ordered beer and cheesecake</p>
+<p>\({@t3@}\) had ordered garlic bread and cheesecake</p>
+<p>\({@t4@}\) had ordered garlic bread and beer.</p>
+<p>A diner is chosen at random. Find the probability that the diner ordered:</p>
+<p>a) all three items = [[input:ans1]][[validation:ans1]] [[feedback:prt1]]</p>
+<p>b) beer but not cheesecake and not garlic bread = [[input:ans2]][[validation:ans2]] [[feedback:prt2]]</p>
+<p>c) garlic bread and beer but not cheesecake = [[input:ans3]][[validation:ans3]] [[feedback:prt3]]</p>
+<p>d) none of these items = [[input:ans4]][[validation:ans4]] [[feedback:prt4]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p><b>Worked out solution:</b></p>
+<p>a) Find the probability that the diner ordered all three items.
+</p>
+<p> Since \({@t1@}\) diners had ordered all three itemsWe, then</p>
+<p> \(P(\mbox{all three items})=\frac{@t1@}{@Total@}={@ta1@}\)</p>
+<hr>
+<p>b) Find the probability that the diner ordered beer but not cheesecake and not garlic bread.</p>
+<p>Let us denote by</p>
+<p>\(n_{1}\): the number of diners that ordered only beer and garlic bread.</p>
+<p>\(n_{2}\): the number of diners that ordered only beer and cheesecake.</p>
+<p>\(n_{3}\): the number of diners that ordered all three items.</p>
+<p>\(n_{4}\):the number of diners that ordered only beer.</p>
+<p>Then,</p>
+<p> The value of \(n_{1}={@t4@}-{@t1@}={@beer_bread@}\).</p>
+<p> The value of \(n_{2}={@t2@}-{@t1@}={@beer_cake@}\).</p>
+<p> It is known that the value of \(n_{3}={@t1@}\).</p>
+<p> The value of \(n_{4}=\mbox{number of diners that ordered beer}-(n_{1}+n_{2}+n_{3})\).</p>
+<p> \(n_{4}={@t7@}-({@beer_bread@}+{@beer_cake@}+{@t1@})={@only_beer@}\).</p>
+<p> We deduce that \(P(\mbox{beer but not cheesecake and not garlic bread})=\frac{n_{4}}{\mbox{total number of diners}}={@ta2@}\)</p>
+<hr>
+<p>c) Find the probability that the diner ordered garlic bread and beer but not cheesecake.</p>
+<p>\(P(\mbox{garlic bread and beer but not cheesecake})=\frac{n_{1}}{\mbox{total_dinners}}={@ta3@}\)</p>
+<hr>
+<p>d) Find the probability that the diner ordered none of these items.</p>
+<p> To answer properly to the question, we denote by</p>
+<p> \(n_{5}\): the number of diners that ordered only garlic bread and cheesecake.</p>
+<p> \(n_{6}\): the number of diners that ordered only garlic bread.</p>
+<p> \(n_{7}\): the number of diners that ordered only cheesecake.</p>
+<p> \(n_{8}\): the number of diners that ordered none of garlic bread, cheesecake and beer.</p>
+<p>Then,</p>
+<p> The value of \(n_{5}={@t3@}-{@t1@}={@bread_cake@}\).
+</p>
+<p> The value of \(n_{6}={@t5@}-(n_{1}+n_{5}+n_{3})={@only_garlic@}\)</p>
+<p> The value of \(n_{7}={@t6@}-(n_{2}+n_{5}+n_{3})={@only_cake@}\)</p>
+<p> The value of \(n_{8}= \mbox{total_dinners}-(n_{4}+n_{6}+n_{7}+n_{1}+n_{2}+n_{5}+n_{3})={@t8@}\)</p>
+<p>Therefore \(P(\mbox{none of these items})=\frac{n_{8}}{\mbox{total_dinners}}={@ta4@}\). </p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2022071300</text>
+    </stackversion>
+    <questionvariables>
+      <text>/* Randomly generate and calculate the initial probabilities*/
+t1:rand(10)+1;/*diners had ordered all three items*/
+t2:rand_with_prohib(10,25,[t1]); /* diners had ordered beer and cheesecake*/
+t3:rand_with_prohib(10,25,[t1,t2]); /*diners had ordered garlic bread and cheesecake*/
+t4:rand_with_prohib(10,25,[t1,t2,t3]); /*diners had ordered garlic bread and beer*/
+t5:rand_with_step(35,55,1);/*diners had ordered garlic bread*/
+t6:rand_with_prohib(35,55,[t5]); /*diners had ordered cheesecake*/
+t7:rand_with_prohib(45,55,[t5,t6]); /*diners had ordered beer*/
+Total: rand_with_step(300,700,5); /*total dinners*/
+/*Number of diners who ordered two items only*/
+beer_bread:t4-t1;/*Only ordered beer and  bread*/
+bread_cake:t3-t1;/*Only ordered cake and  bread*/
+beer_cake:t2-t1;/*only beer and cake*/   
+/*Number of diners who ordered on item only*/
+only_beer: t7-(beer_bread+beer_cake+t1)/*beer only*/
+only_garlic: t5-(beer_bread+bread_cake+t1)/*garlic only*/
+only_cake: t6-(bread_cake+beer_cake+t1)/*cake only*/
+
+/*dinners who chose none of the items*/
+t8: Total-(only_beer+only_garlic+only_cake+beer_bread+bread_cake+bread_cake+t1); 
+
+/*model answers */
+ta1: t1 / Total;
+ta2: only_beer / Total;
+ta3: (t4-t1)/ Total;
+ta4: t8/Total;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>a) all three items \(={@ta1@}\)</p>
+<p>b) beer but not cheesecake and not garlic bread \(={@ta2@}\)</p>
+<p>c) garlic bread and beer but not cheesecake \(={@ta3@}\)</p>
+<p>d) none of these items =\(={@ta4@}\)]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>numerical</type>
+      <tans>ta1</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>numerical</type>
+      <tans>ta2</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>ta3</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>numerical</type>
+      <tans>ta4</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: check for correct answer*/
+
+/*Node 2: mistake: decimalplaces((t7 - t4 + t1 + t3)/Total_diners,2)*/
+mistake_2:decimalplaces((t7 - t4 + t1 + t3)/Total_diners,2);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You were supposed to get the probability of taking beer but not cheesecake and not garlic. You included the number of those who took cheesecake.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: check for correct answer*/
+
+/*Node 2: mistake: decimalplaces((t4+t1)/ Total_diners,2)*/
+mistake_2:decimalplaces((t4+t1)/ Total_diners,2);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>ta3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You were supposed to get the probability of taking beer and  bread and not cheesecake. You included the number of those who took cheesecake.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: check for correct answer*/
+
+/*Node 2: mistake: decimalplaces( t8 +t1/ Total_diners,2)*/
+mistake_2:decimalplaces( t8 +t1/ Total_diners,2);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>ta4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You were supposed to get the probability that none of the diners took any of the three items. You included a portion of those who took garlic bread, beer and cheesecake</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+  </question>
+
+</quiz>

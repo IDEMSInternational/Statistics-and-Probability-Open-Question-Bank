@@ -1,0 +1,510 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz><question type="stack">
+    <name>
+      <text>BASIC MEASURES OF FERTILITY_q2</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Calculate the gross and net reproduction rates from the data given below.</p>
+<p>
+<table border="solid">
+  <caption style="caption-side: top; text-align: center; font-weight: bold; font-size: 16px;">Number of women in age groups and number of female children born in one year
+</caption>
+  <tr>
+    <th width="15%" style="text-align:center">Age group
+</th>
+    <th width="15%" style="text-align:center">Female population (\( ‘000 \), i.e. in thousands)</th>
+    <th width="15%" style="text-align:center">Female births</th>
+  <th width="15%" style="text-align:center">Survival rate</th>
+  </tr>
+  <tr>
+    <td style="text-align:center">{@age_group1@}-{@age_group2@}</td>
+    <td style="text-align:center">{@fem_pop1@}</td>
+    <td style="text-align:center">{@fem_birth1@}</td>
+<td style="text-align:center">{@surv_rate1@}</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">{@age_group2@}-{@age_group3@}</td>
+    <td style="text-align:center">{@fem_pop2@}</td>
+    <td style="text-align:center">{@fem_birth2@}</td>
+    <td style="text-align:center">{@surv_rate2@}</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">{@age_group3@}-{@age_group4@}</td>
+    <td style="text-align:center">{@fem_pop3@}</td>
+    <td style="text-align:center">{@fem_birth3@}</td>
+    <td style="text-align:center">{@surv_rate3@}</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">{@age_group4@}-{@age_group5@}</td>
+    <td style="text-align:center">{@fem_pop4@}</td>
+    <td style="text-align:center">{@fem_birth4@}</td>
+    <td style="text-align:center">{@surv_rate4@}</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">{@age_group5@}-{@age_group6@}</td>
+    <td style="text-align:center">{@fem_pop5@}</td>
+    <td style="text-align:center">{@fem_birth5@}</td>
+    <td style="text-align:center">{@surv_rate5@}</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">{@age_group6@}-{@age_group7@}</td>
+    <td style="text-align:center">{@fem_pop6@}</td>
+    <td style="text-align:center">{@fem_birth6@}</td>
+    <td style="text-align:center">{@surv_rate6@}</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">{@age_group7@}-{@age_group8@}</td>
+    <td style="text-align:center">{@fem_pop7@}</td>
+    <td style="text-align:center">{@fem_birth7@}</td>
+    <td style="text-align:center">{@surv_rate7@}</td>
+  </tr>
+</table>
+</p>
+<p>(Note: Leave your answers correct to \(4\) dp)</p>
+<p>a).Gross Reproduction Rate \(\textbf{(GRR)}= \) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>
+<p>b). Net reproduction rate \(\textbf{(NRR)}= \) [[input:ans2]] [[validation:ans2]][[feedback:prt2]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>Gross Reproduction Rate \((GRR)\) i.e number of female children born to one woman as she passes through child bearing age, is sum of Age specific fertility rate per woman for child bearing ages. But, when data is in groups of \({@age@}\) years, it is equal to the sum of Age specific fertility rate per woman (female reproductive rate) for all groups \( \times {@age@}\) . Hence for computing gross reproduction rate we shall first compute Age specific fertility rate per woman.</p>
+<p>The calculation are shown below</p>
+<table border="solid">
+
+  <tr>
+    <th width="15%" style="text-align:center">Age group
+</th>
+    <th width="15%" style="text-align:center">Female population</th>
+    <th width="15%" style="text-align:center">Female births</th>
+  <th width="15%" style="text-align:center">Age specific fertility rate per woman (ASFR)</th>
+  </tr>
+  <tr>
+    <td style="text-align:center">{@age_group1@}-{@age_group2@}</td>
+    <td style="text-align:center">{@fem_popt1@}</td>
+    <td style="text-align:center">{@fem_birth1@}</td>
+<td style="text-align:center">\( \displaystyle \frac{{@fem_birth1@}}{{@fem_popt1@}}= {@ASFR_1@} \)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">{@age_group2@}-{@age_group3@}</td>
+    <td style="text-align:center">{@fem_popt2@}</td>
+    <td style="text-align:center">{@fem_birth2@}</td>
+    <td style="text-align:center">\( \displaystyle \frac{{@fem_birth2@}}{{@fem_popt2@}}= {@ASFR_2@} \)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">{@age_group3@}-{@age_group4@}</td>
+    <td style="text-align:center">{@fem_popt3@}</td>
+    <td style="text-align:center">{@fem_birth3@}</td>
+    <td style="text-align:center">\( \displaystyle \frac{{@fem_birth3@}}{{@fem_popt3@}}= {@ASFR_3@} \)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">{@age_group4@}-{@age_group5@}</td>
+    <td style="text-align:center">{@fem_popt4@}</td>
+    <td style="text-align:center">{@fem_birth4@}</td>
+    <td style="text-align:center">\( \displaystyle \frac{{@fem_birth4@}}{{@fem_popt4@}}= {@ASFR_4@} \)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">{@age_group5@}-{@age_group6@}</td>
+    <td style="text-align:center">{@fem_popt5@}</td>
+    <td style="text-align:center">{@fem_birth5@}</td>
+    <td style="text-align:center">\( \displaystyle \frac{{@fem_birth5@}}{{@fem_popt5@}}= {@ASFR_5@} \)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">{@age_group6@}-{@age_group7@}</td>
+    <td style="text-align:center">{@fem_popt6@}</td>
+    <td style="text-align:center">{@fem_birth6@}</td>
+    <td style="text-align:center">\( \displaystyle \frac{{@fem_birth6@}}{{@fem_popt6@}}= {@ASFR_6@} \)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">{@age_group7@}-{@age_group8@}</td>
+    <td style="text-align:center">{@fem_popt7@}</td>
+    <td style="text-align:center">{@fem_birth7@}</td>
+    <td style="text-align:center">\( \displaystyle \frac{{@fem_birth7@}}{{@fem_popt7@}}= {@ASFR_7@} \)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center">\( \displaystyle \sum ASFR ={@sum_ASFR@}\)</td>
+  </tr>
+</table>
+<p>\(GRR=\sum (ASFR \times {@age@})={@sum_ASFR@} \times {@age@}={@ta1@}\)</p>
+<p>Net reproduction rate- This is the number of female children surviving till their reproductive ages born to one woman as she passes through child bearing age. Thus it is the sum of Age specific fertility rate per woman for all ages \(\times\) survival rates. For data expressed in \({@age@}\) yearly age group, it is the sum of the Age specific fertility rate per woman for various groups \(\times\) survival rate \(\times {@age@}\).</p>
+<p>The calculations are shown below</p>
+<table border="solid">
+
+  <tr>
+    <th width="15%" style="text-align:center">Age group
+</th>
+    <th width="15%" style="text-align:center">Female population</th>
+    <th width="15%" style="text-align:center">Female births</th>
+  <th width="15%" style="text-align:center">Age specific fertility rate per woman (ASFR)</th>
+  <th width="15%" style="text-align:center">Survival rate (S)</th>
+  <th width="15%" style="text-align:center">\(ASFR \times S\)</th>
+  </tr>
+  <tr>
+    <td style="text-align:center">{@age_group1@}-{@age_group2@}</td>
+    <td style="text-align:center">{@fem_popt1@}</td>
+    <td style="text-align:center">{@fem_birth1@}</td>
+<td style="text-align:center">\( {@ASFR_1@} \)</td>
+<td style="text-align:center">{@surv_rate1@}</td>
+<td style="text-align:center">{@ASFR_s1@}</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">{@age_group2@}-{@age_group3@}</td>
+    <td style="text-align:center">{@fem_popt2@}</td>
+    <td style="text-align:center">{@fem_birth2@}</td>
+    <td style="text-align:center">\( {@ASFR_2@} \)</td>
+<td style="text-align:center">{@surv_rate2@}</td>
+<td style="text-align:center">{@ASFR_s2@}</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">{@age_group3@}-{@age_group4@}</td>
+    <td style="text-align:center">{@fem_popt3@}</td>
+    <td style="text-align:center">{@fem_birth3@}</td>
+    <td style="text-align:center">\(  {@ASFR_3@} \)</td>
+<td style="text-align:center">{@surv_rate3@}</td>
+<td style="text-align:center">{@ASFR_s3@}</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">{@age_group4@}-{@age_group5@}</td>
+    <td style="text-align:center">{@fem_popt4@}</td>
+    <td style="text-align:center">{@fem_birth4@}</td>
+    <td style="text-align:center">\(  {@ASFR_4@} \)</td>
+<td style="text-align:center">{@surv_rate4@}</td>
+<td style="text-align:center">{@ASFR_s4@}</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">{@age_group5@}-{@age_group6@}</td>
+    <td style="text-align:center">{@fem_popt5@}</td>
+    <td style="text-align:center">{@fem_birth5@}</td>
+    <td style="text-align:center">\( {@ASFR_5@} \)</td>
+<td style="text-align:center">{@surv_rate5@}</td>
+<td style="text-align:center">{@ASFR_s5@}</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">{@age_group6@}-{@age_group7@}</td>
+    <td style="text-align:center">{@fem_popt6@}</td>
+    <td style="text-align:center">{@fem_birth6@}</td>
+    <td style="text-align:center">\(  {@ASFR_6@} \)</td>
+<td style="text-align:center">{@surv_rate6@}</td>
+<td style="text-align:center">{@ASFR_s6@}</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">{@age_group7@}-{@age_group8@}</td>
+    <td style="text-align:center">{@fem_popt7@}</td>
+    <td style="text-align:center">{@fem_birth7@}</td>
+    <td style="text-align:center">\(  {@ASFR_7@} \)</td>
+<td style="text-align:center">{@surv_rate7@}</td>
+<td style="text-align:center">{@ASFR_s7@}</td>
+  </tr>
+  <tr>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">\( \displaystyle \sum (ASFR \times S)={@sum_ASFR_s@}\)</td>
+  </tr>
+</table>
+<p>Therefore the Net reproduction rate \(\textbf{(NRR)}=\sum (ASFR \times S)\times {@age@}={@ta2@} \)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*general and fertility rates*/
+age:rand(3)+4;
+age_group1:rand_with_step(14,16,5);
+age_group2:age_group1+age;
+age_group3:age_group2+age;
+age_group4:age_group3+age;
+age_group5:age_group4+age;
+age_group6:age_group5+age;
+age_group7:age_group6+age;
+age_group8:age_group7+age;
+
+/*Female population (‘000’)*/
+fem_pop1:rand_with_step(1000,2000,5);
+fem_pop2:rand_with_prohib(1000,2000,[fem_pop1]);
+fem_pop3:rand_with_prohib(1000,2000,[fem_pop1,fem_pop2]);
+fem_pop4:rand_with_prohib(1000,2000,[fem_pop1,fem_pop2,fem_pop3]);
+fem_pop5:rand_with_prohib(1000,2000,[fem_pop1,fem_pop2,fem_pop3,fem_pop4]);
+fem_pop6:rand_with_prohib(1000,2000,[fem_pop1,fem_pop2,fem_pop3,fem_pop4,fem_pop5]);
+fem_pop7:rand_with_prohib(1000,2000,[fem_pop1,fem_pop2,fem_pop3,fem_pop4,fem_pop5,fem_pop6]);
+ /*Total fem pop*/
+fem_popt1:fem_pop1*1000;
+fem_popt2:fem_pop2*1000;
+fem_popt3:fem_pop3*1000;
+fem_popt4:fem_pop4*1000;
+fem_popt5:fem_pop5*1000;
+fem_popt6:fem_pop6*1000;
+fem_popt7:fem_pop7*1000;
+
+/*Female births*/
+fem_birth1:rand_with_step(5000,100000,1);
+fem_birth2:rand_with_prohib(5000,100000,[fem_birth1]);
+fem_birth3:rand_with_prohib(5000,100000,[fem_birth1,fem_birth2]);
+fem_birth4:rand_with_prohib(5000,100000,[fem_birth1,fem_birth2,fem_birth3]);
+fem_birth5:rand_with_prohib(5000,100000,[fem_birth1,fem_birth2,fem_birth3,fem_birth4]);
+fem_birth6:rand_with_prohib(5000,100000,[fem_birth1,fem_birth2,fem_birth3,fem_birth4,fem_birth5]);
+fem_birth7:rand_with_prohib(5000,100000,[fem_birth1,fem_birth2,fem_birth3,fem_birth4,fem_birth5,fem_birth6]);
+
+
+/*Survival rate*/
+surv_r1:rand_with_step(10,25,1);
+surv_r2:rand_with_step(10,25,1);
+surv_r3:rand_with_step(10,25,1);
+surv_r4:rand_with_step(10,25,1);
+surv_r5:rand_with_step(10,25,1);
+surv_r6:rand_with_step(10,25,1);
+surv_r7:rand_with_step(10,25,1);
+
+srv1:rand_with_step(800,820,1);
+srv2:srv1+surv_r1;
+srv3:srv2+surv_r2;
+srv4:srv3+surv_r3;
+srv5:srv4+surv_r4;
+srv6:srv5+surv_r5;
+srv7:srv6+surv_r6;
+
+surv_rate1:float(srv7/1000);
+surv_rate2:float(srv6/1000);
+surv_rate3:float(srv5/1000);
+surv_rate4:float(srv4/1000);
+surv_rate5:float(srv3/1000);
+surv_rate6:float(srv2/1000);
+surv_rate7:float(srv1/1000);
+
+/*worked solution variables*/
+ASFR_1:decimalplaces((fem_birth1/fem_popt1),4);
+ASFR_2:decimalplaces((fem_birth2/fem_popt2),4);
+ASFR_3:decimalplaces((fem_birth3/fem_popt3),4);
+ASFR_4:decimalplaces((fem_birth4/fem_popt4),4);
+ASFR_5:decimalplaces((fem_birth5/fem_popt5),4);
+ASFR_6:decimalplaces((fem_birth6/fem_popt6),4);
+ASFR_7:decimalplaces((fem_birth7/fem_popt7),4);
+sum_ASFR:decimalplaces((ASFR_1+ASFR_2+ASFR_3+ASFR_4+ASFR_5+ASFR_6+ASFR_7),4);
+
+/*ASFR*Survival rate(S)*/
+ASFR_s1:decimalplaces((ASFR_1*surv_rate1),4);
+ASFR_s2:decimalplaces((ASFR_2*surv_rate2),4);
+ASFR_s3:decimalplaces((ASFR_3*surv_rate3),4);
+ASFR_s4:decimalplaces((ASFR_4*surv_rate4),4);
+ASFR_s5:decimalplaces((ASFR_5*surv_rate5),4);
+ASFR_s6:decimalplaces((ASFR_6*surv_rate6),4);
+ASFR_s7:decimalplaces((ASFR_7*surv_rate7),4);
+sum_ASFR_s:ASFR_s1+ASFR_s2+ASFR_s3+ASFR_s4+ASFR_s5+ASFR_s6+ASFR_s7;
+/*model answers*/
+ta1:decimalplaces((sum_ASFR*age),4);/*Gross Reproduction Rate (GRR)*/
+ta2:decimalplaces(sum_ASFR_s*age,4);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>a).Gross Reproduction Rate \(\textbf{(GRR)}={@ta1@} \)</p>
+<p>b). Net reproduction rate \(\textbf{(NRR)}={@ta2@} \)</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Nixson Kiplagat</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer"></p>
+<p id="description">This question requires the student to calculate the gross and net reproduction rates using provided data on female population across age groups and female births, with survival rates.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions>0.01</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions>0.01</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1620449862</deployedseed>
+    <deployedseed>1775967909</deployedseed>
+    <deployedseed>1363120725</deployedseed>
+    <deployedseed>1248135504</deployedseed>
+    <deployedseed>1270718576</deployedseed>
+    <deployedseed>382499623</deployedseed>
+    <deployedseed>991441889</deployedseed>
+    <deployedseed>973018585</deployedseed>
+    <deployedseed>120201689</deployedseed>
+    <deployedseed>335796161</deployedseed>
+    <deployedseed>1253948950</deployedseed>
+    <deployedseed>415930698</deployedseed>
+    <deployedseed>499037337</deployedseed>
+    <deployedseed>2126963698</deployedseed>
+    <deployedseed>1776322144</deployedseed>
+    <deployedseed>1267141851</deployedseed>
+    <deployedseed>1801797291</deployedseed>
+    <deployedseed>1048774902</deployedseed>
+    <deployedseed>1652258526</deployedseed>
+    <deployedseed>250065166</deployedseed>
+    <deployedseed>1376433220</deployedseed>
+    <deployedseed>1449692201</deployedseed>
+    <deployedseed>314208793</deployedseed>
+    <deployedseed>1366948100</deployedseed>
+    <deployedseed>964386449</deployedseed>
+    <deployedseed>2030809906</deployedseed>
+    <deployedseed>1658446659</deployedseed>
+    <deployedseed>1473632925</deployedseed>
+    <deployedseed>948147864</deployedseed>
+    <deployedseed>1531379508</deployedseed>
+    <deployedseed>1833004933</deployedseed>
+    <deployedseed>460974929</deployedseed>
+    <deployedseed>1394720159</deployedseed>
+    <deployedseed>1023784190</deployedseed>
+    <deployedseed>1738660545</deployedseed>
+    <deployedseed>1947482790</deployedseed>
+    <deployedseed>1131438476</deployedseed>
+    <deployedseed>1721060006</deployedseed>
+    <deployedseed>1380096308</deployedseed>
+    <deployedseed>1204210367</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+</quiz>

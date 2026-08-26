@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz><question type="stack">
+    <name>
+      <text>Measures of Location and  Dispersion Applications-q9</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>The two methods of finding mode in a discrete series are:  [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked solution</h3>
+
+[[ if test="member(1, ta_index)" ]]
+<p>In the grouping method, the data is organized into intervals or classes (grouped frequency distribution), and you determine the mode within these intervals.</p>
+<p>In the non-grouping method, you directly count the frequency of each individual value.
+You identify the value with the highest frequency as the mode. If there are multiple values with the same highest frequency, the dataset may be multimodal (having multiple modes).</p>
+
+[[/ if ]]
+[[ if test="member(2, ta_index)" ]]
+<p>
+Grouping and inspecting methods are used when calculating the mode in a discrete series, particularly when dealing with a large dataset that may have a wide range of values or when working with grouped frequency distributions. These methods are practical and more efficient for handling complex datasets.
+</p>
+
+
+[[/ if ]]]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[correct_answer:rand_selection([
+[1, true, "Grouping method and non-grouping method"],
+[2, true, "Grouping method and inspecting method"]
+], 1);
+incorrect_answers:rand_selection([
+[3, false, "Grouping method and ascending method"],
+[4, false, "Grouping method and descending method"],
+[5, false, "Table method and midpoint method
+
+"],
+[6, false, "Table method and frequency method"],[7, false, "Ungrouped and grouped method
+
+
+"]], 3);
+ta: random_permutation(append(correct_answer,incorrect_answers));
+
+ta_index: sort(makelist(x[1], x, ta));
+ta_largest: last(ta_index);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[[[ if test="member(1, ta_index)" ]]
+<p>In the grouping method, the data is organized into intervals or classes (grouped frequency distribution), and you determine the mode within these intervals.</p>
+<p>In the non-grouping method, you directly count the frequency of each individual value.
+You identify the value with the highest frequency as the mode. If there are multiple values with the same highest frequency, the dataset may be multimodal (having multiple modes).</p>
+
+[[/ if ]]
+[[ if test="member(2, ta_index)" ]]
+<p>
+Grouping and inspecting methods are used when calculating the mode in a discrete series, particularly when dealing with a large dataset that may have a wide range of values or when working with grouped frequency distributions. These methods are practical and more efficient for handling complex datasets.
+</p>
+
+
+[[/ if ]]]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Emmaculate Odhiambo</p>
+<p id="concept"></p>
+<p id="reviewer"></p>
+<p id="reviewer">Juma Zevick</p>
+<p id="description">Given a list of choices, need to select the methods used to find mode in a discrete series </p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>radio</type>
+      <tans>ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>nonotanswered</options>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mcq_correct(ta)[1]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1927333669</deployedseed>
+    <deployedseed>1375706909</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description>Test case assuming the teacher's input gets full marks.</description>
+      <testinput>
+        <name>ans1</name>
+        <value>first(mcq_correct(ta))</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+</quiz>

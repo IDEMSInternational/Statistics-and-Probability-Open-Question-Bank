@@ -1,0 +1,449 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz><question type="stack">
+    <name>
+      <text>Probability 1.2 (copy)</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>There are {@prob_total@} students in a certain tutor group at Philips College.  There are {@prob_german@} students in the tutor group studying German, {@prob_french@} studying French and {@prob_both@} students studying both French and German. Find the probability that a randomly chosen student in the tutor group.</p>
+<p>a) Studies French: [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>
+<p>b) Studies French and German: [[input:ans2]] [[validation:ans2]]  [[feedback:prt2]]</p> 
+<p>c) Studies French but not German: [[input:ans3]] [[validation:ans3]]  [[feedback:prt3]]</p>
+<p>d) Does not study French or German: [[input:ans4]] [[validation:ans4]]  [[feedback:prt4]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p><b>Worked solution</b></p>
+<p>We recall that if \(G\) is the event "The chosen student studies German" then the probability of \(G\) is given by the formula \(P(G) = \frac{\mbox{card } (G)}{\mbox{Total number of students}} \).</p>
+<p>For instance, here card(G)\(={@prob_german@}\) and Total number of students \(={@prob_total@}\)</p>
+<hr>
+<p>a) Find the probability that a randomly chosen student in the tutor group studies French.</p>
+<p>Let the event \(F\) : "The chosen student studies French". Then</p>
+<p>\(P(F) =\frac{\mbox{card}(F)}{@prob_total@}\) where card(\(F\)) represents the number of students studying French. So&nbsp; card(\(F\))\(= {@prob_french@} \) </p>
+<p> Therefore, \( P(F)= {@ta1@} \)</p>
+<hr>
+<p>b) Find the probability that a randomly chosen student in the tutor group studies French and German.</p> 
+<p>Let the event \(F \cap G\) : "The chosen student studies French and German". Then</p>
+\(P(F \cap G) =\frac{\mbox{card}( F&nbsp; \cap &nbsp;G)}{@prob_total@}\)  where card(\(F \cap G\)) represents the number of students studying French and German. So&nbsp; card(\(F \cap G\))\(={@prob_both@} \) <p></p>
+<p>Therefore, \( P(F \cap G)= {@ta2@} \)</p>
+<hr>
+<p>c) Find the probability that a randomly chosen student in the tutor group studies French but not German.</p>
+<p> Let \(C\) be the event: "The chosen student studies French but not German". </p>
+<p> \(P(C) =\frac{\mbox{card}(C)}{@prob_total@}\) </p><p>
+</p><p>But card(\(C\))\(=\)card(\(F\)) \(-\) card(\(F \cap G\)) \(= {@prob_french-prob_both@} \)</p>
+<p>Therefore, \( P(C)=  {@ta3@}\) </p>
+<hr>
+<p>d) Find the probability that a randomly chosen student in the tutor group does not study French or German. </p>
+<p> Let \(D\) be the event: "The chosen student does not study French or German". </p>
+<p> \(P(D) =\frac{\mbox{card}(D)}{@prob_total@}\) </p><p>
+</p><p>We recall that the language "does not study French or German" means "does not study French and does not study German".</p>
+<p>First, we need to find the number of students studying German but not French, which we denote by card(\(G'\)). Then</p>
+<p>card(\(G'\))\(= \) card (G) \(-\) card(\(F \cap G\))\(={@card_onlygerman@}\)</p>
+Thus,
+<p>card(\(D\)) \(={@prob_total@} - \) (card(\(C\)) \(+\) card(\(G'\)) \(+\) card(\(F \cap G\)) )\(= {@prob_notgerfre@}\)</p>
+<p>Therefore, \(P(D)={@ta4@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2022071300</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*randomised question variables */
+
+prob_both:rand(4)+3;
+prob_french:rand(13)+3 +prob_both;
+prob_german:rand(15)+3 + prob_both;
+prob_notgerfre:rand(4)+1;
+prob_total:prob_both+prob_french-prob_both+prob_german-prob_both+prob_notgerfre;
+card_onlygerman:prob_german-prob_both;
+
+/*model answers*/
+ta1:prob_french/prob_total;
+ta2:prob_both/prob_total;
+ta3:(prob_french-prob_both)/prob_total;
+ta4:prob_notgerfre/prob_total;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>1</text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>ta3</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>algebraic</type>
+      <tans>ta4</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node1:checking the correct answer*/
+
+/*Node2:checking that the answer given is taken as P(German_students)-P(Both_students) to find the P(French_students)*/
+mistake2:P(German_students)-P(Both_students);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p><span id="docs-internal-guid-b588c697-7fff-62a7-1b6a-3fb267b47403">Your answer is the difference between studying both and studying German. Instead of taking p(French_student)/Total_student.</span><br></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node1:checking the correct answer*/
+
+/*Node2:checking that the answer given is taken as (p(French_students)+p(German_student))/(total_student) to find p(F∩G)*/
+
+mistake_2:(p(French_students)+p(German_student))/(total_student);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p><span id="docs-internal-guid-47da7e2b-7fff-bd0b-a55d-5daef5333262">You’ve given the addition of studying German and French and not the probability of both French and German.</span><br></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node1:checking the correct answer*/
+
+/*Node2: checking the answer given as the p(German_student)-p(Both_student) to find the p(French but not German)*/
+mistake_2:P(German_student)-P(Both_student);
+
+/*Node3:checking that the answer given is the take the p(French_student)/p(Total_student)to find p(French but not German) */
+mistake_3:P(French_student)/P(Total_student);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>ta3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p><span id="docs-internal-guid-0088134f-7fff-6f43-479f-e11d7f35a429">You have given the difference between the probability of studying German and the probability of studying both as the answer.Instead give the difference between total number of students and total sum of studying French, German and Both.</span><br></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt3-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>mistake_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p><span id="docs-internal-guid-6690556a-7fff-7fbe-a53f-0d517ebd9438">Your answer is the probability of studying French over total and not the difference between French and Both over total number of students.</span><br></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node1:checking the correct answer*/
+
+/*Node2:checking the answer given as the p(studying both) to find the p(Not French or German)*/
+mistake_2:p(prob_both);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>ta4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p><span id="docs-internal-guid-d66670a1-7fff-cd70-8b79-ffa6bdf18b51">You have given the probability of studying both German and French as your answer.</span><br></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+  </question>
+
+</quiz>

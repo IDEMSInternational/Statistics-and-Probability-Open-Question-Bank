@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<quiz><question type="stack">
+    <name>
+      <text>Fashion Combinations: Exploring Outfit Varieties</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>A girl has \({@skirts@}\) skirts \(, {@blouses@}\) blouses and \({@scarves@}\) scarves. How many different outfits consisting of a blouse, skirt and scarf can she make out of this.</p>
+<p>Number of ways \(= \) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked solution</h3>
+<p>She has to select one of the \({@skirts@}\) skirts, one out of \({@blouses@}\) blouses and one out of \({@scarves@}\) scarves.</p>
+<p>Number of ways \(=  {}^{{@skirts@}}C_{1} \times {}^{{@scarves@}}C_{1}\times {}^{{@blouses@}}C_{1} = {@skirts@} \times {@scarves@} \times {@blouses@} = {@ta@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>skirts:rand(8)+2;
+blouses:rand_with_prohib(3, 7, [skirts]);
+scarves:rand_with_prohib(2, 7, [skirts, blouses]);
+ta:skirts*blouses*scarves;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Skirts \(= {@skirts@}\)</p>
+<p>Blouses \( ={@blouses@}\)</p>
+<p>Scaves \(= {@scarves@}\)</p>
+<p>Number of ways \(=  {@ta@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Emmaculate Odhiambo<p>
+<p id="concept"></p>
+<p id="reviewer">Nixson Kiplagat</p>
+<p id="reviewer">Georg Osang</p>
+<p id="description">This question requires the student to calculate the total number of unique outfits a girl can create by combining 3 skirts, 5 blouses, and 4 scarves, each comprising one blouse, one skirt, and one scarf.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1680431414</deployedseed>
+    <deployedseed>1667892188</deployedseed>
+    <deployedseed>835941989</deployedseed>
+    <deployedseed>422502705</deployedseed>
+    <deployedseed>94817612</deployedseed>
+    <deployedseed>513202222</deployedseed>
+    <deployedseed>1787361491</deployedseed>
+    <deployedseed>1716396090</deployedseed>
+    <deployedseed>970738871</deployedseed>
+    <deployedseed>1249489306</deployedseed>
+    <deployedseed>2115363105</deployedseed>
+    <deployedseed>603146696</deployedseed>
+    <deployedseed>651414851</deployedseed>
+    <deployedseed>1435800482</deployedseed>
+    <deployedseed>1769669568</deployedseed>
+    <deployedseed>1707837247</deployedseed>
+    <deployedseed>538151666</deployedseed>
+    <deployedseed>1576795890</deployedseed>
+    <deployedseed>485864698</deployedseed>
+    <deployedseed>2097032687</deployedseed>
+    <deployedseed>1952229467</deployedseed>
+    <deployedseed>1951321021</deployedseed>
+    <deployedseed>1401411829</deployedseed>
+    <deployedseed>848211278</deployedseed>
+    <deployedseed>754703819</deployedseed>
+    <deployedseed>949639977</deployedseed>
+    <deployedseed>1334139711</deployedseed>
+    <deployedseed>1758655397</deployedseed>
+    <deployedseed>279015271</deployedseed>
+    <deployedseed>1492906167</deployedseed>
+    <deployedseed>371840514</deployedseed>
+    <deployedseed>1331745133</deployedseed>
+    <deployedseed>1855637094</deployedseed>
+    <deployedseed>1898130262</deployedseed>
+    <deployedseed>1148531444</deployedseed>
+    <deployedseed>1352701764</deployedseed>
+    <deployedseed>949082673</deployedseed>
+    <deployedseed>2057225808</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description>Test case assuming the teacher's input gets full marks.</description>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+</quiz>
