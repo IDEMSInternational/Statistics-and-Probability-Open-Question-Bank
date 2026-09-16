@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>LIFE TABLES (Single Decrement Tables)_q3</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Which of the following statements do <strong>NOT</strong> describe characteristics of a life table? Select all that apply:</p>
+<p>[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked solution</h3>
+
+[[ if test="member(1, ta_index)" ]]
+<p><strong>A life table measures literacy levels of a country</strong>: Life tables are mathematical models used to analyze mortality and survival patterns within a population. They focus on demographic factors related to lifespan, such as mortality rates, life expectancy, and age-specific death rates. Literacy levels are not within the scope of life tables; they pertain to educational and social factors, which are distinct from demographic analysis.</p>
+
+[[/ if ]]
+
+[[ if test="member(2, ta_index)" ]]
+<p><strong>A life table predicts weather patterns:</strong> Life tables are not designed to predict weather patterns. They are statistical tools used in demography to understand mortality and survival patterns within populations. Weather prediction involves meteorological models and data related to atmospheric conditions, which are unrelated to demographic analysis.
+</p>
+[[/ if ]]
+
+[[ if test="member(3, ta_index)" ]]
+<p><strong>A life table analyzes economic growth rate</strong>: Economic growth rates are not a characteristic of a life table. Life tables focus on mortality and survival patterns within populations, providing insights into factors such as life expectancy and age-specific mortality rates. Economic growth rates are determined by various macroeconomic factors such as GDP, investment, and productivity, which are outside the scope of demographic analysis.</p>
+[[/ if ]]
+
+[[ if test="member(4, ta_index)" ]]
+<p><strong>A life table predicts stock market fluctuations:</strong> Life tables are not used to predict stock market fluctuations. They are statistical tools used in demography to analyze mortality and survival patterns within populations. Stock market fluctuations depend on various economic, financial, and market-specific factors, which are unrelated to demographic analysis.</p>
+[[/ if ]]]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[a:rand(3)+1;
+correct_answer:rand_selection([
+[1, true, "A life table measures literacy levels of a country"],
+[2, true, "A life table predicts weather patterns"],
+[3, true, "A life table analyzes economic growth rates"],
+[4, true, "A life table predicts stock market fluctuations"]],a);
+
+b:4-a;
+incorrect_answers:rand_selection([
+[5, false, "A life table is a Mathematical model"],
+[6, false, "A life table provides a basis for measuring life expectancy"],
+[7, false, "A life table can be used to investigate morbidity"],
+[8, false, "A life table provides a basis for measuring infant mortality"],
+[9, false, "A life table portrays the mortality conditions at a particular time among a population"],
+[10, false, "A life table provides a basis for measuring longevity"]], b);
+
+ta:random_permutation(append(correct_answer,incorrect_answers));
+ta_index: sort(makelist(x[1], x, ta));]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>{@ta@}</text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Godfrey Wabwire<p>
+<p id="concept">https://docs.google.com/document/d/1ioECBsnRwApAxz2ZzavQKR2YDOXMKT3ezRA5r5d8Cr4/edit</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">Santiago Borio</p>
+<p id="description">The question assesses understanding of characteristics associated with life tables, focusing on identifying the non-related attribute amidst a list of options.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>checkbox</type>
+      <tans>ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>nonotanswered</options>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the corrrect answer from the list</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mcq_correct(ta)</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>878085767</deployedseed>
+    <deployedseed>176185383</deployedseed>
+    <deployedseed>2099681422</deployedseed>
+    <deployedseed>1056793996</deployedseed>
+    <deployedseed>1919702517</deployedseed>
+    <deployedseed>917234112</deployedseed>
+    <deployedseed>713183439</deployedseed>
+    <deployedseed>1739661742</deployedseed>
+    <deployedseed>388274728</deployedseed>
+    <deployedseed>941211821</deployedseed>
+    <deployedseed>1631209120</deployedseed>
+    <deployedseed>1733895768</deployedseed>
+    <deployedseed>467608012</deployedseed>
+    <deployedseed>49134847</deployedseed>
+    <deployedseed>611626653</deployedseed>
+    <deployedseed>993634759</deployedseed>
+    <deployedseed>747178765</deployedseed>
+    <deployedseed>1222196404</deployedseed>
+    <deployedseed>564549102</deployedseed>
+    <deployedseed>171744218</deployedseed>
+    <deployedseed>1104969071</deployedseed>
+    <deployedseed>220571596</deployedseed>
+    <deployedseed>576717560</deployedseed>
+    <deployedseed>1581946010</deployedseed>
+    <deployedseed>1248389897</deployedseed>
+    <deployedseed>1156448729</deployedseed>
+    <deployedseed>1245778281</deployedseed>
+    <deployedseed>317693446</deployedseed>
+    <deployedseed>1887072782</deployedseed>
+    <deployedseed>507083729</deployedseed>
+    <deployedseed>434665498</deployedseed>
+    <deployedseed>238528524</deployedseed>
+    <deployedseed>681724207</deployedseed>
+    <deployedseed>443051581</deployedseed>
+    <deployedseed>114069893</deployedseed>
+    <deployedseed>1353068064</deployedseed>
+    <deployedseed>712800701</deployedseed>
+    <deployedseed>1788660844</deployedseed>
+    <deployedseed>1620128900</deployedseed>
+    <deployedseed>1555801544</deployedseed>
+    <deployedseed>1897870541</deployedseed>
+    <deployedseed>1581823108</deployedseed>
+    <deployedseed>204239744</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>mcq_correct(ta)</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

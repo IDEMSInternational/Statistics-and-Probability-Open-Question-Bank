@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Measures of Location and  Dispersion Applications-q3</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Which one of the following is not a characteristic of an ideal measure of central tendency?</p>
+<p>[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked solution</h3>
+
+[[ if test="member(1, ta_index)" ]]
+
+<p> They are not affected by extreme values:</p>
+<p>This is not a characteristic of an ideal measure of central tendency. In fact, ideal measures should take into account the distribution of data, including extreme values. For example, the mean is influenced by extreme values, which can lead to skewed results. The median, on the other hand, is less affected by extreme values and is often preferred when dealing with skewed data.</p>
+
+[[/ if ]]
+
+[[ if test="member(2, ta_index)" ]]
+
+<p>They are affected by sampling fluctuations:</p>
+<p>This is not an ideal characteristic for a measure of central tendency. Ideally, a measure of central tendency should be stable and not heavily influenced by random sampling fluctuations. The mean is affected by sampling fluctuations, whereas the median is more robust in this regard.</p>
+
+[[/ if ]]
+
+[[ if test="member(3, ta_index)" ]]
+
+<p>They are difficult to calculate:</p>
+<p>An ideal measure of central tendency should not be difficult to calculate. Ease of calculation is generally a desirable trait. Measures like the mean and median are relatively easy to calculate, whereas more complex measures may be less practical. </p>
+
+[[/ if ]]]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/*STA 141 week3 quizes*/
+correct_answer:rand_selection([
+[1, true, "They are not affected by extreme values"],
+[2, true, "They are affected by sampling fluctuations"],
+[3, true, "They are difficult to calculate"]
+], 1);
+incorrect_answers:rand_selection([
+[4, false, "They are rigidly defined"],
+[5, false, "They are based on all observations"],
+[6, false, "They are calculated with reasonable ease and speed"],
+[7, false, "They are easy to understand"]
+], 3);
+ta: random_permutation(append(correct_answer,incorrect_answers));
+
+ta_index: sort(makelist(x[1], x, ta));
+ta_largest: last(ta_index);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Which of the following is not a characteristic of an ideal measure of central tendency?</p>
+[[ if test="member(1, ta_index)" ]]
+
+<p>They are not affected by extreme values
+</p>
+
+[[/ if ]]
+
+[[ if test="member(2, ta_index)" ]]
+
+<p>They are affected by sampling fluctuations
+</p>
+
+[[/ if ]]
+
+[[ if test="member(3, ta_index)" ]]
+
+<p>They are difficult to calculate
+</p>
+
+[[/ if ]]]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Godfrey Wabwire<p>
+<p id="concept">N/A</p>
+<p id="reviewer">Mary Sayuni</p>
+<p id="reviewer">[Juma Zevick]</p>
+<p id="description">The question focuses on Identifying characteristics  that are not  of an ideal measure of central tendency</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>radio</type>
+      <tans>ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>nonotanswered</options>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>[ans1]</sans>
+        <tans>mcq_correct(ta)</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1402190781</deployedseed>
+    <deployedseed>1167768145</deployedseed>
+    <deployedseed>1330004817</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>first(mcq_correct(ta))</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

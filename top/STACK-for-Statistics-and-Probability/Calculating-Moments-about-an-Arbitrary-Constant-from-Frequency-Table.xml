@@ -1,0 +1,666 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Calculating Moments about an Arbitrary Constant from Frequency Table</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Calculate the first four moments about the arbitrary constant \((A = {@aa@})\) of the data given in the Table below
+</p>
+<p>
+<table border="solid">
+  <tr>
+      <th width="50%", style="text-align:center">Class Interval</th>
+       <th width="50%", style="text-align:center">frequency \((f_i)\)</th>
+  </tr>
+   <tr>
+      <th width="50%", style="text-align:center">\({@a1@}-{@a2@}\)</th>
+       <th width="50%", style="text-align:center">\({@f1@}\)</th>
+  </tr>
+  <tr>
+      <th width="50%", style="text-align:center">\({@a2@}-{@a3@}\)</th>
+       <th width="50%", style="text-align:center">\({@f2@}\)</th>
+  </tr>
+  <tr>
+      <th width="50%", style="text-align:center">\({@a3@}-{@a4@}\)</th>
+       <th width="50%", style="text-align:center">\({@f3@}\)</th>
+  </tr>
+  <tr>
+      <th width="50%", style="text-align:center">\({@a4@}-{@a5@}\)</th>
+       <th width="50%", style="text-align:center">\({@f4@}\)</th>
+  </tr>
+  <tr>
+      <th width="50%", style="text-align:center">\({@a5@}-{@a6@}\)</th>
+       <th width="50%", style="text-align:center">\({@f5@}\)</th>
+  </tr>
+  <tr>
+      <th width="50%", style="text-align:center">\({@a6@}-{@a7@}\)</th>
+       <th width="50%", style="text-align:center">\({@f6@}\)</th>
+  </tr>
+  <tr>
+      <th width="50%", style="text-align:center">\({@a7@}-{@a8@}\)</th>
+       <th width="50%", style="text-align:center">\({@f7@}\)</th>
+  </tr>
+  <tr>
+      <th width="50%", style="text-align:center">\({@a8@}-{@a9@}\)</th>
+       <th width="50%", style="text-align:center">\({@f8@}\)</th>
+  </tr>
+  <tr>
+      <th width="50%", style="text-align:center">Total</th>
+       <th width="50%", style="text-align:center">\({@total_f@}\)</th>
+  </tr>
+ </table>
+</p>
+<p>First moment about the point \(A={@aa@}\)</p>
+<p>\(\mu'_1=\) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>
+<p>Second moment about the point \(A\)</p>
+<p>\(\mu'_2=\) [[input:ans2]] [[validation:ans2]][[feedback:prt2]]</p>
+<p>Third moment about the point \(A\)</p>
+<p>\(\mu'_3=\) [[input:ans3]] [[validation:ans3]][[feedback:prt3]]</p>
+<p>Fourth moment about the point \(A\)</p>
+<p>\(\mu'_4=\) [[input:ans4]] [[validation:ans4]][[feedback:prt4]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<table border="solid">
+  <tr>
+      <th width="15%", style="text-align:center">Class Interval</th>
+       <th width="10%", style="text-align:center">Mid-value\(X_i\)</th>
+       <th width="10%", style="text-align:center">frequency \((f_i)\)</th>
+       <th width="10%", style="text-align:center">\(X_i-A\)</th>
+      <th width="10%", style="text-align:center">\(f_i(X_i-A)\)</th>
+       <th width="15%", style="text-align:center">\(f_i(X_i-A)^2\)</th>
+      <th width="15%", style="text-align:center">\(f_i(X_i-A)^3\)</th>
+       <th width="15%", style="text-align:center">\(f_i(X_i-A)^4\)</th>
+  </tr>
+   <tr>
+      <th width="15%", style="text-align:center">\({@a1@}-{@a2@}\)</th>
+       <th width="10%", style="text-align:center">\({@m1@}\)</th>
+       <th width="10%", style="text-align:center">\({@f1@}\)</th>
+       <th width="10%", style="text-align:center">\({@x1@}\)</th>
+      <th width="10%", style="text-align:center">\({@fx1@}\)</th>
+       <th width="15%", style="text-align:center">\({@fx_1@}\)</th>
+      <th width="15%", style="text-align:center">\({@f_x1@}\)</th>
+       <th width="15%", style="text-align:center">\({@f_x_1@}\)</th>
+  </tr>
+   <tr>
+      <th width="15%", style="text-align:center">\({@a2@}-{@a3@}\)</th>
+       <th width="10%", style="text-align:center">\({@m2@}\)</th>
+       <th width="10%", style="text-align:center">\({@f2@}\)</th>
+       <th width="10%", style="text-align:center">\({@x2@}\)</th>
+      <th width="10%", style="text-align:center">\({@fx2@}\)</th>
+       <th width="15%", style="text-align:center">\({@fx_2@}\)</th>
+      <th width="15%", style="text-align:center">\({@f_x2@}\)</th>
+       <th width="15%", style="text-align:center">\({@f_x_2@}\)</th>
+  </tr>
+   <tr>
+      <th width="15%", style="text-align:center">\({@a3@}-{@a4@}\)</th>
+       <th width="10%", style="text-align:center">\({@m3@}\)</th>
+       <th width="10%", style="text-align:center">\({@f3@}\)</th>
+       <th width="10%", style="text-align:center">\({@x3@}\)</th>
+      <th width="10%", style="text-align:center">\({@fx3@}\)</th>
+       <th width="15%", style="text-align:center">\({@fx_3@}\)</th>
+      <th width="15%", style="text-align:center">\({@f_x3@}\)</th>
+       <th width="15%", style="text-align:center">\({@f_x_3@}\)</th>
+  </tr>
+   <tr>
+      <th width="15%", style="text-align:center">\({@a4@}-{@a5@}\)</th>
+       <th width="10%", style="text-align:center">\({@m4@}\)</th>
+       <th width="10%", style="text-align:center">\({@f4@}\)</th>
+       <th width="10%", style="text-align:center">\({@x4@}\)</th>
+      <th width="10%", style="text-align:center">\({@fx4@}\)</th>
+       <th width="15%", style="text-align:center">\({@fx_4@}\)</th>
+      <th width="15%", style="text-align:center">\({@f_x4@}\)</th>
+       <th width="15%", style="text-align:center">\({@f_x_4@}\)</th>
+  </tr>
+   <tr>
+      <th width="15%", style="text-align:center">\({@a5@}-{@a6@}\)</th>
+       <th width="10%", style="text-align:center">\({@m5@}\)</th>
+       <th width="10%", style="text-align:center">\({@f5@}\)</th>
+       <th width="10%", style="text-align:center">\({@x5@}\)</th>
+      <th width="10%", style="text-align:center">\({@fx5@}\)</th>
+       <th width="15%", style="text-align:center">\({@fx_5@}\)</th>
+      <th width="15%", style="text-align:center">\({@f_x5@}\)</th>
+       <th width="15%", style="text-align:center">\({@f_x_5@}\)</th>
+  </tr>
+   <tr>
+      <th width="15%", style="text-align:center">\({@a6@}-{@a7@}\)</th>
+       <th width="10%", style="text-align:center">\({@m6@}\)</th>
+       <th width="10%", style="text-align:center">\({@f6@}\)</th>
+       <th width="10%", style="text-align:center">\({@x6@}\)</th>
+      <th width="10%", style="text-align:center">\({@fx6@}\)</th>
+       <th width="15%", style="text-align:center">\({@fx_6@}\)</th>
+      <th width="15%", style="text-align:center">\({@f_x6@}\)</th>
+       <th width="15%", style="text-align:center">\({@f_x_6@}\)</th>
+  </tr>
+   <tr>
+      <th width="15%", style="text-align:center">\({@a7@}-{@a8@}\)</th>
+       <th width="10%", style="text-align:center">\({@m7@}\)</th>
+       <th width="10%", style="text-align:center">\({@f7@}\)</th>
+       <th width="10%", style="text-align:center">\({@x7@}\)</th>
+      <th width="10%", style="text-align:center">\({@fx7@}\)</th>
+       <th width="15%", style="text-align:center">\({@fx_7@}\)</th>
+      <th width="15%", style="text-align:center">\({@f_x7@}\)</th>
+       <th width="15%", style="text-align:center">\({@f_x_7@}\)</th>
+  </tr>
+   <tr>
+      <th width="15%", style="text-align:center">\({@a8@}-{@a9@}\)</th>
+       <th width="10%", style="text-align:center">\({@m8@}\)</th>
+       <th width="10%", style="text-align:center">\({@f8@}\)</th>
+       <th width="10%", style="text-align:center">\({@x8@}\)</th>
+      <th width="10%", style="text-align:center">\({@fx8@}\)</th>
+       <th width="15%", style="text-align:center">\({@fx_8@}\)</th>
+      <th width="15%", style="text-align:center">\({@f_x8@}\)</th>
+       <th width="15%", style="text-align:center">\({@f_x_8@}\)</th>
+  </tr>
+   <tr>
+      <th width="15%", style="text-align:center">Total</th>
+       <th width="10%", style="text-align:center"></th>
+       <th width="10%", style="text-align:center">\({@total_f@}\)</th>
+       <th width="10%", style="text-align:center">\({@sum_x@}\)</th>
+      <th width="10%", style="text-align:center">\({@sum_fx@}\)</th>
+       <th width="15%", style="text-align:center">\({@sum_fx1@}\)</th>
+      <th width="15%", style="text-align:center">\({@sum_fx2@}\)</th>
+       <th width="15%", style="text-align:center">\({@sum_fx3@}\)</th>
+  </tr>
+ </table>
+<p>First moment about the point \(A={@aa@}\)</p>
+<p>\(\displaystyle \mu'_1=\frac{1}{N}\sum_{i=1}^n f_i(X_i-A)^1=\frac{{@sum_fx@}}{{@total_f@}}={@sum_fx/total_f@} \implies \bar{X}=A+\mu'_1={@aa@}{@if (sum_fx/total_f)<0 then "-" else "+"@}{@abs(sum_fx/total_f)@}={@aa-(sum_fx/total_f)@}\)</p>
+<p>Second moment about the point \(A\)</p>
+<p>\(\displaystyle \mu'_2=\frac{1}{N}\sum_{i=1}^n f_i(X_i-A)^2=\frac{{@sum_fx1@}}{{@total_f@}}={@sum_fx1/total_f@}\)</p>
+<p>Third moment about the point \(A\)</p>
+<p>\(\displaystyle \mu'_3=\frac{1}{N}\sum_{i=1}^n f_i(X_i-A)^3=\frac{{@sum_fx2@}}{{@total_f@}}={@sum_fx2/total_f@}\)</p>
+<p>Fourth moment about the point \(A\)</p>
+<p>\(\displaystyle \mu'_4=\frac{1}{N}\sum_{i=1}^n f_i(X_i-A)^2=\frac{{@sum_fx3@}}{{@total_f@}}={@sum_fx3/total_f@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>a1:rand_with_step(1600,1700,10);
+a2:a1+100;
+a3:a2+100;
+a4:a3+100;
+a5:a4+100;
+a6:a5+100;
+a7:a6+100;
+a8:a7+100;
+a9:a8+100;
+list:[17,19,23,16,14,7,2,2];
+freq:random_permutation(list);
+f1:freq[1];
+f2:freq[2];
+f3:freq[3];
+f4:freq[4];
+f5:freq[5];
+f6:freq[6];
+f7:freq[7];
+f8:freq[8];
+total_f:f1+f2+f3+f4+f5+f6+f7+f8;
+aa:a5+50;
+m1:(a1+a2)/2;
+m2:(a2+a3)/2;
+m3:(a3+a4)/2
+m4:(a4+a5)/2;
+m5:(a5+a6)/2;
+m6:(a6+a7)/2;
+m7:(a7+a8)/2;
+m8:(a8+a9)/2;
+x1:m1-aa;
+x2:m2-aa;
+x3:m3-aa;
+x4:m4-aa;
+x5:m5-aa;
+x6:m6-aa;
+x7:m7-aa;
+x8:m8-aa;
+fx1:f1*x1;
+fx2:f2*x2;
+fx3:f3*x3;
+fx4:f4*x4;
+fx5:f5*x5;
+fx6:f6*x6;
+fx7:f7*x7;
+fx8:f8*x8;
+fx_1:f1*x1^2;
+fx_2:f2*x2^2;
+fx_3:f3*x3^2;
+fx_4:f4*x4^2;
+fx_5:f5*x5^2;
+fx_6:f6*x6^2;
+fx_7:f7*x7^2;
+fx_8:f8*x8^2;
+fx1:f1*x1;
+fx2:f2*x2;
+fx3:f3*x3;
+fx4:f4*x4;
+fx5:f5*x5;
+fx6:f6*x6;
+fx7:f7*x7;
+fx8:f8*x8;
+f_x1:f1*x1^3;
+f_x2:f2*x2^3;
+f_x3:f3*x3^3;
+f_x4:f4*x4^3;
+f_x5:f5*x5^3;
+f_x6:f6*x6^3;
+f_x7:f7*x7^3;
+f_x8:f8*x8^3;
+f_x_1:f1*x1^4;
+f_x_2:f2*x2^4;
+f_x_3:f3*x3^4;
+f_x_4:f4*x4^4;
+f_x_5:f5*x5^4;
+f_x_6:f6*x6^4;
+f_x_7:f7*x7^4;
+f_x_8:f8*x8^4;
+sum_x:x1+x2+x3+x4+x5+x6+x7+x8;
+sum_fx:fx1+fx2+fx3+fx4+fx5+fx6+fx7+fx8;
+sum_fx1:fx_1+fx_2+fx_3+fx_4+fx_5+fx_6+fx_7+fx_8;
+sum_fx2:f_x1+f_x2+f_x3+f_x4+f_x5+f_x6+f_x7+f_x8;
+sum_fx3:f_x_1+f_x_2+f_x_3+f_x_4+f_x_5+f_x_6+f_x_7+f_x_8;
+ta1:sum_fx/total_f;
+ta2:sum_fx1/total_f;
+ta3:sum_fx2/total_f;
+ta4:sum_fx3/total_f;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>First moment about the point \(A={@aa@}\)</p>
+<p>\(\mu'_1={@ta1@}\) </p>
+<p>Second moment about the point \(A\)</p>
+<p>\(\mu'_2={@ta2@}\)</p>
+<p>Third moment about the point \(A\)</p>
+<p>\(\mu'_3={@ta3@}\)</p>
+<p>Fourth moment about the point \(A\)</p>
+<p>\(\mu'_4={@ta4@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Nixson Kiplagat</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Godfrey Wabwire</p>
+<p id="reviewer">Wastalas Motognon</p>
+<p id="description">This question requires the student to calculate the first four moments (mean, variance, skewness, and kurtosis) about the arbitrary constant \(A\) using the provided frequency table.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>ta3</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>algebraic</type>
+      <tans>ta4</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>ta3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>ta4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>2090607989</deployedseed>
+    <deployedseed>1578645960</deployedseed>
+    <deployedseed>1325153160</deployedseed>
+    <deployedseed>404463263</deployedseed>
+    <deployedseed>1729516968</deployedseed>
+    <deployedseed>588633607</deployedseed>
+    <deployedseed>2135770822</deployedseed>
+    <deployedseed>1272664030</deployedseed>
+    <deployedseed>1161346028</deployedseed>
+    <deployedseed>1620946193</deployedseed>
+    <deployedseed>1777031434</deployedseed>
+    <deployedseed>777333832</deployedseed>
+    <deployedseed>960832499</deployedseed>
+    <deployedseed>1617531431</deployedseed>
+    <deployedseed>200607213</deployedseed>
+    <deployedseed>2110221068</deployedseed>
+    <deployedseed>240108859</deployedseed>
+    <deployedseed>1382272577</deployedseed>
+    <deployedseed>88446660</deployedseed>
+    <deployedseed>1731791158</deployedseed>
+    <deployedseed>1363145912</deployedseed>
+    <deployedseed>1997498115</deployedseed>
+    <deployedseed>2010504100</deployedseed>
+    <deployedseed>124050201</deployedseed>
+    <deployedseed>594584120</deployedseed>
+    <deployedseed>1068738092</deployedseed>
+    <deployedseed>628073430</deployedseed>
+    <deployedseed>164064966</deployedseed>
+    <deployedseed>298377591</deployedseed>
+    <deployedseed>1756598364</deployedseed>
+    <deployedseed>1445457135</deployedseed>
+    <deployedseed>377225194</deployedseed>
+    <deployedseed>1544704493</deployedseed>
+    <deployedseed>1955117152</deployedseed>
+    <deployedseed>1937156192</deployedseed>
+    <deployedseed>2065393157</deployedseed>
+    <deployedseed>1120950078</deployedseed>
+    <deployedseed>1283529865</deployedseed>
+    <deployedseed>584770965</deployedseed>
+    <deployedseed>508386253</deployedseed>
+    <deployedseed>2074376069</deployedseed>
+    <deployedseed>1169463068</deployedseed>
+    <deployedseed>562262328</deployedseed>
+    <deployedseed>268171782</deployedseed>
+    <deployedseed>1212974011</deployedseed>
+    <deployedseed>1067272922</deployedseed>
+    <deployedseed>577028430</deployedseed>
+    <deployedseed>1790472501</deployedseed>
+    <deployedseed>382290591</deployedseed>
+    <deployedseed>647888095</deployedseed>
+    <deployedseed>718688983</deployedseed>
+    <deployedseed>292310428</deployedseed>
+    <deployedseed>1837250211</deployedseed>
+    <deployedseed>1843423541</deployedseed>
+    <deployedseed>740014019</deployedseed>
+    <deployedseed>1190481813</deployedseed>
+    <deployedseed>632674138</deployedseed>
+    <deployedseed>990685474</deployedseed>
+    <deployedseed>1463322259</deployedseed>
+    <deployedseed>1692514624</deployedseed>
+    <deployedseed>822480910</deployedseed>
+    <deployedseed>338410728</deployedseed>
+    <deployedseed>216325643</deployedseed>
+    <deployedseed>981290502</deployedseed>
+    <deployedseed>341392174</deployedseed>
+    <deployedseed>1211920953</deployedseed>
+    <deployedseed>1273891945</deployedseed>
+    <deployedseed>513202949</deployedseed>
+    <deployedseed>1236178863</deployedseed>
+    <deployedseed>2092135175</deployedseed>
+    <deployedseed>1835599718</deployedseed>
+    <deployedseed>637519823</deployedseed>
+    <deployedseed>1286075819</deployedseed>
+    <deployedseed>520534953</deployedseed>
+    <deployedseed>1307924504</deployedseed>
+    <deployedseed>179440541</deployedseed>
+    <deployedseed>914297290</deployedseed>
+    <deployedseed>1464047004</deployedseed>
+    <deployedseed>1151266404</deployedseed>
+    <deployedseed>1270937417</deployedseed>
+    <deployedseed>868510205</deployedseed>
+    <deployedseed>877957910</deployedseed>
+    <deployedseed>1485698030</deployedseed>
+    <deployedseed>1594012993</deployedseed>
+    <deployedseed>1128645322</deployedseed>
+    <deployedseed>2085286935</deployedseed>
+    <deployedseed>1863474034</deployedseed>
+    <deployedseed>2005668516</deployedseed>
+    <deployedseed>579911352</deployedseed>
+    <deployedseed>1289352740</deployedseed>
+    <deployedseed>849406738</deployedseed>
+    <deployedseed>584171144</deployedseed>
+    <deployedseed>1674487042</deployedseed>
+    <deployedseed>761739582</deployedseed>
+    <deployedseed>1678675773</deployedseed>
+    <deployedseed>729517513</deployedseed>
+    <deployedseed>2093440048</deployedseed>
+    <deployedseed>717013009</deployedseed>
+    <deployedseed>882172706</deployedseed>
+    <deployedseed>1649949125</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>ta3</value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value>ta4</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt4-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

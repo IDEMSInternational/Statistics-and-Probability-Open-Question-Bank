@@ -1,0 +1,649 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>POPULATION PROJECTION_q2</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Given the following female population of Trindad in \(1960\) and \(1975\), answer the questions that follow. </p>
+<p>
+<table border="solid">
+  <tr>
+    <th width="15%", style="text-align:center">Age</th>
+    <th width="15%", style="text-align:center">\(1960\)</th>
+    <th width="15%", style="text-align:center">\(1975\)</th>
+  </tr>
+  <tr>
+  <td style="text-align:center">\(0-14\)</td>
+    <td style="text-align:center">\({@ageset_1a@}\)</td>
+    <td style="text-align:center">\({@ageset_1b@}\)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">\(15-29\)</td>
+    <td style="text-align:center">\({@ageset_2a@}\)</td>
+    <td style="text-align:center">\({@ageset_2b@}\)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">\(30-44\)</td>
+    <td style="text-align:center">\({@ageset_3a@}\)</td>
+    <td style="text-align:center">\({@ageset_3b@}\)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">\(45-59\)</td>
+    <td style="text-align:center">\({@ageset_4a@}\)</td>
+    <td style="text-align:center">\({@ageset_4b@}\)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">\(60+\)</td>
+    <td style="text-align:center">\({@ageset_5a@}\)</td>
+    <td style="text-align:center">\({@ageset_5b@}\)</td>
+  </tr>
+</table>
+</p>
+
+<hr>
+
+<p>During the period 1960-1975, the live births were distributed as follows;</p>
+<p>\(15-29 : {@births_1@}\)</p>
+<p>\(30-44 : {@births_2@}\)</p>
+<p>Find probability of a baby born surviving to time \(t+15\) denoted as \(\textbf{p}_{b}\)</p>
+<p>\(\textbf{p}_{b}=\) [[input:ans1]] correct to \(3\) dp [[validation:ans1]][[feedback:prt1]]</p>
+
+<hr>
+
+<p>Given the population projection table for \(1990\) as shown below find the value of \(f_1-f_3\) where  \(\text{f}\) is the Average number of women in the fertility group  \(15-29\),\(30-44\) and the growth rate,determine the projection fertility rate \(f1,f2  \text{and}  f3\) </p>
+<br>
+<p>\(\begin{bmatrix}
+f1 &f2  & f3 & 0 & 0\\ 
+{@p_1_rate@} & 0 & 0 & 0 &0 \\ 
+0 & {@p_2_rate@} & 0 &0  &0 \\ 
+ 0& 0 & {@p_3_rate@} & 0 & 0\\ 
+0 & 0 &0  & {@p_4_rate@} & {@p_5_rate@}
+\end{bmatrix}\begin{bmatrix}
+v(1,t)\\ 
+v(2,t)\\ 
+v(3,t)\\ 
+v(4,t)\\ 
+v(5,t)
+\end{bmatrix}\)</p>
+<p>growth rate of \(p4=p5\)</p>
+<p>Note: Leave your answer correct to \(3\) dp</p>
+<p>\(\text{f}_1=\) [[input:ans2]] [[validation:ans2]][[feedback:prt2]]</p>
+<p>\(\text{f}_2=\) [[input:ans3]] [[validation:ans3]][[feedback:prt3]]</p>
+<p>\(\text{f}_3=\) [[input:ans4]] [[validation:ans4]][[feedback:prt4]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>
+
+<table border="solid" style="width: 100%;">
+  <tr>
+    <th width="25%" style="text-align:center">Age</th>
+    <th width="25%" style="text-align:center">\(1960\)</th>
+    <th width="25%" style="text-align:center">\(1975\)</th>
+    <th width="25%" style="text-align:center">Projection \(1990\)</th>
+  </tr>
+  <tr>
+    <td style="text-align:center">\(0-14\)</td>
+    <td style="text-align:center">\(V(1,t)={@ageset_1a@}\)</td>
+    <td style="text-align:center">\(V(1,t+15)={@ageset_1b@}\)</td>
+    <td style="text-align:center">\(V(1,t)→P1\)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">\(15-29\)</td>
+    <td style="text-align:center">\(V(2,t)={@ageset_2a@}\)</td>
+    <td style="text-align:center">\(V(2,t+15)={@ageset_2b@}\)</td>
+    <td style="text-align:center">\(V(2,t)→P2\)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">\(30-44\)</td>
+    <td style="text-align:center">\(V(3,t)={@ageset_3a@}\)</td>
+    <td style="text-align:center">\(V(3,t+15)={@ageset_3b@}\)</td>
+    <td style="text-align:center">\(V(3,t)→P3\)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">\(45-59\)</td>
+    <td style="text-align:center">\(V(4,t)={@ageset_4a@}\)</td>
+    <td style="text-align:center">\(V(4,t+15)={@ageset_4b@}\)</td>
+    <td style="text-align:center">\(V(4,t)→P4\)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">\(60+\)</td>
+    <td style="text-align:center">\(V(5,t)={@ageset_5a@}\)</td>
+    <td style="text-align:center">\(V(5,t+15)={@ageset_5b@}\)</td>
+    <td style="text-align:center">\(V(5,t)→P5\)</td>
+  </tr>
+</table>
+</p>
+<hr>
+<p>To find the probability that a child born survives,</p>
+<p>\(\textbf{p}_{b}=\displaystyle \frac{V(1,t+15)}{\text{total lives births}}=\displaystyle \frac{{@ageset_1b@}}{{@births_1+births_2@}}={@p_b@}\)</p>
+<p>To find growth rates, \(\text{p}_1-\text{p}_5\)where \(\text{p}_4=\text{p}_5\) we proceed as follows</p>
+<p>\(\text{p}_1=\displaystyle \frac{V(2,t+15)}{V(1,t)}\) where \(15\) is the the years for which you have data.</p>
+<p>\(=\displaystyle \frac{{@ageset_2b@}}{{@ageset_1a@}}={@p_1_rate@}\)</p>
+<br>
+<p>\(\text{p}_2=\displaystyle \frac{V(3,t+15)}{V(2,t)}=\displaystyle \frac{{@ageset_3b@}}{{@ageset_2a@}}={@p_2_rate@},   \text{p}_3=\displaystyle \frac{V(4,t+15)}{V(3,t)}=\displaystyle \frac{{@ageset_3b@}}{{@ageset_2a@}}={@p_3_rate@},    \text{p}_4=\displaystyle \frac{V(5,t+15)}{V(4,t)}=\displaystyle \frac{{@ageset_5b@}}{{@ageset_4a@}}={@p_4_rate@}\)</p>
+<br>
+<hr>
+<p>To project the fertility rates from \(1957-1990\) we first have to determine the existing fertility rates for ages \(15-29\) and \(30-44\) in the years \(1960-1970\), we'll denote them as \(\text {f}_2\) and \(\text {f}_3\)</p>
+<p> \(\begin{align}
+\text {f}_2&=\displaystyle \frac{\text{live births for age (15-29)}}{\displaystyle \frac{V(2,t)+V(1,t)p_{1}15}{2}}\\
+&=\displaystyle\frac{{@births_1@}}{({@ageset_2a@}+({@ageset_1a@} \times {@p_1_rate@})) \times (\displaystyle\frac{15}{2})}\\
+&={@f_2@}\\
+\end{align}\)</p>
+<br>
+<p> \(\begin{align}
+\text {f}_3&=\displaystyle \frac{\text{live births for age (30-44)}}{\displaystyle\frac{V(3,t)+V(2,t)p_{1}15}{2}}\\
+&=\displaystyle\frac{{@births_2@}}{({@ageset_3a@}+({@ageset_2a@} \times {@p_2_rate@})) \times (\displaystyle\frac{15}{2})}
+&={@f_3@}\\
+\end{align}\)</p>
+<hr>
+<p>So, the projected fertility rate \(f1,f2  \text{and}  f3\) will be</p>
+<p>\(\text{f}1= \text{p}_1 \times \displaystyle \frac{15}{2} \times \text {f}_2 \times \textbf{p}_{b}\) </p>
+<p>\(\quad ={@p_1_rate@} \times \displaystyle \frac{15}{2} \times {@p_b@}\)</p>
+<p>\(\quad={@f1@} \)</p>
+
+<p>\(\begin{align}
+\text{f}2&= \text{p}_2 \times \displaystyle \frac{15}{2} \times \text {f}_3 \times \textbf{p}_{b} + \displaystyle \frac{15}{2} \times \text {f}_2 \times  \textbf{p}_{b}\\
+&={@p_2_rate@} \times \displaystyle \frac{15}{2} \times  {@f_3@} \times {@p_b@} + \displaystyle \frac{15}{2} \times {@f_2@} \times {@p_b@}\\
+&={@f2@} 
+\end{align}\)</p>
+
+<p>\(\begin{align}
+\text{f}3 &= \displaystyle \frac{15}{2} \times \text {f}_3 \times \textbf{p}_{b} \\
+&= \displaystyle \frac{15}{2} \times {@f_3@} \times {@p_b@}\\
+&={@f3@} \\
+\end{align}\)</p>
+<br>
+<hr>
+<p>Therefore,</p>
+<p>\(\begin{bmatrix}
+{@f1@} &{@f2@}  & {@f3@} & 0 & 0\\ 
+{@p_1_rate@} & 0 & 0 & 0 &0 \\ 
+0 & {@p_2_rate@} & 0 &0  &0 \\ 
+ 0& 0 & {@p_3_rate@} & 0 & 0\\ 
+0 & 0 &0  & {@p_4_rate@} & {@p_5_rate@}
+\end{bmatrix}\begin{bmatrix}
+v(1,t)\\ 
+v(2,t)\\ 
+v(3,t)\\ 
+v(4,t)\\ 
+v(5,t)
+\end{bmatrix}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>0</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*sta 246*/
+aa:makelist((rand_with_step(60000,65000,500)), i, 1, 2);/*population of 0-14 1960 and 1975*/
+ageset_1a:aa[1];
+ageset_1b:aa[2];
+bb:makelist((rand_with_step(50000,60000,500)), i, 1, 2);/*population of 15-29 1960 and 1975*/
+ageset_2a:bb[1];
+ageset_2b:bb[2];
+cc:makelist((rand_with_step(45000,49000,500)), i, 1, 2);/*population of 30-34 1960 and 1975*/
+ageset_3a:cc[1];
+ageset_3b:cc[2];
+dd:makelist((rand_with_step(40000,44000,500)), i, 1, 2);/*population of 45-59 1960 and 1975*/
+ageset_4a:dd[1];
+ageset_4b:dd[2];
+ee:makelist((rand_with_step(35000,40000,500)), i, 1, 2);/*population of 60+ 1960 and 1975*/
+ageset_5a:ee[1];
+ageset_5b:ee[2];
+
+/*worked solution variables*/
+p_1_rate:decimalplaces(ageset_2b/ageset_1a,3);
+p_2_rate:decimalplaces(ageset_3b/ageset_2a,3);
+p_3_rate:decimalplaces(ageset_4b/ageset_3a,3);
+p_4_rate:decimalplaces(ageset_5b/ageset_4a,3);
+p_5_rate:decimalplaces(ageset_5b/ageset_4a,3);
+
+births_1:rand_with_step(30000,40000,100);
+births_2:rand_with_step(20000,29000,100);
+sol1:(ageset_2a+(ageset_1a*p_1_rate))*(15/2);
+f_2:decimalplaces(births_1/sol1,3);/*fertility rate 2*/
+sol2:(ageset_3a+(ageset_2a*p_2_rate))*(15/2);
+f_3:decimalplaces(births_2/sol2,3);
+/*projection fertility rates*/
+p_b:decimalplaces(ageset_1b/(births_1+births_2),3);/*probability of a baby born surviving to time t+15*/
+f1:decimalplaces(p_1_rate*(15/2)*f_2*p_b,3);
+f2:decimalplaces((p_2_rate*(15/2)*f_3*p_b)+((15/2)*f_2*p_b),3);
+f3:decimalplaces((15/2)*f_3*p_b,3);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(\text{p}_b={@p_b@}\) </p>
+<p>\(f1={@f1@}\)</p>
+<p>\(f2={@f2@}\) </p>
+<p>\(f3={@f3@}\) </p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Nixson Kiplagat</p>
+<p id="reviewer">Santiago Borio</p>
+<p id="description">Give population of a given region for \(1960-1975\) , the question requires you to find the projection the year \(1990\).</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>p_b</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>f1</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>f2</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>algebraic</type>
+      <tans>f3</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description> checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>p_b</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>check for no of dp</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans1</sans>
+        <tans>p_b</tans>
+        <testoptions>0.01</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.25</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Your answer is partially correct because it's not given to the right number of decimal places</p></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description> checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>f1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>check for no of dp</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans2</sans>
+        <tans>f1</tans>
+        <testoptions>0.01</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.25</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Your answer is partially correct because it's not given to the right number of decimal places</p></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>f2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>check for no of dp</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans3</sans>
+        <tans>f2</tans>
+        <testoptions>0.01</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.25</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Your answer is partially correct because it's not given to the right number of decimal places</p></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>f3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for no dp</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans4</sans>
+        <tans>f3</tans>
+        <testoptions>0.01</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.25</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Your answer is partially correct because it's not given to the right number of decimal places</p></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>852713478</deployedseed>
+    <deployedseed>1233097025</deployedseed>
+    <deployedseed>812621658</deployedseed>
+    <deployedseed>102685094</deployedseed>
+    <deployedseed>1732989470</deployedseed>
+    <deployedseed>1657434118</deployedseed>
+    <deployedseed>1156154040</deployedseed>
+    <deployedseed>1895320962</deployedseed>
+    <deployedseed>756857127</deployedseed>
+    <deployedseed>752708621</deployedseed>
+    <deployedseed>621958139</deployedseed>
+    <deployedseed>1952811499</deployedseed>
+    <deployedseed>514649273</deployedseed>
+    <deployedseed>78979578</deployedseed>
+    <deployedseed>765378146</deployedseed>
+    <deployedseed>837086087</deployedseed>
+    <deployedseed>414040269</deployedseed>
+    <deployedseed>1371506880</deployedseed>
+    <deployedseed>545067394</deployedseed>
+    <deployedseed>1301961153</deployedseed>
+    <deployedseed>914855687</deployedseed>
+    <deployedseed>1083934980</deployedseed>
+    <deployedseed>128686120</deployedseed>
+    <deployedseed>1873573075</deployedseed>
+    <deployedseed>2092383107</deployedseed>
+    <deployedseed>1936780521</deployedseed>
+    <deployedseed>1395214985</deployedseed>
+    <deployedseed>530153134</deployedseed>
+    <deployedseed>1706564229</deployedseed>
+    <deployedseed>1948101754</deployedseed>
+    <deployedseed>2052251655</deployedseed>
+    <deployedseed>1344285645</deployedseed>
+    <deployedseed>334412226</deployedseed>
+    <deployedseed>167765573</deployedseed>
+    <deployedseed>646568852</deployedseed>
+    <deployedseed>2089434782</deployedseed>
+    <deployedseed>1601870496</deployedseed>
+    <deployedseed>1307798854</deployedseed>
+    <deployedseed>246341804</deployedseed>
+    <deployedseed>1368410868</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>p_b</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>f1</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>f2</value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value>f3</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt4-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

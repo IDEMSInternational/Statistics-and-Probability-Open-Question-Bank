@@ -1,0 +1,866 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Population Projection_q2</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Using the following data about the female population, prepare a projection of the number of females in the year \(2001\).</p>
+<p>
+<table border="solid">
+  <tr>
+    <th width="15%", style="text-align:center">Age</th>
+    <th width="15%", style="text-align:center">\(1961\)</th>
+    <th width="15%", style="text-align:center">\(1981\)</th>
+  </tr>
+  <tr>
+    <td style="text-align:center">\(0-19\)</td>
+    <td style="text-align:center">\({@ageset_1a@}\)</td>
+    <td style="text-align:center">\({@ageset_1b@}\)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">\(20-39\)</td>
+    <td style="text-align:center">\({@ageset_2a@}\)</td>
+    <td style="text-align:center">\({@ageset_2b@}\)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">\(40+\)</td>
+    <td style="text-align:center">\({@ageset_3a@}\)</td>
+    <td style="text-align:center">\({@ageset_3b@}\)</td>
+  </tr>
+</table>
+</p>
+<br>
+<p>Number of females born between \(1961-1981\) was \({@births@}\), all born to women between \(20-39\).</p>
+<hr>
+<p>Note: Leave your answer correct to \(3\) dp</p>
+<p>Calculate the survivorship ratios; you may assume that \(P_2=P_3\).</p>
+<p>\(P_{1} = \) [[input:ans3]] [[validation:ans3]][[feedback:prt3]]</p>
+<p>\(P_{2} = \) [[input:ans4]] [[validation:ans4]][[feedback:prt4]]</p>
+
+<p>Find the Probability of a baby born surviving to time \(t+20\) which is denoted as \(P_{b} =\) [[input:ans2]] [[validation:ans2]][[feedback:prt2]]</p>
+
+<p>Find the fertility rate \(f_j^*\) for ages \(20-39   =\) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>
+<p></p>
+<p>The projected population in 2001 will be</p>
+<p>Note: Round your answer to the nearest integer</p>
+<p>
+<table border="solid">
+  <tr>
+    <td style="text-align:center">\(0-19\)</td>
+    <td style="text-align:center">[[input:ans5]] [[validation:ans5]][[feedback:prt5]]</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">\(20-39\)</td>
+    <td style="text-align:center">[[input:ans6]] [[validation:ans6]][[feedback:prt6]]</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">\(40+\)</td>
+    <td style="text-align:center"> [[input:ans7]] [[validation:ans7]][[feedback:prt7]]</td>
+  
+  </tr>
+</table>
+</p>]]></text>
+    </questiontext>
+    <generalfeedback format="plain_text">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>First, We arrange a schematic diagram for the population distribution as follows;</p>
+<p>This is age interval of 20 years.</p>
+<p>\(f_j^*\) the fertility rate at ages groups</p>
+<p>\(V(1,t)=\) population aged \(0-19\) years last birth day at time \(t\)</p>
+<p>\(V(2,t)=\) population aged \(20-39\) years last birth day at time \(t\)</p>
+<p>\(V(3,t)=\) population aged \(40+\) years last birth day at time \(t\)</p>
+<p></p>
+<p>\(P_b=\) probability of a baby born surviving to time \(t+20\)</p>
+<p>\(P_i=\) the probability of surviving from one age group to the next</p>
+<hr>
+
+<p>First, we arrange a schematic diagram for the population distribution. For \(t=1961\), we have:
+<p>
+
+<table border="solid" style="width: 100%;">
+  <tr>
+   <th width="25%" style="text-align:center">Age</th>
+    <th width="25%" style="text-align:center">\(1961\)</th>
+    <th width="25%" style="text-align:center">\(1981\)</th>
+    <th width="25%" style="text-align:center">\(2001\)</th>
+  </tr>
+  <tr>
+  <td style="text-align:center">\(0-19 \)</td>
+    <td style="text-align:center">\(V(1,t)={@ageset_1a@}\)</td>
+    <td style="text-align:center"> \(V(1,t+20) ={@ageset_1b@}\)</td>
+   <td style="text-align:center">\(V(1,t+40)\)</td>
+  </tr>
+  <tr>
+  <td style="text-align:center">\(20-39 \)</td>
+    <td style="text-align:center">\(V(2,t) ={@ageset_2a@}\)</td>
+    <td style="text-align:center">\(V(2,t+20) ={@ageset_2b@}\) </td>
+  <td style="text-align:center">\(V(2,t+40)\) </td>
+  </tr>
+  <tr>
+   <td style="text-align:center">\(40+ \)</td>
+    <td style="text-align:center">\(V(3,t)= {@ageset_3a@}\)</td>
+    <td style="text-align:center">  \(V(3+20) ={@ageset_3b@}\)</td>
+   <td style="text-align:center">\(V(3,t+40)\)</td>
+
+  </tr>
+ 
+</table>
+</p>
+<hr>
+
+<p>We start by calculating the survivorship ratios.</p>
+
+<p>After \(20\) years, the surviving members of age group \(V(1,t)\) move to age group \(V(2,t+20)\). In mathematical terms: \(V(2,t+20) = V(1,t) P_1\). We can use this to compute the survivorship ratios:</p>
+<p>\(P_1=\displaystyle \frac{V(2,t+20)}{V(1,t)}= \displaystyle \frac{{@ageset_2b@}}{{@ageset_1a@}}={@p1@}\)</p>
+
+<p>For \(i=2\), i.e. the last age group, we have \(V(3,t+20) = V(2,t) P_2 + V(3,t) P_3\). We assume that \(P_2=P_3\), to get:</p>
+<p>\(P_2=\displaystyle \frac{{@ageset_3b@}}{{@ageset_2a@}+{@ageset_3a@}}\)</p>
+<p>\(P_2=P_3={@p2@}\)</p>
+
+<p>Average number of women in the fertility group \(20-39\); </p>
+
+<p>Computing the fertility rates:</p>
+<p>\(f_2^*=\displaystyle \frac{\text{Total births}}{20 \cdot w_2}\)</p>
+<p>Where, \(w_2=\displaystyle \frac{V(2,t)+V(2,t+20)}{2}=\displaystyle \frac{V(2,t)+V(1,t)P_1}{2}\)</p>
+<p>so, \(f_2^*=\displaystyle \frac{{@births@}}{20 \left ( \displaystyle\frac{{@ageset_2a@}+{@ageset_1a@} \cdot {@p1@}}{2} \right )}={@fert_rate@}\)</p>
+<p>Within the \(20\) year period \(1961-1981\), we have \({@births@}\) live births. Of those, \(V(1,t+20)={@ageset_1b@}\) survive until \(1981\), thus we get \(P_b = \displaystyle \frac{{@ageset_1b@}}{{@births@}} = {@pb@}\)</p>
+
+<p>No. of surviving births \(=\displaystyle \frac{V(2,t)+V(2,t+20)}{2} \times 20 \cdot f_2^*  \cdot P_b\)</p>
+<p>\(\quad \quad \quad \quad \quad=V(2,t)\cdot 10 \cdot f_2^* \cdot P_b+  V(1,t)\cdot P_1 \cdot 10 \cdot f_2^* \cdot P_b\) </p>
+<p>Letting </p>
+<p>\(f_1=P_1 \cdot 10 \cdot f_2^* \cdot P_b \) </p>
+<p>\(f_2=10 \cdot f_2^*\cdot P_b \)</p>
+<p>the above expression becomes \(=V(1,t)f_1+V(2,t)f_2\)</p>
+
+<p>Hence we get our leslie matrix as follows</p>
+<p>\(\begin{bmatrix}
+V(1,t+20)\\ 
+V(2,t+20)\\ 
+V(3,t+20)
+\end{bmatrix}=
+\begin{bmatrix}
+f_1 & f_2 & 0\\ 
+P_1 & 0 & 0\\ 
+0 &P_2  &P_3 
+\end{bmatrix}=\begin{bmatrix}
+V(1,t)\\ 
+V(2,t)\\ 
+V(3,t)
+\end{bmatrix}\)</p>
+<hr>
+
+<p>By evaluating this computation for \(t=1981\)</p>
+<p>\(\begin{bmatrix}
+V(1,2001)\\ 
+V(2,2001)\\ 
+V(3,2001)
+\end{bmatrix}=
+\begin{bmatrix}
+f_1 & f_2 & 0\\ 
+P_1 & 0 & 0\\ 
+0 &P_2  &P_3 
+\end{bmatrix}=\begin{bmatrix}
+{@ageset_1b@}\\ 
+{@ageset_2b@}\\ 
+{@ageset_3b@}
+\end{bmatrix}\)</p>
+
+<hr>
+<p>we get the following projection:</p>
+<p>
+<table border="solid">
+<tr>
+    <th width="15%", style="text-align:center">Age</th>
+<th width="15%", style="text-align:center">\(2001\)</th>
+  </tr>
+  <tr>
+    <td style="text-align:center">\(0-19\)</td>
+    <td style="text-align:center">\({@projection_1@}\)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">\(20-39\)</td>
+    <td style="text-align:center">\({@projection_2@}\)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">\(40+\)</td>
+    <td style="text-align:center">\({@projection_3@}\)</td>
+  
+  </tr>
+</table>
+</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*sta 246*/
+aa:makelist((rand_with_step(35000,40000,500)), i, 1, 2);/*population of 0-14 1960 and 1975*/
+ageset_1a:aa[1];
+ageset_1b:aa[2];
+bb:makelist((rand_with_step(30000,34500,500)), i, 1, 2);/*population of 15-29 1960 and 1975*/
+ageset_2a:bb[1];
+ageset_2b:bb[2];
+cc:makelist((rand_with_step(25000,29500,500)), i, 1, 2);/*population of 30-34 1960 and 1975*/
+ageset_3a:cc[1];
+ageset_3b:cc[2];
+
+births:rand_with_step(40000,50000,1000);
+
+/*worked solution variables*/
+p1:decimalplaces(ageset_2b/ageset_1a,3);
+
+p2:decimalplaces(ageset_3b/(ageset_2a+ageset_3a),3);
+pb:decimalplaces(ageset_1b/births,3);
+sol1:20*((ageset_2a+(ageset_1a*p1))/2);
+fert_rate:decimalplaces(births/sol1,3);
+f2:decimalplaces(10*fert_rate*pb,4);
+f1:decimalplaces(p1*10*fert_rate*pb,4);
+
+/*projections*/
+projection_1:round((f1*ageset_1b)+(f2*ageset_2b));
+projection_2:round((ageset_1b*p1));
+projection_3:round((p2*ageset_2b)+(p2*ageset_3b));</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(P_1={@p1@}\)</p>
+<p>\(P_2={@p2@}\)</p>
+<p>\(f_2^*={@fert_rate@}\)</p>
+<p>\(f_2={@f2@}\)</p>
+<p>\(f_1={@f1@}\)</p>
+
+<p>So the projected population in \(2001\) will be</p>
+<p>
+<table border="solid">
+  <tr>
+    <td style="text-align:center">\(0-19\)</td>
+    <td style="text-align:center">\({@projection_1@}\)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">\(20-39\)</td>
+    <td style="text-align:center">\({@projection_2@}\)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">\(40+\)</td>
+    <td style="text-align:center">\({@projection_3@}\)</td>
+  
+  </tr>
+</table>
+</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Mary Sayuni</p>
+<p id="concept">N/A</p>
+<p id="reviewer">Nixson Kiplagat</p>
+<p id="reviewer">Santiago Borio</p>
+<p id="description">Give population of a given region for \(1960-1975\) , the question requires you to find the projection the year \(1990\).</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>fert_rate</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>pb</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>p1</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>algebraic</type>
+      <tans>p2</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans5</name>
+      <type>algebraic</type>
+      <tans>projection_1</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans6</name>
+      <type>algebraic</type>
+      <tans>projection_2</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans7</name>
+      <type>algebraic</type>
+      <tans>projection_3</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for fertility rate</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>fert_rate</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for no of dp</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans1</sans>
+        <tans>fert_rate</tans>
+        <testoptions>0.001</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.25</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description> checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>pb</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>check for no of dp</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans2</sans>
+        <tans>pb</tans>
+        <testoptions>0.01</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.25</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Your answer is partially correct because it's not given to the right number of decimal places</p></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>p1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>check for no of dp</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans3</sans>
+        <tans>p1</tans>
+        <testoptions>0.01</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.25</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Your answer is partially correct because it's not given to the right number of decimal places</p></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>p2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for no dp</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans4</sans>
+        <tans>p2</tans>
+        <testoptions>0.01</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.25</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Your answer is partially correct because it's not given to the right number of decimal places</p></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt5</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct projection for age grp 1</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5</sans>
+        <tans>projection_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt5-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt6</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct projection for age grp 2</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans6</sans>
+        <tans>projection_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt6-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt6-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt7</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct projection for age grp 3</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans7</sans>
+        <tans>projection_3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt7-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt7-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>852713478</deployedseed>
+    <deployedseed>1233097025</deployedseed>
+    <deployedseed>812621658</deployedseed>
+    <deployedseed>102685094</deployedseed>
+    <deployedseed>1732989470</deployedseed>
+    <deployedseed>1657434118</deployedseed>
+    <deployedseed>1156154040</deployedseed>
+    <deployedseed>1895320962</deployedseed>
+    <deployedseed>756857127</deployedseed>
+    <deployedseed>752708621</deployedseed>
+    <deployedseed>621958139</deployedseed>
+    <deployedseed>1952811499</deployedseed>
+    <deployedseed>514649273</deployedseed>
+    <deployedseed>78979578</deployedseed>
+    <deployedseed>765378146</deployedseed>
+    <deployedseed>837086087</deployedseed>
+    <deployedseed>414040269</deployedseed>
+    <deployedseed>1371506880</deployedseed>
+    <deployedseed>545067394</deployedseed>
+    <deployedseed>1301961153</deployedseed>
+    <deployedseed>914855687</deployedseed>
+    <deployedseed>1083934980</deployedseed>
+    <deployedseed>128686120</deployedseed>
+    <deployedseed>1873573075</deployedseed>
+    <deployedseed>2092383107</deployedseed>
+    <deployedseed>1936780521</deployedseed>
+    <deployedseed>1395214985</deployedseed>
+    <deployedseed>530153134</deployedseed>
+    <deployedseed>1706564229</deployedseed>
+    <deployedseed>1948101754</deployedseed>
+    <deployedseed>2052251655</deployedseed>
+    <deployedseed>1344285645</deployedseed>
+    <deployedseed>334412226</deployedseed>
+    <deployedseed>167765573</deployedseed>
+    <deployedseed>646568852</deployedseed>
+    <deployedseed>2089434782</deployedseed>
+    <deployedseed>1601870496</deployedseed>
+    <deployedseed>1307798854</deployedseed>
+    <deployedseed>246341804</deployedseed>
+    <deployedseed>1368410868</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>fert_rate</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>pb</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>p1</value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value>p2</value>
+      </testinput>
+      <testinput>
+        <name>ans5</name>
+        <value>projection_1</value>
+      </testinput>
+      <testinput>
+        <name>ans6</name>
+        <value>projection_2</value>
+      </testinput>
+      <testinput>
+        <name>ans7</name>
+        <value>projection_3</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt4-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt5</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt5-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt6</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt6-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt7</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt7-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

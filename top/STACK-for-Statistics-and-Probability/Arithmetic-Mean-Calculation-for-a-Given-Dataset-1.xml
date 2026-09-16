@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Arithmetic Mean Calculation for a Given Dataset 1</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Calculate the arithmetic mean for the following data</p>
+
+<p>{@data@}</p>
+
+<p><em>Note: Submit your answer corrected to two decimal places where appropriate</em></p>
+
+<p>[[input:ans1]] [[validation:ans1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>The arithmetic mean is given by the formula \( \displaystyle \bar{x} = \frac{\sum_{i=1}^n x_i}{n}\).</p>
+
+<p>In this case, \( \displaystyle \sum_{i=1}^n x_i = {@sum(data[i],i,1,20)@}\) and \(n = 20\). Therefore, \(\bar{x} = {@dispdp(ta,2)@}\).</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>data:makelist(1+rand(1+rand(500)),i,1,20);
+mean_data:mean(data);
+ta:float(mean_data);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text><![CDATA[<p>[[feedback:prt1]]<br></p>]]></text>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>{@ta@}</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author">Santiago Borio</p>
+<p id="concept">James Musyoka</p>
+<p id="reviewer"></p>
+<p id="description">This question asks students to calculate the arithmetic mean of a given dataset. The answer should be submitted rounded to two decimal places.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>numerical</type>
+      <tans>dispdp(ta,2)</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Check if the mean is integer*/
+int_ta: if integerp(mean_data) then 1 else 0;
+
+/*Check if the mean has exactly 1dp*/
+one_dp_ta: if integerp(10*mean_data) then 1 else 0;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>test correct answer to 2dp</description>
+        <answertest>NumDecPlaces</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>2</testoptions>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>check if answer is integer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>1</sans>
+        <tans>int_ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>2</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>Check if correct answer when integer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mean_data</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>Check if mean has exactly 1dp </description>
+        <answertest>AlgEquiv</answertest>
+        <sans>1</sans>
+        <tans>one_dp_ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>4</truenextnode>
+        <trueanswernote>prt1-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>4</name>
+        <description>Check correct answer when exactly 1dp</description>
+        <answertest>NumDecPlaces</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>1</testoptions>
+        <quiet>1</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-5-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-5-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>476413600</deployedseed>
+    <deployedseed>557096796</deployedseed>
+    <deployedseed>1233598031</deployedseed>
+    <deployedseed>702878590</deployedseed>
+    <deployedseed>1323021564</deployedseed>
+    <deployedseed>1501821173</deployedseed>
+    <deployedseed>1867356141</deployedseed>
+    <deployedseed>1643437196</deployedseed>
+    <deployedseed>513555610</deployedseed>
+    <deployedseed>475695965</deployedseed>
+    <deployedseed>1349250833</deployedseed>
+    <deployedseed>1971844460</deployedseed>
+    <deployedseed>145464955</deployedseed>
+    <deployedseed>150395909</deployedseed>
+    <deployedseed>1230395702</deployedseed>
+    <deployedseed>1942519536</deployedseed>
+    <deployedseed>1455868819</deployedseed>
+    <deployedseed>2031562061</deployedseed>
+    <deployedseed>1757522613</deployedseed>
+    <deployedseed>1956938285</deployedseed>
+    <deployedseed>1500768036</deployedseed>
+    <deployedseed>2005726364</deployedseed>
+    <deployedseed>730168480</deployedseed>
+    <deployedseed>1049915845</deployedseed>
+    <deployedseed>19960770</deployedseed>
+    <deployedseed>2112596333</deployedseed>
+    <deployedseed>375541894</deployedseed>
+    <deployedseed>1575261403</deployedseed>
+    <deployedseed>807352044</deployedseed>
+    <deployedseed>1165478547</deployedseed>
+    <deployedseed>19589593</deployedseed>
+    <deployedseed>1622247031</deployedseed>
+    <deployedseed>2023060950</deployedseed>
+    <deployedseed>1504461597</deployedseed>
+    <deployedseed>1320065546</deployedseed>
+    <deployedseed>366827745</deployedseed>
+    <deployedseed>630097778</deployedseed>
+    <deployedseed>104943581</deployedseed>
+    <deployedseed>1481680106</deployedseed>
+    <deployedseed>62276545</deployedseed>
+    <deployedseed>958289039</deployedseed>
+    <deployedseed>139646226</deployedseed>
+    <deployedseed>1353880691</deployedseed>
+    <deployedseed>487712012</deployedseed>
+    <deployedseed>1342315537</deployedseed>
+    <deployedseed>152174477</deployedseed>
+    <deployedseed>944970371</deployedseed>
+    <deployedseed>1668258957</deployedseed>
+    <deployedseed>772752128</deployedseed>
+    <deployedseed>516976818</deployedseed>
+    <deployedseed>1882956209</deployedseed>
+    <deployedseed>699290503</deployedseed>
+    <deployedseed>263650951</deployedseed>
+    <deployedseed>558341959</deployedseed>
+    <deployedseed>2013722581</deployedseed>
+    <deployedseed>1942019848</deployedseed>
+    <deployedseed>1488261566</deployedseed>
+    <deployedseed>205980228</deployedseed>
+    <deployedseed>542343493</deployedseed>
+    <deployedseed>1298811706</deployedseed>
+    <deployedseed>820017677</deployedseed>
+    <deployedseed>2007904958</deployedseed>
+    <deployedseed>1450189640</deployedseed>
+    <deployedseed>551054420</deployedseed>
+    <deployedseed>66035403</deployedseed>
+    <deployedseed>1145162214</deployedseed>
+    <deployedseed>1568898380</deployedseed>
+    <deployedseed>636794752</deployedseed>
+    <deployedseed>1015217292</deployedseed>
+    <deployedseed>160295498</deployedseed>
+    <deployedseed>196881973</deployedseed>
+    <deployedseed>1955588479</deployedseed>
+    <deployedseed>1579903574</deployedseed>
+    <deployedseed>1190038277</deployedseed>
+    <deployedseed>1229518630</deployedseed>
+    <deployedseed>1447407518</deployedseed>
+    <deployedseed>1481943267</deployedseed>
+    <deployedseed>1256081036</deployedseed>
+    <deployedseed>956608926</deployedseed>
+    <deployedseed>168549232</deployedseed>
+    <deployedseed>1506114094</deployedseed>
+    <deployedseed>1030224838</deployedseed>
+    <deployedseed>324246948</deployedseed>
+    <deployedseed>276532968</deployedseed>
+    <deployedseed>1763748832</deployedseed>
+    <deployedseed>764345848</deployedseed>
+    <deployedseed>1317181787</deployedseed>
+    <deployedseed>1952077164</deployedseed>
+    <deployedseed>1999527436</deployedseed>
+    <deployedseed>641297828</deployedseed>
+    <deployedseed>486306951</deployedseed>
+    <deployedseed>63205970</deployedseed>
+    <deployedseed>934557541</deployedseed>
+    <deployedseed>877818527</deployedseed>
+    <deployedseed>344989238</deployedseed>
+    <deployedseed>1970080280</deployedseed>
+    <deployedseed>1105212526</deployedseed>
+    <deployedseed>1952128360</deployedseed>
+    <deployedseed>192314473</deployedseed>
+    <deployedseed>2084649662</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description>Test case assuming the teacher's input gets full marks.</description>
+      <testinput>
+        <name>ans1</name>
+        <value>dispdp(ta,2)</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

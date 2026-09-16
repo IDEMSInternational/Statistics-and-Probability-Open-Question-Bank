@@ -1,0 +1,1222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>ABRIDGED LIFE TABLES_q3(Maternity Hospital Capacity Analysis: Cots Needed and Average Stay )</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>A maternity hospital delivers \({@newborn_per_week@}\) newborn babies per week, \({@p1@}\%\) of them leave the hospital within a week, \({@p2@}\%\) of the remaining one-week babies leave the hospital before they are two weeks old, \({@p3@}\%\) leave before they are three weeks old, \({@p4@}\%\) of the remaining before they are four weeks old and \({@p5@}\%\) of the remaining before they are five weeks old and the remainder before they are six weeks old. Use the information to answer the questions that follow:</p>
+<p>
+<strong style="color: blue;">Note:</strong>
+
+<ol>
+<li>
+<p>Give your answer to the nearest whole number or correct to \(2\) decimal places where necessary.</p>
+</li>
+<li>
+<p>To calculate the values of \( l_x \) (the number of survivors to exact age \( x \)), you can follow these steps:</p>
+<ul>
+<li>For \( x = 0 \) (which corresponds to newborns at week \(0\)), let \( l_0 = {@l0@} \) newborn babies initially.</li>
+<li>For each subsequent week (\( x = 1, 2, 3, 4, 5, 6 \)), you'll use the given survival rates to calculate the number of survivors.</li>
+<li>For \( l_1 \) (number of babies at the end of week \(1\)) \(= {@l0@} \) (initial newborns) - \( {@p1@}\% \) of \( {@l0@} \) (those who leave within a week) = \(\displaystyle  {@l0@} - \frac{{@p1@}}{100} \times {@l0@} = {@l1@} \)</li>
+</ul>
+</li>
+<li><p>\({}_\text{n}\text{d}_\text{x}  = l_x – l_{x+n},\,  \displaystyle   {}_\text{n}\text{q}_\text{x}  =\frac{{}_\text{n}\text{d}_\text{x} }{l_x}\, , \text{L}_x = \frac{(l_x + l_{x+1})}{2}\, ,\text{T}_x=\sum_{i=0}^{n-1} \text{L}_{x+i},\) and \( \displaystyle e_{x}^{0}=\frac{\text{T}_x}{l_x}\)</p>
+</li>
+</ol>
+<ol class="HELM_parts">
+<li>
+<p>Complete the table below.</p>
+<p>
+<table border="solid">
+  <tr>
+    <th width="15%", style="text-align:center">\(x (\text{week})\)</th>
+    <th width="15%", style="text-align:center">\(l_x\)</th>
+     <th width="15%", style="text-align:center">\({}_\text{n}\text{d}_\text{x}\)</th>
+     <th width="15%", style="text-align:center">\(\displaystyle   {}_\text{n}\text{q}_\text{x}\)</th>
+    <th width="15%", style="text-align:center">\(\displaystyle \text{L}_x\)</th>
+     <th width="15%", style="text-align:center">\(\text{T}_x\)</th>
+     <th width="15%", style="text-align:center">\(\displaystyle e_{x}^{0}\)</th>
+  </tr>
+  <tr>
+    <td style="text-align:center">\({@weeks[1]@}\)</td>
+    <td style="text-align:center">\({@lx[1]@}\)</td>
+    <td style="text-align:center">\({@ndx_values[1]@}\)</td>
+    <td style="text-align:center">[[input:ans3]][[validation:ans3]][[feedback:prt3]]</td>
+    <td style="text-align:center">\({@midpoint_values_Lx[1]@}\)</td>
+    <td style="text-align:center">[[input:ans7]][[validation:ans7]][[feedback:prt7]]</td>
+    <td style="text-align:center">\({@e0x_values[1]@}\)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">\({@weeks[2]@}\)</td>
+    <td style="text-align:center">\({@lx[2]@}\)</td>
+    <td style="text-align:center">[[input:ans1]][[validation:ans1]][[feedback:prt1]]</td>
+    <td style="text-align:center">\({@nqx_values[2]@}\)</td>
+    <td style="text-align:center">\({@midpoint_values_Lx[2]@}\)</td>
+    <td style="text-align:center">\({@Tx_values[2]@}\)</td>
+    <td style="text-align:center">[[input:ans9]][[validation:ans9]][[feedback:prt9]]</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">\({@weeks[3]@}\)</td>
+    <td style="text-align:center">\({@lx[3]@}\)</td>
+    <td style="text-align:center">\({@ndx_values[3]@}\)</td>
+    <td style="text-align:center">\({@nqx_values[3]@}\)</td>
+    <td style="text-align:center">[[input:ans5]][[validation:ans5]][[feedback:prt5]]</td>
+    <td style="text-align:center">\({@Tx_values[3]@}\)</td>
+    <td style="text-align:center">\({@e0x_values[3]@}\)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">\({@weeks[4]@}\)</td>
+    <td style="text-align:center">\({@lx[4]@}\)</td>
+    <td style="text-align:center">[[input:ans2]][[validation:ans2]][[feedback:prt2]]</td>
+    <td style="text-align:center">\({@nqx_values[4]@}\)</td>
+    <td style="text-align:center">\({@midpoint_values_Lx[4]@}\)</td>
+    <td style="text-align:center">[[input:ans8]][[validation:ans8]][[feedback:prt8]]</td>
+    <td style="text-align:center">\({@e0x_values[4]@}\)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">\({@weeks[5]@}\)</td>
+    <td style="text-align:center">\({@lx[5]@}\)</td>
+    <td style="text-align:center">\({@ndx_values[5]@}\)</td>
+    <td style="text-align:center">\({@nqx_values[5]@}\)</td>
+    <td style="text-align:center">[[input:ans6]][[validation:ans6]][[feedback:prt6]]</td>
+    <td style="text-align:center">\({@Tx_values[5]@}\)</td>
+    <td style="text-align:center">\({@e0x_values[5]@}\)</td>
+  </tr>
+    <tr>
+    <td style="text-align:center">\({@weeks[6]@}\)</td>
+    <td style="text-align:center">\({@lx[6]@}\)</td>
+    <td style="text-align:center">\({@ndx_values[6]@}\)</td>
+    <td style="text-align:center">[[input:ans4]][[validation:ans4]][[feedback:prt4]]</td>
+    <td style="text-align:center">\({@midpoint_values_Lx[6]@}\)</td>
+    <td style="text-align:center">\({@Tx_values[6]@}\)</td>
+    <td style="text-align:center">[[input:ans10]][[validation:ans10]][[feedback:prt10]]</td>
+  </tr>
+<tr>
+    <td style="text-align:center">\({@weeks[7]@}\)</td>
+    <td style="text-align:center">\({@lx[7]@}\)</td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"></td>
+ </tr>
+</table>
+</p>
+</li>
+
+<p>Using the information in the table above:</p>
+      <li><p>How many cots are needed? (Number of beds needed to accommodate newborn babies) </p>
+<p>[[input:ans11]] cots [[validation:ans11]][[feedback:prt11]]</p>
+</li>
+      <li><p>At any one time, determine the average stay in the hospital.</p>
+<p>[[input:ans12]] weeks [[validation:ans12]][[feedback:prt12]]</p></li>
+        </ol>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+
+<p>We construct a life table as follows:</p>
+<p>
+
+<ol>
+<li>
+<p>To calculate the values of \( l_x \) (the number of survivors to exact age \( x \)), we can follow these steps:</p>
+<ul>
+<li>For \( x = 0 \) (which corresponds to newborns at week \(0\)), let \( l_0 = {@l0@} \) newborn babies initially.</li>
+<li>For each subsequent week (\( x = 1, 2, 3, 4, 5, 6 \)), we'll use the given survival rates to calculate the number of survivors.</li><br>
+</ul>
+<p>For \( x = {@weeks[1]@} \) (week \(0\)): </p>
+<p>\( l_0 = {@lx[1]@} \) (initial number of newborns)</p><br>
+
+<p>For \( x = {@weeks[2]@} \) (end of week \(1\)): </p>
+<p>\( \displaystyle  l_1 = l_0 - \frac{{@p1@}}{100} \times l_0 = {@lx[1]@} -{@float(p1/100)@} \times {@lx[1]@} = {@lx[2]@} \)</p><br>
+
+<p>For \( x = {@weeks[3]@}  \) (end of week \(2\)): </p>
+<p>\(\displaystyle  l_2 = l_1 - \frac{{@p2@}}{100} \times l_1 = {@lx[2]@} - {@float(p2/100)@} \times {@lx[2]@} = {@lx[3]@} \)</p><br>
+
+<p>For \( x = {@weeks[4]@}  \) (end of week \(3\)): </p>
+<p>\(\displaystyle  l_3 = l_2 - \frac{{@p3@}}{100} \times l_2 = {@lx[3]@} - {@float(p3/100)@} \times {@lx[3]@} = {@lx[4]@}\)</p>
+<p>\( l_3 = {@lx[4]@} \) (rounded to nearest whole number)</p><br>
+
+<p>For \( x = {@weeks[5]@}  \) (end of week \(4\)): </p>
+<p>\(\displaystyle  l_4 = l_3 - \frac{{@p4@}}{100} \times l_3 = {@lx[4]@} - {@float(p4/100)@} \times {@lx[4]@} = {@lx[5]@} \)</p><br>
+
+<p>For \( x = {@weeks[6]@}  \) (end of week \(5\)): </p>
+<p>\(\displaystyle  l_5 = l_4 - \frac{{@p5@}}{100} \times l_4 = {@lx[5]@} - {@float(p5/100)@} \times {@lx[5]@} = {@lx[6]@} \)</p><br>
+
+<p>For \( x = {@weeks[7]@}  \) (end of week \(6\)): </p>
+<p>\( l_6 = 0 \) (All babies have left the hospital)</p><br>
+</li>
+
+<li><p>Given the formula:</p>
+<p>\({}_\text{n}\text{d}_\text{x}  = l_x – l_{x+n}\) (this is the number of deaths between ages \(x\) and \(x+n\))</p>
+<p>For \( x = {@weeks[1]@}  \): </p>
+<p>We have,</p>
+<p>\(\displaystyle {@lx_values[1]@}-{@lx_n_values[1]@}={@ndx_values[1]@}\)</p>
+<p>Use the same procedure to compute \({}_\text{n}\text{d}_\text{x}\)  for \(x=1,2,3,4,5,6\)</p><br>
+</li>
+
+<li><p>Given the formula:</p>
+<p>\(\displaystyle   {}_\text{n}\text{q}_\text{x}  =\frac{{}_\text{n}\text{d}_\text{x} }{l_x} =\frac{l_x – l_{x+n}}{l_x}\) (this is the probability of an individual alive at age \(x\) dying in the age interval \(x – (x+n)\))</p>
+<p>For \( x = {@weeks[1]@}  \): </p><p>We have,</p>
+<p>\(\displaystyle \frac{{@ndx_values[1]@}}{{@lx_values[1]@}}={@nqx_values[1]@}\)</p>
+<p>Use the same procedure to compute \({}_\text{n}\text{q}_\text{x}\)  for \(x=1,2,3,4,5,6\)</p><br>
+</li>
+
+
+<li><p>Given the formula:</p>
+<p>\(\displaystyle L_x = \frac{(l_x + l_{x+1})}{2}\) This is the number of persons now alive and aged between \(x\) and \(x+1\) exactly (also called survivors between \(x\) and \(x+1\))</p>
+<p>For \( x = {@weeks[1]@}  \): </p><p>We have,</p>
+<p>\(\displaystyle \frac{{@lx_values[1]@}+{@lx_n_values[1]@}}{{@2@}}={@midpoint_values_Lx[1]@}\)</p>
+<p>Use the same procedure to compute \(\text{L}_\text{x}\)  for \(x=1,2,3,4,5,6\)</p><br>
+</li>
+
+<li><p>Given the formula:</p>
+<p>\(\text{T}_x=\sum_{i=0}^{n-1} \text{L}_{x+i}\) This is the total number of person-years lived between ages \(x\) and \(x+n\) </p>
+<p>We have,the \(  T_x = L_x + L_{x+1} + L_{x+2} +  \ldots +  L_{x+n}\)</p>
+<p>We obtain the cumulative sum of: </p>
+<p>\(\displaystyle {@midpoint_values_Lxr@}={@Tx@}\)  for \(x=1,2,3,4,5,6\)</p>
+<p>So, \(T_x\) can also mean the life table total population</p><br>
+</li>
+<li><p>Given the formula:</p>
+<p>\(\displaystyle e_{x}^{0}=\frac{\text{this is the total number of years lived after age} \, x}{\text{these are the people who are going to live the years}}=\frac{T_x}{l_x}\)</p>
+<p>We have,</p>
+<p>For \( x = {@weeks[1]@}  \): </p><p>\(\displaystyle \frac{{@Tx_values[1]@}}{{@lx_values[1]@}}={@e0x_values[1]@}\)</p>
+<p>Use the same procedure to compute \(\text{L}_\text{x}\)  for \(x=1,2,3,4,5,6\)</p><br>
+</li>
+</ol>
+<ol class="HELM_parts">
+<li>The constructed life table is as follows:
+<p>
+<table border="solid">
+  <tr>
+    <th width="15%", style="text-align:center">\(x (\text{week})\)</th>
+    <th width="15%", style="text-align:center">\(l_x\)</th>
+     <th width="15%", style="text-align:center">\({}_\text{n}\text{d}_\text{x}  = l_x – l_{x+n}\)</th>
+     <th width="15%", style="text-align:center">\(\displaystyle   {}_\text{n}\text{q}_\text{x}  =\frac{{}_\text{n}\text{d}_\text{x} }{l_x}\)</th>
+    <th width="15%", style="text-align:center">\(\displaystyle \text{L}_x = \frac{(l_x + l_{x+1})}{2}\)</th>
+     <th width="15%", style="text-align:center">\(\text{T}_x=\sum_{i=0}^{n-1} \text{L}_{x+i}\)</th>
+     <th width="15%", style="text-align:center">\(\displaystyle e_{x}^{0}=\frac{T_x}{l_x}\)</th>
+  </tr>
+  <tr>
+    <td style="text-align:center">\({@weeks[1]@}\)</td>
+    <td style="text-align:center">\({@lx[1]@}\)</td>
+    <td style="text-align:center">\({@ndx_values[1]@}\)</td>
+    <td style="text-align:center">\({@nqx_values[1]@}\)</td>
+    <td style="text-align:center">\({@midpoint_values_Lx[1]@}\)</td>
+    <td style="text-align:center">\({@Tx_values[1]@}\)</td>
+    <td style="text-align:center">\({@e0x_values[1]@}\)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">\({@weeks[2]@}\)</td>
+    <td style="text-align:center">\({@lx[2]@}\)</td>
+    <td style="text-align:center">\({@ndx_values[2]@}\)</td>
+    <td style="text-align:center">\({@nqx_values[2]@}\)</td>
+    <td style="text-align:center">\({@midpoint_values_Lx[2]@}\)</td>
+    <td style="text-align:center">\({@Tx_values[2]@}\)</td>
+    <td style="text-align:center">\({@e0x_values[2]@}\)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">\({@weeks[3]@}\)</td>
+    <td style="text-align:center">\({@lx[3]@}\)</td>
+    <td style="text-align:center">\({@ndx_values[3]@}\)</td>
+    <td style="text-align:center">\({@nqx_values[3]@}\)</td>
+    <td style="text-align:center">\({@midpoint_values_Lx[3]@}\)</td>
+    <td style="text-align:center">\({@Tx_values[3]@}\)</td>
+    <td style="text-align:center">\({@e0x_values[3]@}\)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">\({@weeks[4]@}\)</td>
+    <td style="text-align:center">\({@lx[4]@}\)</td>
+    <td style="text-align:center">\({@ndx_values[4]@}\)</td>
+    <td style="text-align:center">\({@nqx_values[4]@}\)</td>
+    <td style="text-align:center">\({@midpoint_values_Lx[4]@}\)</td>
+    <td style="text-align:center">\({@Tx_values[4]@}\)</td>
+    <td style="text-align:center">\({@e0x_values[4]@}\)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">\({@weeks[5]@}\)</td>
+    <td style="text-align:center">\({@lx[5]@}\)</td>
+    <td style="text-align:center">\({@ndx_values[5]@}\)</td>
+    <td style="text-align:center">\({@nqx_values[5]@}\)</td>
+    <td style="text-align:center">\({@midpoint_values_Lx[5]@}\)</td>
+    <td style="text-align:center">\({@Tx_values[5]@}\)</td>
+    <td style="text-align:center">\({@e0x_values[5]@}\)</td>
+  </tr>
+    <tr>
+    <td style="text-align:center">\({@weeks[6]@}\)</td>
+    <td style="text-align:center">\({@lx[6]@}\)</td>
+    <td style="text-align:center">\({@ndx_values[6]@}\)</td>
+    <td style="text-align:center">\({@nqx_values[6]@}\)</td>
+    <td style="text-align:center">\({@midpoint_values_Lx[6]@}\)</td>
+    <td style="text-align:center">\({@Tx_values[6]@}\)</td>
+    <td style="text-align:center">\({@e0x_values[6]@}\)</td>
+  </tr>
+<tr>
+    <td style="text-align:center">\({@weeks[7]@}\)</td>
+    <td style="text-align:center">\({@lx[7]@}\)</td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center">\( \uparrow\)</td>
+    <td style="text-align:center"></td>
+ </tr>
+</table>
+</p>
+</li>
+
+<p>Using the information in the table above:</p>
+      <li><p>How many cots are needed? (Number of beds needed to accommodate newborn babies) </p>
+<p>If there are {@newborn_per_week@} newborn babies admitted each week, then the stationary population resulting will be;</p>
+<p> \( \begin{align} \displaystyle 
+\frac{{@newborn_per_week@} }{l_0} \times T_0 &= \frac{{@newborn_per_week@} }{{@l0@}} \times {@total_Lx@} \\
+                     &= {@max_cots_at_hospital@} \\
+\\
+
+\text{Also obtained by recalling that:} \\
+\frac{l_0}{T_0} \times \text{Required} &= \text{Maintained value} \\
+l_0 \times \frac{R}{{@total_Lx@}} &={@newborn_per_week@} \\
+         R &= \frac{{@newborn_per_week@}}{l_0} \times {@total_Lx@} \\
+            &=   \frac{{@newborn_per_week@}}{{@l0@}} \times {@total_Lx@} \\
+            &= {@max_cots_at_hospital@} \\
+\text{So},\,  {@max_cots_at_hospital@}  \, \text{cots or beds are required to accommodate newborn babies}
+\end{align}\)</p>
+</li>
+      <li><p>At any one time, determine the average stay in the hospital.</p>
+<p>The average stay in the hospital is given by;</p>
+<p> \( \begin{align} \displaystyle 
+e_x^0 &=\frac{T_0}{l_0} \\
+          &= \frac{ {@total_Lx@}}{{@l0@}} \\
+          &= {@average_stay@} \, \text{weeks}
+ \end{align}\)</p>
+</li>
+        </ol>]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/* Defined the percentages */  
+ap1: rand(3)+2;  
+ap2: rand_with_prohib(1,8,[ap1]);
+ap3: rand_with_prohib(1,8,[ap1,ap2]); 
+ap4: rand_with_prohib(1,8,[ap1,ap2,ap3]);  
+ap5: rand_with_prohib(1,8,[ap1,ap2,ap3,ap4]);
+pp:[ap1,ap2,ap3,ap4,ap5]*10;
+p1:pp[1];
+p2:pp[2];
+p3:pp[3];
+p4:pp[4];
+p5:pp[5];
+
+/* Number of newborn babies delivered per week */ 
+newborn_per_week: rand_with_step(10,50,10); 
+weeks:makelist(i,i,0,6);
+
+/* Initial number of newborns */ 
+l0: newborn_per_week*newborn_per_week; /*the 100*/
+/* Calculate lx for each week */ 
+l1: l0 - p1/100 * l0; 
+l2: l1 - p2/100 * l1; 
+l3: l2 - p3/100 * l2; 
+l4: l3 - p4/100 * l3; 
+l5: l4 - p5/100 * l4; 
+l6: l5 - 100/100 * l5;  /* All babies have left the hospital by week 6 */  
+lx: round([l0, l1, l2, l3, l4, l5, l6]);
+
+/* Define lists for lx and lx+n for each week */
+lx_values:round([l0, l1, l2, l3, l4, l5]) ;
+lx_n_values: round([l1, l2, l3, l4, l5, l6] );  
+
+/* Calculate ndx and nqx for each week */ 
+ndx_values: makelist(lx_values[i] - lx_n_values[i], i, 1, length(lx_values));
+nqx_values: decimalplaces(ndx_values / lx_values,2); 
+
+/* Calculate midpoint between corresponding elements */ 
+midpoint_values_Lx:round (makelist((lx_values[i] + lx_n_values[i]) / 2, i, 1, length(lx_values)));
+
+/*cumulative frequencies*/
+midpoint_values_Lxr:reverse(midpoint_values_Lx);
+Tx: makelist(sum(midpoint_values_Lxr[i], i, 1, j), j, 1, length(midpoint_values_Lxr)); 
+
+/*sum(midpoint_values_Lx);*/ 
+total_Lx:sum(midpoint_values_Lxr[i],i,1,length(midpoint_values_Lxr)); 
+Tx_values:reverse(Tx);
+
+e0x_values: decimalplaces(makelist(Tx_values[i]/lx_values[i], i, 1, length(lx_values)),2);
+
+max_cots_at_hospital:round((newborn_per_week/l0)*total_Lx); /*number of beds or spaces needed to accommodate newborn babies and infants  */
+average_stay:decimalplaces(total_Lx/l0,2); /*average stay in the hospital*/
+check_point:is(average_stay=e0x_values[1]);
+
+/*Model answers*/
+ta1:ndx_values[2];
+ta2:ndx_values[4];
+ta3:nqx_values[1];
+ta4:round(nqx_values[6]);
+ta5:midpoint_values_Lx[3];
+ta6:midpoint_values_Lx[5];
+ta7:Tx_values[1];
+ta8:Tx_values[4];
+ta9:e0x_values[2];
+ta10:e0x_values[6];
+ta11:max_cots_at_hospital;
+ta12:average_stay;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<br>{@check_point@}
+<br>Weeks: {@weeks@}
+<br>Percentages: {@[p1,p2,p3,p4,p5]@}
+<br>Newborn babies delivered per week {@newborn_per_week@}
+<br>Initial number of newborn {@l0@}
+<br>{@max_cots_at_hospital@} cots or beds are required to accommodate newborn babies
+<br>Average stay in the hospital is given by \(={@average_stay@} \)]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Godfrey Wabwire.</p>
+<p id="concept">https://docs.google.com/document/d/1JJuBZK8r_EthzlX1ZDMD6-93TsMlCH-fzVmYqjRFrik/edit</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">Sal Mercuri</p>
+<p id="description"> This question highlights the specific survival rates and the task of calculating the number of survivors for each week, number of maximum cots and weeks</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans10</name>
+      <type>algebraic</type>
+      <tans>ta10</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans11</name>
+      <type>algebraic</type>
+      <tans>ta11</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans12</name>
+      <type>algebraic</type>
+      <tans>ta12</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>ta3</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>algebraic</type>
+      <tans>ta4</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans5</name>
+      <type>algebraic</type>
+      <tans>ta5</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans6</name>
+      <type>algebraic</type>
+      <tans>ta6</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans7</name>
+      <type>algebraic</type>
+      <tans>ta7</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans8</name>
+      <type>algebraic</type>
+      <tans>ta8</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans9</name>
+      <type>algebraic</type>
+      <tans>ta9</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt10</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans10</sans>
+        <tans>ta10</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt10-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt10-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt11</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans11</sans>
+        <tans>ta11</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt11-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt11-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt12</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans12</sans>
+        <tans>ta12</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt12-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt12-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>ta3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>ta4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt5</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5</sans>
+        <tans>ta5</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt5-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt6</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans6</sans>
+        <tans>ta6</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt6-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt6-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt7</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans7</sans>
+        <tans>ta7</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt7-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt7-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt8</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans8</sans>
+        <tans>ta8</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt8-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt8-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt9</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans9</sans>
+        <tans>ta9</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt9-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt9-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>2010789007</deployedseed>
+    <deployedseed>1043059180</deployedseed>
+    <deployedseed>2071169281</deployedseed>
+    <deployedseed>885130208</deployedseed>
+    <deployedseed>247601123</deployedseed>
+    <deployedseed>1106599956</deployedseed>
+    <deployedseed>1621327124</deployedseed>
+    <deployedseed>904774625</deployedseed>
+    <deployedseed>15260391</deployedseed>
+    <deployedseed>1279662860</deployedseed>
+    <deployedseed>1544691343</deployedseed>
+    <deployedseed>316069578</deployedseed>
+    <deployedseed>1112360820</deployedseed>
+    <deployedseed>243227409</deployedseed>
+    <deployedseed>1137346175</deployedseed>
+    <deployedseed>1291498898</deployedseed>
+    <deployedseed>526773952</deployedseed>
+    <deployedseed>418552048</deployedseed>
+    <deployedseed>2075101232</deployedseed>
+    <deployedseed>89217174</deployedseed>
+    <deployedseed>454292893</deployedseed>
+    <deployedseed>1277313039</deployedseed>
+    <deployedseed>389523806</deployedseed>
+    <deployedseed>808808774</deployedseed>
+    <deployedseed>1604348023</deployedseed>
+    <deployedseed>1791659171</deployedseed>
+    <deployedseed>1682955709</deployedseed>
+    <deployedseed>2013756378</deployedseed>
+    <deployedseed>675088385</deployedseed>
+    <deployedseed>1045029459</deployedseed>
+    <deployedseed>937606819</deployedseed>
+    <deployedseed>230626143</deployedseed>
+    <deployedseed>447288313</deployedseed>
+    <deployedseed>1624869250</deployedseed>
+    <deployedseed>31455737</deployedseed>
+    <deployedseed>1262341416</deployedseed>
+    <deployedseed>1960312551</deployedseed>
+    <deployedseed>1962337262</deployedseed>
+    <deployedseed>1396607289</deployedseed>
+    <deployedseed>1864802636</deployedseed>
+    <deployedseed>78692499</deployedseed>
+    <deployedseed>1956298597</deployedseed>
+    <deployedseed>1564195262</deployedseed>
+    <deployedseed>688714692</deployedseed>
+    <deployedseed>952474667</deployedseed>
+    <deployedseed>816677135</deployedseed>
+    <deployedseed>732734537</deployedseed>
+    <deployedseed>1503919676</deployedseed>
+    <deployedseed>1918682598</deployedseed>
+    <deployedseed>2112829256</deployedseed>
+    <deployedseed>1524537836</deployedseed>
+    <deployedseed>799008485</deployedseed>
+    <deployedseed>530556997</deployedseed>
+    <deployedseed>1952813958</deployedseed>
+    <deployedseed>649994356</deployedseed>
+    <deployedseed>1179002061</deployedseed>
+    <deployedseed>465211345</deployedseed>
+    <deployedseed>89028409</deployedseed>
+    <deployedseed>1917093387</deployedseed>
+    <deployedseed>467582011</deployedseed>
+    <deployedseed>105062041</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans10</name>
+        <value>ta10</value>
+      </testinput>
+      <testinput>
+        <name>ans11</name>
+        <value>ta11</value>
+      </testinput>
+      <testinput>
+        <name>ans12</name>
+        <value>ta12</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>ta3</value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value>ta4</value>
+      </testinput>
+      <testinput>
+        <name>ans5</name>
+        <value>ta5</value>
+      </testinput>
+      <testinput>
+        <name>ans6</name>
+        <value>ta6</value>
+      </testinput>
+      <testinput>
+        <name>ans7</name>
+        <value>ta7</value>
+      </testinput>
+      <testinput>
+        <name>ans8</name>
+        <value>ta8</value>
+      </testinput>
+      <testinput>
+        <name>ans9</name>
+        <value>ta9</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt10</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt10-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt11</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt11-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt12</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt12-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt4-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt5</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt5-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt6</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt6-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt7</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt7-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt8</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt8-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt9</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt9-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

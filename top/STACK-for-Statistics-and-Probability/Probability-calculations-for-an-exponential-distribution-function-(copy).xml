@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Probability calculations for an exponential distribution function (copy)</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p> Leaves are falling from a marula tree. The random variable \(X\) measuring the distance of the leaves from the tree is exponentially distributed with average distance {@mean@} meters. Compute</p>
+
+<p>a. The probability of a leaf falling further than {@prob_min_a_disp@} meters from the tree. Give your answer in exact form (recall, the expression \(e^{ax}\) is entered as %e^(a*x) in STACK).</p>
+
+<p>[[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>
+
+<p>b. The probability of a leaf falling between {@prob_min_b_disp@} and {@prob_max_b_disp@} meters from the tree. Give your answer in exact form (recall, the expression \(e^{ax}\) is entered as %e^(a*x) in STACK).</p>
+
+<p>[[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>mean:(rand(14)+3)/2;
+if not(integerp(mean)) then mean:float(mean);
+
+prob_min_a:rationalize((rand(3)+2)*mean);
+prob_min_a_disp:if integerp(prob_min_a) then prob_min_a elseif integerp(1000*prob_min_a) then float(prob_min_a) else decimalplaces(prob_min_a,2);
+
+prob_min_b:(rand(4)+2)*rationalize(mean)/10;
+prob_min_b_disp:if integerp(prob_min_b) then prob_min_b elseif integerp(1000*prob_min_b) then float(prob_min_b) else decimalplaces(prob_min_b,2);
+
+prob_max_b:(rand(4)+6)*rationalize(mean)/10;
+prob_max_b_disp:if integerp(prob_max_b) then prob_max_b elseif integerp(1000*prob_max_b) then float(prob_max_b) else decimalplaces(prob_max_b,2);
+
+mean_recip:1/mean;
+mean_recip_disp:if integerp(mean_recip) then mean_recip elseif integerp(1000*mean_recip) then float(mean_recip) else decimalplaces(mean_recip,2);
+
+ta_1:e^(-prob_min_a/rationalize(mean));
+ta_2:e^(-prob_min_b/rationalize(mean))-e^(-prob_max_b/rationalize(mean));</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\( \displaystyle \quad \quad \quad = e^{-{@mean_recip*prob_min_b@}} - e^{-{@mean_recip*prob_max_b@}} \)</p>
+<p>\(e^{-{@mean_recip*prob_min_b@}}\)</p>
+<p>{@mean@}</p>]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta_1</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta_2</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>1</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<h3>Worked Solution</h3>
+
+<p>Since \(X\) is exponentially distributed with mean {@mean@}, its probability density function is given by</p>
+
+<p>\[f(x) = \frac{1}{{@mean@}} e^{-\frac{1}{{@mean@}}x} = {@mean_recip_disp@}e^{-{@mean_recip_disp@}x}, \]</p>
+
+<p>where \(x\geq 0\).</p>
+
+<p>Therefore, the probability of a leaf falling more than {@prob_min_a_disp@} meters from the tree is</p>
+
+<p>\( \displaystyle P(X \geq {@prob_min_a_disp@}) = \int_{{@prob_min_a_disp@}}^{\infty} f(x) \cdot dx\)</p>
+
+<p>\( \displaystyle \quad \quad = \int_{{@prob_min_a_disp@}}^{\infty} {@mean_recip_disp@}e^{-{@mean_recip_disp@}x} \cdot dx\)</p>
+
+<p>\( \displaystyle \quad \quad = \left[ \frac{{@mean_recip_disp@}e^{-{@mean_recip_disp@}x}}{-{@mean_recip_disp@}} \right]_{{@prob_min_a_disp@}}^{\infty} \)</p>
+
+<p>\( \displaystyle \quad \quad = \left[-e^{-{@mean_recip_disp@}x} \right]_{{@prob_min_a_disp@}}^{\infty} \)</p>
+
+<p>\( \displaystyle \quad \quad = 0 - \left( -e^{-{@mean_recip_disp@}\cdot {@prob_min_a_disp@}} \right) \)</p>
+
+<p>\( \displaystyle \quad \quad = {@ta_1@}  \)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>1</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<h3>Worked Solution</h3>
+
+<p>Since \(X\) is exponentially distributed with mean {@mean@}, its probability density function is given by</p>
+
+<p>\[f(x) = \frac{1}{{@mean@}} e^{-\frac{1}{{@mean@}}x} = {@mean_recip_disp@}e^{-{@mean_recip_disp@}x}, \]</p>
+
+<p>where \(x\geq 0\).</p>
+
+<p>Therefore, the probability of a leaf falling between {@prob_min_b_disp@} and {@prob_max_b_disp@} meters from the tree is</p>
+
+<p>\( \displaystyle P({@prob_min_b_disp@} \geq X \geq {@prob_max_b_disp@}) = \int_{{@prob_min_b_disp@}}^{{@prob_max_b_disp@}} f(x) \cdot dx\)</p>
+
+<p>\( \displaystyle \quad \quad \quad = \int_{{@prob_min_b_disp@}}^{{@prob_max_b_disp@}} {@mean_recip_disp@}e^{-{@mean_recip_disp@}x} \cdot dx\)</p>
+
+<p>\( \displaystyle \quad \quad \quad = \left[ \frac{{@mean_recip_disp@}e^{-{@mean_recip_disp@}x}}{-{@mean_recip_disp@}} \right]_{{@prob_min_b_disp@}}^{{@prob_max_b_disp@}} \)</p>
+
+<p>\( \displaystyle \quad \quad \quad = \left[-e^{-{@mean_recip_disp@}x} \right]_{{@prob_min_b_disp@}}^{{@prob_max_b_disp@}} \)</p>
+
+<p>\( \displaystyle \quad \quad \quad = \left( -e^{-{@mean_recip_disp@}\cdot {@prob_max_b_disp@}} \right) - \left( -e^{-{@mean_recip_disp@}\cdot {@prob_min_b_disp@}} \right) \)</p>
+
+<p>\( \displaystyle \quad \quad \quad = e^{-{@mean_recip*prob_min_b@}} - e^{-{@mean_recip*prob_max_b@}} \)</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>383254596</deployedseed>
+    <deployedseed>1566897494</deployedseed>
+    <deployedseed>438266579</deployedseed>
+    <deployedseed>2044742523</deployedseed>
+    <deployedseed>1925041569</deployedseed>
+    <deployedseed>15471712</deployedseed>
+    <deployedseed>712349160</deployedseed>
+    <deployedseed>997800103</deployedseed>
+    <deployedseed>1885743871</deployedseed>
+    <deployedseed>1639162720</deployedseed>
+    <deployedseed>620526862</deployedseed>
+    <deployedseed>1398599153</deployedseed>
+    <deployedseed>703726153</deployedseed>
+    <deployedseed>1832718153</deployedseed>
+    <deployedseed>665305896</deployedseed>
+    <deployedseed>561306499</deployedseed>
+    <deployedseed>58016950</deployedseed>
+    <deployedseed>263541326</deployedseed>
+    <deployedseed>105428126</deployedseed>
+    <deployedseed>413724312</deployedseed>
+    <deployedseed>91642453</deployedseed>
+    <deployedseed>1254840491</deployedseed>
+    <deployedseed>1545660891</deployedseed>
+    <deployedseed>781491540</deployedseed>
+    <deployedseed>1598329420</deployedseed>
+    <deployedseed>599277148</deployedseed>
+    <deployedseed>1006422955</deployedseed>
+    <deployedseed>1904233484</deployedseed>
+    <deployedseed>1827606366</deployedseed>
+    <deployedseed>1771525351</deployedseed>
+    <deployedseed>502653229</deployedseed>
+    <deployedseed>566302163</deployedseed>
+    <deployedseed>1960718584</deployedseed>
+    <deployedseed>223340765</deployedseed>
+    <deployedseed>1289424845</deployedseed>
+    <deployedseed>283047861</deployedseed>
+    <deployedseed>617509159</deployedseed>
+    <deployedseed>1002922528</deployedseed>
+    <deployedseed>429048679</deployedseed>
+    <deployedseed>532597952</deployedseed>
+    <deployedseed>292004005</deployedseed>
+    <deployedseed>164506180</deployedseed>
+    <deployedseed>1731711151</deployedseed>
+    <deployedseed>1015015069</deployedseed>
+    <deployedseed>1167754882</deployedseed>
+    <deployedseed>1175487261</deployedseed>
+    <deployedseed>1661297953</deployedseed>
+    <deployedseed>1892770409</deployedseed>
+    <deployedseed>2136248188</deployedseed>
+    <deployedseed>929270402</deployedseed>
+    <deployedseed>1079142146</deployedseed>
+    <deployedseed>942270332</deployedseed>
+    <deployedseed>1253423890</deployedseed>
+    <deployedseed>1892493953</deployedseed>
+    <deployedseed>971342369</deployedseed>
+    <deployedseed>1807302146</deployedseed>
+    <deployedseed>1316052149</deployedseed>
+    <deployedseed>114721050</deployedseed>
+    <deployedseed>501327958</deployedseed>
+    <deployedseed>1165605985</deployedseed>
+    <deployedseed>582765855</deployedseed>
+    <deployedseed>683044775</deployedseed>
+    <deployedseed>1976263178</deployedseed>
+    <deployedseed>2009929029</deployedseed>
+    <deployedseed>1831602258</deployedseed>
+    <deployedseed>1440239389</deployedseed>
+    <deployedseed>130527947</deployedseed>
+    <deployedseed>986424032</deployedseed>
+    <deployedseed>1875501224</deployedseed>
+    <deployedseed>75125929</deployedseed>
+    <deployedseed>692321628</deployedseed>
+    <deployedseed>1332829090</deployedseed>
+  </question>
+</quiz>

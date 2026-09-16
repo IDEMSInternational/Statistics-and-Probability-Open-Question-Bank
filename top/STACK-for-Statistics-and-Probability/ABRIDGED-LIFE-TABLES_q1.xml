@@ -1,0 +1,785 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>ABRIDGED LIFE TABLES_q1</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>The wastage rate in factory A has been found to be as follows.</p>
+<p><p>
+<table border="solid">
+  <tr>
+    <th width="15%", style="text-align:center">year</th>
+    <th width="15%", style="text-align:center"\(\text{q}_x\)</th>
+    
+  </tr>
+   <tr>
+    <td style="text-align:center">\({@years[1]@}\)</td>
+    <td style="text-align:center">\({@p1@}\)</td>
+
+  </tr>
+  <tr>
+    <td style="text-align:center">\({@years[2]@}\)</td>
+    <td style="text-align:center">\({@p2@}\)</td>
+   
+  </tr>
+  <tr>
+    <td style="text-align:center">\({@years[3]@}\)</td>
+    <td style="text-align:center">\({@p3@}\)</td>
+   
+  </tr>
+  <tr>
+    <td style="text-align:center">\({@years[4]@}\)</td>
+    <td style="text-align:center">\({@p4@}\)</td>
+    
+  </tr>
+  <tr>
+    <td style="text-align:center">\({@years[5]@}\)</td>
+    <td style="text-align:center">\({@p5@}\)</td>
+    
+  </tr>
+    <tr>
+    <td style="text-align:center">\({@years[6]@}\)</td>
+    <td style="text-align:center">\({@p6@}\)</td>
+   
+  </tr>
+<tr>
+    <td style="text-align:center">\({@years[7]@}\)</td>
+    <td style="text-align:center">\({@p7@}\)</td>
+
+ </tr>
+<tr>
+    <td style="text-align:center">\({@years[8]@}\)</td>
+    <td style="text-align:center">\({@p8@}\)</td>
+
+ </tr>
+<tr>
+    <td style="text-align:center">\({@years[9]@}\)</td>
+    <td style="text-align:center">\({@p9@}\)</td>
+
+ </tr>
+<tr>
+    <td style="text-align:center">\({@years[10]@}\)</td>
+    <td style="text-align:center">\({@p10@}\)</td>
+
+ </tr>
+</table>
+</p>
+
+<p>
+<strong style="color: blue;">Note:</strong>
+
+<ol>
+<li>
+<p>Give your answer to the nearest whole number or correct to \(2\) decimal places where necessary.</p>
+</li>
+<li>
+<p>To calculate the values of \( l_x \) (the number of employees at year \( x \)), you can follow these steps:</p>
+<ul>
+<li>For \( x = 0 \) (which corresponds year \(x\), let \( l_0 = {@l0@} \) number of employees at year \(0\).</li>
+<li>For each subsequent year (\( x = 1, 2, 3, 4, 5, 6 \)), you'll use the given data to calculate the number of employees.</li>
+<li>For \( l_1 \) (number of employees to exact year \(1\)) \(= {@l0@} \) (number of employees at year \(0\)) - \( {@p1*100@}\% \) of \( {@l0@} = \displaystyle  {@l0@} - {@p1@} \times {@l0@} = {@l1@} \)</li>
+</ul>
+</li>
+<li><p>\(\displaystyle \text{q}_\text{x}  =\frac{\text{d}_\text{x} }{l_x}\, , \text{L}_x = \frac{(l_x + l_{x+1})}{2}\, ,\text{T}_x=\sum_{i=0}^{n-1} \text{L}_{x+i}\,\)</p>
+</li>
+</ol>
+
+<p>Complete the table below.</p>
+<p>
+<table border="solid">
+  <tr>
+    <th width="15%", style="text-align:center">\(x (\text{year})\)</th>
+    <th width="15%", style="text-align:center">\(l_x\)</th>
+      <th width="15%", style="text-align:center">\(\displaystyle \text{q}_x\)</th>
+    <th width="15%", style="text-align:center">\(\displaystyle \text{L}_x\)</th>
+     <th width="15%", style="text-align:center">\(\text{T}_x\)</th>
+  
+  </tr>
+  <tr>
+    <td style="text-align:center">\({@years[1]@}\)</td>
+    <td style="text-align:center">\({@lx[1]@}\)</td>
+    <td style="text-align:center">\({@p1@}\)</td>
+    <td style="text-align:center">\({@midpoint_values_Lx[1]@}\)</td>
+    <td style="text-align:center">[[input:ans7]][[validation:ans7]][[feedback:prt7]]</td>
+   
+  </tr>
+  <tr>
+    <td style="text-align:center">\({@years[2]@}\)</td>
+    <td style="text-align:center">\({@lx[2]@}\)</td>
+    <td style="text-align:center">\({@p2@}\)</td>
+    <td style="text-align:center">\({@midpoint_values_Lx[2]@}\)</td>
+    <td style="text-align:center">\({@Tx_values[2]@}\)</td>
+    
+  </tr>
+  <tr>
+    <td style="text-align:center">\({@years[3]@}\)</td>
+    <td style="text-align:center">\({@lx[3]@}\)</td>
+    <td style="text-align:center">\({@p3@}\)</td>
+    <td style="text-align:center">[[input:ans5]][[validation:ans5]][[feedback:prt5]]</td>
+    <td style="text-align:center">\({@Tx_values[3]@}\)</td>
+  
+  </tr>
+  <tr>
+    <td style="text-align:center">\({@years[4]@}\)</td>
+    <td style="text-align:center">\({@lx[4]@}\)</td>
+    <td style="text-align:center">\({@p4@}\)</td>
+    <td style="text-align:center">\({@midpoint_values_Lx[4]@}\)</td>
+    <td style="text-align:center">[[input:ans8]][[validation:ans8]][[feedback:prt8]]</td>
+   
+  </tr>
+  <tr>
+    <td style="text-align:center">\({@years[5]@}\)</td>
+    <td style="text-align:center">\({@lx[5]@}\)</td>
+   <td style="text-align:center">\({@p5@}\)</td>
+    <td style="text-align:center">[[input:ans6]][[validation:ans6]][[feedback:prt6]]</td>
+    <td style="text-align:center">\({@Tx_values[5]@}\)</td>
+   
+  </tr>
+    <tr>
+    <td style="text-align:center">\({@years[6]@}\)</td>
+    <td style="text-align:center">\({@lx[6]@}\)</td>
+    <td style="text-align:center">\({@p6@}\)</td>
+    <td style="text-align:center">\({@midpoint_values_Lx[6]@}\)</td>
+    <td style="text-align:center">\({@Tx_values[6]@}\)</td>
+    
+  </tr>
+<tr>
+    <td style="text-align:center">\({@years[7]@}\)</td>
+    <td style="text-align:center">\({@lx[7]@}\)</td>
+    <td style="text-align:center">\({@p7@}\)</td>
+    <td style="text-align:center">\({@midpoint_values_Lx[7]@}\)</td>
+    <td style="text-align:center">\({@Tx_values[7]@}\)</td>
+    
+ </tr>
+ <tr>
+    <td style="text-align:center">\({@years[8]@}\)</td>
+    <td style="text-align:center">\({@lx[8]@}\)</td>
+    <td style="text-align:center">\({@p8@}\)</td>
+    <td style="text-align:center">\({@midpoint_values_Lx[8]@}\)</td>
+    <td style="text-align:center">\({@Tx_values[8]@}\)</td>
+    
+  </tr>
+  <tr>
+    <td style="text-align:center">\({@years[9]@}\)</td>
+    <td style="text-align:center">\({@lx[9]@}\)</td>
+    <td style="text-align:center">\({@p9@}\)</td>
+    <td style="text-align:center">\({@midpoint_values_Lx[9]@}\)</td>
+    <td style="text-align:center">\({@Tx_values[9]@}\)</td>
+  
+  </tr>
+  <tr>
+    <td style="text-align:center">\({@years[10]@}\)</td>
+    <td style="text-align:center">\({@lx[10]@}\)</td>
+  <td style="text-align:center">\({@p10@}\)</td>
+    <td style="text-align:center">\({@midpoint_values_Lx[10]@}\)</td>
+    <td style="text-align:center">\({@Tx_values[10]@}\)</td>
+   
+  </tr>
+</table>
+</p>
+</li>
+
+<p>Using the information in the table above:</p>
+      <p>Calculate  the average length of service of an employee and the annual intake required to maintain the staff at \({@number_workers@}\) persons.</p>
+<p>The annual intake required to maintain the staff at \({@number_workers@}= \) [[input:ans11]] persons [[validation:ans11]][[feedback:prt11]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>Given the formula:</p>
+<p>\(\displaystyle L_x = \frac{(l_x + l_{x+1})}{2}\) This is the total amount of waste between \(x\) and \(x+1\) exactly</p>
+<p>For \( x = {@years[3]@}  \): </p><p>We have,</p>
+<p>\(\displaystyle \frac{{@lx_values[3]@}+{@lx_n_values[3]@}}{{@2@}}={@midpoint_values_Lx[3]@}\)</p>
+<p>Use the same procedure to compute \(\text{L}_\text{x}\)  for \(x=4\)</p>
+<p>Given the formula:</p>
+<p>\(\text{T}_x=\sum_{i=0}^{n-1} \text{L}_{x+i}\) This is the total amount of waste between year \(x\) and \(x+n\) </p>
+<p>We have,the \(  T_x = L_x + L_{x+1} + L_{x+2} +  \ldots +  L_{x+n}\)</p>
+<p>We obtain the cumulative sum of: </p>
+<p>\(\displaystyle {@midpoint_values_Lxr@}={@Tx@}\)  for \(x=1,2,3,4,5,6,7,8\)</p>
+
+
+
+
+
+<p>
+<table border="solid">
+  <tr>
+    <th width="15%", style="text-align:center">\(x (\text{year})\)</th>
+    <th width="15%", style="text-align:center">\(l_x\)</th>
+<th width="15%", style="text-align:center">\(\displaystyle \text{q}_x\)</th>
+     
+    <th width="15%", style="text-align:center">\(\displaystyle \text{L}_x = \frac{(l_x + l_{x+1})}{2}\)</th>
+     <th width="15%", style="text-align:center">\(\text{T}_x=\sum_{i=0}^{n-1} \text{L}_{x+i}\)</th>
+     <th width="15%", style="text-align:center">\(\displaystyle e_{x}^{0}=\frac{T_x}{l_x}\)</th>
+  </tr>
+  <tr>
+    <td style="text-align:center">\({@years[1]@}\)</td>
+    <td style="text-align:center">\({@lx[1]@}\)</td>
+     <td style="text-align:center">\({@p1@}\)</td>
+    <td style="text-align:center">\({@midpoint_values_Lx[1]@}\)</td>
+    <td style="text-align:center">\({@Tx_values[1]@}\)</td>
+    <td style="text-align:center">\({@e0x_values[1]@}\)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">\({@years[2]@}\)</td>
+    <td style="text-align:center">\({@lx[2]@}\)</td>
+      <td style="text-align:center">\({@p2@}\)</td>
+    <td style="text-align:center">\({@midpoint_values_Lx[2]@}\)</td>
+    <td style="text-align:center">\({@Tx_values[2]@}\)</td>
+    <td style="text-align:center">\({@e0x_values[2]@}\)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">\({@years[3]@}\)</td>
+    <td style="text-align:center">\({@lx[3]@}\)</td>
+      <td style="text-align:center">\({@p3@}\)</td>
+    <td style="text-align:center">\({@midpoint_values_Lx[3]@}\)</td>
+    <td style="text-align:center">\({@Tx_values[3]@}\)</td>
+    <td style="text-align:center">\({@e0x_values[3]@}\)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">\({@years[4]@}\)</td>
+    <td style="text-align:center">\({@lx[4]@}\)</td>
+      <td style="text-align:center">\({@p4@}\)</td>
+    <td style="text-align:center">\({@midpoint_values_Lx[4]@}\)</td>
+    <td style="text-align:center">\({@Tx_values[4]@}\)</td>
+    <td style="text-align:center">\({@e0x_values[4]@}\)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">\({@years[5]@}\)</td>
+    <td style="text-align:center">\({@lx[5]@}\)</td>
+      <td style="text-align:center">\({@p5@}\)</td>
+    <td style="text-align:center">\({@midpoint_values_Lx[5]@}\)</td>
+    <td style="text-align:center">\({@Tx_values[5]@}\)</td>
+    <td style="text-align:center">\({@e0x_values[5]@}\)</td>
+  </tr>
+    <tr>
+    <td style="text-align:center">\({@years[6]@}\)</td>
+    <td style="text-align:center">\({@lx[6]@}\)</td>
+     <td style="text-align:center">\({@p6@}\)</td>
+    <td style="text-align:center">\({@midpoint_values_Lx[6]@}\)</td>
+    <td style="text-align:center">\({@Tx_values[6]@}\)</td>
+    <td style="text-align:center">\({@e0x_values[6]@}\)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">\({@years[7]@}\)</td>
+    <td style="text-align:center">\({@lx[7]@}\)</td>
+     <td style="text-align:center">\({@p7@}\)</td>
+    <td style="text-align:center">\({@midpoint_values_Lx[7]@}\)</td>
+    <td style="text-align:center">\({@Tx_values[7]@}\)</td>
+    <td style="text-align:center">\({@e0x_values[7]@}\)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">\({@years[8]@}\)</td>
+    <td style="text-align:center">\({@lx[8]@}\)</td>
+      <td style="text-align:center">\({@p8@}\)</td>
+    <td style="text-align:center">\({@midpoint_values_Lx[8]@}\)</td>
+    <td style="text-align:center">\({@Tx_values[8]@}\)</td>
+    <td style="text-align:center">\({@e0x_values[8]@}\)</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">\({@years[9]@}\)</td>
+    <td style="text-align:center">\({@lx[9]@}\)</td>
+      <td style="text-align:center">\({@p9@}\)</td>
+    <td style="text-align:center">\({@midpoint_values_Lx[9]@}\)</td>
+    <td style="text-align:center">\({@Tx_values[9]@}\)</td>
+    <td style="text-align:center">\({@e0x_values[9]@}\)</td>
+  </tr>
+</table>
+</p>
+</li>
+
+<p>Using the information in the table above:</p>
+     <p>A steady intake of \(l_{o}={@lx[1]@}\) new employees would produce a staff of \(T_{o}={@ta7@}\) for company A.</p> 
+<p>Hence, for the total staff in this case is to be maintained at \({@number_workers@}\),</p>
+<p>\(\displaystyle \frac{l_{0}\times \text{required employees}}{T_{0}}\)</p><p>The annual intake for company \(A =\) \(\displaystyle \frac{{@lx[1]@} \times {@number_workers@}}{{@Tx_values[1]@}}={@ta11@}\) persons</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/* Defined the percentages */  
+ap1: rand(3)+2;  
+ap2: rand_with_prohib(1,10,[ap1]);
+ap3: rand_with_prohib(1,10,[ap1,ap2]); 
+ap4: rand_with_prohib(1,10,[ap1,ap2,ap3]);  
+ap5: rand_with_prohib(1,10,[ap1,ap2,ap3,ap4]);
+ap6: rand_with_prohib(1,10,[ap1,ap2,ap3,ap4,ap5]);
+ap7: rand_with_prohib(1,10,[ap1,ap2,ap3,ap4,ap5,ap6]);
+ap8: rand_with_prohib(1,10,[ap1,ap2,ap3,ap4,ap5,ap6,ap7]);
+ap9: rand_with_prohib(1,10,[ap1,ap2,ap3,ap4,ap5,ap6,ap7,ap8]);
+ap10: rand_with_prohib(1,10,[ap1,ap2,ap3,ap4,ap5,ap6,ap7,ap8,ap9]);
+
+
+wasterate_y1:rand_with_step(1,7,1); 
+wasterate_y2:rand_with_prohib(1,7,[wasterate_y1]);
+wasterate_y3:rand_with_prohib(1,7,[wasterate_y1,wasterate_y2]); 
+wasterate_y4:rand_with_prohib(1,7,[wasterate_y1,wasterate_y2,wasterate_y3]); 
+wasterate_y5:rand_with_prohib(1,7,[wasterate_y1,wasterate_y2,wasterate_y3,wasterate_y4]); 
+wasterate_y6:rand_with_prohib(1,9,[wasterate_y1,wasterate_y2,wasterate_y3,wasterate_y4]);
+wasterate_y7:rand_with_prohib(1,9,[wasterate_y1,wasterate_y2,wasterate_y3,wasterate_y4,wasterate_y5]);
+wasterate_y8:rand_with_prohib(1,9,[wasterate_y1,wasterate_y2,wasterate_y3,wasterate_y4,wasterate_y5,wasterate_y6]);
+wasterate_y9:rand_with_prohib(1,9,[wasterate_y1,wasterate_y2,wasterate_y3,wasterate_y4,wasterate_y5, wasterate_y6,wasterate_y7]);
+wasterate_y10:10; 
+ 
+p1:decimalplaces(((wasterate_y1*100)/1000),3);
+p2:decimalplaces(((wasterate_y2*100)/1000),3);
+p3:decimalplaces(((wasterate_y3*100)/1000),3); 
+p4:decimalplaces(((wasterate_y4*100)/1000),3); 
+p5:decimalplaces(((wasterate_y5*100)/1000),3); 
+p6:decimalplaces(((wasterate_y6*100)/1000),3); 
+p7:decimalplaces(((wasterate_y7*100)/1000),3);
+p8:decimalplaces(((wasterate_y8*100)/1000),3); 
+p9:decimalplaces(((wasterate_y9*100)/1000),3); 
+p10:decimalplaces(((wasterate_y10*100)/1000),3);
+
+
+/* waste per year */ 
+waste_per_year: rand_with_step(10,50,10); 
+years:makelist(i,i,0,10);
+
+/* Initial amount of waste */ 
+l0: rand([1000, 10000]); /*the 100*/
+/* Calculate lx for each year */ 
+l1: l0 - p1 * l0; 
+l2: l1 - p2 * l1; 
+l3: l2 - p3 * l2; 
+l4: l3 - p4 * l3; 
+l5: l4 - p5 * l4; 
+l6: l5 - p6 * l5;  
+l7: l6 - p7 * l6; 
+l8: l7 - p8 * l7; 
+l9: l8 - p9 * l8; 
+l10: l9 - p10*l9;
+lx: round([l0, l1, l2, l3, l4, l5, l6, l7, l8, l9]);
+
+/* Define lists for lx and lx+n for each year */
+lx_values:round([l0, l1, l2, l3, l4, l5,l6,l7,l8,l9]) ;
+lx_n_values: round([l1, l2, l3, l4, l5,l6,l7,l8,l9,l10]);  
+
+/* Calculate ndx and nqx for each year*/ 
+ndx_values: makelist(lx_values[i] - lx_n_values[i], i, 1, length(lx_values));
+nqx_values: decimalplaces(ndx_values / lx_values,2); 
+
+/* Calculate midpoint between corresponding elements */ 
+/* Adding +0.00001 to avoid banker's rounding (we always want rounding up if we get .5). */
+midpoint_values_Lx:round (makelist((lx_values[i] + lx_n_values[i]) / 2 + 0.0000001, i, 1, length(lx_values)));
+
+/*cumulative frequencies*/
+midpoint_values_Lxr:reverse(midpoint_values_Lx);
+Tx: makelist(sum(midpoint_values_Lxr[i], i, 1, j), j, 1, length(midpoint_values_Lxr)); 
+
+/*sum(midpoint_values_Lx);*/ 
+total_Lx:sum(midpoint_values_Lxr[i],i,1,length(midpoint_values_Lxr)); 
+Tx_values:reverse(Tx);
+
+e0x_values: decimalplaces(makelist(Tx_values[i]/lx_values[i], i, 1, length(lx_values)),2);
+
+
+
+/*Model answers*/
+
+ta5:midpoint_values_Lx[3];
+ta6:midpoint_values_Lx[5];
+ta7:Tx_values[1];
+ta8:Tx_values[4];
+number_workers:rand_with_step(1000,10000,500);
+
+ta11:round(float(lx[1]*(number_workers/ta7)));
+
+
+
+
+
+</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<br>number of workers: {@number_workers@}
+<br>Years: {@years@}
+<br>Percentages: {@[p1,p2,p3,p4,p5,p6,p7,p8]@}
+<br>Amount of waste per year {@waste_per_year@}
+<br>new employees: {@l0@}
+<br>Annuall intake: {@ta11@} persons
+]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Emmaculate Odhiambo.</p>
+<p id="concept">https://docs.google.com/document/d/14RCD3MgoqDnJdO4J5ax8zqLd-tlw4R_cr0VbBijX0cw/edit</p>
+<p id="reviewer"></p>
+<p id="reviewer"></p>
+<p id="description"> This question highlights the specific survival rates and the task of calculating the number of survivors for each week, number of maximum cots and weeks</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans11</name>
+      <type>algebraic</type>
+      <tans>ta11</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans5</name>
+      <type>algebraic</type>
+      <tans>ta5</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans6</name>
+      <type>algebraic</type>
+      <tans>ta6</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans7</name>
+      <type>algebraic</type>
+      <tans>ta7</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans8</name>
+      <type>algebraic</type>
+      <tans>ta8</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt11</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans11</sans>
+        <tans>ta11</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt11-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt11-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt5</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5</sans>
+        <tans>ta5</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt5-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt6</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans6</sans>
+        <tans>ta6</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt6-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt6-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt7</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans7</sans>
+        <tans>ta7</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt7-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt7-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt8</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans8</sans>
+        <tans>ta8</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt8-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt8-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1182305829</deployedseed>
+    <deployedseed>1597103957</deployedseed>
+    <deployedseed>529516373</deployedseed>
+    <deployedseed>888873757</deployedseed>
+    <deployedseed>61026412</deployedseed>
+    <deployedseed>1690557032</deployedseed>
+    <deployedseed>1445435063</deployedseed>
+    <deployedseed>1779143513</deployedseed>
+    <deployedseed>94838703</deployedseed>
+    <deployedseed>1700600141</deployedseed>
+    <deployedseed>1475923945</deployedseed>
+    <deployedseed>2031296047</deployedseed>
+    <deployedseed>153636304</deployedseed>
+    <deployedseed>203098436</deployedseed>
+    <deployedseed>1316057006</deployedseed>
+    <deployedseed>1432110078</deployedseed>
+    <deployedseed>143957995</deployedseed>
+    <deployedseed>1427619385</deployedseed>
+    <deployedseed>458186065</deployedseed>
+    <deployedseed>1756048890</deployedseed>
+    <deployedseed>1317254263</deployedseed>
+    <deployedseed>1580458878</deployedseed>
+    <deployedseed>879887125</deployedseed>
+    <deployedseed>1456535379</deployedseed>
+    <deployedseed>1812147921</deployedseed>
+    <deployedseed>1098720257</deployedseed>
+    <deployedseed>1402326790</deployedseed>
+    <deployedseed>1339151140</deployedseed>
+    <deployedseed>2051794590</deployedseed>
+    <deployedseed>855054734</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans11</name>
+        <value>ta11</value>
+      </testinput>
+      <testinput>
+        <name>ans5</name>
+        <value>ta5</value>
+      </testinput>
+      <testinput>
+        <name>ans6</name>
+        <value>ta6</value>
+      </testinput>
+      <testinput>
+        <name>ans7</name>
+        <value>ta7</value>
+      </testinput>
+      <testinput>
+        <name>ans8</name>
+        <value>ta8</value>
+      </testinput>
+      <expected>
+        <name>prt11</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt11-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt5</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt5-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt6</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt6-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt7</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt7-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt8</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt8-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

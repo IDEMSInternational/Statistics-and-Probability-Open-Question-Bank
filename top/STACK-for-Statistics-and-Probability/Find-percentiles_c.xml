@@ -1,0 +1,727 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Find percentiles_c</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Find \(P_{@index_1@} \) and \(P_{@index_2@} \) for the following frequency distribution where  \(P_{n}\) denotes the \(n^{th}\) percentile.</p>
+<p>Hint: Express your final answer in exact form where necessary, otherwise in 1 decimal place.</p>
+<p>
+<table border="solid">
+  <tr>
+    <th width="25%", style="text-align:center">Weight</th>
+    <th width="25%", style="text-align:center">Frequency</th>
+    <th width="30%", style="text-align:center">Cum.fr</th>
+  </tr>
+  <tr>
+    <td style="text-align:center">\({@w1_l@}-{@w1_r@}\)</td>
+    <td style="text-align:center">\({@freq_1@}\)</td>
+    <td style="text-align:center">{@cum_freq1@}</td>
+  </tr>
+  <tr>
+   <td style="text-align:center">\({@w2_l@}-{@w2_r@}\)</td>
+    <td style="text-align:center">\({@freq_2@}\)</td>
+    <td style="text-align:center">[[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</td>
+  </tr>
+  <tr>
+     <td style="text-align:center">\({@w3_l@}-{@w3_r@}\)</td>
+    <td style="text-align:center">\({@freq_3@}\)</td>
+    <td style="text-align:center">[[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</td>
+  </tr>
+  <tr>
+   <td style="text-align:center">\({@w4_l@}-{@w4_r@}\)</td>
+    <td style="text-align:center">\({@freq_4@}\)</td>
+    <td style="text-align:center">[[input:ans3]] [[validation:ans3]] [[feedback:prt3]]</td>
+  </tr>
+  </table>
+</p>
+<p> \(P_{@index_1@}=\) [[input:ans4]] [[validation:ans4]] [[feedback:prt4]]</p>
+<p>  \(P_{@index_2@}=\)[[input:ans5]] [[validation:ans5]] [[feedback:prt5]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<p><b><h3>Worked solution</h3></b></p>
+<p>
+<table border="solid">
+  <tr>
+    <th width="25%", style="text-align:center">Weight</th>
+    <th width="25%", style="text-align:center">Frequency</th>
+    <th width="30%", style="text-align:center">Cum.fr</th>
+  </tr>
+  <tr>
+    <td style="text-align:center">\({@w1_l@}-{@w1_r@}\)</td>
+    <td style="text-align:center">\({@freq_1@}\)</td>
+    <td style="text-align:center">{@cum_freq1@}</td>
+  </tr>
+  <tr>
+   <td style="text-align:center">\({@w2_l@}-{@w2_r@}\)</td>
+    <td style="text-align:center">\({@freq_2@}\)</td>
+    <td style="text-align:center">{@cum_freq2@}</td>
+  </tr>
+  <tr>
+     <td style="text-align:center">\({@w3_l@}-{@w3_r@}\)</td>
+    <td style="text-align:center">\({@freq_3@}\)</td>
+    <td style="text-align:center">{@cum_freq3@}</td>
+  </tr>
+  <tr>
+   <td style="text-align:center">\({@w4_l@}-{@w4_r@}\)</td>
+    <td style="text-align:center">\({@freq_4@}\)</td>
+    <td style="text-align:center">{@cum_freq4@}</td>
+  </tr>
+  </table>
+</p>
+<p> \(P_{@index_1@}= \left( \displaystyle \frac{{@index_1@} \times {@cum_freq4@}}{100}\right)^{@th@}\) item = \((\displaystyle {@p_index1@})^{th}\), which is in the \( {@class_wrt_index1@}^{@exponent1_class@} \) class.
+<br> So  \(P_{@index_1@}=\displaystyle {@bd_wrt_index1@}+ \left( \displaystyle \frac{{@p_index1@}-{@choix_cumfreq_class@}}{@choix_freq_den@} \right) \times {@w_th@} ={@sol1@}\)</p>
+<hr>
+<p> \(P_{@index_2@}= \left( \displaystyle \frac{{@index_2@} \times {@cum_freq4@}}{100}\right)^{th}\) item = \((\displaystyle {@p_index2@})^{th}\), which is in the \( {@class_wrt_index2@}^{@exponent2_class@} \) class.
+<br> So  \(P_{@index_2@}= \displaystyle {@bd_wrt_index2@}+ \left(\displaystyle \frac{{@p_index2@}-{@choix_cumfreq_class_s@}}{@choix_freq_den_s@} \right) \times {@w_th@} ={@sol2@}\)</p.]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2026063000</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/*randomisation of the weights*/
+kk: rand([9,4,14]);
+w1_l: rand([40,30,50]); /*The left of the weight 1*/
+w1_r: w1_l+kk; /*The right of the weight 1*/
+w2_l: w1_r+1; /*The left of the weight 2*/
+w2_r: w2_l+kk; /*The right of the weight 2*/
+w3_l: w2_r+1; /*The right of the weight 3*/
+w3_r: w3_l+kk; /*The right of the weight 3*/
+w4_l: w3_r+1; /*The right of the weight 3*/
+w4_r: w4_l+kk; /*The right of the weight 3*/
+
+/*width of classes*/
+w_th: w1_r-w1_l+1;
+/*randomisation of the frequency*/
+freq_1: rand([6,13,7,22]); /*Frequence*/
+freq_2: rand([10,20,24,8]); /*Frequence*/
+freq_3: rand([17,5,11,13]); /*Frequence*/
+freq_4: rand([3,5,7,12]); /*Frequence*/
+
+/*Computation of the cumulative frequency*/
+cum_freq1: freq_1;
+cum_freq2: freq_1+freq_2;
+cum_freq3: cum_freq2+freq_3;
+cum_freq4: cum_freq3+freq_4;
+
+/*Index of percentile to compute*/ 
+index_1: rand_with_step(10,35,5);
+index_2: rand_with_step(46,70,4);
+
+
+
+
+/*Computation*/
+p_index1: (index_1*cum_freq4)/100;
+p_index2: (index_2*cum_freq4)/100;
+
+/*Identification of classes*/
+class_1: 1;
+class_2: 2;
+class_3: 3;
+class_4: 4;
+class_5: 5;
+
+class_wrt_index1: if p_index1 > cum_freq4 then class_5 elseif p_index1 > cum_freq3 then class_4 elseif p_index1 > cum_freq2 then class_3 elseif p_index1 > cum_freq1 then class_2 else class_1;
+
+class_wrt_index2: if p_index2 > cum_freq4 then class_5 elseif p_index2 > cum_freq3 then class_4 elseif p_index2 > cum_freq2 then class_3 elseif p_index2 > cum_freq1 then class_2 else class_1;
+
+/*Pick up correct boundaries*/
+bd_class1: w1_l-1/2;
+bd_class2: w1_r+1/2;
+bd_class3: w2_r+1/2;
+bd_class4: w3_r+1/2;
+bd_class5: w4_r+1/2;
+
+bd_wrt_index1: if class_wrt_index1=class_4 then bd_class4 elseif class_wrt_index1=class_3 then bd_class3 elseif class_wrt_index1=class_2 then bd_class2 elseif class_wrt_index1=class_1 then bd_class1 elseif class_wrt_index1=class_5 then bd_class5;
+
+bd_wrt_index2: if class_wrt_index2=class_4 then bd_class4 elseif class_wrt_index2=class_3 then bd_class3 elseif class_wrt_index2=class_2 then bd_class2 elseif class_wrt_index2=class_1 then bd_class1 elseif class_wrt_index2=class_5 then bd_class5;
+
+
+choix_cumfreq_class: if class_wrt_index1=class_2 then cum_freq1 elseif class_wrt_index1=class_3 then cum_freq2 elseif class_wrt_index1=class_4 then cum_freq3 elseif class_wrt_index1=class_5 then cum_freq4 else cum_freq1;/*Choose cumulative frequency depending of class in numerator*/
+
+choix_cumfreq_class_s: if class_wrt_index2=class_2 then cum_freq1 elseif class_wrt_index2=class_3 then cum_freq2 elseif class_wrt_index2=class_4 then cum_freq3 elseif class_wrt_index2=class_5 then cum_freq4 else cum_freq1;/*Choose cumulative frequency depending of class in numerator*/  
+
+
+choix_freq_den: if class_wrt_index1=class_2 then freq_2 elseif class_wrt_index1=class_3 then freq_3 elseif class_wrt_index1=class_4 then freq_4 elseif class_wrt_index1=class_5 then freq_4 else freq_1; /*Choix of frequency wrt to denominator and its class*/
+
+choix_freq_den_s: if class_wrt_index2=class_2 then freq_2 elseif class_wrt_index2=class_3 then freq_3 elseif class_wrt_index2=class_4 then freq_4  elseif class_wrt_index2=class_5 then freq_4 else freq_1; /*Choix of frequency wrt to denominator and its class*/
+
+/*Compute final percentiles*/
+percentile_1: bd_wrt_index1+((p_index1-choix_cumfreq_class)/choix_freq_den)*w_th;
+percentile_2: bd_wrt_index2+((p_index2-choix_cumfreq_class_s)/choix_freq_den_s)*w_th;
+
+/*defining power of the category of classes*/
+exponent1_class: if class_wrt_index1=class_1 then "st" elseif class_wrt_index1=class_2 then "nd" elseif class_wrt_index1=class_3 then "rd"  elseif class_wrt_index1=class_4 then "th" else "th";
+exponent2_class: if class_wrt_index2=class_1 then "st" elseif class_wrt_index2=class_2 then "nd" elseif class_wrt_index2=class_3 then "rd"  elseif class_wrt_index2=class_4 then "th" else "th";
+
+/*Worked solution*/
+sol1: if integerp(percentile_1)=true then round(percentile_1) else decimalplaces(percentile_1,1);
+sol2: if integerp(percentile_2)=true then round(percentile_2) else decimalplaces(percentile_2,1);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p> \(P_{@index_1@}= \left( \displaystyle \frac{{@index_1@} \times {@cum_freq4@}}{100}\right)^{@th@}\) item = \((\displaystyle {@p_index1@})^{th}\), which is in the \( {@class_wrt_index1@}^{@exponent1_class@} \) class.</p>
+<p> So  \(P_{@index_1@}=\displaystyle {@bd_wrt_index1@}+ \left( \displaystyle \frac{{@p_index1@}-{@choix_cumfreq_class@}}{@choix_freq_den@} \right) \times {@w_th@} ={@sol1@}\)</p>
+<hr>
+<p> \(P_{@index_2@}= \left( \displaystyle \frac{{@index_2@} \times {@cum_freq4@}}{100}\right)^{th}\) item = \((\displaystyle {@p_index2@})^{th}\), which is in the \( {@class_wrt_index2@}^{@exponent2_class@} \) class.</p>
+<p> So  \(P_{@index_2@}= \displaystyle {@bd_wrt_index2@}+ \left(\displaystyle \frac{{@p_index2@}-{@choix_cumfreq_class_s@}}{@choix_freq_den_s@} \right) \times {@w_th@} ={@sol2@}\)</p.]]></text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text><![CDATA[<p id="author"> Mary</p>
+<p id="concept"> N/A </p>
+<p id="reviewer">Godfrey Wabwire</p>
+<p id="reviewer">Juma Zevick</p>
+<p id="description">Given a table with grouped data, find the cumulative frequency of the given data and find the percentiles</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>cum_freq2</tans>
+      <boxsize>4</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>cum_freq3</tans>
+      <boxsize>4</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>cum_freq4</tans>
+      <boxsize>4</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>algebraic</type>
+      <tans>sol1</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans5</name>
+      <type>algebraic</type>
+      <tans>sol2</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>cum_freq2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>cum_freq3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>cum_freq4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: correct answer*/
+/*Node 2: Express in 1 decimal places*/
+/*Node 3: Interchanging cumulative frequence and frequence*/
+mistake_1: bd_wrt_index1+((p_index1-choix_freq_den)/choix_cumfreq_class)*w_th;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for sol1</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>sol1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for percentile_1</description>
+        <answertest>NumDecPlaces</answertest>
+        <sans>ans4</sans>
+        <tans>percentile_1</tans>
+        <testoptions>1</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt4-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>checks for the first mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>mistake_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text>You interchanged {@choix_freq_den@} and {@choix_cumfreq_class@} during your computation. Check the worked solution!</text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt5</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: correct answer*/
+/*Node 2: Express in 1 decimal places*/
+/*Node 3: Interchanging cumulative frequence and frequence*/
+mistake_1: bd_wrt_index2+((p_index2-choix_freq_den_s)/choix_cumfreq_class_s)*w_th;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for sol2</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5</sans>
+        <tans>sol2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt5-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for percentile_2</description>
+        <answertest>NumDecPlaces</answertest>
+        <sans>ans5</sans>
+        <tans>percentile_2</tans>
+        <testoptions>1</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt5-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>checks for the second the mistake</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5</sans>
+        <tans>mitake_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text>You interchanged {@choix_freq_den_s@} and {@choix_cumfreq_class_s@} during your computation. Check the worked solution!</text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt5-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1146825241</deployedseed>
+    <deployedseed>426272051</deployedseed>
+    <deployedseed>863713020</deployedseed>
+    <deployedseed>248195219</deployedseed>
+    <deployedseed>977153035</deployedseed>
+    <deployedseed>49016322</deployedseed>
+    <deployedseed>1110164313</deployedseed>
+    <deployedseed>1408695573</deployedseed>
+    <deployedseed>180939708</deployedseed>
+    <deployedseed>592286961</deployedseed>
+    <deployedseed>1525802260</deployedseed>
+    <deployedseed>312134601</deployedseed>
+    <deployedseed>327084895</deployedseed>
+    <deployedseed>1102002469</deployedseed>
+    <deployedseed>1226859973</deployedseed>
+    <deployedseed>1020466003</deployedseed>
+    <deployedseed>1420387750</deployedseed>
+    <deployedseed>734437257</deployedseed>
+    <deployedseed>66662497</deployedseed>
+    <deployedseed>1243314944</deployedseed>
+    <deployedseed>1690936416</deployedseed>
+    <deployedseed>1890488548</deployedseed>
+    <deployedseed>209100448</deployedseed>
+    <deployedseed>347426781</deployedseed>
+    <deployedseed>229733884</deployedseed>
+    <deployedseed>258117965</deployedseed>
+    <deployedseed>1026205052</deployedseed>
+    <deployedseed>9412627</deployedseed>
+    <deployedseed>176640929</deployedseed>
+    <deployedseed>460083081</deployedseed>
+    <deployedseed>1275450505</deployedseed>
+    <deployedseed>1838915856</deployedseed>
+    <deployedseed>377600305</deployedseed>
+    <deployedseed>125552380</deployedseed>
+    <deployedseed>1163610372</deployedseed>
+    <deployedseed>935730159</deployedseed>
+    <deployedseed>1528510338</deployedseed>
+    <deployedseed>236587275</deployedseed>
+    <deployedseed>262509973</deployedseed>
+    <deployedseed>1079172118</deployedseed>
+    <deployedseed>2127055087</deployedseed>
+    <deployedseed>306131439</deployedseed>
+    <deployedseed>1625500581</deployedseed>
+    <deployedseed>685798817</deployedseed>
+    <deployedseed>1575069753</deployedseed>
+    <deployedseed>36306454</deployedseed>
+    <deployedseed>1435501538</deployedseed>
+    <deployedseed>1932053601</deployedseed>
+    <deployedseed>1588158132</deployedseed>
+    <deployedseed>1190082607</deployedseed>
+    <deployedseed>653407217</deployedseed>
+    <deployedseed>695177749</deployedseed>
+    <deployedseed>591531851</deployedseed>
+    <deployedseed>94047559</deployedseed>
+    <deployedseed>1549028220</deployedseed>
+    <deployedseed>949066975</deployedseed>
+    <deployedseed>676187178</deployedseed>
+    <deployedseed>1959499096</deployedseed>
+    <deployedseed>937172775</deployedseed>
+    <deployedseed>127346136</deployedseed>
+    <deployedseed>627079123</deployedseed>
+    <deployedseed>789978926</deployedseed>
+    <deployedseed>873887969</deployedseed>
+    <deployedseed>1882074466</deployedseed>
+    <deployedseed>136721023</deployedseed>
+    <deployedseed>1183638029</deployedseed>
+    <deployedseed>1007667086</deployedseed>
+    <deployedseed>1431052982</deployedseed>
+    <deployedseed>1176499609</deployedseed>
+    <deployedseed>1413159350</deployedseed>
+    <deployedseed>1619652241</deployedseed>
+    <deployedseed>1035949878</deployedseed>
+    <deployedseed>679824564</deployedseed>
+    <deployedseed>389000639</deployedseed>
+    <deployedseed>1271927123</deployedseed>
+    <deployedseed>19569404</deployedseed>
+    <deployedseed>902558904</deployedseed>
+    <deployedseed>1573766437</deployedseed>
+    <deployedseed>2000951537</deployedseed>
+    <deployedseed>895232147</deployedseed>
+    <deployedseed>1986040344</deployedseed>
+    <deployedseed>1136774817</deployedseed>
+    <deployedseed>1188831725</deployedseed>
+    <deployedseed>195029792</deployedseed>
+    <deployedseed>1744245765</deployedseed>
+    <deployedseed>311421957</deployedseed>
+    <deployedseed>988918677</deployedseed>
+    <deployedseed>337924718</deployedseed>
+    <deployedseed>533911284</deployedseed>
+    <deployedseed>1824585839</deployedseed>
+    <deployedseed>1497828753</deployedseed>
+    <deployedseed>164173155</deployedseed>
+    <deployedseed>1821642965</deployedseed>
+    <deployedseed>1073383437</deployedseed>
+    <deployedseed>610416995</deployedseed>
+    <deployedseed>1649482786</deployedseed>
+    <deployedseed>32150356</deployedseed>
+    <deployedseed>884093697</deployedseed>
+    <deployedseed>1666841566</deployedseed>
+    <deployedseed>14396697</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>cum_freq2</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>cum_freq3</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>cum_freq4</value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value>sol1</value>
+      </testinput>
+      <testinput>
+        <name>ans5</name>
+        <value>sol2</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt4-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt5</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt5-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

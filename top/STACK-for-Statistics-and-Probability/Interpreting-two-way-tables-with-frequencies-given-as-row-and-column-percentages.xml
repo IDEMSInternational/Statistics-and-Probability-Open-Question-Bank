@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Interpreting two-way tables with frequencies given as row and column percentages</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Weather forecasts are often inaccurate. The following tables describes the occasions during a year in which rain was predicted for the following day and the actual occurrence of rain on that day.</p>
+<p>Figure \(1\) shows the frequencies as percentages of each row (row percentages), and figure \(2\) shows the frequencies as percentages of each column (column percentages).</p>
+
+<p>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-zv4m{border-top:none;border-bottom:none;text-align:left;vertical-align:top}
+.tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
+.tg .tg-wp8o{border-color:#000000;text-align:center;vertical-align:top}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-7btt{font-weight:bold;border-color:inherit;text-align:center;vertical-align:top}
+.tg .tg-73oq{border-color:#000000;text-align:left;vertical-align:top}
+.tg .tg-mqa1{font-weight:bold;border-color:#000000;text-align:center;vertical-align:top}
+.tg .tg-g7sd{font-weight:bold;border-color:inherit;text-align:left;vertical-align:middle}
+.tg .tg-mcqj{font-weight:bold;border-color:#000000;text-align:left;vertical-align:top}
+</style>
+<table class="tg" style="undefined;table-layout: fixed; width: 500px">
+<colgroup>
+<col style="width: 69px">
+<col style="width: 55px">
+<col style="width: 68px">
+<col style="width: 50px">
+<col style="width: 35px">
+<col style="width: 69px">
+<col style="width: 55px">
+<col style="width: 68px">
+<col style="width: 50px">
+</colgroup>
+  <tr>
+    <th class="tg-c3ow" colspan="4">Figure 1</th>
+    <th class="tg-zv4m"></th>
+    <th class="tg-wp8o" colspan="4">Figure 2</th>
+  </tr>
+  <tr>
+    <td class="tg-0pky"></td>
+    <td class="tg-7btt" colspan="2">Actual</td>
+    <td class="tg-0pky"></td>
+    <td class="tg-zv4m"></td>
+    <td class="tg-73oq"></td>
+    <td class="tg-mqa1" colspan="2">Actual</td>
+    <td class="tg-73oq"></td>
+  </tr>
+  <tr>
+    <td class="tg-g7sd">Forecast</td>
+    <td class="tg-0pky">Rain</td>
+    <td class="tg-0pky">No Rain</td>
+    <td class="tg-0pky">TOTAL</td>
+    <td class="tg-zv4m"></td>
+    <td class="tg-mcqj">Forecast</td>
+    <td class="tg-73oq">Rain</td>
+    <td class="tg-73oq">No Rain</td>
+    <td class="tg-73oq">TOTAL</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Rain</td>
+    <td class="tg-0pky">\({@row_rain[1]@}\%\)</td>
+    <td class="tg-0pky">\({@row_rain[2]@}\%\)</td>
+    <td class="tg-0pky">\(100\%\)</td>
+    <td class="tg-zv4m"></td>
+    <td class="tg-73oq">Rain</td>
+    <td class="tg-73oq">\({@col_rain[1]@}\%\)</td>
+    <td class="tg-73oq">\({@col_norain[1]@}\%\)</td>
+    <td class="tg-73oq">\({@col_total[1]@}\%\)</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">No Rain</td>
+    <td class="tg-0pky">\({@row_norain[1]@}\%\)</td>
+    <td class="tg-0pky">\({@row_norain[2]@}\%\)</td>
+    <td class="tg-0pky">\(100\%\)</td>
+    <td class="tg-zv4m"></td>
+    <td class="tg-73oq">No Rain</td>
+    <td class="tg-73oq">\({@col_rain[2]@}\%\)</td>
+    <td class="tg-73oq">\({@col_norain[2]@}\%\)</td>
+    <td class="tg-73oq">\({@col_total[2]@}\%\)</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">TOTAL</td>
+    <td class="tg-0pky">\({@row_total[1]@}\%\)</td>
+    <td class="tg-0pky">\({@row_total[2]@}\%\)</td>
+    <td class="tg-0pky">\(100\%\)</td>
+    <td class="tg-zv4m"></td>
+    <td class="tg-73oq">TOTAL</td>
+    <td class="tg-73oq">\(100\%\)</td>
+    <td class="tg-73oq">\(100\%\)</td>
+    <td class="tg-73oq">\(100\%\)</td>
+  </tr>
+</table>
+</p>
+
+<p>
+a) On what percentage of the days with forecast {@aa_forecast@} was the actual weather {@aa_actual@}?</p>
+
+<p>[[input:ans1]] \(\%\) [[validation:ans1]] [[feedback:prt1]]</p>
+
+<p>b) On what percentage of the days was the {@bb_type@} {@bb_cond@}?</p>
+
+<p>[[input:ans2]] \(\%\) [[validation:ans2]] [[feedback:prt2]]</p>
+
+<p>c) On what percentage of days was the forecast {@cc@}?</p>
+
+<p>[[input:ans3]] \(\%\) [[validation:ans3]] [[feedback:prt3]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2022071300</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[dp(x, n) := float(round((x+10^(-8))*10^n)/10^n);
+
+rain_rain: 90+rand(50);
+norain_norain: 150+rand(50);
+rr: 365-rain_rain-norain_norain;
+rain_norain: floor(rr*rand([0.2,0.25,0.3,0.35,0.4,0.45,0.55,0.6,0.65]));
+norain_rain: rr-rain_norain;
+total: rain_rain+norain_norain+rain_norain+norain_rain;
+f_rain: rain_rain+rain_norain;
+f_norain: norain_rain+norain_norain;
+a_rain: rain_rain+norain_rain;
+a_norain: rain_norain+norain_norain;
+
+row_rain: round([rain_rain,rain_norain]/f_rain*100);
+row_norain: round([norain_rain,norain_norain]/f_norain*100);
+row_total: round([a_rain,a_norain]/total*100);
+
+col_rain: round([rain_rain,norain_rain]/a_rain*100);
+col_norain: round([rain_norain,norain_norain]/a_norain*100);
+col_total: round([f_rain,f_norain]/total*100);
+
+aa_forecast: rand(["Rain","No Rain"]);
+aa_actual: rand(["Rain","No Rain"]);
+
+bb_type: rand(["forecast","actual weather"]);
+bb_typeo: if bb_type="forecast" then "actual weather" else "forecast";
+bb_cond: rand(["Rain","No Rain"]);
+bb_table: if bb_type="forecast" then 2 else 1;
+bb_rc: if bb_type="forecast" then "columns" else "rows";
+
+cc: rand(["correct","incorrect"]);
+cc_type: if cc="correct" then "the same" else "different";
+
+ta1: if aa_forecast="Rain" and aa_actual="Rain" then row_rain[1] elseif aa_forecast="Rain" and aa_actual="No Rain" then row_rain[2] elseif aa_forecast="No Rain" and aa_actual="Rain" then row_norain[1] elseif aa_forecast="No Rain" and aa_actual="No Rain" then row_norain[2];
+ta2: if bb_type="forecast" and bb_cond="Rain" then col_total[1] elseif bb_type="forecast" and bb_cond="No Rain" then col_total[2] elseif bb_type="actual weather" and bb_cond="Rain" then row_total[1] elseif bb_type="actual weather" and bb_cond="No Rain" then row_total[2];
+ta3: if cc="correct" then 100*(row_rain[1]/100*col_total[1]/100+row_norain[2]/100*col_total[2]/100) else 100*(row_rain[2]/100*col_total[1]/100+row_norain[1]/100*col_total[2]/100);
+ta3: round(ta3+10^(-8));]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>1</text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>numerical</type>
+      <tans>ta1</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>numerical</type>
+      <tans>ta2</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>numerical</type>
+      <tans>ta3</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text>First we need to work out which table to use. The question is asking for the conditional percentage of the actual weather being {@aa_actual@} given that the forecast was {@aa_forecast@}. So we need the table which shows the forecasts as \(100\%\), which is the TOTAL column in figure \(1\). The totals are then split by the actual weather in each row, and we find the intersection of forecast {@aa_forecast@} and actual {@aa_actual@} in the table is \({@ta1@}\%\).</text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text>First, which table should be used? We are looking for the days in which the {@bb_type@} was {@bb_cond@}. So we need the table which shows the split of {@bb_type@} days. We can see that figure {@bb_table@} shows the split of {@bb_type@} in its {@bb_rc@}. We are interested in all days with {@bb_type@} {@bb_cond@} regardless of the {@bb_typeo@} so we look at the totals. The total value for {@bb_type@} {@bb_cond@} in figure {@bb_table@} is \({@ta2@}\%\).</text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>2.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>NumAbsolute</answertest>
+        <sans>dp(ans3,0)</sans>
+        <tans>dp(ta3,0)</tans>
+        <testoptions>1</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>If the forecast is {@cc@} then it means the forecast and the actual are {@cc_type@}. There are two ways this can happen. Figure \(1\) shows these days on one of the diagonals where the forecast and the actual are {@cc_type@}. We then need to use the total values from the last column of figure \(2\), which shows the percentage of days for each forecast. This allows us to calculate an overall percentage.</p>
+<p>The forecast was rain and the actual weather was {@cc_type@} \({@if cc="correct" then row_rain[1] else row_rain[2]@} \%\) of the days forecast as rain. And the total column in figure 2 shows that \({@col_total[1]@} \%\) of days had forecast rain. Hence, we multiply \({@if cc="correct" then row_rain[1] else row_rain[2]@} \%\) by \({@col_total[1]@} \%\) to get the percentage of all days the forecast was rain and the actual weather was {@cc_type@}. Do the same for a forecast of no rain which gives the multiplication \({@if cc="correct" then row_norain[2] else row_norain[1]@} \%\) by \({@col_total[2]@} \%\) of days forecast as no rain. This gives:</p>
+<p>\[{@if cc="correct" then row_rain[1] else row_rain[2]@} \% \cdot {@col_total[1]@} \% + {@if cc="correct" then row_norain[2] else row_norain[1]@} \% \cdot {@col_total[2]@} \% \approx {@ta3@}\%\]]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+  </question>
+</quiz>

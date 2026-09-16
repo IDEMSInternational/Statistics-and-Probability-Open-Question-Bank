@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Town Demographics and Language Preferences</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>In a town of {@total_persons@} persons, {@read_hindi@} persons read Hindi, {@read_english@} read English and {@read_both@} read both.</p>
+<p> Find the number of persons who read neither Hindi nor English</p>
+<p>\(\quad\) [[input:ans1]][[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>To find the number of persons who read neither Hindi nor English, we can use the principle of inclusion-exclusion.</p>
+
+<p>Let \(A\) be the set of persons who read Hindi, and \(B\) be the set of persons who read English. We are given that \(|A| = {@read_hindi@}\), \(|B| = {@read_english@}\), and \(|A \cap B| = {@read_both@}\).</p>
+
+<p>Using the principle of inclusion-exclusion, we have:</p>
+<p>\[ \displaystyle 
+\begin{align}
+|A \cup B| &= |A| + |B| - |A \cap B| \\
+                  &= {@read_hindi@} + {@read_english@} - {@read_both@} \\
+                 &={@persons_either_hindi_or_english@}
+\end{align}\]</p>
+<p>So, \({@persons_either_hindi_or_english@}\) persons read either Hindi or English or both.</p>
+
+<p>Since there are \({@total_persons@}\) persons in total, the number of persons who read neither Hindi nor English is given by:</p>
+<p>\[ \displaystyle 
+\begin{align}
+| \text{Neither Hindi nor English} | &= {@total_persons@} - |A \cup B| \\
+                  &= {@total_persons@} - {@persons_either_hindi_or_english@} \\
+                 &={@persons_neither_hindi_nor_english@}
+\end{align}\]</p>
+<p>Thus, \({@ta@}\) persons read neither Hindi nor English.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>read_both: rand_with_step(50,600,50); 
+read_english_only:(rand(10)+1)*10;
+read_hindi_only:(rand(5)+1)*10;
+persons_neither_hindi_nor_english: rand_with_step(50,300,10);    
+
+total_persons: read_both+read_english_only+read_hindi_only+persons_neither_hindi_nor_english;   
+read_english: read_both+read_english_only;
+read_hindi: read_both+read_hindi_only;  
+/* Calculate the number of persons who read either Hindi or English or both */ 
+persons_either_hindi_or_english: total_persons-persons_neither_hindi_nor_english;    
+
+ta:persons_neither_hindi_nor_english; 
+</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Total persons \(={@total_persons@}\)</p>
+<p> Hindu readers \(={@read_hindi@}\)</p> 
+<p>English readers \(={@read_english@}\)</p>
+<p>Read both \(={@read_both@}\) </p>
+<p>Who can't read neither Hindu nor English \(={@ta@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>
+<p id="concept">https://docs.google.com/document/d/1wXNVUeHe-m6rZpzE_MkqjByjB4u3ZeCOGe3FureF6Us/edit#heading=h.eddp73mos3v3</p>
+<p id="reviewer">Emmaculate Odhiambo</p>
+<p id="reviewer">[Reviewer 2 Name]</p>
+<p id="description">This question requires the student to analyze the language preferences in a town. The student must determine the number of persons who read neither Hindi nor English among the given options..</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>221184769</deployedseed>
+    <deployedseed>875384923</deployedseed>
+    <deployedseed>346069362</deployedseed>
+    <deployedseed>81963194</deployedseed>
+    <deployedseed>615627659</deployedseed>
+    <deployedseed>380566814</deployedseed>
+    <deployedseed>1684177597</deployedseed>
+    <deployedseed>109125693</deployedseed>
+    <deployedseed>260170964</deployedseed>
+    <deployedseed>1599779129</deployedseed>
+    <deployedseed>854393984</deployedseed>
+    <deployedseed>1302461540</deployedseed>
+    <deployedseed>179987992</deployedseed>
+    <deployedseed>549943797</deployedseed>
+    <deployedseed>416703896</deployedseed>
+    <deployedseed>1221759527</deployedseed>
+    <deployedseed>776962787</deployedseed>
+    <deployedseed>76169714</deployedseed>
+    <deployedseed>1338011766</deployedseed>
+    <deployedseed>1938651228</deployedseed>
+    <deployedseed>1690555205</deployedseed>
+    <deployedseed>1525563792</deployedseed>
+    <deployedseed>610559545</deployedseed>
+    <deployedseed>2101064460</deployedseed>
+    <deployedseed>1474664033</deployedseed>
+    <deployedseed>1419034232</deployedseed>
+    <deployedseed>1021140068</deployedseed>
+    <deployedseed>292681351</deployedseed>
+    <deployedseed>1431959181</deployedseed>
+    <deployedseed>1525717557</deployedseed>
+    <deployedseed>881764339</deployedseed>
+    <deployedseed>1254821235</deployedseed>
+    <deployedseed>1170647367</deployedseed>
+    <deployedseed>2140901238</deployedseed>
+    <deployedseed>286769338</deployedseed>
+    <deployedseed>465092779</deployedseed>
+    <deployedseed>1020534078</deployedseed>
+    <deployedseed>817698111</deployedseed>
+    <deployedseed>2080902529</deployedseed>
+    <deployedseed>197674829</deployedseed>
+    <deployedseed>1654674968</deployedseed>
+    <deployedseed>149938386</deployedseed>
+    <deployedseed>1149781164</deployedseed>
+    <deployedseed>1842851815</deployedseed>
+    <deployedseed>730357165</deployedseed>
+    <deployedseed>487855292</deployedseed>
+    <deployedseed>2006534331</deployedseed>
+    <deployedseed>452113082</deployedseed>
+    <deployedseed>80530778</deployedseed>
+    <deployedseed>992805019</deployedseed>
+    <deployedseed>252417607</deployedseed>
+    <deployedseed>2019937187</deployedseed>
+    <deployedseed>1984510748</deployedseed>
+    <deployedseed>243528700</deployedseed>
+    <deployedseed>299797186</deployedseed>
+    <deployedseed>1648461317</deployedseed>
+    <deployedseed>684622152</deployedseed>
+    <deployedseed>1798216577</deployedseed>
+    <deployedseed>1598447584</deployedseed>
+    <deployedseed>1645423567</deployedseed>
+    <deployedseed>1720870752</deployedseed>
+    <deployedseed>2048761244</deployedseed>
+    <deployedseed>549489517</deployedseed>
+    <deployedseed>505680846</deployedseed>
+    <deployedseed>2071336774</deployedseed>
+    <deployedseed>664283702</deployedseed>
+    <deployedseed>10125795</deployedseed>
+    <deployedseed>1031596404</deployedseed>
+    <deployedseed>1915906574</deployedseed>
+    <deployedseed>1846811990</deployedseed>
+    <deployedseed>1699017241</deployedseed>
+    <deployedseed>1635918942</deployedseed>
+    <deployedseed>1723202199</deployedseed>
+    <deployedseed>1711762850</deployedseed>
+    <deployedseed>1997156510</deployedseed>
+    <deployedseed>1181783037</deployedseed>
+    <deployedseed>491766323</deployedseed>
+    <deployedseed>1992523543</deployedseed>
+    <deployedseed>873690516</deployedseed>
+    <deployedseed>933014683</deployedseed>
+    <deployedseed>889367660</deployedseed>
+    <deployedseed>421691264</deployedseed>
+    <deployedseed>156038577</deployedseed>
+    <deployedseed>1207457557</deployedseed>
+    <deployedseed>1820510273</deployedseed>
+    <deployedseed>1398041383</deployedseed>
+    <deployedseed>744682813</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Exploring Probability Axioms: Determining the Total Count</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>How many axioms of probability do exist?</p>
+<p>[[input:ans1]] [[validation:ans1]]</p>
+<p>[[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+
+<p>There are typically three axioms of probability that form the foundation of probability theory:</p>
+
+<ol>
+  <li><strong>Non-negativity:</strong> The probability of an event cannot be negative. For any event \( A \), the probability \( P(A) \) satisfies \( 0 \leq P(A) \leq 1 \).</li>
+  
+  <li><strong>Normalization:</strong> The probability of the entire sample space is 1. In other words, the sum of the probabilities of all possible outcomes in the sample space is equal to 1. If \( S \) is the sample space, then \( P(S) = 1 \).</li>
+  
+  <li><strong>Additivity:</strong> For mutually exclusive events (events that cannot occur simultaneously), the probability of the union of these events is equal to the sum of their individual probabilities. If \( A \) and \( B \) are mutually exclusive events, then \( P(A \cup B) = P(A) + P(B) \).</li>
+</ol>
+
+<p>These three axioms form the basis of probability theory and are essential for developing further concepts and results in probability and statistics.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/* correct answer */
+corr_ans:[[1, true, "\\(\\text{Three or } 3\\)"]];
+/* wrong answers */
+incorr_ans: rand_selection([
+[2, false, "\\(\\text{One or } 1 \\)"],
+[3, false, "\\(\\text{Two or } 2 \\)"],
+[4, false, "\\(\\text{Four or }4 \\)"],
+[5, false, "\\(\\text{Five or } 5 \\)"]], 2);
+
+ma: random_permutation(append(corr_ans, incorr_ans));
+/*Worked Soln*/
+ta_index: sort(makelist(x[1], x, ma));]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>How many axioms of probability do exist? \(3\)</p>
+<p>{@ta_index@}</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>
+<p id="concept">https://docs.google.com/document/d/1JsZfc24TQCkszlq8kEwsafpvwJK3Fqrm/edit#heading=h.vy8x1tbmoha9</p>
+<p id="reviewer">Nixson Kiplagat</p>
+<p id="reviewer">2</p>
+<p id="description">This question requires the student to identify and enumerate the total number of axioms associated with probability theory, testing their understanding of the fundamental principles governing probability.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>radio</type>
+      <tans>ma</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>nonotanswered</options>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mcq_correct(ma)[1]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1451420021</deployedseed>
+    <deployedseed>867704500</deployedseed>
+    <deployedseed>311395730</deployedseed>
+    <deployedseed>1926133501</deployedseed>
+    <deployedseed>858459821</deployedseed>
+    <deployedseed>1273141514</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>first(mcq_correct(ma))</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

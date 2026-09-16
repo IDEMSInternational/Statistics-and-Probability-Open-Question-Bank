@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="multichoice">
+    <name>
+      <text>Classification of variables</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>An experiment was performed upon rats to investigate the effect of ingesting Alar (a chemical sprayed on apple trees to keep fruit from dropping before ripe) upon subsequent cancer.  The following variables were measured:</p>
+<ul>
+<li>gender (0 = female 1 = male);</li>
+<li>weight (g);</li>
+<li>dose of Alar (nil, low, high);</li>
+<li>number of tumors;</li>
+</ul>
+<p>The typical weight of a rat is about 800g and the weights are rounded to the nearest gram.  The number of tumors is around 10.  Which of the following is false?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>none</answernumbering>
+    <showstandardinstruction>1</showstandardinstruction>
+    <correctfeedback format="html">
+      <text/>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text/>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text/>
+    </incorrectfeedback>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Gender is nominal scale; dose is ordinal scale</p>]]></text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Gender is discrete; weight is continuous</p>]]></text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Number of tumors is discrete and is interval scale</p>]]></text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Dose is ordinal scale and discrete</p>]]></text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Weight is a ratio scale; and the number of tumors is discrete</p>]]></text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+    </answer>
+  </question>
+</quiz>

@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Finding the quartile of a given marks distribution (STACK)</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>
+Forty students wrote a Statistics examination having a maximum of 50 marks.
+The mark distribution is given in the following stem and leaf plot:
+</p>
+
+<div style="margin:1em 0;">
+<table style="border-collapse:collapse;">
+    <tr>
+        <td style="padding:0.15em 0.5em; text-align:right; border-right:2px solid;">\(0\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row0[1]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row0[2]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row0[3]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row0[4]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row0[5]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row0[6]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row0[7]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row0[8]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row0[9]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row0[10]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row0[11]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row0[12]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row0[13]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row0[14]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row0[15]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row0[16]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row0[17]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row0[18]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row0[19]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row0[20]@}\)</td>
+    </tr>
+
+    <tr>
+        <td style="padding:0.15em 0.5em; text-align:right; border-right:2px solid;">\(1\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row1[1]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row1[2]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row1[3]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row1[4]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row1[5]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row1[6]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row1[7]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row1[8]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row1[9]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row1[10]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row1[11]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row1[12]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row1[13]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row1[14]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row1[15]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row1[16]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row1[17]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row1[18]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row1[19]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row1[20]@}\)</td>
+    </tr>
+
+    <tr>
+        <td style="padding:0.15em 0.5em; text-align:right; border-right:2px solid;">\(2\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row2[1]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row2[2]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row2[3]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row2[4]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row2[5]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row2[6]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row2[7]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row2[8]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row2[9]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row2[10]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row2[11]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row2[12]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row2[13]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row2[14]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row2[15]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row2[16]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row2[17]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row2[18]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row2[19]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row2[20]@}\)</td>
+    </tr>
+
+    <tr>
+        <td style="padding:0.15em 0.5em; text-align:right; border-right:2px solid;">\(3\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row3[1]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row3[2]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row3[3]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row3[4]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row3[5]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row3[6]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row3[7]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row3[8]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row3[9]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row3[10]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row3[11]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row3[12]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row3[13]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row3[14]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row3[15]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row3[16]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row3[17]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row3[18]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row3[19]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row3[20]@}\)</td>
+    </tr>
+
+    <tr>
+        <td style="padding:0.15em 0.5em; text-align:right; border-right:2px solid;">\(4\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row4[1]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row4[2]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row4[3]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row4[4]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row4[5]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row4[6]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row4[7]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row4[8]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row4[9]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row4[10]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row4[11]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row4[12]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row4[13]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row4[14]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row4[15]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row4[16]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row4[17]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row4[18]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row4[19]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row4[20]@}\)</td>
+    </tr>
+
+    <tr>
+        <td style="padding:0.15em 0.5em; text-align:right; border-right:2px solid;">\(5\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row5[1]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row5[2]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row5[3]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row5[4]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row5[5]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row5[6]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row5[7]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row5[8]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row5[9]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row5[10]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row5[11]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row5[12]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row5[13]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row5[14]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row5[15]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row5[16]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row5[17]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row5[18]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row5[19]@}\)</td>
+        <td style="padding:0.15em 0.18em;">\({@row5[20]@}\)</td>
+    </tr>
+</table>
+</div>
+
+<p>
+The third quartile of the mark distribution is equal to [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]
+</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked solution</h3>
+
+<p>
+There are \(40\) observations. Since
+\[
+\frac{3}{4}\times 40=30,
+\]
+the third quartile lies exactly between the \(30\)th and \(31\)st observations in the ordered data.
+</p>
+
+<p>
+From the stem-and-leaf plot, the \(30\)th and \(31\)st observations are
+\[
+{@final_list[30]@}\quad\text{and}\quad{@final_list[31]@}.
+\]
+</p>
+
+<p>
+Therefore, the third quartile is
+\[
+Q_3
+=
+\frac{{@final_list[30]@}+{@final_list[31]@}}{2}
+=
+{@ta_disp@}.
+\]
+</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>2</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2026063000</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[qstem:3+rand(2);
+
+if qstem=3 then (
+    /* Choose frequencies for the lower stems. */
+    n0:2+rand(3),
+    n1:5+rand(3),
+    n2:11+rand(3),
+
+    /* The first part of the 30s ends at observation 30. */
+    n3a:30-n0-n1-n2,
+
+    /* Distribute the final 10 observations across the upper end. */
+    n3b:1+rand(3),
+    n5:1+rand(3),
+    n4:10-n3b-n5,
+
+    /* Split the 30s somewhere between leaf 6 and leaf 8. */
+    split:6+rand(3),
+
+    list0:sort(makelist(rand(10),i,1,n0)),
+    list1:sort(makelist(rand(10),i,1,n1)),
+    list2:sort(makelist(rand(10),i,1,n2)),
+    list3a:sort(makelist(rand(split+1),i,1,n3a)),
+    list3b:sort(makelist(split+1+rand(9-split),i,1,n3b)),
+    list4:sort(makelist(rand(10),i,1,n4)),
+
+    /* Scores in the 50s stem must be exactly 50. */
+    list5:makelist(0,i,1,n5),
+
+    list3:append(list3a,list3b),
+
+    final_list:append(
+        list0,
+        map(lambda([x],10+x),list1),
+        map(lambda([x],20+x),list2),
+        map(lambda([x],30+x),list3),
+        map(lambda([x],40+x),list4),
+        map(lambda([x],50+x),list5)
+    )
+)
+else (
+    /* Choose frequencies for the lower stems. */
+    n0:2+rand(2),
+    n1:4+rand(2),
+    n2:10+rand(3),
+
+    /* Put 27 to 29 observations below the 40s. */
+    npre:27+rand(3),
+    n3:npre-n0-n1-n2,
+
+    /* The first part of the 40s ends at observation 30. */
+    n4a:30-npre,
+
+    /* Distribute the remaining observations across the upper 40s and 50. */
+    n5:1+rand(3),
+    n4b:10-n5,
+
+    /* Split the 40s somewhere between leaf 1 and leaf 3. */
+    split:1+rand(3),
+
+    list0:sort(makelist(rand(10),i,1,n0)),
+    list1:sort(makelist(rand(10),i,1,n1)),
+    list2:sort(makelist(rand(10),i,1,n2)),
+    list3:sort(makelist(rand(10),i,1,n3)),
+    list4a:sort(makelist(rand(split+1),i,1,n4a)),
+    list4b:sort(makelist(split+1+rand(9-split),i,1,n4b)),
+
+    /* Scores in the 50s stem must be exactly 50. */
+    list5:makelist(0,i,1,n5),
+
+    list4:append(list4a,list4b),
+
+    final_list:append(
+        list0,
+        map(lambda([x],10+x),list1),
+        map(lambda([x],20+x),list2),
+        map(lambda([x],30+x),list3),
+        map(lambda([x],40+x),list4),
+        map(lambda([x],50+x),list5)
+    )
+);
+
+ta:(final_list[30]+final_list[31])/2;
+
+/* Display variables. */
+pad20(L):=append(L,makelist("",i,1,20-length(L)));
+
+row0:pad20(list0);
+row1:pad20(list1);
+row2:pad20(list2);
+row3:pad20(list3);
+row4:pad20(list4);
+row5:pad20(list5);
+
+/* Display Q3 as an integer or decimal as appropriate. */
+ta_disp:if integerp(ta) then ta else float(ta);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="html">
+      <text><![CDATA[<p>
+Generated data: \({@final_list@}\)
+</p>
+
+<p>
+Quartile stem: \({@qstem@}\)<br>
+Third quartile: \({@ta_disp@}\)
+</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>numerical</type>
+      <tans>ta</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>273529008</deployedseed>
+    <deployedseed>2038140180</deployedseed>
+    <deployedseed>1842890822</deployedseed>
+    <deployedseed>1177131377</deployedseed>
+    <deployedseed>984324914</deployedseed>
+    <deployedseed>1374279445</deployedseed>
+    <deployedseed>205987999</deployedseed>
+    <deployedseed>193720089</deployedseed>
+    <deployedseed>1772856670</deployedseed>
+    <deployedseed>1148790693</deployedseed>
+    <deployedseed>198142867</deployedseed>
+    <deployedseed>642855832</deployedseed>
+    <deployedseed>929608344</deployedseed>
+    <deployedseed>579044400</deployedseed>
+    <deployedseed>153779853</deployedseed>
+    <deployedseed>1680293865</deployedseed>
+    <deployedseed>1449042038</deployedseed>
+    <deployedseed>801645335</deployedseed>
+    <deployedseed>329810341</deployedseed>
+    <deployedseed>1461831874</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description>Test case assuming the teacher's input gets full marks.</description>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>[ prt1-1-T ]</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

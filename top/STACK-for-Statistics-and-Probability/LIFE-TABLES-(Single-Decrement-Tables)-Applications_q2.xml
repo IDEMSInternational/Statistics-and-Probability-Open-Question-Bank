@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>LIFE TABLES (Single Decrement Tables)-Applications_q2</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Use the Australian Life Table \((1960-62)-\text{A}^{\text{M}61}\) given below to answer the question that follows.</p>
+<p><strong style="color: blue;">
+ <a href="https://drive.google.com/uc?export=download&id=1dHL475YTEIDlS58Y3CJE17vPBCGd2aCj">Download Life Table Data </a>
+</strong></p>
+<p><b>Note:</b> Give your answer to \(4\) decimal places</p>
+
+
+<p>What is the chance that a female aged  \({@age_female@}\) and a male aged  \({@age_male@}\) will both die within \({@age@}\) years?</p>
+<p>[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+
+<p>The chance that a female aged \({@age_female@}\) will die within \({@age@}\) years is</p>
+<p>\(\displaystyle \frac{l_{@age_female@}-l_{@female_die@}}{l_{@age_female@}}=\frac{{@num_female_dying@}-{@num_female_dying_age@}}{{@num_female_dying@}}=\frac{{@num_female_dying-num_female_dying_age@}}{{@num_female_dying@}}\)</p>
+<p>The chance that a male aged \({@age_male@}\) will die within \({@age@}\) years is</p>
+<p>\(\displaystyle \frac{l_{@age_male@}-l_{@male_die@}}{l_{@age_male@}}=\frac{{@num_male_dying@}-{@num_male_dying_age@}}{{@num_male_dying@}}=\frac{{@num_male_dying-num_male_dying_age@}}{{@num_male_dying@}}\)</p>
+<p>The chance that that both will die within \({@age@}\) years is</p>
+<p>\(\displaystyle \frac{l_{@age_female@}-l_{@female_die@}}{l_{@age_female@}}= \frac{l_{@age_male@}-l_{@male_die@}}{l_{@age_male@}}\)</p>
+<p>\(\displaystyle ={@chance_male_die@} \times {@chance_female_die@}\)</p>
+
+<p>\(\displaystyle ={@ta@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/* Define the data points */ 
+	age: [0,1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55]; 
+	val_lx: [100000, 97761, 97584, 97467, 97379, 97315, 97259, 97206, 97154, 97105, 97082, 97022, 96981, 96936, 96885, 96825, 96752, 96660, 96541, 96384, 96215, 96049, 95886, 95728, 95577, 95432, 95292, 95154, 95014, 94871, 94726, 94577, 94425, 94267, 94123, 93931, 93749, 93554, 93349, 93112, 92859, 92580, 92374, 91938, 91569, 91165, 90723, 90238, 89705, 89118, 88473, 87762, 86879, 86119, 85175, 84142]; 
+
+
+ val_ly: [100000, 98243, 98074, 97974, 97911, 97854, 97805, 97762, 97725, 97693, 97664, 97637, 97611, 97584, 97556, 97525, 97488, 97443, 97391, 97335, 97278, 97220, 97161, 97101, 97042, 96984, 96924, 96861, 96794, 96723, 96649, 96570, 96485, 96392, 96292, 96183, 96065, 95936, 95797, 95646, 95481, 95302, 95107, 94893, 94658, 94400, 94117, 93809, 93474,93109,92713, 92283, 91817, 91314, 90773, 90191]; 
+	
+/* Given data */
+index_num:rand(40)+3;
+age_index30:age[index_num];
+age_female:age_index30+1;/*age of a female*/
+age_male:age_index30+3;/*age of a male*/
+
+age:rand(15)+5;/*age both male and female die*/
+female_die:age_female+age;
+male_die:age_male+age;
+num_male_dying:val_lx[age_male+1];   /* Number of males dying at their age */ 
+num_female_dying:val_ly[age_female+1];   /* Number of females dying at their age */
+
+num_male_dying_age:val_lx[male_die+1];   /* Number of males dying at age  */ 
+num_female_dying_age:val_ly[female_die+1];   /* Number of females dying at age */ 
+ 
+
+chance_male_die:(num_male_dying-num_male_dying_age)/num_male_dying;
+chance_female_die:(num_female_dying-num_female_dying_age)/num_female_dying;
+ta:decimalplaces((chance_male_die*chance_female_die),4);
+
+
+
+
+
+</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<br>Age of a male: \({@age_male@}\)
+<br>Age of a female: \({@age_female@}\)
+<br>Age of both dying:  \({@age@}\) 
+<br>chance they will die within \({@age@}={@ta@}\)]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Emmaculate Odhiambo<p>
+<p id="concept">https://docs.google.com/document/d/1zL4IFA8f2Q3KJ7oTSs9F3KzNt1UkzlkVf8U7YOpJm14/edit#heading=h.vy8x1tbmoha9</p>
+<p id="reviewer">Mary Sayuni</p>
+<p id="reviewer">Santiago Borio</p>
+<p id="description">Given life tables for Australian Demography analysis, the question requires the student to find the chance that a male and a female of a certain age will die within given years.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct  answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Checks for correct naswer</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>0.001</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1077417135</deployedseed>
+    <deployedseed>955796915</deployedseed>
+    <deployedseed>747850474</deployedseed>
+    <deployedseed>1310821001</deployedseed>
+    <deployedseed>60146193</deployedseed>
+    <deployedseed>141021433</deployedseed>
+    <deployedseed>1665604212</deployedseed>
+    <deployedseed>1520079442</deployedseed>
+    <deployedseed>1696630578</deployedseed>
+    <deployedseed>1145397395</deployedseed>
+    <deployedseed>1056866343</deployedseed>
+    <deployedseed>1557122146</deployedseed>
+    <deployedseed>1427832342</deployedseed>
+    <deployedseed>288263328</deployedseed>
+    <deployedseed>1179915595</deployedseed>
+    <deployedseed>1060035691</deployedseed>
+    <deployedseed>2128711605</deployedseed>
+    <deployedseed>2110833490</deployedseed>
+    <deployedseed>903938771</deployedseed>
+    <deployedseed>308886419</deployedseed>
+    <deployedseed>1536000610</deployedseed>
+    <deployedseed>1732171937</deployedseed>
+    <deployedseed>918071359</deployedseed>
+    <deployedseed>555272322</deployedseed>
+    <deployedseed>1561805913</deployedseed>
+    <deployedseed>1614837004</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>prt1-1-F</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

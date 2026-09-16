@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Subject Overlap Analysis in Student Survey</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>In a survey involving \({@Tot@}\) students at a school, it was found that \({@num_M@}\) study Mathematics, \({@num_P@}\)
+study Physics and \({@num_C@}\) study Chemistry, \({@num_mnp@}\) study Mathematics and Physics, \({@num_pnc@}\) study Physics
+and Chemistry, \({@num_mnc@}\) study Chemistry and Mathematics and \({@num_n@}\) none of the subjects. Find the
+number of students who study all the three subjects.</p>
+<p>The number of students studying all the three subjects is [[input:ans1]]. [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>Let \(M,P\) and \(C\) denote the students studying Mathematics, Physics and Chemistry And \(U\) represents total students as shown below.</p>
+[[jsxgraph]]
+ var board = JXG.JSXGraph.initBoard(divid, {
+            boundingbox: [0, 7, 9, 1],
+            keepaspectratio: true,
+            showCopyright: false,
+            axis: false,
+            showNavigation: false
+        });
+
+        // Create universe box, vertices v1, v2, v3, v4 and edges 1 to 4
+        var ver1 = board.create('point', [2, 1], { name: "", size: 1, visible: false });
+        var ver2 = board.create('point', [2, 7], { name: "", size: 0, visible: false });
+        var ver3 = board.create('point', [8, 7], { name: "", size: 0, visible: false });
+        var ver4 = board.create('point', [8, 1], { name: "", size: 0, visible: false });
+        var universe = board.create('polygon', [ver1, ver2, ver3, ver4], {fillColor:'transparent'});
+        var txt = board.create('text', [1.75, 7.25, "U"], { fontSize: 20, fixed: true });
+
+
+        // create three circles with centres and edge points
+        // Set A
+        var p1 = board.create('point', [4, 5], { name: "p1", visible: false });
+        var p2 = board.create('point', [5.5, 5], { name: "p2", visible: false });
+        var a1 = board.create('circle', [p1, p2], { fixed: true, visible: true });
+        var txt = board.create('text', [2.5, 6.5, "M"], { fontSize: 20, fixed: true });
+        // Set B
+        var p3 = board.create('point', [6, 5], { name: "p3", visible: false });
+        var p4 = board.create('point', [7.5, 5], { name: "p4", visible: false });
+        var a2 = board.create('circle', [p3, p4], { fixed: true, visible: true });
+        var txt = board.create('text', [7.5, 6.5, "P"], { fontSize: 20, fixed: true });
+        // Set C
+        var p5 = board.create('point', [5, 3.5], { name: "p5", visible: false });
+        var p6 = board.create('point', [4.5, 2], { name: "p6", visible: false });
+        var a3 = board.create('circle', [p5, p6], { fixed: true, visible: true });
+        var txt = board.create('text', [6.5, 2, "C"], { fontSize: 20, fixed: true });
+
+        // Shade regions
+        // Shading 1: A and B and C
+        var v1 = false;
+        var i1 = board.create('curveintersection', [a1, a2], { visible: false });
+        var sh1 = board.create('curveintersection', [i1, a3], { visible: v1, fillColor: 'yellow' });
+        // Shading 2: A and C and not B
+        var v2 = false;
+        var i2 = board.create('curveintersection', [a1, a3], { visible: false });
+        var sh2 = board.create('curvedifference', [i2, a2], { visible: v2, fillColor: 'yellow' });
+        // Shading 3: A and B and not C
+        var v3 = false;
+        var i3 = board.create('curveintersection', [a2, a1], { visible: false });
+        var sh3 = board.create('curvedifference', [i3, a3], { visible: v3, fillColor: 'yellow' });
+        // Shading 4: B and C and not A
+        var v4 = false;
+        var i4 = board.create('curveintersection', [a3, a2], { visible: false });
+        var i4 = board.create('curvedifference', [i4, a1], { visible: v4, fillColor: 'yellow' });
+        // Shading 5: A and not B and not C
+        var v5 = false;
+        var i5 = board.create('curvedifference', [a1, a2], { visible: false });
+        var sh5 = board.create('curvedifference', [i5, a3], { visible: v5, fillColor: 'yellow' });
+        // Shading 6: B and not A and not C
+        var v6 = false;
+        var i6 = board.create('curvedifference', [a2, a1], { visible: false });
+        var sh6 = board.create('curvedifference', [i6, a3], { visible: v6, fillColor: 'yellow' });
+        // Shading 7: C and not A and not B
+        var v7 = false;
+        var i7 = board.create('curvedifference', [a3, a1], { visible: false });
+        var sh7 = board.create('curvedifference', [i7, a2], { visible: v7, fillColor: 'yellow' });
+        
+
+       //Shading 8: not A and not B and not C
+        var v8 = true;
+        var i81 = board.create('curveunion', [a1,a2], { visible: false});
+        var i82 = board.create('curveunion', [i81,a3], { visible: false});
+        var sh8 = board.create('curvedifference', [universe,i82], {visible: v8, fillColor: 'yellow'});
+        var i1 = board.create('curveintersection', [a1, a3], { strokeWidth: 4, strokeColor:'red', visible:false}); // this is the new code 
+    var i2 = board.create('curveintersection', [i1, a2], { fillColor:'yellow' });
+    var i3 = board.create('curveintersection', [a2, a1], { strokeWidth: 4, strokeColor:'red',visible:false}); // this is the new code 
+    var i4 = board.create('curveintersection', [i3, a3], { fillColor:'blue' });
+    var i5 = board.create('curveintersection', [a3, a2], { strokeWidth: 4, strokeColor:'red',visible:false}); // this is the new code 
+    var i6 = board.create('curveintersection', [i5, a1], { fillColor:'red' });
+[[/jsxgraph]]
+
+<p>So, \(n(U)={@Tot@},\)</p>
+<p>\(n(M)={@num_M@},\,n(P)={@num_P@}\)</p>
+<p>\(n(C)={@num_P@}, \, n(M \cap P)={@num_mnp@}, \, n(P \cap C)={@num_pnc@}\)</p>
+<p>\(n(M \cap C)={@num_mnc@}, \, n(M \cup P \cup C)^{\prime}={@num_n@}\)</p>
+<p>Therefore \(n(M \cup P \cup C)^{\prime}=n(U)-n(M \cup P \cup C)\)</p>
+<p>\( \implies {@num_n@}={@Tot@}-n(M \cup P \cup C)\)</p>
+<p>\( \implies n(M \cup P \cup C)={@Tot-num_n@}\)</p>
+<p>\( \implies n(M \cup P \cup C)=n(M)+n(P)+n(C)-n(M \cap P)-n(P \cap C)-n(C \cap M)+n(C \cap M \cap P)\)</p>
+<p>Therefore \({@Tot-num_n@}={@num_M@}+{@num_P@}+{@num_C@}-{@num_mnp@}-{@num_pnc@}-{@num_mnc@}+n(C \cap M \cap P)\)</p>
+<p>\(\implies {@Tot-num_n@}={@num_M+num_P+num_C@}-{@num_mnp+num_pnc+num_mnc@}+n(C \cap M \cap P)\)</p>
+<p>\( \implies n(C \cap M \cap P)={@Tot-num_n+(num_mnp+num_pnc+num_mnc)-(num_M+num_P+num_C)@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>a1:rand_with_step(40,70,10);
+a2:rand_with_step(10,30,10);
+a3:rand_with_step(30,50,10);
+a4:rand_with_step(20,50,10);
+a5:rand_with_step(20,60,10);
+a6:rand_with_step(10,30,10);
+a7:rand_with_step(10,30,10);
+a8:a5-10;
+Tot:a1+a2+a3+a4+a5+a6+a7+a8; /*Total number of students*/
+num_n:a8; /*number of students who studied none of the subjects*/
+num_M:a1+a2+a4+a5;/*number of students who studied Mathematics*/
+num_P:a2+a3+a5+a6;/*number of students who studied Physics*/
+num_C:a4+a5+a6+a7;/*number of students who studied Chemistry*/
+num_mnp:a2+a5;/*number of students who studied Mathematics and Physics*/
+num_pnc:a5+a6;/*number of students who studied Physics and Chemistry*/
+num_mnc:a4+a5;/*number of students who studied Chemistry and Mathematics*/
+MuPuC:Tot-num_n;
+ta:a5;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p> \(|U|={@Tot@}\).  \(|M|={@num_M@}\).  \(|P|={@num_P@}\).  \(|C|={@num_C@}\).  \(|M \cap P|={@num_mnp@}\). \(|P \cap C|={@num_pnc@}\). \(|M \cap C|={@num_mnc@}\). \(|rest|={@num_n@}\). </p>
+<p>Answer \(=|P \cap M \cap C|={@ta@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Nixson Kiplagat</p>
+<p id="concept">https://docs.google.com/document/d/1a2dY3mmD_hSyDOrjRvC1620mjua8w9Vd3DvloHJ04Tk/edit#heading=h.vy8x1tbmoha9</p>
+<p id="reviewer">Mary</p>
+<p id="reviewer">Santiago Borio</p>
+<p id="description">This question requires the student to decipher the overlapping study preferences of students surveyed at a school. By analyzing the given data on dual subject studies and those opting for none, the challenge is to determine the precise number of students who engage in the study of all three subjects.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1018707943</deployedseed>
+    <deployedseed>670241553</deployedseed>
+    <deployedseed>837101863</deployedseed>
+    <deployedseed>994893706</deployedseed>
+    <deployedseed>40944380</deployedseed>
+    <deployedseed>3782527</deployedseed>
+    <deployedseed>704956074</deployedseed>
+    <deployedseed>290719893</deployedseed>
+    <deployedseed>653173217</deployedseed>
+    <deployedseed>1472613874</deployedseed>
+    <deployedseed>1479253970</deployedseed>
+    <deployedseed>1736219594</deployedseed>
+    <deployedseed>265903455</deployedseed>
+    <deployedseed>525817038</deployedseed>
+    <deployedseed>1292059494</deployedseed>
+    <deployedseed>2032806048</deployedseed>
+    <deployedseed>1057293760</deployedseed>
+    <deployedseed>223299105</deployedseed>
+    <deployedseed>1423916819</deployedseed>
+    <deployedseed>859929641</deployedseed>
+    <deployedseed>377793635</deployedseed>
+    <deployedseed>524344882</deployedseed>
+    <deployedseed>868435139</deployedseed>
+    <deployedseed>1958348481</deployedseed>
+    <deployedseed>1717560052</deployedseed>
+    <deployedseed>1652748417</deployedseed>
+    <deployedseed>590411100</deployedseed>
+    <deployedseed>623582330</deployedseed>
+    <deployedseed>1728507140</deployedseed>
+    <deployedseed>1060653950</deployedseed>
+    <deployedseed>1446286307</deployedseed>
+    <deployedseed>1599806386</deployedseed>
+    <deployedseed>1098159219</deployedseed>
+    <deployedseed>48028793</deployedseed>
+    <deployedseed>1813188588</deployedseed>
+    <deployedseed>2097785694</deployedseed>
+    <deployedseed>1399873101</deployedseed>
+    <deployedseed>1481877480</deployedseed>
+    <deployedseed>1216746898</deployedseed>
+    <deployedseed>1955403661</deployedseed>
+    <deployedseed>1844930030</deployedseed>
+    <deployedseed>1383593628</deployedseed>
+    <deployedseed>651931643</deployedseed>
+    <deployedseed>25833493</deployedseed>
+    <deployedseed>402035329</deployedseed>
+    <deployedseed>218531738</deployedseed>
+    <deployedseed>1620027964</deployedseed>
+    <deployedseed>1861814924</deployedseed>
+    <deployedseed>1380669209</deployedseed>
+    <deployedseed>372033891</deployedseed>
+    <deployedseed>973871187</deployedseed>
+    <deployedseed>698014</deployedseed>
+    <deployedseed>2102793623</deployedseed>
+    <deployedseed>1929448210</deployedseed>
+    <deployedseed>1106503832</deployedseed>
+    <deployedseed>413159150</deployedseed>
+    <deployedseed>241919085</deployedseed>
+    <deployedseed>1404306511</deployedseed>
+    <deployedseed>2014687166</deployedseed>
+    <deployedseed>1831535398</deployedseed>
+    <deployedseed>434205324</deployedseed>
+    <deployedseed>683267149</deployedseed>
+    <deployedseed>698382126</deployedseed>
+    <deployedseed>1058132618</deployedseed>
+    <deployedseed>440817412</deployedseed>
+    <deployedseed>2077230784</deployedseed>
+    <deployedseed>1397254026</deployedseed>
+    <deployedseed>1580369039</deployedseed>
+    <deployedseed>137340929</deployedseed>
+    <deployedseed>52551714</deployedseed>
+    <deployedseed>1305617328</deployedseed>
+    <deployedseed>1259117054</deployedseed>
+    <deployedseed>1211000739</deployedseed>
+    <deployedseed>2012095514</deployedseed>
+    <deployedseed>1915772496</deployedseed>
+    <deployedseed>1454892496</deployedseed>
+    <deployedseed>1620086426</deployedseed>
+    <deployedseed>1673109838</deployedseed>
+    <deployedseed>971824152</deployedseed>
+    <deployedseed>1261516394</deployedseed>
+    <deployedseed>630401900</deployedseed>
+    <deployedseed>842834040</deployedseed>
+    <deployedseed>721368353</deployedseed>
+    <deployedseed>1986905446</deployedseed>
+    <deployedseed>792358335</deployedseed>
+    <deployedseed>1645252230</deployedseed>
+    <deployedseed>945505377</deployedseed>
+    <deployedseed>1046470915</deployedseed>
+    <deployedseed>1613309445</deployedseed>
+    <deployedseed>991866507</deployedseed>
+    <deployedseed>1734020891</deployedseed>
+    <deployedseed>1566238400</deployedseed>
+    <deployedseed>52740976</deployedseed>
+    <deployedseed>268265002</deployedseed>
+    <deployedseed>1257972847</deployedseed>
+    <deployedseed>1445569063</deployedseed>
+    <deployedseed>1634534899</deployedseed>
+    <deployedseed>1151550806</deployedseed>
+    <deployedseed>870424303</deployedseed>
+    <deployedseed>666929039</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

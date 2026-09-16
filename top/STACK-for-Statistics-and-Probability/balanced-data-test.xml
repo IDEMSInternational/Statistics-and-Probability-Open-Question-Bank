@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>balanced data test</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Here is some simple data giving the yield for {@number_rows@} different farms across different crop and fertiliser varieties.</p>
+
+<p><button onclick="exportToCsv()">Download Data</button></p>
+
+<br>
+
+<p>You should complete the frequency table below and then determine whether the data is balanced or unbalanced.</p>
+
+<table> 
+  <tbody><tr height="40px">
+    <td width="120px"></td>
+    <td width="120px"><b>Variety 1</b></td>
+    <td width="120px"><b>Variety 2</b></td>
+    <td width="120px"><b>Variety 3</b></td>
+    <td width="120px"><b>Total</b></td>
+  </tr>
+  <tr height="40px">
+    <td><b>Fertiliser 1</b></td>
+    <td>[[input:ans1]] [[validation:ans1]]</td>
+    <td>[[input:ans2]] [[validation:ans2]]</td>
+    <td>[[input:ans3]] [[validation:ans3]]</td>
+    <td>[[input:ans4]] [[validation:ans4]]</td>
+  </tr>
+  <tr height="40px">
+    <td><b>Fertiliser 2</b></td>
+    <td>[[input:ans5]] [[validation:ans5]]</td>
+    <td>[[input:ans6]] [[validation:ans6]]</td>
+    <td>[[input:ans7]] [[validation:ans7]]</td>
+    <td>[[input:ans8]] [[validation:ans8]]</td>
+  </tr>
+  <tr height="40px">
+    <td><b>Fertiliser 3</b></td>
+    <td>[[input:ans9]] [[validation:ans9]]</td>
+    <td>[[input:ans10]] [[validation:ans10]]</td>
+    <td>[[input:ans11]] [[validation:ans11]]</td>
+    <td>[[input:ans12]] [[validation:ans12]]</td>
+  </tr>
+  <tr height="40px">
+    <td><b>Total</b></td>
+    <td>[[input:ans13]] [[validation:ans13]]</td>
+    <td>[[input:ans14]] [[validation:ans14]]</td>
+    <td>[[input:ans15]] [[validation:ans15]]</td>
+    <td>{@number_rows@}</td>
+  </tr>
+</tbody></table>
+<br>
+<p>[[feedback:prt1]]</p>
+
+<p>Is the data balanced? &nbsp; [[input:ans16]] [[validation:ans16]]</p>
+<p>[[feedback:prt2]]</p>
+
+<script>
+var Results = {#data_set#};
+
+exportToCsv = function(file_name) {
+  var CsvString = "";
+  Results.forEach(function(RowItem, RowIndex) {
+    RowItem.forEach(function(ColItem, ColIndex) {
+             CsvString += ColItem;
+             if( ColIndex < RowItem.length - 1){
+                 CsvString += ',';
+                } 
+    });
+    CsvString += "\r\n";
+  });
+  CsvString = "data:application/csv," + encodeURIComponent(CsvString);
+ var x = document.createElement("A");
+ x.setAttribute("href", CsvString );
+ x.setAttribute("download","data_set.csv");
+ document.body.appendChild(x);
+ x.click();
+}
+</script>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/* ------------- INFORMATION FROM QUESTION AUTHORS */
+
+/* Is the data balanced? */
+is_balanced: rand([true, false]);
+
+/* Names of the different values for each factor */
+factor_names: ["Variety", "Fertiliser"];
+factor_values: [["Variety 1", "Variety 2", "Variety 3"], ["Fertiliser 1", "Fertiliser 2", "Fertiliser 3"]];
+
+/* Dataset dimensions */
+number_rows: 99;
+
+/* ------------- END AUTHOR INFO */
+
+/* ------------- FUNCTIONS */
+
+/* Function to map position of item in list to coordinates in data list */
+/* Input: position of item in list, number between 1 and number_rows */
+/* Output: relevant coordinates in factors_info list */
+pos_to_coords(num):=block(
+    [factor_values:factor_values, 
+    number_factors:length(factor_values),
+    number_rows:number_rows,
+    factor_lengths,
+    clock],
+    factor_lengths: makelist(length(factor_values[i]),i,1,number_factors),
+    /* How regularly is each factor required to change value? */
+    clock:reverse(makelist(
+        product(factor_lengths[j], j, number_factors+1-i, number_factors),
+        i,
+        0,
+        number_factors-1
+    )),
+    return(makelist(mod(floor((num-1)/clock[i]),factor_lengths[i])+1, i, 1, number_factors))
+);
+
+pos_to_coords(3);
+
+/* ------------- END FUNCTIONS */
+
+/* ------------- DATA SET GENERATION */
+
+/* Number of entries in the pivot table is the number of unique permutations of the values for each factor */
+number_permutations: product(length(factor_values[x]), x, 1, length(factor_values));
+
+/* Generate the number of data entries for each permutation of the factor values */
+if is_balanced then (
+    /* Suppose each permutation occurs the same number of times */
+    number_data_entries: makelist(floor(number_rows/number_permutations), i, 1, number_permutations)
+) else (
+    /* First, suppose each permutation occurs the same number of times */
+    number_data_entries: makelist(floor(number_rows/number_permutations), i, 1, number_permutations),
+    /* Then, distribute the remaining entries so that there are the correct number of data rows */
+    remainder: number_rows - sum(number_data_entries[i], i, 1, number_permutations),
+    remainder_list: random_permutation(makelist(floor(remainder/i), i, 1, number_permutations)),
+    /* Finally, incorperate some small random changes in the data */
+    abs_changes_list: append(makelist(rand(3), i, 1, floor(number_permutations/2))),
+    changes_list:random_permutation(append(apply(append, makelist([x, -x], x, abs_changes_list)), makelist(0, i, 1, number_permutations-2*floor(number_permutations/2)))),
+    /* Add the remainder terms and the random changes onto the number of pieces of data */
+    number_data_entries: number_data_entries + remainder_list + changes_list
+);
+
+/* Create the data set containing the specified number of each permutation of the factor values */
+data_set: random_permutation(apply(append,
+    makelist(
+        makelist(
+            makelist(factor_values[i][pos_to_coords(k)[i]], i, 1, length(factor_values)), 
+            j, 1, number_data_entries[k]),
+        k, 1, number_permutations
+    )
+));
+
+/* Give each element in the data set an index number */
+data_set: append(
+    [append(["Farm number"], factor_names)], 
+    makelist(append([i], data_set[i]), i, 1, number_rows)
+);
+
+/* ------------- END OF DATA SET GENERATION */
+
+/* table data */
+ta_1: number_data_entries[1];
+ta_2: number_data_entries[2];
+ta_3: number_data_entries[3];
+
+ta_5: number_data_entries[4];
+ta_6: number_data_entries[5];
+ta_7: number_data_entries[6];
+
+ta_9: number_data_entries[7];
+ta_10: number_data_entries[8];
+ta_11: number_data_entries[9];
+
+
+/* totals */
+ta_4: ta_1 + ta_2 + ta_3;
+ta_8: ta_5 + ta_6 + ta_7;
+ta_12: ta_9 + ta_10 + ta_11;
+
+ta_13: ta_1 + ta_5 + ta_9;
+ta_14: ta_2 + ta_6 + ta_10;
+ta_15: ta_3 + ta_7 + ta_11;
+
+/* balanced? */
+ma_16: [["Yes", is_balanced], ["No", not(is_balanced)]];]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>1</text>
+    </questionnote>
+    <questiondescription format="html">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta_1</tans>
+      <boxsize>3</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans10</name>
+      <type>algebraic</type>
+      <tans>ta_10</tans>
+      <boxsize>3</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans11</name>
+      <type>algebraic</type>
+      <tans>ta_11</tans>
+      <boxsize>3</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans12</name>
+      <type>algebraic</type>
+      <tans>ta_12</tans>
+      <boxsize>3</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans13</name>
+      <type>algebraic</type>
+      <tans>ta_13</tans>
+      <boxsize>3</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans14</name>
+      <type>algebraic</type>
+      <tans>ta_14</tans>
+      <boxsize>3</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans15</name>
+      <type>algebraic</type>
+      <tans>ta_15</tans>
+      <boxsize>3</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans16</name>
+      <type>dropdown</type>
+      <tans>ma_16</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta_2</tans>
+      <boxsize>3</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>ta_3</tans>
+      <boxsize>3</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>algebraic</type>
+      <tans>ta_4</tans>
+      <boxsize>3</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans5</name>
+      <type>algebraic</type>
+      <tans>ta_5</tans>
+      <boxsize>3</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans6</name>
+      <type>algebraic</type>
+      <tans>ta_6</tans>
+      <boxsize>3</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans7</name>
+      <type>algebraic</type>
+      <tans>ta_7</tans>
+      <boxsize>3</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans8</name>
+      <type>algebraic</type>
+      <tans>ta_8</tans>
+      <boxsize>3</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans9</name>
+      <type>algebraic</type>
+      <tans>ta_9</tans>
+      <boxsize>3</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/* node 1: check all answers correct */
+node1_test: if [ans1,ans2,ans3,ans4,ans5,ans6,ans7,ans8,ans9,ans10,ans11,ans12,ans13,ans14,ans15]=[ta_1,ta_2,ta_3,ta_4,ta_5,ta_6,ta_7,ta_8,ta_9,ta_10,ta_11,ta_12,ta_13,ta_14,ta_15] then 1 else 0; 
+
+/* node 2: check table data correct */
+node2_test: if [ans1,ans2,ans3,ans5,ans6,ans7,ans9,ans10,ans11]=[ta_1,ta_2,ta_3,ta_5,ta_6,ta_7,ta_9,ta_10,ta_11] then 1 else 0;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>check all answers correct</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>node1_test</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>check all table data correct</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>node2_test</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>All of the values in your table relating to a particular pairing of variety and fertiliser are correct.
+<br>However, check that you have correctly summed up the <b>totals</b> in each row and column!</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Not all of the values in your table relating to a particular pairing of variety and fertiliser are correct.
+<br>Double check the data and ensure that you only count the farms which have planted the specified variety <b>and</b> fertiliser.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>table_data: [ta_1,ta_2,ta_3,ta_5,ta_6,ta_7,ta_9,ta_10,ta_11];</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>check correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans16</sans>
+        <tans>mcq_correct(ma_16)[1]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[[[ if test="is_balanced"]]
+<p>Good! All of the entries to the table are the same, so there is a balanced spread of data across all pairings of variety and fertiliser.</p>
+[[ else ]]
+<p>Good! There are differences between the different entries in the table, so there is not a balanced spread of data across all pairings of variety and fertiliser.</p>
+[[/ if ]]]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[[[ if test="is_balanced"]]
+<p>Not quite! All of the entries to the table are <strong>the&nbsp;</strong><strong>same </strong>so there is balance in the data. 
+<br>So, there is a balanced spread of data across all pairings of variety and fertiliser.</p>
+[[ else ]]
+<p>Not quite! There are differences between the different entries in the table. We have a largest entry of {@last(sort(table_data))@} compared to a smallest entry of {@first(sort(table_data))@}.
+<br>So, there is not a balanced spread of data across all pairings of variety and fertiliser.</p>
+[[/ if ]]]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+  </question>
+</quiz>

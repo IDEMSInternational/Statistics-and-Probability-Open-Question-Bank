@@ -1,0 +1,1278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Data presentations-question 2</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>A questionnaire on housing arrangements showed this information obtained from \({@total@}\) respondents to represent the data (H = house, A = apartment, M = mobile home, C = condominium).
+</p>
+<p>\({@list@}\)</p>
+<p>Use the information provided above to answer the following questions:</p>
+<p>a. Fill in the table below</p>
+
+<p>
+<table border="solid">
+  <tr>
+  
+
+ <th width="15%", style="text-align:center"></th>
+   <th width="15%", style="text-align:center">house</th>
+     <th width="15%", style="text-align:center">apartment</th>
+     <th width="15%", style="text-align:center">mobile home</th>
+    <th width="15%", style="text-align:center">condominium</th>
+
+  </tr>
+  <tr>
+ <th width="15%", style="text-align:center">housing arrangements</th>
+    <td style="text-align:center">[[input:ans1]][[validation:ans1]][[feedback:prt1]]</td>
+   <td style="text-align:center">[[input:ans2]][[validation:ans2]][[feedback:prt2]]</td>
+    <td style="text-align:center">[[input:ans3]][[validation:ans3]][[feedback:prt3]]</td>
+    <td style="text-align:center">[[input:ans4]][[validation:ans4]][[feedback:prt4]]</td>
+  
+  </tr>
+  <tr>
+ <th width="15%", style="text-align:center">angles</th>
+   <td style="text-align:center">[[input:ans5]][[validation:ans5]][[feedback:prt5]]</td>
+    <td style="text-align:center">[[input:ans6]][[validation:ans6]][[feedback:prt6]]</td>
+     <td style="text-align:center">[[input:ans7]][[validation:ans7]][[feedback:prt7]]</td>
+    <td style="text-align:center">[[input:ans8]][[validation:ans8]][[feedback:prt8]]</td>
+   
+  </tr>
+</table>
+</p>
+b.Which pie chart represents the information above?
+
+<p>
+Pie chart \(1\)
+[[jsxgraph]] 
+var board = JXG.JSXGraph.initBoard(divid, {
+            boundingbox: [-1.2, 1.2, 1.2, -1.2],
+            keepaspectratio: true,
+            showCopyright: false,
+            axis: false,
+            showNavigation: false
+        });
+
+        var centre = board.create('point', [0, 0], {
+            fixed: true,
+            name: ""
+        });
+
+        var pie = board.create('circle', [centre, 1], {
+            fixed: true
+        });
+
+        var p0 = board.create('point', [0, 1], {
+            fixed: true,
+            visible: false,
+            name: 'p0'
+        });
+
+        /*Create endpoint of first sector*/
+        var an1 = "{#-angle_H_rad#}"; /*Angle of first sector in radians*/
+        var t1 = board.create('transform', [an1, centre], {
+            type: 'rotate'
+        });
+        var p1 = board.create('point', [p0, t1], {
+            color: 'blue',
+  visible: false,
+            name: 'p1'
+        });
+
+        /*Create endpoint of second sector*/
+        var an2 =  "{#-angle_A_rad#}"; /*Angle of second sector in radians*/
+        var t2 = board.create('transform', [an2, centre], {
+            type: 'rotate'
+        });
+        var p2 = board.create('point', [p1, t2], {
+            color: 'blue',
+  visible: false,
+            name: 'p2'
+        });
+
+        /*Create endpoint of third sector*/
+
+        var an3 ="{#-angle_C_rad#}"; /*Angle of third sector in radians*/
+
+        var t3 = board.create('transform', [an3, centre], {
+            type: 'rotate'
+
+        });
+
+        var p3 = board.create('point', [p2, t3], {
+            color: 'blue',
+  visible: false,
+            name: 'p3'
+        });
+
+
+
+        /*        var angles = [an1, an2, an3, 2 * Math.PI - an1 - an2 - an3];*/
+        var points = [p0, p1, p2, p3, p0];
+        var sector_names = ["Sector 1", "Sector 2", "Sector 3", "Sector 4"];
+
+        var startAngle = 0;
+
+        for (var i = 0; i < points.length - 1; i++) {
+            var sector = board.create('sector', [centre, points[i + 1], points[i]], {
+                name: sector_names[i],
+                label: {
+                    fontSize: 16
+                }
+            });
+           var angle = board.create('angle', [points[i + 1], centre, points[i]], {
+                        radius: 0.2,
+                        name: function () {
+                            return JXG.Math.Geometry.trueAngle(points[i + 1], centre, points[i]).toFixed(0) + '°';
+                        }
+                    });
+  
+        }
+[[/jsxgraph]]
+</p>
+Pie chart \(2\)
+<p>
+[[jsxgraph]] 
+var board = JXG.JSXGraph.initBoard(divid, {
+            boundingbox: [-1.2, 1.2, 1.2, -1.2],
+            keepaspectratio: true,
+            showCopyright: false,
+            axis: false,
+            showNavigation: false
+        });
+
+        var centre = board.create('point', [0, 0], {
+            fixed: true,
+            name: ""
+        });
+
+        var pie = board.create('circle', [centre, 1], {
+            fixed: true
+        });
+
+        var p0 = board.create('point', [0, 1], {
+            fixed: true,
+            visible: false,
+            name: 'p0'
+        });
+
+        /*Create endpoint of first sector*/
+        var an1 = "{#-angle_H_rad#}"; /*Angle of first sector in radians*/
+        var t1 = board.create('transform', [an1, centre], {
+            type: 'rotate'
+        });
+        var p1 = board.create('point', [p0, t1], {
+            color: 'blue',
+  visible: false,
+            name: 'p1'
+        });
+
+        /*Create endpoint of second sector*/
+        var an2 =  "{#-angle_A_rad+angle_H_rad#}"; /*Angle of second sector in radians*/
+        var t2 = board.create('transform', [an2, centre], {
+            type: 'rotate'
+        });
+        var p2 = board.create('point', [p1, t2], {
+            color: 'blue',
+  visible: false,
+            name: 'p2'
+        });
+
+        /*Create endpoint of third sector*/
+
+        var an3 ="{#-angle_C_rad#}"; /*Angle of third sector in radians*/
+
+        var t3 = board.create('transform', [an3, centre], {
+            type: 'rotate'
+
+        });
+
+        var p3 = board.create('point', [p2, t3], {
+            color: 'blue',
+  visible: false,
+            name: 'p3'
+        });
+
+
+
+        /*        var angles = [an1, an2, an3, 2 * Math.PI - an1 - an2 - an3];*/
+        var points = [p0, p1, p2, p3, p0];
+        var sector_names = ["Sector 1", "Sector 2", "Sector 3", "Sector 4"];
+
+        var startAngle = 0;
+
+        for (var i = 0; i < points.length - 1; i++) {
+            var sector = board.create('sector', [centre, points[i + 1], points[i]], {
+                name: sector_names[i],
+                label: {
+                    fontSize: 16
+                }
+            });
+           var angle = board.create('angle', [points[i + 1], centre, points[i]], {
+                        radius: 0.2,
+                        name: function () {
+                            return JXG.Math.Geometry.trueAngle(points[i + 1], centre, points[i]).toFixed(0) + '°';
+                        }
+                    });
+  
+        }
+[[/jsxgraph]]
+</p>
+<p>
+Pie chart \(3\)
+[[jsxgraph]] 
+var board = JXG.JSXGraph.initBoard(divid, {
+            boundingbox: [-1.2, 1.2, 1.2, -1.2],
+            keepaspectratio: true,
+            showCopyright: false,
+            axis: false,
+            showNavigation: false
+        });
+
+        var centre = board.create('point', [0, 0], {
+            fixed: true,
+            name: ""
+        });
+
+        var pie = board.create('circle', [centre, 1], {
+            fixed: true
+        });
+
+        var p0 = board.create('point', [0, 1], {
+            fixed: true,
+            visible: false,
+            name: 'p0'
+        });
+
+        /*Create endpoint of first sector*/
+        var an1 = "{#-angle_H_rad#}"; /*Angle of first sector in radians*/
+        var t1 = board.create('transform', [an1, centre], {
+            type: 'rotate'
+        });
+        var p1 = board.create('point', [p0, t1], {
+            color: 'blue',
+  visible: false,
+            name: 'p1'
+        });
+
+        /*Create endpoint of second sector*/
+        var an2 =  "{#-angle_A_rad-angle_H_rad#}"; /*Angle of second sector in radians*/
+        var t2 = board.create('transform', [an2, centre], {
+            type: 'rotate'
+        });
+        var p2 = board.create('point', [p1, t2], {
+            color: 'blue',
+  visible: false,
+            name: 'p2'
+        });
+
+        /*Create endpoint of third sector*/
+
+        var an3 ="{#-angle_C_rad#}"; /*Angle of third sector in radians*/
+
+        var t3 = board.create('transform', [an3, centre], {
+            type: 'rotate'
+
+        });
+
+        var p3 = board.create('point', [p2, t3], {
+            color: 'blue',
+  visible: false,
+            name: 'p3'
+        });
+
+
+
+        /*        var angles = [an1, an2, an3, 2 * Math.PI - an1 - an2 - an3];*/
+        var points = [p0, p1, p2, p3, p0];
+        var sector_names = ["Sector 1", "Sector 2", "Sector 3", "Sector 4"];
+
+        var startAngle = 0;
+
+        for (var i = 0; i < points.length - 1; i++) {
+            var sector = board.create('sector', [centre, points[i + 1], points[i]], {
+                name: sector_names[i],
+                label: {
+                    fontSize: 16
+                }
+            });
+           var angle = board.create('angle', [points[i + 1], centre, points[i]], {
+                        radius: 0.2,
+                        name: function () {
+                            return JXG.Math.Geometry.trueAngle(points[i + 1], centre, points[i]).toFixed(0) + '°';
+                        }
+                    });
+  
+        }
+[[/jsxgraph]]
+</p>
+<p>
+Pie chart \(4\)
+[[jsxgraph]] 
+var board = JXG.JSXGraph.initBoard(divid, {
+            boundingbox: [-1.2, 1.2, 1.2, -1.2],
+            keepaspectratio: true,
+            showCopyright: false,
+            axis: false,
+            showNavigation: false
+        });
+
+        var centre = board.create('point', [0, 0], {
+            fixed: true,
+            name: ""
+        });
+
+        var pie = board.create('circle', [centre, 1], {
+            fixed: true
+        });
+
+        var p0 = board.create('point', [0, 1], {
+            fixed: true,
+            visible: false,
+            name: 'p0'
+        });
+
+        /*Create endpoint of first sector*/
+        var an1 = "{#-angle_H_rad#}"; /*Angle of first sector in radians*/
+        var t1 = board.create('transform', [an1, centre], {
+            type: 'rotate'
+        });
+        var p1 = board.create('point', [p0, t1], {
+            color: 'blue',
+  visible: false,
+            name: 'p1'
+        });
+
+        /*Create endpoint of second sector*/
+        var an2 =  "{#-angle_A_rad-angle_H_rad#}"; /*Angle of second sector in radians*/
+        var t2 = board.create('transform', [an2, centre], {
+            type: 'rotate'
+        });
+        var p2 = board.create('point', [p1, t2], {
+            color: 'blue',
+  visible: false,
+            name: 'p2'
+        });
+
+        /*Create endpoint of third sector*/
+
+        var an3 ="{#-angle_C_rad#}"; /*Angle of third sector in radians*/
+
+        var t3 = board.create('transform', [an3, centre], {
+            type: 'rotate'
+
+        });
+
+        var p3 = board.create('point', [p2, t3], {
+            color: 'blue',
+  visible: false,
+            name: 'p3'
+        });
+
+
+
+        /*        var angles = [an1, an2, an3, 2 * Math.PI - an1 - an2 - an3];*/
+        var points = [p0, p1, p2, p3, p0];
+        var sector_names = ["Sector 1", "Sector 2", "Sector 3", "Sector 4"];
+
+        var startAngle = 0;
+
+        for (var i = 0; i < points.length - 1; i++) {
+            var sector = board.create('sector', [centre, points[i + 1], points[i]], {
+                name: sector_names[i],
+                label: {
+                    fontSize: 16
+                }
+            });
+           var angle = board.create('angle', [points[i + 1], centre, points[i]], {
+                        radius: 0.2,
+                        name: function () {
+                            return JXG.Math.Geometry.trueAngle(points[i + 1], centre, points[i]).toFixed(0) + '°';
+                        }
+                    });
+  
+        }
+[[/jsxgraph]]
+</p>
+<p>[[input:ans9]][[validation:ans9]][[feedback:prt9]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked solution</h3>
+<p>Inorder to get the housing arrangements, you need to count the the number of each housing and to get the angle we use the formula below:</p>
+<p>Housing angle \(= \frac{\text{number of housing}}{\text{total number of housing}} \times 360^{\circ}\) as shown in the table below.</p>
+<p></p>
+<p>
+<table border="solid">
+  <tr>
+  
+
+ <th width="15%", style="text-align:center"></th>
+   <th width="15%", style="text-align:center">house</th>
+     <th width="15%", style="text-align:center">apartment</th>
+     <th width="15%", style="text-align:center">mobile home</th>
+    <th width="15%", style="text-align:center">condominium</th>
+
+  </tr>
+  <tr>
+ <th width="15%", style="text-align:center">housing arrangements</th>
+    <td style="text-align:center">\({@aa@}\)</td>
+   <td style="text-align:center">\({@bb@}\)</td>
+    <td style="text-align:center">\({@cc@}\)</td>
+    <td style="text-align:center">\({@dd@}\)</td>
+  
+  </tr>
+  <tr>
+ <th width="15%", style="text-align:center">angles</th>
+   <td style="text-align:center">\({@angle_H@}\)</td>
+    <td style="text-align:center">\({@angle_A@}\)</td>
+     <td style="text-align:center">\({@angle_C@}\)</td>
+    <td style="text-align:center">\({@angle_M@}\)</td>
+   
+  </tr>
+</table>
+</p>
+<p>The pie chart represented above is :</p>
+<p>
+
+[[jsxgraph]] 
+var board = JXG.JSXGraph.initBoard(divid, {
+            boundingbox: [-1.2, 1.2, 1.2, -1.2],
+            keepaspectratio: true,
+            showCopyright: false,
+            axis: false,
+            showNavigation: false
+        });
+
+        var centre = board.create('point', [0, 0], {
+            fixed: true,
+            name: ""
+        });
+
+        var pie = board.create('circle', [centre, 1], {
+            fixed: true
+        });
+
+        var p0 = board.create('point', [0, 1], {
+            fixed: true,
+            visible: false,
+            name: 'p0'
+        });
+
+        /*Create endpoint of first sector*/
+        var an1 = "{#-angle_H_rad#}"; /*Angle of first sector in radians*/
+        var t1 = board.create('transform', [an1, centre], {
+            type: 'rotate'
+        });
+        var p1 = board.create('point', [p0, t1], {
+            color: 'blue',
+  visible: false,
+            name: 'p1'
+        });
+
+        /*Create endpoint of second sector*/
+        var an2 =  "{#-angle_A_rad#}"; /*Angle of second sector in radians*/
+        var t2 = board.create('transform', [an2, centre], {
+            type: 'rotate'
+        });
+        var p2 = board.create('point', [p1, t2], {
+            color: 'blue',
+  visible: false,
+            name: 'p2'
+        });
+
+        /*Create endpoint of third sector*/
+
+        var an3 ="{#-angle_C_rad#}"; /*Angle of third sector in radians*/
+
+        var t3 = board.create('transform', [an3, centre], {
+            type: 'rotate'
+
+        });
+
+        var p3 = board.create('point', [p2, t3], {
+            color: 'blue',
+  visible: false,
+            name: 'p3'
+        });
+
+
+
+        /*        var angles = [an1, an2, an3, 2 * Math.PI - an1 - an2 - an3];*/
+        var points = [p0, p1, p2, p3, p0];
+        var sector_names = ["Sector 1", "Sector 2", "Sector 3", "Sector 4"];
+
+        var startAngle = 0;
+
+        for (var i = 0; i < points.length - 1; i++) {
+            var sector = board.create('sector', [centre, points[i + 1], points[i]], {
+                name: sector_names[i],
+                label: {
+                    fontSize: 16
+                }
+            });
+           var angle = board.create('angle', [points[i + 1], centre, points[i]], {
+                        radius: 0.2,
+                        name: function () {
+                            return JXG.Math.Geometry.trueAngle(points[i + 1], centre, points[i]).toFixed(0) + '°';
+                        }
+                    });
+  
+        }
+[[/jsxgraph]]
+</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[aa:rand(3)+1;
+bb:rand(2)+3;
+cc:rand(2)+1;
+dd:rand(3)+4;
+total: aa+bb+cc+dd;
+list_H: makelist(H, i, 1, aa);
+list_A: makelist(A, i, 1, bb);
+list_C: makelist(C, i, 1, cc);
+list_M: makelist(M, i, 1, dd);
+list:append(list_H,list_A,list_C,list_M);
+angle_H: round((aa*360)/total);
+angle_A: round((bb*360)/total);
+angle_C: round((cc*360)/total);
+angle_M: round((dd*360)/total);
+angle_H_rad:float(((angle_H)/180)*pi);
+angle_A_rad:float(((angle_A)/180)*pi);
+angle_C_rad:float((angle_C/180)*pi);
+angle_M_rad:float((angle_M/180)*pi);
+/*Graph variables*/
+var_x1:round(cos(angle_H_rad));
+var_y1:round(sin(angle_H_rad));
+var_x2:round(cos(angle_A_rad));
+var_y2:round(sin(angle_A_rad));
+var_x3:round(cos(angle_C_rad));
+var_y3:round(sin(angle_C_rad));
+var_x4:round(cos(angle_M_rad));
+var_y4:round(sin(angle_M_rad));
+	
+ta9:random_permutation([["Pie chart 1 ", true],["Pie chart 2", false],["Pie chart 3", false],["Pie chart 4", false]]);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>
+
+[[jsxgraph]] 
+var board = JXG.JSXGraph.initBoard(divid, {
+            boundingbox: [-1.2, 1.2, 1.2, -1.2],
+            keepaspectratio: true,
+            showCopyright: false,
+            axis: false,
+            showNavigation: false
+        });
+
+        var centre = board.create('point', [0, 0], {
+            fixed: true,
+            name: ""
+        });
+
+        var pie = board.create('circle', [centre, 1], {
+            fixed: true
+        });
+
+        var p0 = board.create('point', [0, 1], {
+            fixed: true,
+            visible: false,
+            name: 'p0'
+        });
+
+        /*Create endpoint of first sector*/
+        var an1 = "{#-angle_H_rad#}"; /*Angle of first sector in radians*/
+        var t1 = board.create('transform', [an1, centre], {
+            type: 'rotate'
+        });
+        var p1 = board.create('point', [p0, t1], {
+            color: 'blue',
+  visible: false,
+            name: 'p1'
+        });
+
+        /*Create endpoint of second sector*/
+        var an2 =  "{#-angle_A_rad#}"; /*Angle of second sector in radians*/
+        var t2 = board.create('transform', [an2, centre], {
+            type: 'rotate'
+        });
+        var p2 = board.create('point', [p1, t2], {
+            color: 'blue',
+  visible: false,
+            name: 'p2'
+        });
+
+        /*Create endpoint of third sector*/
+
+        var an3 ="{#-angle_C_rad#}"; /*Angle of third sector in radians*/
+
+        var t3 = board.create('transform', [an3, centre], {
+            type: 'rotate'
+
+        });
+
+        var p3 = board.create('point', [p2, t3], {
+            color: 'blue',
+  visible: false,
+            name: 'p3'
+        });
+
+
+
+        /*        var angles = [an1, an2, an3, 2 * Math.PI - an1 - an2 - an3];*/
+        var points = [p0, p1, p2, p3, p0];
+        var sector_names = ["Sector 1", "Sector 2", "Sector 3", "Sector 4"];
+
+        var startAngle = 0;
+
+        for (var i = 0; i < points.length - 1; i++) {
+            var sector = board.create('sector', [centre, points[i + 1], points[i]], {
+                name: sector_names[i],
+                label: {
+                    fontSize: 16
+                }
+            });
+           var angle = board.create('angle', [points[i + 1], centre, points[i]], {
+                        radius: 0.2,
+                        name: function () {
+                            return JXG.Math.Geometry.trueAngle(points[i + 1], centre, points[i]).toFixed(0) + '°';
+                        }
+                    });
+  
+        }
+[[/jsxgraph]]
+</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Emmaculate Odhiambo<p>
+<p id="concept">N/A</p>
+<p id="reviewer">Mary Sayuni</p>
+<p id="reviewer">Juma Zevick</p>
+<p id="description">The question focuses on using a given data to construct a pie chart. </p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>aa</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>bb</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>cc</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>algebraic</type>
+      <tans>dd</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans5</name>
+      <type>algebraic</type>
+      <tans>angle_H</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans6</name>
+      <type>algebraic</type>
+      <tans>angle_A</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans7</name>
+      <type>algebraic</type>
+      <tans>angle_C</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans8</name>
+      <type>algebraic</type>
+      <tans>angle_M</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans9</name>
+      <type>dropdown</type>
+      <tans>ta9</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>aa</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>bb</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>cc</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>dd</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt5</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5</sans>
+        <tans>angle_H</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt5-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt6</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans6</sans>
+        <tans>angle_A</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt6-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt6-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt7</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans7</sans>
+        <tans>angle_C</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt7-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt7-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt8</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans8</sans>
+        <tans>angle_M</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt8-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt8-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt9</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans9</sans>
+        <tans>mcq_correct(ta9)[1]</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt9-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt9-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>669921331</deployedseed>
+    <deployedseed>1590447092</deployedseed>
+    <deployedseed>344301163</deployedseed>
+    <deployedseed>224951649</deployedseed>
+    <deployedseed>1563426</deployedseed>
+    <deployedseed>770128422</deployedseed>
+    <deployedseed>915387957</deployedseed>
+    <deployedseed>535510777</deployedseed>
+    <deployedseed>1387467497</deployedseed>
+    <deployedseed>567085096</deployedseed>
+    <deployedseed>1947885384</deployedseed>
+    <deployedseed>1418808917</deployedseed>
+    <deployedseed>497580188</deployedseed>
+    <deployedseed>1902438271</deployedseed>
+    <deployedseed>125109892</deployedseed>
+    <deployedseed>1517632889</deployedseed>
+    <deployedseed>1784286621</deployedseed>
+    <deployedseed>1525344661</deployedseed>
+    <deployedseed>1668720505</deployedseed>
+    <deployedseed>103144457</deployedseed>
+    <deployedseed>878834222</deployedseed>
+    <deployedseed>867962197</deployedseed>
+    <deployedseed>1409371085</deployedseed>
+    <deployedseed>1800747807</deployedseed>
+    <deployedseed>401279090</deployedseed>
+    <deployedseed>991769843</deployedseed>
+    <deployedseed>201502453</deployedseed>
+    <deployedseed>1322475414</deployedseed>
+    <deployedseed>1085466266</deployedseed>
+    <deployedseed>877281296</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description>Test case assuming the teacher's input gets full marks.</description>
+      <testinput>
+        <name>ans1</name>
+        <value>aa</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>bb</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>cc</value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value>dd</value>
+      </testinput>
+      <testinput>
+        <name>ans5</name>
+        <value>angle_H</value>
+      </testinput>
+      <testinput>
+        <name>ans6</name>
+        <value>angle_A</value>
+      </testinput>
+      <testinput>
+        <name>ans7</name>
+        <value>angle_C</value>
+      </testinput>
+      <testinput>
+        <name>ans8</name>
+        <value>angle_M</value>
+      </testinput>
+      <testinput>
+        <name>ans9</name>
+        <value>first(mcq_correct(ta9))</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt4-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt5</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt5-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt6</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt6-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt7</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt7-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt8</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt8-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt9</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt9-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

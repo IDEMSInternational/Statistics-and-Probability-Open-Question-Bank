@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Calculating the Intersection of Events A and B</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>If \(P[A]={@prob_A@}\) and \(P[B]={@prob_B@}\) and \(P[A\vert B]+P[B \vert A]={@prob_E@}\). Find \(P[A \cap B]\) </p>
+<p><b>Note:</b> Give your answer correct to four decimal places or as a fraction.</p>
+<p>\(P[A \cap B]=\) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked solution</h3>
+<p>\(\displaystyle P[B\vert A]=\frac {P[A \cap B]}{P[A]}\) </p>
+<p>\(\displaystyle\qquad \qquad =\frac {P[A \cap B]}{{@prob_A@}}={@1/prob_A@}P[A \cap B]\)</p>
+<p>\(\displaystyle P[A \vert B]=\frac {P[A \cap B]}{P[B]}\) </p>
+<p>\(\displaystyle \qquad \qquad =\frac {P[A \cap B]}{{@prob_B@}}={@1/prob_B@}P[A \cap B]\)</p>
+<p> Thus, \(\displaystyle  \left [{@(1/prob_A)@}+{@(1/prob_B)@} \right ]P[A \cap B]={@prob_E@} \implies P[A \cap B]={@ta@}\)</p>
+<p></p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*Defining question variables*/
+
+prob_AB:(rand(2)+1)/10;/*P(AnB)*/
+prob_AB_1:(rand(2)+1)/10;/*P(AnB')*/
+prob_AB_2:(rand(2)+1)/10;/*P(A'nB)*/
+prob_A:prob_AB_1+prob_AB;/*P(A)*/
+prob_B:prob_AB_2+prob_AB;/*P(B)*/
+prob_C:prob_AB/prob_A;/*P(A|B)*/
+prob_D:prob_AB/prob_B;/*P(B|A)*/
+prob_E:prob_C+prob_D;/*P(A|B)+P(B|A)*/
+ta:prob_AB;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(P[A]={@prob_A@}\)</p>
+<p>\(P[B]={@prob_B@}\)</p>
+<p>\(P[A \cap B]={@ta@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Emmaculate Odhiambo</p>
+<p id="concept">https://docs.google.com/document/d/1vTGcb25_evygYAnTszgklVJMn6W-uJCv/edit#heading=h.vy8x1tbmoha9</p>
+<p id="reviewer">Nixson</p>
+<p id="reviewer">Georg Osang</p>
+<p id="description">This question requires the student to determine the intersection probability given the conditional probabilities, along with the independent probabilities</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct fraction answer*/
+/*Node 2: Checks for the correct decimal answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct fraction answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Checks for the correctly rounded decimal answer</description>
+        <answertest>NumDecPlaces</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>4</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>Check for correct decimal answer</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>0.00005</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>507420735</deployedseed>
+    <deployedseed>1752274032</deployedseed>
+    <deployedseed>1807023440</deployedseed>
+    <deployedseed>46003617</deployedseed>
+    <deployedseed>1694309489</deployedseed>
+    <deployedseed>1638133872</deployedseed>
+    <deployedseed>2107554760</deployedseed>
+    <deployedseed>939558252</deployedseed>
+    <deployedseed>1939859377</deployedseed>
+    <deployedseed>1680957270</deployedseed>
+    <deployedseed>224711336</deployedseed>
+    <deployedseed>808715476</deployedseed>
+    <deployedseed>1390740259</deployedseed>
+    <deployedseed>113733807</deployedseed>
+    <deployedseed>356654894</deployedseed>
+    <deployedseed>1652047931</deployedseed>
+    <deployedseed>1991713513</deployedseed>
+    <deployedseed>745363332</deployedseed>
+    <deployedseed>1776850642</deployedseed>
+    <deployedseed>173961522</deployedseed>
+    <deployedseed>1152844641</deployedseed>
+    <deployedseed>1994456865</deployedseed>
+    <deployedseed>1855734490</deployedseed>
+    <deployedseed>1675484122</deployedseed>
+    <deployedseed>1845920284</deployedseed>
+    <deployedseed>2090952014</deployedseed>
+    <deployedseed>1438727599</deployedseed>
+    <deployedseed>1350512295</deployedseed>
+    <deployedseed>1939303954</deployedseed>
+    <deployedseed>710797472</deployedseed>
+    <deployedseed>621869550</deployedseed>
+    <deployedseed>1768730595</deployedseed>
+    <deployedseed>686749763</deployedseed>
+    <deployedseed>639516662</deployedseed>
+    <deployedseed>854396691</deployedseed>
+    <deployedseed>672955437</deployedseed>
+    <deployedseed>1576711780</deployedseed>
+    <deployedseed>1827186425</deployedseed>
+    <deployedseed>1904700035</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description>Test case assuming the teacher's input gets full marks.</description>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

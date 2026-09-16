@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Find the range and quartiles using the data in a given stem and leaf diagram</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p></p>
+
+<p>The following data organized in a stem and leaf diagram is for ages of people who patronized a certain gambling facility in town</p>
+<p>
+<head>
+    <title>Stem and Leaf Diagram</title>
+    <style>
+        .stem-and-leaf {
+            display: inline-block;
+            font-family: monospace;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <h1>Stem and Leaf Diagram</h1>
+    <div class="stem-and-leaf">
+        <pre>
+         {#s_1#} | {#l_1#}  {#l_2#}  {#l_3#}
+         {#s_2#} | {#l_3+1#}   {#l_4+2#}   {#l_5+3#}
+         {#s_3#} |  {#l_3#}   {#l_4#}  {#l_5#}  {#l_3#}  {#l_4#}  {#l_5#}
+         {#s_4#} | {#l_1+1#}  {#l_3+2#}  {#l_3+3#}  {#l_1+5#}   {#l_5#} 
+         {#s_5#} | {#l_2#}  {#l_3#}  {#l_6#}   {#l_5#}   {#l_6#}
+         {#s_6#} | {#l_3#}   {#l_1#}
+         {#s_7#} | {#l_2#}
+         {#s_8#} | {#l_6#}
+        </pre>
+    </div>
+</body>
+</p>
+<p>Find the range</p>
+<p>[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>
+<p>Obtain the first second and third quartiles.</p>
+<p>\(Q_1=\)  [[input:ans2]] [[validation:ans2]][[feedback:prt2]]</p>
+<p>\(Q_2=\)  [[input:ans3]] [[validation:ans3]][[feedback:prt3]]</p>
+<p>\(Q_3=\)  [[input:ans4]] [[validation:ans4]][[feedback:prt4]]</p>
+<p></p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>To find the range in a stem and Leaf diagram, you first Identify the Minimum and Maximum Values:</p>
+<p>The minimum value is the smallest data point in your dataset. You can find it by looking at the smallest leaf in the plot.</p>
+<p>The maximum value is the largest data point in your dataset. You can find it by looking at the largest leaf in the plot.</p>
+<p>The range of a dataset is defined as the difference between the maximum and minimum values. It is a measure of how spread out or varied the data is.</p>
+<p>Range = Maximum Value - Minimum Value</p>
+<p>From our diagram the Maximum value is \({@max_no@}\) and the minimum value is \({@min_no@}\)</p>
+<p>So, the range is \({@ta1@}\)</p>
+<p>To find the Quartiles, we first find the median</p>
+<p>Using the formula \(Q_2=\frac{1}{2}(n+1)^{th} \text{term}\) where \(n\) is the total number of values that we have.</p>
+<p>For this case our \(n=14^{th} \text{term}\)</p>
+<p>The median is the \(14^{th}\) number which is \({@ta2@}\)</p>
+<p>To find the first quartile, using the same formulae \(Q_2=\frac{1}{2}(n+1)^{th} \text{term}\) upto to the \(14^{th} \) value </p>
+<p>Our first quartile will be the \(7^{th}\) upto the median which is \({@ta1@}\)</p>
+<p>Applying the same technique, the third quartile will be \({@ta3@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*STEM AND LEAF DIAGRAMS*/
+s_1:rand(2)+1;
+s_2:s_1+1;
+s_3:s_1+2;
+s_4:s_1+3;
+s_5:s_1+4;
+s_6:s_1+5;
+s_7:s_1+6;
+s_8:s_1+7;
+/*leafs*/
+l_1:rand(2)+1;
+l_2:l_1+1;
+l_3:l_1+2;
+l_4:0;
+l_5:l_1+3;
+l_6:l_1+5;
+/*worked solution variables*/
+max_no: s_8*10+l_6; 
+min_no: s_1*10+l_1;
+ta1:max_no - min_no;
+Q_2:1/2*(27+1);
+ta2:sconcat(s_4,l_3+2);
+Q_1:1/2*(13+1);
+ta3:sconcat(s_3,l_3);
+Q_3:1/2*(13+1);
+ta4:sconcat(s_5,l_5);</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p></p>
+
+<p>The following data organized in a stem and leaf diagram is for ages of people who patronized a certain gambling facility in town</p>
+<p>
+<head>
+    <title>Stem and Leaf Diagram</title>
+    <style>
+        .stem-and-leaf {
+            display: inline-block;
+            font-family: monospace;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <h1>Stem and Leaf Diagram</h1>
+    <div class="stem-and-leaf">
+        <pre>
+         {#s_1#} | {#l_1#}  {#l_2#}  {#l_3#}
+         {#s_2#} | {#l_3+1#}   {#l_4+2#}   {#l_5+3#}
+         {#s_3#} |  {#l_3#}   {#l_4#}  {#l_5#}  {#l_3#}  {#l_4#}  {#l_5#}
+         {#s_4#} | {#l_1+1#}  {#l_3+2#}  {#l_3+3#}  {#l_1+5#}   {#l_5#} 
+         {#s_5#} | {#l_2#}  {#l_3#}  {#l_6#}   {#l_5#}   {#l_6#}
+         {#s_6#} | {#l_3#}   {#l_1#}
+         {#s_7#} | {#l_2#}
+         {#s_8#} | {#l_6#}
+        </pre>
+    </div>
+</body>
+</p>
+<p>Find the range</p>
+<p>{@ta1@}</p>
+<p>Obtain the first second and third quartiles.</p>
+<p>\(Q_1={@ta2@}\)</p>
+<p>\(Q_2={@ta3@}\)</p>
+<p>\(Q_3={@ta4@}\)</p>
+<p></p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Mary Sayuni<p>
+<p id="concept">N/A</p>
+<p id="reviewer">[Godfrey Wabwire]</p>
+<p id="reviewer">[Juma Zevick]</p>
+<p id="description">The question focuses on using a given diagram with a distribution of data in a stem and leaf diagram to find the range, first, second and third quartiles.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>string</type>
+      <tans>ta2</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>string</type>
+      <tans>ta3</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>string</type>
+      <tans>ta4</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>StringSloppy</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>StringSloppy</answertest>
+        <sans>ans3</sans>
+        <tans>ta3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct answer</description>
+        <answertest>StringSloppy</answertest>
+        <sans>ans4</sans>
+        <tans>ta4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1746873875</deployedseed>
+    <deployedseed>1199792085</deployedseed>
+    <deployedseed>25744329</deployedseed>
+    <deployedseed>1588384591</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>ta3</value>
+      </testinput>
+      <testinput>
+        <name>ans4</name>
+        <value>ta4</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt4</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt4-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

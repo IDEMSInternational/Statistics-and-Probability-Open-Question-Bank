@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Probability of Selecting Consonants</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>{@word_3@} letters are chosen at random from the word {@word1@}. Find the
+probability that {@word_4@} letters chosen are consonants.</p>
+<p><i><b>Note:</b> Give your answer as a fraction</i></p>
+<p>[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>If \(S\) is the probability space, then \( \displaystyle n(S)=^{@wordlength1@}C_{@word_1@}=\frac{{@wordlength1@}!}{{@word_1@}!({@wordlength1@}-{@word_1@})!}={@ta_1@}\) .
+
+<p>Let \(E\) be the event “{@word_3@} consonants are chosen”. Since there are {@word_4@} consonants, then \(\displaystyle ^{@word_2@}C_{@word_1@}={@ta_2@}.\)
+<p>Therefore \(\displaystyle P(E)=\frac{n(E)}{n(S)}=\frac{{@ta_2@}}{{@ta_1@}}={@ta@}\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[wordlength1:rand([6,7,8]);
+word_1:if wordlength1 = 6 then 2 elseif wordlength1=7 then 3 else 4;
+word_2:if wordlength1 = 6 then 4 elseif wordlength1=7 then 5 else 6;
+word_3:if wordlength1 = 6 then "Two" elseif wordlength1=7 then "Three" else "Four";
+word_4:if wordlength1 = 6 then "Four" elseif wordlength1=7 then "Five" else "Six";
+word1:if wordlength1 = 6 then rand([BETTER, BEYOND, BISHOP, BORDER, BOTTLE, BOTTOM]) elseif wordlength1=7 then rand([CALLING, ANSWERS, GALLERY, GROWING, PROGRAM, TRUDGED]) else rand([SYLLABUS, RANDOMLY, FRIENDLY, ABSTRACT, SCULPTED, THANKFUL]);
+n_space1:binomial(8, 4);
+n_space2:binomial(7, 3);
+n_space3:binomial(6, 2);
+ta_1:if wordlength1 = 8 then n_space1 elseif wordlength1 = 7 then n_space2 else n_space3;
+n_event1:binomial(6, 4);
+n_event2:binomial(5, 3);
+n_event3:binomial(4, 2);
+ta_2:if wordlength1 = 8 then n_event1 elseif wordlength1 = 7 then n_event2 else n_event3;
+prob_event1:n_event1/n_space1;
+prob_event2:n_event2/n_space2;
+prob_event3:n_event3/n_space3;
+word_4:if wordlength1 = 6 then "both " elseif wordlength1=7 then "all the Three" else "all the Four";
+
+ta:if wordlength1 = 8 then prob_event1 elseif wordlength1 = 7 then prob_event2 else prob_event3;]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>{@word_3@} letters are chosen at random from the word {@word1@}. The
+probability that all {@word_3@} letters chosen are consonants is \({@ta@}\).</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Nixson Kiplagat</p>
+<p id="concept">https://docs.google.com/document/d/1qd7rKyHl5BhMXGNHAYC573O_UeVd_8nyYZLYzXG-MWM/edit#heading=h.vy8x1tbmoha9</p>
+<p id="reviewer">Emmaculate odhiambo</p>
+<p id="reviewer">Motognon Wastalas</p>
+<p id="description">This question requires the student to determine the likelihood of selecting four consonants randomly from the given word, presenting a fundamental probability problem in letter selection.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1596205526</deployedseed>
+    <deployedseed>536408509</deployedseed>
+    <deployedseed>1545102336</deployedseed>
+    <deployedseed>226633510</deployedseed>
+    <deployedseed>200218959</deployedseed>
+    <deployedseed>1694677453</deployedseed>
+    <deployedseed>2016989472</deployedseed>
+    <deployedseed>94327097</deployedseed>
+    <deployedseed>1093411676</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Determining the Universal Set for Given Sets A, B, and C</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Given the sets \(A = {@A@}, \, B = {@B@},\)  and \(C = {@C@}\).</p>
+<p> Select the universal set of all the <b>three sets</b> from the following:</p>
+<p>[[input:ans2]] [[validation:ans2]]</p>
+<p>[[feedback:prt2]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p>Given the sets \(A = {@A@}, \, B = {@B@},\)  and \(C = {@C@}\).</p>
+<p>The universal set must contain all the elements from the sets \(A,\, B\), and \(C\). </p>
+<p>\(U={@universal_set_2@}\): This set contains all the elements from the sets \(A,\, B,\) and \(C\)</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/* Randomly choose X */
+full_set:setify(makelist(i, i, 1, 10));
+/* Pick a number that appears in neither A, B nor C, to ensure the universal set is not full_set so that we can use full_set as a wrong answer */
+missing: rand(full_set); 
+almost_full_set: setdifference(full_set, {missing});
+/* Pick elements in the intersection to make sure it's not empty */
+n_intersection: rand(3)+1;
+X: setify(rand_selection(almost_full_set, n_intersection));
+
+/* Pick three random numbers a, b, c from the remaining numbers */ 
+/* We add them to A/B/C to guarantee that none is subset of another */ 
+remaining_numbers: setdifference(almost_full_set,X);  
+a: rand(remaining_numbers); 
+b: rand(setdifference(remaining_numbers, {a})); 
+c: rand(setdifference(remaining_numbers, {a, b}));
+
+/* Add a bunch of extra numbers to each set. This may make the intersection larger than X, but that's ok */
+leftover_numbers: setdifference(remaining_numbers,{a,b,c});
+A: union(union(X,{a}),random_subset(leftover_numbers));
+B: union(union(X,{b}),random_subset(leftover_numbers));
+C: union(union(X,{c}),random_subset(leftover_numbers));
+
+universal_set_1: union(A,B); 
+universal_set_2: union(A,B,C); /*correct answer*/
+universal_set_3: B;  
+universal_set_4: intersection(A,B,C);
+universal_set_5: full_set;
+
+/* correct answer */
+corr_ans:[[1, true, sconcat("\\(\\displaystyle  \\{",universal_set_2,"\\} \\)")]];
+
+/* wrong answers */
+incorr_ans: rand_selection([
+[2, false, sconcat("\\(\\displaystyle \\{",universal_set_1,"\\} \\)")],
+[3, false, sconcat("\\(\\displaystyle \\{",universal_set_3,"\\} \\)")],
+[5, false, sconcat("\\(\\displaystyle \\{",universal_set_5,"\\} \\)")],
+[4, false, sconcat("\\(\\displaystyle  \\{",universal_set_4,"\\}\\)")]], 2);
+
+ma: random_permutation(append(corr_ans, incorr_ans));
+/*Worked Soln*/]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>\(A = {@A@}, \, B = {@B@},\)  and \(C = {@C@}\).</p>
+<p>The universal set \(U={@universal_set_2@}\)</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Godfrey Wabwire</p>
+<p id="concept">https://docs.google.com/document/d/18XomBwrJn_JflBGU6drEJ7lj0ixz1FaQcKzYeeAdCoU/edit#heading=h.vy8x1tbmoha9</p>
+<p id="reviewer">Mary Sayun</p>
+<p id="reviewer">Santiago Borio</p>
+<p id="description">Determining the truth of statements about elements and subsets of a set containing the empty set</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans2</name>
+      <type>radio</type>
+      <tans>ma</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>nonotanswered</options>
+    </input>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/
+
+/*Node 2: Checks if option 2 (incorrect) was provided and selected*/
+true_opt_2:if member(2,ta_index) then ( if member(2,ans2) then 1 else 0 ) else 0;
+
+/*Node 3: Checks if option 3 (incorrect) was provided and selected*/
+true_opt_3:if member(3,ta_index) then ( if member(3,ans2) then 1 else 0 ) else 0;
+
+/*Node 4: Checks if option 4 (incorrect) was provided and selected*/
+true_opt_4:if member(4,ta_index) then ( if member(4,ans2) then 1 else 0 ) else 0;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mcq_correct(ma)[1]</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Checks if option 2 (incorrect) was provided and selected</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>true_opt_2</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>2</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>{@universal_set_1@}: This set only contains elements from sets \(A = {@A@}\) and \( B = {@B@},\) and some lacks some elements from set \(C= {@C@}\). Therefore, this is not the universal set.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>Checks if option 3 (incorrect) was provided and selected</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>true_opt_3</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>3</truenextnode>
+        <trueanswernote>prt2-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>{@universal_set_3@}: This set only contains elements from set \( B = {@B@}\). Therefore, this is not the universal set.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt2-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>Checks if option 4 (incorrect) was provided and selected</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>true_opt_4</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>{@universal_set_4@}: This set only contains elements from sets \(A = {@A@}\) and \( C = {@C@},\) and some lacks some elements from set \(B= {@B@}\). Therefore, this is not the universal set.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>319344940</deployedseed>
+    <deployedseed>1666983331</deployedseed>
+    <deployedseed>904100358</deployedseed>
+    <deployedseed>714818009</deployedseed>
+    <deployedseed>1590262349</deployedseed>
+    <deployedseed>462976862</deployedseed>
+    <deployedseed>1772360428</deployedseed>
+    <deployedseed>554367561</deployedseed>
+    <deployedseed>191796515</deployedseed>
+    <deployedseed>217825345</deployedseed>
+    <deployedseed>563497994</deployedseed>
+    <deployedseed>1120879454</deployedseed>
+    <deployedseed>1016505118</deployedseed>
+    <deployedseed>1901146816</deployedseed>
+    <deployedseed>1834653649</deployedseed>
+    <deployedseed>1492620211</deployedseed>
+    <deployedseed>1275825196</deployedseed>
+    <deployedseed>2145131804</deployedseed>
+    <deployedseed>1634538383</deployedseed>
+    <deployedseed>1208644033</deployedseed>
+    <deployedseed>1592889540</deployedseed>
+    <deployedseed>1855240248</deployedseed>
+    <deployedseed>786471321</deployedseed>
+    <deployedseed>144354526</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans2</name>
+        <value>first(mcq_correct(ma))</value>
+      </testinput>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

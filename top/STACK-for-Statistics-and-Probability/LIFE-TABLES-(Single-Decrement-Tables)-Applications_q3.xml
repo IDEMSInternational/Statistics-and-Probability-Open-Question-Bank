@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>LIFE TABLES (Single Decrement Tables)-Applications_q3</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Use the Australian Males Life Table \((1960-62)-\text{A}^{\text{M}61}\) given below to answer the question that follows.</p>
+<p><strong style="color: blue;">
+ <a href="https://drive.google.com/uc?export=download&id=1HLhNdPh1r0467c_FfyHkov1UPUZk1ZE1">Download Australian Males Life Table Data </a>
+</strong></p>
+<p>Using the life tables for Australian Males, estimate the following measures.</p>
+<ol class="HELM_parts">
+
+<li>What is the total number of males expected to die between ages \({@age_index31@}\) and \({@age_index35@}\)?
+<p>[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>
+</li>
+
+<li> What is the average number of males expected to die between ages \({@age_index31@}\) and \({@age_index35@}\) out of \({@total_males_aged_30@}\) males who are currently aged \({@age_index30@}\)?
+<p><strong style="color: blue;">Note:</strong> When providing your answer, please round to the nearest whole number.</p>
+<p> [[input:ans2]] [[validation:ans2]][[feedback:prt2]]</p>
+</li>
+ </ol>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<ol class="HELM_parts">
+<li> <p>The number of males dying between ages \({@age_index31@}-{@age_index35@}\) is \(d_{{@age_index31@}} + d_{{@age_index32@}} + d_{{@age_index33@}} + d_{{@age_index34@}}  = {@d31@} + {@d32@} + {@d33@} + {@d34@} = {@ta1@}\)</p>
+<p>Also obtained as follows;</p>
+<p>Number of males dying between age 
+<p>\(\displaystyle
+\begin{align} 
+{@age_index31@}-{@age_index35@} &= l_x - l_{x+n} \\
+                                  &= l_{{@age_index31@}} - l_{{@age_index35@}} \\
+                                  &= {@val_lx[age_index32]@}-{@val_lx[age_index36]@} \\
+                                 &= {@val_lx[age_index32]-val_lx[age_index36]@}
+\end{align}\)</p></li>
+<li><p>Males alive at age \({@age_index30@}\) were \(l_{{@age_index30@}} = {@l30@}\) and \({@ta1@}\) males would then be expected to die between ages \({@age_index31@}-{@age_index35@}\).</p>
+<p>There were \({@total_males_aged_30@}\) men aged \({@age_index30@}\), so the number expected to die between ages \({@age_index31@}-{@age_index35@}\) is given by;</p>
+<p>\(\displaystyle
+\begin{align} 
+\text{Total males aged} \, {@age_index30@} \times \frac{l_{{@age_index31@}}-l_{{@age_index35@}}}{l_{{@age_index30@}}} &= {@total_males_aged_30@}\times \frac{{@ta1@}}{ {@l30@}} \\
+   &= {@decimalplaces(expected_deaths_31_to_35,2)@} \\
+   &= {@ta2@}
+\end{align}
+\)</p>
+</li>
+ </ol>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*LIFE TABLES*/
+/* Define the data points */ 
+	age: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55]; 
+	val_lx: [100000, 97761, 97584, 97467, 97379, 97315, 97259, 97206, 97154, 97105, 97082, 97022, 96981, 96936, 96885, 96825, 96752, 96660, 96541, 96384, 96215, 96049, 95886, 95728, 95577, 95432, 95292, 95154, 95014, 94871, 94726, 94577, 94425, 94267, 94123, 93931, 93749, 93554, 93349, 93112, 92859, 92580, 92374, 91938, 91569, 91165, 90723, 90238, 89705, 89118, 88473, 87762, 86879, 86119, 85175, 84142];  
+	males: [2239, 177, 117, 88, 64, 56, 53, 52, 49, 43, 40, 41, 45, 51, 60, 73, 92, 119, 157, 169, 166, 163, 158, 151, 145, 140, 138, 140, 143, 145, 149, 152, 158, 164, 172, 182, 195, 211, 231, 253, 279, 306, 336, 369, 404, 442, 485, 533, 587, 845, 711, 782, 960, 944, 1033, 1127]; 
+	probs: [0.02239, 0.00181, 0.00120, 0.00090, 0.00086, 0.00058, 0.00055, 0.00053, 0.00050, 0.00044, 0.00041, 0.00042, 0.00046, 0.00053, 0.00062, 0.00075, 0.00095, 0.00123, 0.00163, 0.00175, 0.00173, 0.00170, 0.00165, 0.00158, 0.00152, 0.00147, 0.00145, 0.00147, 0.00150, 0.00153, 0.00157, 0.00161, 0.00167, 0.00174, 0.00183, 0.00194, 0.00208, 0.00226, 0.00247, 0.00272, 0.00300, 0.00330, 0.00364, 0.00401, 0.00441, 0.00485, 0.00535, 0.00691, 0.00654, 0.00724, 0.00804, 0.00992, 0.00989, 0.01096, 0.01213, 0.01339];  
+
+/* Given data */
+index_num:rand(50)+1;
+age_index30:age[index_num];
+age_index31:age_index30+1;
+age_index32:age_index30+2;
+age_index33:age_index30+3;
+age_index34:age_index30+4;
+age_index35:age_index30+5;
+age_index36:age_index30+6;
+
+l30: val_lx[age_index31]; /* Males alive at age 30 */ 
+d31: males[age_index32];   /* Number of males dying at age 31 */ 
+d32: males[age_index33];   /* Number of males dying at age 32 */ 
+d33: males[age_index34];   /* Number of males dying at age 33 */ 
+d34: males[age_index35];   /* Number of males dying at age 34 */ 
+total_males_aged_30: rand_with_step(1000,8000,1000); /* Total number of males aged 30 */  
+
+/* Compute the total number of males dying between ages 31-35 */ 
+total_deaths_31_to_35: d31 + d32 + d33 + d34;
+total_deaths_31_to_35_alt: val_lx[age_index32]-val_lx[age_index36];
+check_point:is(total_deaths_31_to_35=total_deaths_31_to_35_alt);
+
+/* Compute the number of males expected to die between ages 31-35 out of 3000 males aged 30 */ 
+expected_deaths_31_to_35:  total_males_aged_30* (total_deaths_31_to_35/l30);
+
+/*Model answers*/
+ta1:total_deaths_31_to_35;
+ta2:round(expected_deaths_31_to_35);/*rounded to the nearest whole number*/</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<br>Male deaths \({@age_index31@}-{@age_index35@}=\){@check_point@}
+<br>Males aged \({@age_index30@} ={@total_males_aged_30@}\) 
+<br>Average deaths {@ta2@}]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Godfrey Wabwire<p>
+<p id="concept">https://docs.google.com/document/d/1zL4IFA8f2Q3KJ7oTSs9F3KzNt1UkzlkVf8U7YOpJm14/edit#heading=h.vy8x1tbmoha9</p>
+<p id="reviewer"></p>
+<p id="reviewer">Salvatore Mercuri</p>
+<p id="description">Given life tables for Australian Demography analysis, the question requires the student to find average Deaths between male age ranges.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for the correct  answer ta1 on male population</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>checks for correct average number of males expected to die</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>checks for correct 2dp average number of males expected to die</description>
+        <answertest>NumDecPlaces</answertest>
+        <sans>ans2</sans>
+        <tans>expected_deaths_31_to_35</tans>
+        <testoptions>2</testoptions>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.7</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Well done for giving your answer correct to \(2\) decimal places. <br>Note: When dealing with people or countable objects, it's common to round to the nearest whole number. In this case, if you have {@float(expected_deaths_31_to_35)@} people, we would typically round to the nearest whole number. </p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>checks for correct average with an error margin</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans2</sans>
+        <tans>expected_deaths_31_to_35</tans>
+        <testoptions>0.005</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1077417135</deployedseed>
+    <deployedseed>1081900876</deployedseed>
+    <deployedseed>757743614</deployedseed>
+    <deployedseed>955796915</deployedseed>
+    <deployedseed>1546503036</deployedseed>
+    <deployedseed>1092685858</deployedseed>
+    <deployedseed>1812288602</deployedseed>
+    <deployedseed>97229942</deployedseed>
+    <deployedseed>747850474</deployedseed>
+    <deployedseed>1445083034</deployedseed>
+    <deployedseed>1310821001</deployedseed>
+    <deployedseed>801251706</deployedseed>
+    <deployedseed>803547793</deployedseed>
+    <deployedseed>60146193</deployedseed>
+    <deployedseed>141021433</deployedseed>
+    <deployedseed>2057492570</deployedseed>
+    <deployedseed>1189371218</deployedseed>
+    <deployedseed>1834882580</deployedseed>
+    <deployedseed>1665604212</deployedseed>
+    <deployedseed>1607322028</deployedseed>
+    <deployedseed>1985219384</deployedseed>
+    <deployedseed>1639163182</deployedseed>
+    <deployedseed>2134392866</deployedseed>
+    <deployedseed>1127465793</deployedseed>
+    <deployedseed>1185129529</deployedseed>
+    <deployedseed>946755987</deployedseed>
+    <deployedseed>1922096782</deployedseed>
+    <deployedseed>1185169052</deployedseed>
+    <deployedseed>1520079442</deployedseed>
+    <deployedseed>471075140</deployedseed>
+    <deployedseed>1873700345</deployedseed>
+    <deployedseed>981054866</deployedseed>
+    <deployedseed>740061266</deployedseed>
+    <deployedseed>294863870</deployedseed>
+    <deployedseed>980289426</deployedseed>
+    <deployedseed>657182876</deployedseed>
+    <deployedseed>1023570064</deployedseed>
+    <deployedseed>1696630578</deployedseed>
+    <deployedseed>396318550</deployedseed>
+    <deployedseed>837352950</deployedseed>
+    <deployedseed>1042566957</deployedseed>
+    <deployedseed>1881481080</deployedseed>
+    <deployedseed>1459105888</deployedseed>
+    <deployedseed>61667266</deployedseed>
+    <deployedseed>1145397395</deployedseed>
+    <deployedseed>893216803</deployedseed>
+    <deployedseed>1693579214</deployedseed>
+    <deployedseed>2099474651</deployedseed>
+    <deployedseed>1670160037</deployedseed>
+    <deployedseed>1502136821</deployedseed>
+    <deployedseed>738866322</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

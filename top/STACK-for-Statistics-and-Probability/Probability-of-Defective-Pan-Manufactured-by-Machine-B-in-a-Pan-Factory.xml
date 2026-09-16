@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Probability of Defective Pan Manufactured by Machine B in a Pan Factory</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>In a pan factory machines \(A, B\) and \(C\) manufacures \({@A@} \%, {@B@} \%\) and \({@C@} \%\) of the total production. Of their output \({@output_A@}\% , {@output_B@}\%\) and \({@output_C@}\%\) are defective pans. A pan is drawn at random from the production and found to be defective. What is the probability that it is manufactured by machine \(B\)? </p>
+<p><b>Note:</b> Give your answer to 2 decimal places.</p>
+<p>\(P(B|D)=\) [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked Solution</h3>
+<p> \(P(A)={@prob_A@}, P(B)={@prob_B@}, P(C)={@prob_C@}\)</p>
+<p>\(P(D|A)={@output_A_1@}, P(D|B)={@output_B_1@}\) and \(P(D|C)={@output_C_1@}\)</p>
+<p>\(\displaystyle P(B|D)=\frac{P(B)P(D|B)}{P(A)P(D|A)+P(B)P(D|B)+P(C)P(D|C)}\) </p>
+<p>\(\displaystyle P(B|D)=\frac{{@prob_B@} \times {@output_B_1@}}{({@prob_A@} \times {@output_A_1@})+({@prob_B@} \times {@output_B_1@})+({@prob_C@} \times {@output_C_1@})}={@ta@}\) </p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>A:rand_with_step(10,40,10);
+prob_A:decimalplaces((A/100),2);
+B:rand_with_prohib(20,40,[A]);
+prob_B:decimalplaces((B/100),2);
+C:100-(A+B);
+prob_C:decimalplaces((C/100),2);
+output_A:rand_with_step(1,6,1);
+output_B:rand_with_prohib(1,6,[output_A]);
+output_C:rand_with_prohib(1,6,[output_A,output_B]);
+output_A_1:decimalplaces((output_A/100),2);
+output_B_1:decimalplaces((output_B/100),2);
+output_C_1:decimalplaces((output_C/100),2);
+ta_1:(prob_B*output_B_1);
+ta_2:(prob_A*output_A_1)+(prob_B*output_B_1)+(prob_C*output_C_1);
+ta:decimalplaces((ta_1/ta_2),2);/*probability of being manufactured by machine B*/</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p> \(P(A)={@prob_A@}, P(B)={@prob_B@}, P(C)={@prob_C@}\)</p>
+<p>\(P(D|A)={@output_A_1@}, P(D|B)={@output_B_1@}\) and \(P(D|C)={@output_C_1@}\)</p>
+<p>\(P(B|D)={@ta@}\) ]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text><![CDATA[<p id="author">Emmaculate Odhiambo</p>
+<p id="concept">https://docs.google.com/document/d/1Y_962hRAywGPoE-glatkmbcuOOKxz9UP/edit</p>
+<p id="reviewer">Nixson Kiplagat/p>
+<p id="reviewer">[Reviewer 2 Name]</p>
+<p id="description">This question requires the student to calculate the probability that a defective pan drawn randomly from the production was manufactured by machine B, given the production percentages and defect rates of machines A, B, and C.</p>]]></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*Node 1: Checks for the correct answer*/</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Checks for the correct answer</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Checks for correct answer with many decimal places</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>0.01</testoptions>
+        <quiet>1</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You have given your answer without considering the expected number of decimal places</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1155577763</deployedseed>
+    <deployedseed>636849754</deployedseed>
+    <deployedseed>231798081</deployedseed>
+    <deployedseed>1843742595</deployedseed>
+    <deployedseed>324091382</deployedseed>
+    <deployedseed>1460324934</deployedseed>
+    <deployedseed>1394251052</deployedseed>
+    <deployedseed>579462721</deployedseed>
+    <deployedseed>17030037</deployedseed>
+    <deployedseed>558652644</deployedseed>
+    <deployedseed>1418932797</deployedseed>
+    <deployedseed>450250329</deployedseed>
+    <deployedseed>36757050</deployedseed>
+    <deployedseed>607567873</deployedseed>
+    <deployedseed>640565937</deployedseed>
+    <deployedseed>2080662479</deployedseed>
+    <deployedseed>965007637</deployedseed>
+    <deployedseed>152045102</deployedseed>
+    <deployedseed>714322453</deployedseed>
+    <deployedseed>442508298</deployedseed>
+    <deployedseed>1288062526</deployedseed>
+    <deployedseed>37940691</deployedseed>
+    <deployedseed>1104686088</deployedseed>
+    <deployedseed>1249513398</deployedseed>
+    <deployedseed>1096599581</deployedseed>
+    <deployedseed>248781555</deployedseed>
+    <deployedseed>1982584264</deployedseed>
+    <deployedseed>585510248</deployedseed>
+    <deployedseed>1759317786</deployedseed>
+    <deployedseed>1846505790</deployedseed>
+    <deployedseed>237694389</deployedseed>
+    <deployedseed>1929192227</deployedseed>
+    <deployedseed>2039541696</deployedseed>
+    <deployedseed>370673313</deployedseed>
+    <deployedseed>242195716</deployedseed>
+    <deployedseed>1783708264</deployedseed>
+    <deployedseed>578368202</deployedseed>
+    <deployedseed>1414718753</deployedseed>
+    <deployedseed>1456248028</deployedseed>
+    <deployedseed>317691019</deployedseed>
+    <deployedseed>1094038530</deployedseed>
+    <deployedseed>1385683467</deployedseed>
+    <deployedseed>1116200352</deployedseed>
+    <deployedseed>773237383</deployedseed>
+    <deployedseed>1226722004</deployedseed>
+    <deployedseed>149182225</deployedseed>
+    <deployedseed>2117370418</deployedseed>
+    <deployedseed>1861531146</deployedseed>
+    <deployedseed>825852902</deployedseed>
+    <deployedseed>1777128044</deployedseed>
+    <deployedseed>933445499</deployedseed>
+    <deployedseed>324328847</deployedseed>
+    <deployedseed>516345038</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

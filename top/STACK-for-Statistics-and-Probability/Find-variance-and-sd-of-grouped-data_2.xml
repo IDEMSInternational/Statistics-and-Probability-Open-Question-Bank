@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Find variance and sd of grouped data</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Find the  Variance and Standard deviation of the following distribution. (Note: leave your answer in two decimal places where necessary)<p>
+<table cellspacing="0" cellpadding="0" border="1" align="centre">
+ <tbody><tr>
+  <td  width="25%", style="text-align:center">
+  <p><span lang="EN-US"><b>age(x)</b></span></p>
+  </td>
+  <td width="25%", style="text-align:center">
+  <p><span lang="EN-US" style="text-align:center"><b>Frequency (f)</b></span></p>
+  </td>
+<td width="25%", style="text-align:center">
+  <p><span lang="EN-US" style="text-align:center"><b>\(x_i\)</b></span></p>
+  </td>
+<td width="25%", style="text-align:center">
+  <p><span lang="EN-US" style="text-align:center"><b>\(f(x_i)\)</b></span></p>
+  </td>
+ <td width="25%", style="text-align:center">
+  <p><span lang="EN-US"><b>\(x_i-\bar{x}\)</b></span></p>
+  </td>
+<td width="25%", style="text-align:center">
+  <p><span lang="EN-US"><b>\((x-\bar{x})^2\)</b></span></p>
+  </td>
+<td width="25%", style="text-align:center">
+  <p><span lang="EN-US"><b>\(f(x-\bar{x})^2\)</b></span></p>
+  </td>
+ </tr>
+ <tr>
+
+<th width="25%", style="text-align:center">{@x1@} – {@x1_1@}</th>
+  </td>
+<th width="25%", style="text-align:center">{@f1@}</th>
+  </td>
+ <th width="25%", style="text-align:center">{@m_1@}</th>
+  </td>
+<th width="25%", style="text-align:center">{@fx1@}</th>
+  </td>
+<th width="25%", style="text-align:center">{@x1_mean@}</th>
+  </td>
+<th width="25%", style="text-align:center">{@square_x1_mean@}</th>
+  </td>
+<th width="25%", style="text-align:center">{@f1_square_mean_m@}</th>
+  </td>
+ </tr>
+ <tr>
+  <th width="25%", style="text-align:center">{@x2@} – {@x2_1@}</th>
+  </td>
+  <th width="25%", style="text-align:center">{@f2@}</th>
+  </td>
+ <th width="25%", style="text-align:center">{@m_2@}</th>
+  </td>
+ <th width="25%", style="text-align:center">{@fx2@}</th>
+  </td>
+ <th width="25%", style="text-align:center">{@x2_mean@}</th>
+  </td>
+ <th width="25%", style="text-align:center">{@square_x2_mean@}</th>
+  </td>
+ <th width="25%", style="text-align:center">{@f2_square_mean_m@}</th>
+  </td>
+ </tr>
+ <tr>
+  <th width="25%", style="text-align:center">{@x3@} – {@x3_1@}</th>
+  </td>
+<th width="25%", style="text-align:center">{@f3@}</th>
+  </td>
+  <th width="25%", style="text-align:center">{@m_3@}</th>
+  </td>
+<th width="25%", style="text-align:center">{@fx3@}</th>
+  </td>
+<th width="25%", style="text-align:center">{@x3_mean@}</th>
+  </td>
+<th width="25%", style="text-align:center">{@square_x1_mean@}</th>
+  </td>
+<th width="25%", style="text-align:center">{@f3_square_mean_m@}</th>
+  </td>
+ </tr>
+ <tr>
+ <th width="25%", style="text-align:center">{@x4@} – {@x4_1@}</th>
+  </td>
+ <th width="25%", style="text-align:center">{@f4@}</th>
+  </td>
+<th width="25%", style="text-align:center">{@m_4@}</th>
+  </td>
+<th width="25%", style="text-align:center">{@fx4@}</th>
+  </td>
+<th width="25%", style="text-align:center">{@x4_mean@}</th>
+  </td>
+<th width="25%", style="text-align:center">{@square_x4_mean@}</th>
+  </td>
+<th width="25%", style="text-align:center">{@f4_square_mean_m@}</th>
+  </td>
+ </tr>
+ <hr>
+</tbody></table></p>
+<p>\(\sum f_i={@total_frequencies@}\, ,\,\sum f_ix_i={@sum_fi_xi@}\,,\sum f(x-\bar{x})^2={@sum_f_square_mean_m@}\)</p>
+<hr></p>
+<p>Mean of the grouped data \(=\)  [[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>
+<p>Variance \(=\)  [[input:ans2]] [[validation:ans2]][[feedback:prt2]]</p>
+<p>Standard deviation \(=\)  [[input:ans3]] [[validation:ans3]][[feedback:prt3]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text><![CDATA[<h3>Worked solution</h3>
+<p><table cellspacing="0" cellpadding="0" border="1" align="centre">
+ <tbody><tr>
+  <td  width="25%", style="text-align:center">
+  <p><span lang="EN-US"><b>age(x)</b></span></p>
+  </td>
+  <td width="25%", style="text-align:center">
+  <p><span lang="EN-US" style="text-align:center"><b>Frequency (f)</b></span></p>
+  </td>
+<td width="25%", style="text-align:center">
+  <p><span lang="EN-US" style="text-align:center"><b>\(x_i\)</b></span></p>
+  </td>
+<td width="25%", style="text-align:center">
+  <p><span lang="EN-US" style="text-align:center"><b>\(f(x_i)\)</b></span></p>
+  </td>
+ <td width="25%", style="text-align:center">
+  <p><span lang="EN-US"><b>\(x_i-\bar{x}\)</b></span></p>
+  </td>
+<td width="25%", style="text-align:center">
+  <p><span lang="EN-US"><b>\((x-\bar{x})^2\)</b></span></p>
+  </td>
+<td width="25%", style="text-align:center">
+  <p><span lang="EN-US"><b>\(f(x-\bar{x})^2\)</b></span></p>
+  </td>
+ </tr>
+ <tr>
+
+<th width="25%", style="text-align:center">{@x1@} – {@x1_1@}</th>
+  </td>
+<th width="25%", style="text-align:center">{@f1@}</th>
+  </td>
+ <th width="25%", style="text-align:center">{@m_1@}</th>
+  </td>
+<th width="25%", style="text-align:center">{@fx1@}</th>
+  </td>
+<th width="25%", style="text-align:center">{@x1_mean@}</th>
+  </td>
+<th width="25%", style="text-align:center">{@square_x1_mean@}</th>
+  </td>
+<th width="25%", style="text-align:center">{@f1_square_mean_m@}</th>
+  </td>
+ </tr>
+ <tr>
+  <th width="25%", style="text-align:center">{@x2@} – {@x2_1@}</th>
+  </td>
+  <th width="25%", style="text-align:center">{@f2@}</th>
+  </td>
+ <th width="25%", style="text-align:center">{@m_2@}</th>
+  </td>
+ <th width="25%", style="text-align:center">{@fx2@}</th>
+  </td>
+ <th width="25%", style="text-align:center">{@x2_mean@}</th>
+  </td>
+ <th width="25%", style="text-align:center">{@square_x2_mean@}</th>
+  </td>
+ <th width="25%", style="text-align:center">{@f2_square_mean_m@}</th>
+  </td>
+ </tr>
+ <tr>
+  <th width="25%", style="text-align:center">{@x3@} – {@x3_1@}</th>
+  </td>
+<th width="25%", style="text-align:center">{@f3@}</th>
+  </td>
+  <th width="25%", style="text-align:center">{@m_3@}</th>
+  </td>
+<th width="25%", style="text-align:center">{@fx3@}</th>
+  </td>
+<th width="25%", style="text-align:center">{@x3_mean@}</th>
+  </td>
+<th width="25%", style="text-align:center">{@square_x1_mean@}</th>
+  </td>
+<th width="25%", style="text-align:center">{@f3_square_mean_m@}</th>
+  </td>
+ </tr>
+ <tr>
+ <th width="25%", style="text-align:center">{@x4@} – {@x4_1@}</th>
+  </td>
+ <th width="25%", style="text-align:center">{@f4@}</th>
+  </td>
+<th width="25%", style="text-align:center">{@m_4@}</th>
+  </td>
+<th width="25%", style="text-align:center">{@fx4@}</th>
+  </td>
+<th width="25%", style="text-align:center">{@x4_mean@}</th>
+  </td>
+<th width="25%", style="text-align:center">{@square_x4_mean@}</th>
+  </td>
+<th width="25%", style="text-align:center">{@f4_square_mean_m@}</th>
+  </td>
+ </tr>
+ <hr>
+</tbody></table></p>
+<p>\(\sum f_i={@total_frequencies@}\, \,\sum \bar{x}={@mean@}\,\,\sum f_ix_i={@sum_fi_xi@}\,,\sum f(x-\bar{x})^2={@sum_f_square_mean_m@}\)</p></p>
+
+<hr>
+<p>Mean of the grouped data \(=\displaystyle\frac{\sum f_ix_i}{\sum f_i}=\frac{{@sum_f_midpoints@}}{{@total_frequencies@}}={@ta1@}\)</p>
+<p>Variance \(=\displaystyle\frac{\sum f_i(x_i-\bar{x})^2}{\sum f_i}=\frac{{@sum_f_square_mean_m@}}{{@total_frequencies@}}={@ta2@}\)</p>
+<p>Standard deviation \(=\displaystyle\sqrt{variance}=\sqrt{@ta2@}={@ta3@}\)</p>
+<p></p>
+<p></p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2022071300</text>
+    </stackversion>
+    <questionvariables>
+      <text>/*class intervals*/
+aa: rand(2)+2;
+bb: rand_with_step(4,6,1);/*class limit*/
+class_size:bb+1;/*class size*/
+/*class intervals*/
+x1:aa;/*1st lower class limit*/
+x1_1:x1+bb;/*1st upper class limit*/
+x2:x1_1+1;/*2nd class lower limit*/
+x2_1:x2+bb;/*2nd class upper limit*/
+x3:x2_1+1;/*3rd class lower limit*/
+x3_1:x3+bb;/*3rd class upper limit*/
+x4:x3_1+1;/*4th class lower limit*/
+x4_1:x4+bb;/*4th class upper limit*/
+
+
+/*frequencies*/
+f1:rand(2)+2;/* 1st frequency*/
+f2:rand_with_prohib(1,4,[f1]);/* 2nd frequency*/
+f3:rand_with_prohib(2,6,[f1,f2]);/* 3rd frequency*/
+f4:rand_with_prohib(2,6,[f1,f2,f3]);/* 4th frequency*/
+total_frequencies:f1+f2+f3+f4; /*total n*/
+
+
+
+/*Worked out solution break down_ midpoint and product of midpoint and freq*/
+m_1:float((x1+x1_1)/2); fx1:m_1*f1;
+m_2:float((x2+x2_1)/2); fx2:m_2*f2; 
+m_3:float((x3+x3_1)/2); fx3:m_3*f3; 
+m_4:float((x4+x4_1)/2); fx4:m_4*f4;
+
+
+sum_fi_xi:fx1+fx2+fx3+fx4;
+/*worked solution variables*/
+sum_f_midpoints:fx1+fx2+fx3+fx4;/*midpoints times the frequencies*/
+mean:decimalplaces(sum_f_midpoints/total_frequencies,2);
+sum_f_midpoints:fx1+fx2+fx3+fx4;/*midpoints times the frequencies*/
+/*Column 4- difference between mean and midpoint*/
+x1_mean:decimalplaces(m_1-mean,2);/*midpoint 1 minus mean*/
+x2_mean:decimalplaces(m_2-mean,2);/*midpoint 2 minus mean*/
+x3_mean:decimalplaces(m_3-mean,2);/*midpoint 3 minus mean*/
+x4_mean:decimalplaces(m_4-mean,2);/*midpoint 4 minus mean*/
+
+/*square values of difference between mean and midpoint*/
+square_x1_mean:decimalplaces((x1_mean)^2,2);/*square of midpoint 1 minus mean*/
+square_x2_mean:decimalplaces((x2_mean)^2,2);/*square of midpoint 2 minus mean*/
+square_x3_mean:decimalplaces((x3_mean)^2,2);/*square of midpoint 3 minus mean*/
+square_x4_mean:decimalplaces((x4_mean)^2,2);/*square of midpoint 4 minus mean*/
+sum_squares:square_x1_mean+square_x2_mean+square_x3_mean+square_x4_mean;/*sum of the squares*/
+/*frequencis times the diff between midpoint and mean*/
+f1_square_mean_m:decimalplaces(f1*square_x1_mean,2);
+f2_square_mean_m:decimalplaces(f2*square_x2_mean,2);
+f3_square_mean_m:decimalplaces(f3*square_x3_mean,2);
+f4_square_mean_m:decimalplaces(f4*square_x4_mean,2);
+sum_f_square_mean_m:decimalplaces(f1_square_mean_m+f2_square_mean_m+f3_square_mean_m+f4_square_mean_m,2);
+/*variance*/
+variance:decimalplaces(sum_f_square_mean_m/total_frequencies,2);
+/*standard deviation*/
+std_deviation:decimalplaces(sqrt(variance),2);
+/*model answers*/
+ta1:mean;
+ta2:variance;
+ta3:std_deviation;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>\({@total_frequencies@},{@sum_f_square_mean_m@},{@ta1@},{@ta2@},{@ta3@}\)</text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>ta3</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>3</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:checks for the correct answer*/
+/*node 2:Finding the variance incorrectly by dividing the sum of frequencies and square of the difference between midpoints and mean with the mean*/
+mistake_1:decimalplaces(sum_f_square_mean_m/mean,2);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>mistake_1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have divided sum of frequencies and square of the difference between midpoints and mean with the mean instead of dividing it with the sum of frequencies
+Hint:check the worked solution
+</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/*node 1:checks for the correct answer*/
+/*node 2:Finding the variance incorrectly by dividing the sum of frequencies and square of the difference between midpoints and mean with the mean*/
+mistake_2:(variance)^2;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>ta3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>mistake_2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You seem to have found standard deviation by squaring the variance instead of finding the square root.
+Hint:check the worked solution
+</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>319420988</deployedseed>
+    <deployedseed>1073111742</deployedseed>
+    <deployedseed>1114193589</deployedseed>
+    <deployedseed>270348073</deployedseed>
+    <deployedseed>1815782222</deployedseed>
+    <deployedseed>737838604</deployedseed>
+    <deployedseed>944840470</deployedseed>
+    <deployedseed>2037015842</deployedseed>
+    <deployedseed>932710193</deployedseed>
+    <deployedseed>392051202</deployedseed>
+    <deployedseed>1324216951</deployedseed>
+    <deployedseed>1564575820</deployedseed>
+    <deployedseed>1490102358</deployedseed>
+    <deployedseed>740823984</deployedseed>
+    <deployedseed>104689780</deployedseed>
+    <deployedseed>1612316556</deployedseed>
+    <deployedseed>1600614982</deployedseed>
+    <deployedseed>519849055</deployedseed>
+    <deployedseed>1200940527</deployedseed>
+    <deployedseed>562663864</deployedseed>
+    <deployedseed>293541230</deployedseed>
+    <deployedseed>540211121</deployedseed>
+    <deployedseed>849182462</deployedseed>
+    <deployedseed>649490679</deployedseed>
+    <deployedseed>736541342</deployedseed>
+    <deployedseed>325978390</deployedseed>
+    <deployedseed>1740280028</deployedseed>
+    <deployedseed>703201073</deployedseed>
+    <deployedseed>97561029</deployedseed>
+    <deployedseed>1256294545</deployedseed>
+    <deployedseed>1365410687</deployedseed>
+    <deployedseed>650457573</deployedseed>
+    <deployedseed>114677789</deployedseed>
+    <deployedseed>1890847116</deployedseed>
+    <deployedseed>1386759801</deployedseed>
+    <deployedseed>642385015</deployedseed>
+    <deployedseed>201696624</deployedseed>
+    <deployedseed>657972824</deployedseed>
+    <deployedseed>226209874</deployedseed>
+    <deployedseed>1846947218</deployedseed>
+    <deployedseed>1807831880</deployedseed>
+    <deployedseed>967230647</deployedseed>
+    <deployedseed>177034041</deployedseed>
+    <deployedseed>395696684</deployedseed>
+    <deployedseed>562837472</deployedseed>
+    <deployedseed>1458846321</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description/>
+      <testinput>
+        <name>ans1</name>
+        <value>ta1</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>ta2</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>ta3</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>
