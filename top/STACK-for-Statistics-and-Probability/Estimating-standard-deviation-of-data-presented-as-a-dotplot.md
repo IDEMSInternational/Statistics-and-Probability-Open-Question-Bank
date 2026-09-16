@@ -148,3 +148,14 @@ STACK API check: PASSED after 1 attempt(s).
 Retriever gave the Author: Specialist_tools/JSXGraph/JSXGraph.md, Authoring/Inputs/Numerical_input.md, Authoring/Answer_Tests/Grading_recipes.md, Authoring/CASText.md
 ```
 
+## Entry 11 — planner · review (2026-09-16T15:22:57)
+
+**Reference files fetched:**
+- (none)
+
+```text
+Review decision: REJECT (keep_draft=True, plan_changed=False)
+Feedback to Author: The plan required removing the dangling [[feedback:prt1]] reference in <specificfeedback> — there is no PRT named "prt1" (the only PRT is "prt_ans1"). The current draft still has <specificfeedback><text>[[feedback:prt1]]</text></specificfeedback> unchanged. Please make the <specificfeedback> block properly empty (remove the [[feedback:prt1]] reference entirely) since PRT feedback is already shown via [[feedback:prt_ans1]] in the question text.</feedback_to_author>
+</invoke>
+```
+
