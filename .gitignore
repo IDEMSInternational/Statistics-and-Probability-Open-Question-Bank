@@ -1,3 +1,4 @@
 .vscode/
 **/*_question_manifest.json
 **/*.tmp
+*.csv
