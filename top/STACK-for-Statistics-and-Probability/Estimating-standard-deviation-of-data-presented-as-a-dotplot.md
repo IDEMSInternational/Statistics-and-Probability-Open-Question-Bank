@@ -138,3 +138,13 @@ FEEDBACK (negotiable unless stated otherwise below): Unchanged PRT node feedback
 PRT/QTEST SUGGESTIONS: (none) — existing qtests (correct answer, trivial wrong answer) remain valid and sufficient for this change.
 ```
 
+## Entry 10 — author · build round 1 (2026-09-16T15:21:22)
+
+**Reference files fetched:**
+- (none)
+
+```text
+STACK API check: PASSED after 1 attempt(s).
+Retriever gave the Author: Specialist_tools/JSXGraph/JSXGraph.md, Authoring/Inputs/Numerical_input.md, Authoring/Answer_Tests/Grading_recipes.md, Authoring/CASText.md
+```
+
