@@ -116,3 +116,25 @@ Wrote the current-state plan description for the approved, merged question.
 Reserved as part of issue #3.
 ```
 
+## Entry 9 — planner (2026-09-16T15:20:58)
+
+**Reference files fetched:**
+- (none)
+
+**Reference files recommended by Planner:**
+- (none)
+
+```text
+GOAL (non-negotiable): Tests a student's ability to estimate the standard deviation of a dataset from a visual dotplot, using rule-of-thumb reasoning (range/6, middle two-thirds, etc.) rather than exact calculation.
+
+STRUCTURE (non-negotiable): Single-part — one numerical input (`ans1`) estimating the standard deviation from a displayed dotplot, graded by one PRT (`prt_ans1`). Unchanged from the current question.
+
+RANDOMIZATION (negotiable unless stated otherwise below): Unchanged from current question — dataset of `ds1` (60–100) simulated integer heights drawn from a normal distribution with random mean (100–201) and random true SD (5–9), sorted and rendered as a dotplot. No change to this behavior in this round.
+
+ANSWER TESTS (negotiable unless stated otherwise below): Unchanged — numerical input tested via two tolerance-band flags (within 10% of sample SD `m1` → score 1; else within 25% → score 0.5; else 0), computed via Maxima flags and compared with AlgEquiv against `true`.
+
+FEEDBACK (negotiable unless stated otherwise below): Unchanged PRT node feedback text (10%/25%/incorrect tiers) and unchanged general feedback. The only change: the `<specificfeedback>` block, which currently references a non-existent PRT (`prt1`) and renders blank/broken, will be made properly empty (remove the dangling `[[feedback:prt1]]` reference). The question text's own `[[feedback:prt_ans1]]` remains the sole place PRT feedback is shown to the student.
+
+PRT/QTEST SUGGESTIONS: (none) — existing qtests (correct answer, trivial wrong answer) remain valid and sufficient for this change.
+```
+
