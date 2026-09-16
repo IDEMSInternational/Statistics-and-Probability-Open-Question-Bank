@@ -5,9 +5,7 @@
       <text>Analysis of Mean, Median, and Histogram Shape in the Presence of Outliers</text>
     </name>
     <questiontext format="html">
-      <text><![CDATA[<p>Test for gitsync</p>
-
-<p>If most of the measurements in a large data set are of approximately the same magnitude except for a few measurements that are quite a bit larger, how would the mean and median of the data set compare and what shape would a histogram of the data set have?</p>]]></text>
+      <text><![CDATA[<p>If most of the measurements in a large data set are of approximately the same magnitude except for a few measurements that are quite a bit larger, how would the mean and median of the data set compare and what shape would a histogram of the data set have?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
       <text/>
