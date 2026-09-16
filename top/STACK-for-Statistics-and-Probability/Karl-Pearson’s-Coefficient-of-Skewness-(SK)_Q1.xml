@@ -2,7 +2,7 @@
 <quiz>
   <question type="stack">
     <name>
-      <text>Karl Pearson’s Coefficient of Skewness (SK)_Q1</text>
+      <text>Karl Pearson Coefficient of Skewness (SK)_Q1</text>
     </name>
     <questiontext format="moodle_auto_format">
       <text><![CDATA[<p>Calculate the Karl Pearson coefficient of Skewness, Bowleys coefficient of Skewness and Kurtosis from the data given in the table below</p>
@@ -240,7 +240,7 @@
     <hidden>0</hidden>
     <idnumber/>
     <stackversion>
-      <text>2023060500</text>
+      <text>2026063000</text>
     </stackversion>
     <questionvariables>
       <text><![CDATA[class_widths:rand(15)+5;

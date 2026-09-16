@@ -2,7 +2,7 @@
 <quiz>
   <question type="stack">
     <name>
-      <text>The Spearman’s rank correlation coefficient_Q2</text>
+      <text>The Spearman rank correlation coefficient_Q2</text>
     </name>
     <questiontext format="moodle_auto_format">
       <text><![CDATA[<p>The table below shows marks obtained by eight students in a mathematics and physics exam. Calculate the Spearman’s coefficient of rank correlation.</p>
@@ -130,7 +130,7 @@ Physics
     <hidden>0</hidden>
     <idnumber/>
     <stackversion>
-      <text>2023060500</text>
+      <text>2026063000</text>
     </stackversion>
     <questionvariables>
       <text>x1:rand_with_step(40,60,1);
@@ -156,8 +156,7 @@ ta1:0.143;
       <text/>
     </specificfeedback>
     <questionnote format="moodle_auto_format">
-      <text><![CDATA[<p>Sperman rank correlation  coefficient \(r={@ta1@}\)</p>
-]]></text>
+      <text><![CDATA[<p>Sperman rank correlation  coefficient \(r={@ta1@}\)</p>]]></text>
     </questionnote>
     <questiondescription format="html">
       <text><![CDATA[<p id="author">Emmaculate Odhiambo</p>

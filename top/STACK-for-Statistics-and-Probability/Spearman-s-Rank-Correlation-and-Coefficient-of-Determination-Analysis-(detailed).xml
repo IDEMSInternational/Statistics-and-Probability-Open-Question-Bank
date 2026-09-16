@@ -2,7 +2,7 @@
 <quiz>
   <question type="stack">
     <name>
-      <text>Spearman's Rank Correlation and Coefficient of Determination Analysis (detailed)</text>
+      <text>Spearman Rank Correlation and Coefficient of Determination Analysis (detailed)</text>
     </name>
     <questiontext format="html">
       <text><![CDATA[<p>Find the Spearman's ranks correlation coefficient between the two sets of variables given below and interpret the results</p>
@@ -128,7 +128,7 @@
     <hidden>0</hidden>
     <idnumber/>
     <stackversion>
-      <text>2023060500</text>
+      <text>2026063000</text>
     </stackversion>
     <questionvariables>
       <text><![CDATA[x1:rand_with_step(30,80,1);
