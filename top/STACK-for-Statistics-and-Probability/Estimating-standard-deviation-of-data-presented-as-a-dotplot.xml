@@ -35,7 +35,7 @@ for (i = 0; i <= lx1.length - 1; i++) {
 </p>
 
 <p>Estimate the standard deviation of heights
-[[input:ans1]]cm [[validation:ans1]]</p>]]></text>
+[[input:ans1]]cm [[validation:ans1]] [[feedback:prt_ans1]]</p>]]></text>
     </questiontext>
     <generalfeedback format="moodle_auto_format">
       <text>Use the following as a guide.
@@ -60,7 +60,7 @@ ds1:rand(41)+60;
 dun1:makelist(round(float(quantile_normal(rand(1.0),mean1,sd1))),i,1,ds1);
 dorx1:sort(dun1);
 m1:float(std(dorx1));
-mr1:dispdp(m1,1);
+mr1: float(round(m1*10)/10);
 mean_real: round(mean(dorx1));
 
 maxfreq1:0;
@@ -68,7 +68,7 @@ k:1;
 for i:2 thru ds1 do if dorx1[i]=dorx1[i-1] then (k:k+1, if maxfreq1 < k then maxfreq1:k) else k:1;
 
 xmin:dorx1[1]-2;
-xmax:dorx1[ds1]+2+(dorx1[ds1]-dorx1[1])/1.5;
+xmax:dorx1[ds1]+2;
 ymin:-2;
 ymax:if maxfreq1+2<15 then 15 else maxfreq1+2;
 
@@ -128,63 +128,83 @@ sd = {@sd1@}</text>
       <options/>
     </input>
     <prt>
-      <name>prt1</name>
-      <value>1.0000000</value>
+      <name>prt_ans1</name>
+      <value>1</value>
       <autosimplify>1</autosimplify>
       <feedbackstyle>1</feedbackstyle>
       <feedbackvariables>
-        <text/>
+        <text><![CDATA[flag10: is(abs(ans1-m1) <= 0.1*abs(m1));
+flag25: is(abs(ans1-m1) <= 0.25*abs(m1));]]></text>
       </feedbackvariables>
       <node>
         <name>0</name>
-        <description/>
-        <answertest>NumRelative</answertest>
-        <sans>ans1</sans>
-        <tans>m1</tans>
-        <testoptions>0.1</testoptions>
+        <answertest>AlgEquiv</answertest>
+        <sans>flag10</sans>
+        <tans>true</tans>
         <quiet>0</quiet>
         <truescoremode>=</truescoremode>
         <truescore>1</truescore>
-        <truepenalty/>
         <truenextnode>-1</truenextnode>
-        <trueanswernote>prt1-1-T</trueanswernote>
+        <trueanswernote>prt_ans1-1-T</trueanswernote>
         <truefeedback format="html">
           <text>Well done you are within 10% of the actual standard deviation!</text>
         </truefeedback>
+        <falsenextnode>1</falsenextnode>
         <falsescoremode>=</falsescoremode>
         <falsescore>0</falsescore>
         <falsepenalty>0.1</falsepenalty>
-        <falsenextnode>1</falsenextnode>
-        <falseanswernote>prt1-1-F</falseanswernote>
-        <falsefeedback format="html">
-          <text/>
-        </falsefeedback>
+        <falseanswernote>prt_ans1-1-F</falseanswernote>
       </node>
       <node>
         <name>1</name>
-        <description/>
-        <answertest>NumRelative</answertest>
-        <sans>ans1</sans>
-        <tans>m1</tans>
-        <testoptions>0.25</testoptions>
+        <answertest>AlgEquiv</answertest>
+        <sans>flag25</sans>
+        <tans>true</tans>
         <quiet>0</quiet>
-        <truescoremode>+</truescoremode>
+        <truescoremode>=</truescoremode>
         <truescore>0.5</truescore>
-        <truepenalty/>
         <truenextnode>-1</truenextnode>
-        <trueanswernote>prt1-2-T</trueanswernote>
+        <trueanswernote>prt_ans1-2-T</trueanswernote>
         <truefeedback format="html">
           <text>Well done that is quite close! You are within 25% of the actual standard deviation. With practice you should be able to estimate to within 10% of the standard deviation, why don't you have another go.</text>
         </truefeedback>
-        <falsescoremode>-</falsescoremode>
+        <falsescoremode>=</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty/>
         <falsenextnode>-1</falsenextnode>
-        <falseanswernote>prt1-2-F</falseanswernote>
+        <falseanswernote>prt_ans1-2-F</falseanswernote>
         <falsefeedback format="html">
           <text>Not close enough! You should be able to estimate to within 25% of the standard deviation, why don't you have another go.</text>
         </falsefeedback>
       </node>
     </prt>
+    <qtest>
+      <testcase>1</testcase>
+      <description>Correct answer</description>
+      <testinput>
+        <name>ans1</name>
+        <value>CT:{#mr1#}</value>
+      </testinput>
+      <expected>
+        <name>prt_ans1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt_ans1-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+
+    <qtest>
+      <testcase>2</testcase>
+      <description>Trivial wrong answer, far from real SD</description>
+      <testinput>
+        <name>ans1</name>
+        <value>CT:{#0#}</value>
+      </testinput>
+      <expected>
+        <name>prt_ans1</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>prt_ans1-2-F</expectedanswernote>
+      </expected>
+    </qtest>
   </question>
 </quiz>
