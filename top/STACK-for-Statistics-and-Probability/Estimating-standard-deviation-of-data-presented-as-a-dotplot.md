@@ -101,3 +101,18 @@ Review decision: APPROVE (keep_draft=True, plan_changed=False)
 Wrote the current-state plan description for the approved, merged question.
 ```
 
+## Entry 8 — concierge (2026-09-16T15:12:26)
+
+**Issue:**
+- #3
+
+**Closes on merge:**
+- yes
+
+**Reference files fetched:**
+- (none)
+
+```text
+Reserved as part of issue #3.
+```
+
