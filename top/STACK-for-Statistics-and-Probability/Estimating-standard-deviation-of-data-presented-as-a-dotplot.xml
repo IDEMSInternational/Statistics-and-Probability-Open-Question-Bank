@@ -60,7 +60,7 @@ ds1:rand(41)+60;
 dun1:makelist(round(float(quantile_normal(rand(1.0),mean1,sd1))),i,1,ds1);
 dorx1:sort(dun1);
 m1:float(std(dorx1));
-mr1:dispdp(m1,1);
+mr1: float(round(m1*10)/10);
 mean_real: round(mean(dorx1));
 
 maxfreq1:0;

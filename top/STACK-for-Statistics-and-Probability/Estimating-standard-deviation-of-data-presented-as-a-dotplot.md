@@ -73,3 +73,13 @@ Fix: replace `mr1:dispdp(m1,1);` with `mr1: float(round(m1*10)/10);` — this gi
 No other changes needed — the xmax fix and JSXGraph rendering are correct as-is.
 ```
 
+## Entry 5 — author · build round 2 (2026-09-16T15:01:41)
+
+**Reference files fetched:**
+- (none)
+
+```text
+STACK API check: PASSED after 1 attempt(s).
+Retriever gave the Author: Specialist_tools/JSXGraph/JSXGraph.md
+```
+
