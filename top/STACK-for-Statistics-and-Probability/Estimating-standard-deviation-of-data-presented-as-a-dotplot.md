@@ -159,3 +159,14 @@ Feedback to Author: The plan required removing the dangling [[feedback:prt1]] re
 </invoke>
 ```
 
+## Entry 12 — author · build round 2 (2026-09-16T15:23:23)
+
+**Reference files fetched:**
+- (none)
+
+```text
+STACK API check: PASSED after 1 attempt(s).
+Retriever gave the Author: Authoring/Answer_Tests/Grading_recipes.md, Authoring/Inputs/Numerical_input.md, Authoring/Potential_response_trees.md, Authoring/CASText.md
+Deviations reported: The plan (non-negotiable feedback section) asks to remove a `[[feedback:prt1]]` reference inside a `<specificfeedback>` block. However, the fields format available to me has no `SPECIFICFEEDBACK:` field at all — this document only defines `QUESTIONTEXT`, `QUESTIONVARIABLES`, `GENERALFEEDBACK`, `QUESTIONNOTE`, inputs, PRTs, and qtests. There is nothing in my fields that generates or references `<specificfeedback>` or `prt1`; that tag must be an artifact of the assembler's default XML shape, not something my fields specify. Since none of my fields contain the dangling reference, there is no textual change I can make here to remove it — the fix, if needed, has to happen at the assembler level, not in question fields.
+```
+
