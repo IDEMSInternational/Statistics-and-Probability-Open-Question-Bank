@@ -59,3 +59,17 @@ STACK API check: did NOT pass (author_failed) after 3 attempt(s).
 Retriever gave the Author: CAS/Random.md, Authoring/Variables.md, Authoring/Potential_response_trees.md, Authoring/Answer_Tests/Grading_recipes.md, Authoring/Inputs/Numerical_input.md, Specialist_tools/JSXGraph/JSXGraph.md, STACK_question_admin/Testing.md, Authoring/Answer_Tests/Numerical.md, CAS/Numbers.md
 ```
 
+## Entry 4 — planner · review (2026-09-16T15:01:16)
+
+**Reference files fetched:**
+- (none)
+
+```text
+Review decision: REJECT (keep_draft=True, plan_changed=False)
+Feedback to Author: Bug: `mr1:dispdp(m1,1);` produces a display-formatting wrapper (calls displaydp), not a plain number. It is used as the input ans1's <tans> and as the qtest's testinput value ('CT:{#mr1#}'), which fails validation ("Forbidden function: displaydp. This input expects a number.").
+
+Fix: replace `mr1:dispdp(m1,1);` with `mr1: float(round(m1*10)/10);` — this gives a genuine number rounded to 1 decimal place, suitable for use as tans and in qtest values. Use this rounded mr1 consistently as the input's <tans> and in the qtest's correct-answer value, and also in the generalfeedback display text (replacing the current dispdp usage there too). The PRT's own comparisons should keep comparing against the full-precision m1 (unchanged) — only the displayed/model-answer value changes.
+
+No other changes needed — the xmax fix and JSXGraph rendering are correct as-is.
+```
+
