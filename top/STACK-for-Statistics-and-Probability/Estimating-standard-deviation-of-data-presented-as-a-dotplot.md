@@ -49,3 +49,13 @@ FEEDBACK (unchanged): General feedback restates the "2s ≈ middle two-thirds", 
 PRT/QTEST SUGGESTIONS: (none) — this is a display-only change to the JSXGraph bounding box; no grading logic is affected.
 ```
 
+## Entry 3 — author · build round 1 (2026-09-16T14:52:24)
+
+**Reference files fetched:**
+- (none)
+
+```text
+STACK API check: did NOT pass (author_failed) after 3 attempt(s).
+Retriever gave the Author: CAS/Random.md, Authoring/Variables.md, Authoring/Potential_response_trees.md, Authoring/Answer_Tests/Grading_recipes.md, Authoring/Inputs/Numerical_input.md, Specialist_tools/JSXGraph/JSXGraph.md, STACK_question_admin/Testing.md, Authoring/Answer_Tests/Numerical.md, CAS/Numbers.md
+```
+
