@@ -198,10 +198,7 @@ ta_1:decimalplaces(1-((6*total_d_squared)/504),2);
 ta_21: if ta_1 > 0 then "There is a positive correlation between the scores in mathamtics and physics." elseif ta_1 < 0 then "There is a negative correlation between the scores in mathamtics and physics." elseif ta_1 = 0 then "No correlation" else "None of the options apply";
 ta_22: if ta_1 > 0 then " There is a negative correlation between the scores in mathamtics and physics." elseif ta_1 < 0 then "There is a positive correlation between the scores in mathamtics and physics." else "None of the options apply";
  
-ta_2:random_permutation([[ta_21, true],[ta_22, false],["No correlation", false]]);
-
-
-]]></text>
+ta_2:random_permutation([[ta_21, true],[ta_22, false],["No correlation", false]]);]]></text>
     </questionvariables>
     <specificfeedback format="html">
       <text/>

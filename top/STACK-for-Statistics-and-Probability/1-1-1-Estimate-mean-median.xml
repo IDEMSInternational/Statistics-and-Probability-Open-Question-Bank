@@ -44,10 +44,10 @@ for (i = 0; i <= lx1.length - 1; i++) {
       <text><![CDATA[<h3>Worked Solutiuon</h3>
 <p>Click here to learn more on how estimate standard deviation <a href="https://ecampus.idems.international/mod/resource/view.php?id=13393" download="">"Estimating Standard deviation".</a></p><p></p>]]></text>
     </generalfeedback>
-    <defaultgrade>1.0000000</defaultgrade>
-    <penalty>0.1000000</penalty>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
     <hidden>0</hidden>
-    <idnumber></idnumber>
+    <idnumber/>
     <stackversion>
       <text>2025073100</text>
     </stackversion>
@@ -81,13 +81,13 @@ dory[1]:1;
 for i:2 thru ds1 do if dorx1[i]=dorx1[i-1] then (j:j+1, dory[i]:j) else (j:1, dory[i]:j);]]></text>
     </questionvariables>
     <specificfeedback format="html">
-      <text></text>
+      <text/>
     </specificfeedback>
     <questionnote format="moodle_auto_format">
       <text>Mean: {@mean1@} SD: {@sd1@}</text>
     </questionnote>
     <questiondescription format="moodle_auto_format">
-      <text></text>
+      <text/>
     </questiondescription>
     <questionsimplify>1</questionsimplify>
     <assumepositive>0</assumepositive>
@@ -110,7 +110,7 @@ for i:2 thru ds1 do if dorx1[i]=dorx1[i-1] then (j:j+1, dory[i]:j) else (j:1, do
     <logicsymbol>lang</logicsymbol>
     <matrixparens>[</matrixparens>
     <isbroken>0</isbroken>
-    <variantsselectionseed></variantsselectionseed>
+    <variantsselectionseed/>
     <input>
       <name>ans1</name>
       <type>algebraic</type>
@@ -118,16 +118,16 @@ for i:2 thru ds1 do if dorx1[i]=dorx1[i-1] then (j:j+1, dory[i]:j) else (j:1, do
       <boxsize>8</boxsize>
       <strictsyntax>1</strictsyntax>
       <insertstars>0</insertstars>
-      <syntaxhint></syntaxhint>
+      <syntaxhint/>
       <syntaxattribute>0</syntaxattribute>
-      <forbidwords></forbidwords>
-      <allowwords></allowwords>
+      <forbidwords/>
+      <allowwords/>
       <forbidfloat>0</forbidfloat>
       <requirelowestterms>0</requirelowestterms>
       <checkanswertype>0</checkanswertype>
       <mustverify>0</mustverify>
       <showvalidation>0</showvalidation>
-      <options></options>
+      <options/>
     </input>
     <input>
       <name>ans2</name>
@@ -136,16 +136,16 @@ for i:2 thru ds1 do if dorx1[i]=dorx1[i-1] then (j:j+1, dory[i]:j) else (j:1, do
       <boxsize>8</boxsize>
       <strictsyntax>1</strictsyntax>
       <insertstars>0</insertstars>
-      <syntaxhint></syntaxhint>
+      <syntaxhint/>
       <syntaxattribute>0</syntaxattribute>
-      <forbidwords></forbidwords>
-      <allowwords></allowwords>
+      <forbidwords/>
+      <allowwords/>
       <forbidfloat>0</forbidfloat>
       <requirelowestterms>0</requirelowestterms>
       <checkanswertype>0</checkanswertype>
       <mustverify>0</mustverify>
       <showvalidation>0</showvalidation>
-      <options></options>
+      <options/>
     </input>
     <prt>
       <name>prt1</name>
@@ -153,11 +153,11 @@ for i:2 thru ds1 do if dorx1[i]=dorx1[i-1] then (j:j+1, dory[i]:j) else (j:1, do
       <autosimplify>1</autosimplify>
       <feedbackstyle>1</feedbackstyle>
       <feedbackvariables>
-        <text></text>
+        <text/>
       </feedbackvariables>
       <node>
         <name>0</name>
-        <description></description>
+        <description/>
         <answertest>NumRelative</answertest>
         <sans>ans1</sans>
         <tans>m1</tans>
@@ -165,7 +165,7 @@ for i:2 thru ds1 do if dorx1[i]=dorx1[i-1] then (j:j+1, dory[i]:j) else (j:1, do
         <quiet>0</quiet>
         <truescoremode>=</truescoremode>
         <truescore>1</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt1-1-T</trueanswernote>
         <truefeedback format="html">
@@ -173,16 +173,16 @@ for i:2 thru ds1 do if dorx1[i]=dorx1[i-1] then (j:j+1, dory[i]:j) else (j:1, do
         </truefeedback>
         <falsescoremode>=</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>1</falsenextnode>
         <falseanswernote>prt1-1-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
         <name>1</name>
-        <description></description>
+        <description/>
         <answertest>NumRelative</answertest>
         <sans>ans1</sans>
         <tans>m1</tans>
@@ -190,7 +190,7 @@ for i:2 thru ds1 do if dorx1[i]=dorx1[i-1] then (j:j+1, dory[i]:j) else (j:1, do
         <quiet>0</quiet>
         <truescoremode>+</truescoremode>
         <truescore>0.5</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt1-2-T</trueanswernote>
         <truefeedback format="html">
@@ -198,7 +198,7 @@ for i:2 thru ds1 do if dorx1[i]=dorx1[i-1] then (j:j+1, dory[i]:j) else (j:1, do
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>-1</falsenextnode>
         <falseanswernote>prt1-2-F</falseanswernote>
         <falsefeedback format="html">
@@ -212,11 +212,11 @@ for i:2 thru ds1 do if dorx1[i]=dorx1[i-1] then (j:j+1, dory[i]:j) else (j:1, do
       <autosimplify>1</autosimplify>
       <feedbackstyle>1</feedbackstyle>
       <feedbackvariables>
-        <text></text>
+        <text/>
       </feedbackvariables>
       <node>
         <name>0</name>
-        <description></description>
+        <description/>
         <answertest>NumRelative</answertest>
         <sans>ans2</sans>
         <tans>m2</tans>
@@ -224,7 +224,7 @@ for i:2 thru ds1 do if dorx1[i]=dorx1[i-1] then (j:j+1, dory[i]:j) else (j:1, do
         <quiet>1</quiet>
         <truescoremode>=</truescoremode>
         <truescore>1</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt2-1-T</trueanswernote>
         <truefeedback format="html">
@@ -232,16 +232,16 @@ for i:2 thru ds1 do if dorx1[i]=dorx1[i-1] then (j:j+1, dory[i]:j) else (j:1, do
         </truefeedback>
         <falsescoremode>=</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>1</falsenextnode>
         <falseanswernote>prt2-1-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
         <name>1</name>
-        <description></description>
+        <description/>
         <answertest>NumRelative</answertest>
         <sans>ans2</sans>
         <tans>m2</tans>
@@ -249,7 +249,7 @@ for i:2 thru ds1 do if dorx1[i]=dorx1[i-1] then (j:j+1, dory[i]:j) else (j:1, do
         <quiet>1</quiet>
         <truescoremode>=</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt2-2-T</trueanswernote>
         <truefeedback format="html">
@@ -257,7 +257,7 @@ for i:2 thru ds1 do if dorx1[i]=dorx1[i-1] then (j:j+1, dory[i]:j) else (j:1, do
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>2</falsenextnode>
         <falseanswernote>prt2-2-F</falseanswernote>
         <falsefeedback format="html">
@@ -266,23 +266,23 @@ for i:2 thru ds1 do if dorx1[i]=dorx1[i-1] then (j:j+1, dory[i]:j) else (j:1, do
       </node>
       <node>
         <name>2</name>
-        <description></description>
+        <description/>
         <answertest>GT</answertest>
         <sans>ans1</sans>
         <tans>ans2</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>1</quiet>
         <truescoremode>=</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt2-3-T</trueanswernote>
         <truefeedback format="html">
-          <text></text>
+          <text/>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0.5</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>-1</falsenextnode>
         <falseanswernote>prt2-3-F</falseanswernote>
         <falsefeedback format="html">

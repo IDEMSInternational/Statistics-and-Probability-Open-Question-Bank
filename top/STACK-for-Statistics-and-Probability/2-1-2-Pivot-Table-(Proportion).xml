@@ -54,12 +54,12 @@ exportToCsv = function(file_name) {
 </script>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text></text>
+      <text/>
     </generalfeedback>
-    <defaultgrade>1.0000000</defaultgrade>
-    <penalty>0.1000000</penalty>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
     <hidden>0</hidden>
-    <idnumber></idnumber>
+    <idnumber/>
     <stackversion>
       <text>2023060500</text>
     </stackversion>
@@ -168,7 +168,7 @@ ta_3: no_quest_exp_and_var/number_rows;
 /* ------------- END OF QUESTION VARIABLES */]]></text>
     </questionvariables>
     <specificfeedback format="html">
-      <text></text>
+      <text/>
     </specificfeedback>
     <questionnote format="moodle_auto_format">
       <text><![CDATA[<p>1. Proportion of {@quest_exp@} farmers planting Variety {@quest_var@}</p>
@@ -207,7 +207,7 @@ ta_3: no_quest_exp_and_var/number_rows;
     <logicsymbol>lang</logicsymbol>
     <matrixparens>[</matrixparens>
     <isbroken>0</isbroken>
-    <variantsselectionseed></variantsselectionseed>
+    <variantsselectionseed/>
     <input>
       <name>ans1</name>
       <type>algebraic</type>
@@ -215,16 +215,16 @@ ta_3: no_quest_exp_and_var/number_rows;
       <boxsize>15</boxsize>
       <strictsyntax>1</strictsyntax>
       <insertstars>0</insertstars>
-      <syntaxhint></syntaxhint>
+      <syntaxhint/>
       <syntaxattribute>0</syntaxattribute>
-      <forbidwords></forbidwords>
+      <forbidwords/>
       <allowwords>%</allowwords>
       <forbidfloat>0</forbidfloat>
       <requirelowestterms>0</requirelowestterms>
       <checkanswertype>0</checkanswertype>
       <mustverify>1</mustverify>
       <showvalidation>3</showvalidation>
-      <options></options>
+      <options/>
     </input>
     <input>
       <name>ans2</name>
@@ -233,16 +233,16 @@ ta_3: no_quest_exp_and_var/number_rows;
       <boxsize>15</boxsize>
       <strictsyntax>1</strictsyntax>
       <insertstars>0</insertstars>
-      <syntaxhint></syntaxhint>
+      <syntaxhint/>
       <syntaxattribute>0</syntaxattribute>
-      <forbidwords></forbidwords>
-      <allowwords></allowwords>
+      <forbidwords/>
+      <allowwords/>
       <forbidfloat>1</forbidfloat>
       <requirelowestterms>0</requirelowestterms>
       <checkanswertype>0</checkanswertype>
       <mustverify>1</mustverify>
       <showvalidation>3</showvalidation>
-      <options></options>
+      <options/>
     </input>
     <input>
       <name>ans3</name>
@@ -251,16 +251,16 @@ ta_3: no_quest_exp_and_var/number_rows;
       <boxsize>15</boxsize>
       <strictsyntax>1</strictsyntax>
       <insertstars>0</insertstars>
-      <syntaxhint></syntaxhint>
+      <syntaxhint/>
       <syntaxattribute>0</syntaxattribute>
-      <forbidwords></forbidwords>
-      <allowwords></allowwords>
+      <forbidwords/>
+      <allowwords/>
       <forbidfloat>1</forbidfloat>
       <requirelowestterms>0</requirelowestterms>
       <checkanswertype>0</checkanswertype>
       <mustverify>1</mustverify>
       <showvalidation>3</showvalidation>
-      <options></options>
+      <options/>
     </input>
     <prt>
       <name>prt1</name>
@@ -290,11 +290,11 @@ simp:true;</text>
         <answertest>AlgEquiv</answertest>
         <sans>ans1</sans>
         <tans>ta_1</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>=</truescoremode>
         <truescore>1</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt1-1-T</trueanswernote>
         <truefeedback format="html">
@@ -303,11 +303,11 @@ simp:true;</text>
         </truefeedback>
         <falsescoremode>=</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>6</falsenextnode>
         <falseanswernote>prt1-1-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -316,11 +316,11 @@ simp:true;</text>
         <answertest>AlgEquiv</answertest>
         <sans>ans1</sans>
         <tans>node2_error</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>=</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt1-2-T</trueanswernote>
         <truefeedback format="html">
@@ -329,11 +329,11 @@ simp:true;</text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>2</falsenextnode>
         <falseanswernote>prt1-2-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -342,11 +342,11 @@ simp:true;</text>
         <answertest>AlgEquiv</answertest>
         <sans>ans1</sans>
         <tans>node3_error</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>+</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt1-3-T</trueanswernote>
         <truefeedback format="html">
@@ -355,11 +355,11 @@ simp:true;</text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>3</falsenextnode>
         <falseanswernote>prt1-3-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -368,11 +368,11 @@ simp:true;</text>
         <answertest>AlgEquiv</answertest>
         <sans>ans1</sans>
         <tans>node4_error</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>+</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt1-4-T</trueanswernote>
         <truefeedback format="html">
@@ -381,11 +381,11 @@ simp:true;</text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>4</falsenextnode>
         <falseanswernote>prt1-4-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -394,11 +394,11 @@ simp:true;</text>
         <answertest>AlgEquiv</answertest>
         <sans>ans1</sans>
         <tans>node5_error</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>+</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt1-5-T</trueanswernote>
         <truefeedback format="html">
@@ -407,11 +407,11 @@ simp:true;</text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>5</falsenextnode>
         <falseanswernote>prt1-5-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -420,11 +420,11 @@ simp:true;</text>
         <answertest>AlgEquiv</answertest>
         <sans>ans1</sans>
         <tans>node6_error</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>+</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt1-6-T</trueanswernote>
         <truefeedback format="html">
@@ -432,11 +432,11 @@ simp:true;</text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>-1</falsenextnode>
         <falseanswernote>prt1-6-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -445,23 +445,23 @@ simp:true;</text>
         <answertest>AlgEquiv</answertest>
         <sans>rounded_percentage_check</sans>
         <tans>1</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>+</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>7</truenextnode>
         <trueanswernote>prt1-7-T</trueanswernote>
         <truefeedback format="html">
-          <text></text>
+          <text/>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>1</falsenextnode>
         <falseanswernote>prt1-7-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -470,11 +470,11 @@ simp:true;</text>
         <answertest>AlgEquiv</answertest>
         <sans>100*ans1</sans>
         <tans>decimalplaces(float(ta_1)*100,0)</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>1</quiet>
         <truescoremode>+</truescoremode>
         <truescore>0.9</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt1-8-T</trueanswernote>
         <truefeedback format="html">
@@ -482,11 +482,11 @@ simp:true;</text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>8</falsenextnode>
         <falseanswernote>prt1-8-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -499,7 +499,7 @@ simp:true;</text>
         <quiet>1</quiet>
         <truescoremode>+</truescoremode>
         <truescore>0.5</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt1-9-T</trueanswernote>
         <truefeedback format="html">
@@ -507,7 +507,7 @@ simp:true;</text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>9</falsenextnode>
         <falseanswernote>prt1-9-F</falseanswernote>
         <falsefeedback format="html">
@@ -521,23 +521,23 @@ simp:true;</text>
         <answertest>AlgEquiv</answertest>
         <sans>ans1</sans>
         <tans>float(ta_1)</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>=</truescoremode>
         <truescore>0.25</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt1-10-T</trueanswernote>
         <truefeedback format="html">
-          <text></text>
+          <text/>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>-1</falsenextnode>
         <falseanswernote>prt1-10-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
     </prt>
@@ -569,23 +569,23 @@ simp:true;</text>
         <answertest>AlgEquiv</answertest>
         <sans>ans2</sans>
         <tans>ta_2</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>=</truescoremode>
         <truescore>1</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt2-1-T</trueanswernote>
         <truefeedback format="html">
-          <text></text>
+          <text/>
         </truefeedback>
         <falsescoremode>=</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>6</falsenextnode>
         <falseanswernote>prt2-1-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -594,11 +594,11 @@ simp:true;</text>
         <answertest>AlgEquiv</answertest>
         <sans>ans2</sans>
         <tans>node2_error</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>+</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt2-2-T</trueanswernote>
         <truefeedback format="html">
@@ -606,11 +606,11 @@ simp:true;</text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>2</falsenextnode>
         <falseanswernote>prt2-2-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -619,11 +619,11 @@ simp:true;</text>
         <answertest>AlgEquiv</answertest>
         <sans>ans2</sans>
         <tans>node3_error</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>+</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt2-3-T</trueanswernote>
         <truefeedback format="html">
@@ -631,11 +631,11 @@ simp:true;</text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>3</falsenextnode>
         <falseanswernote>prt2-3-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -644,11 +644,11 @@ simp:true;</text>
         <answertest>AlgEquiv</answertest>
         <sans>ans2</sans>
         <tans>node4_error</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>+</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt2-4-T</trueanswernote>
         <truefeedback format="html">
@@ -656,11 +656,11 @@ simp:true;</text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>4</falsenextnode>
         <falseanswernote>prt2-4-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -669,11 +669,11 @@ simp:true;</text>
         <answertest>AlgEquiv</answertest>
         <sans>ans2</sans>
         <tans>node5_error</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>+</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt2-5-T</trueanswernote>
         <truefeedback format="html">
@@ -681,11 +681,11 @@ simp:true;</text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>5</falsenextnode>
         <falseanswernote>prt2-5-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -694,11 +694,11 @@ simp:true;</text>
         <answertest>AlgEquiv</answertest>
         <sans>ans2</sans>
         <tans>node6_error</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>+</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt2-6-T</trueanswernote>
         <truefeedback format="html">
@@ -706,11 +706,11 @@ simp:true;</text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>-1</falsenextnode>
         <falseanswernote>prt2-6-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -719,23 +719,23 @@ simp:true;</text>
         <answertest>AlgEquiv</answertest>
         <sans>rounded_percentage_check</sans>
         <tans>1</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>+</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>7</truenextnode>
         <trueanswernote>prt2-7-T</trueanswernote>
         <truefeedback format="html">
-          <text></text>
+          <text/>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>1</falsenextnode>
         <falseanswernote>prt2-7-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -744,11 +744,11 @@ simp:true;</text>
         <answertest>AlgEquiv</answertest>
         <sans>100*ans2</sans>
         <tans>decimalplaces(float(ta_2)*100,0)</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>1</quiet>
         <truescoremode>+</truescoremode>
         <truescore>0.9</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt2-8-T</trueanswernote>
         <truefeedback format="html">
@@ -756,11 +756,11 @@ simp:true;</text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>8</falsenextnode>
         <falseanswernote>prt2-8-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -773,7 +773,7 @@ simp:true;</text>
         <quiet>1</quiet>
         <truescoremode>+</truescoremode>
         <truescore>0.5</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt2-9-T</trueanswernote>
         <truefeedback format="html">
@@ -781,7 +781,7 @@ simp:true;</text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>-1</falsenextnode>
         <falseanswernote>prt2-9-F</falseanswernote>
         <falsefeedback format="html">
@@ -819,11 +819,11 @@ simp:true;</text>
         <answertest>AlgEquiv</answertest>
         <sans>ans3</sans>
         <tans>ta_3</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>=</truescoremode>
         <truescore>1</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt3-1-T</trueanswernote>
         <truefeedback format="html">
@@ -831,11 +831,11 @@ simp:true;</text>
         </truefeedback>
         <falsescoremode>=</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>7</falsenextnode>
         <falseanswernote>prt3-1-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -844,11 +844,11 @@ simp:true;</text>
         <answertest>AlgEquiv</answertest>
         <sans>ans3</sans>
         <tans>node2_error</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>+</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt3-2-T</trueanswernote>
         <truefeedback format="html">
@@ -856,11 +856,11 @@ simp:true;</text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>2</falsenextnode>
         <falseanswernote>prt3-2-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -869,11 +869,11 @@ simp:true;</text>
         <answertest>AlgEquiv</answertest>
         <sans>ans3</sans>
         <tans>node3_error</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>+</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt3-3-T</trueanswernote>
         <truefeedback format="html">
@@ -881,11 +881,11 @@ simp:true;</text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>3</falsenextnode>
         <falseanswernote>prt3-3-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -894,11 +894,11 @@ simp:true;</text>
         <answertest>AlgEquiv</answertest>
         <sans>ans3</sans>
         <tans>node4_error</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>+</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt3-4-T</trueanswernote>
         <truefeedback format="html">
@@ -906,11 +906,11 @@ simp:true;</text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>4</falsenextnode>
         <falseanswernote>prt3-4-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -919,11 +919,11 @@ simp:true;</text>
         <answertest>AlgEquiv</answertest>
         <sans>ans3</sans>
         <tans>node5_error</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>+</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt3-5-T</trueanswernote>
         <truefeedback format="html">
@@ -931,11 +931,11 @@ simp:true;</text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>5</falsenextnode>
         <falseanswernote>prt3-5-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -944,11 +944,11 @@ simp:true;</text>
         <answertest>AlgEquiv</answertest>
         <sans>ans3</sans>
         <tans>node6_error</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>+</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt3-6-T</trueanswernote>
         <truefeedback format="html">
@@ -956,11 +956,11 @@ simp:true;</text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>6</falsenextnode>
         <falseanswernote>prt3-6-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -969,11 +969,11 @@ simp:true;</text>
         <answertest>AlgEquiv</answertest>
         <sans>ans3</sans>
         <tans>node7_error</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>+</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt3-7-T</trueanswernote>
         <truefeedback format="html">
@@ -981,11 +981,11 @@ simp:true;</text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>-1</falsenextnode>
         <falseanswernote>prt3-7-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -994,23 +994,23 @@ simp:true;</text>
         <answertest>AlgEquiv</answertest>
         <sans>rounded_percentage_check</sans>
         <tans>1</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>+</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>8</truenextnode>
         <trueanswernote>prt3-8-T</trueanswernote>
         <truefeedback format="html">
-          <text></text>
+          <text/>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>1</falsenextnode>
         <falseanswernote>prt3-8-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -1019,11 +1019,11 @@ simp:true;</text>
         <answertest>AlgEquiv</answertest>
         <sans>100*ans3</sans>
         <tans>decimalplaces(float(ta_3)*100,0)</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>1</quiet>
         <truescoremode>+</truescoremode>
         <truescore>0.9</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt3-9-T</trueanswernote>
         <truefeedback format="html">
@@ -1031,11 +1031,11 @@ simp:true;</text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>9</falsenextnode>
         <falseanswernote>prt3-9-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -1048,7 +1048,7 @@ simp:true;</text>
         <quiet>1</quiet>
         <truescoremode>+</truescoremode>
         <truescore>0.5</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt3-10-T</trueanswernote>
         <truefeedback format="html">
@@ -1056,7 +1056,7 @@ simp:true;</text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>-1</falsenextnode>
         <falseanswernote>prt3-10-F</falseanswernote>
         <falsefeedback format="html">

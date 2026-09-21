@@ -205,9 +205,7 @@ ta_2b:ta_1<0;
 ta_2c:ta_1=0;
 
 ta_2: if ta_2a then "there is a strong positive rank correlation between the marks in mathematics and physics" elseif ta_2b then "there is a moderate negative rank correlation between the marks in mathematics and physics" elseif ta_2c then "there is no significant rank correlation between the marks in mathematics and physics";
-godfrey:oddp(rand(5));
-
-]]></text>
+godfrey:oddp(rand(5));]]></text>
     </questionvariables>
     <specificfeedback format="html">
       <text/>

@@ -45,10 +45,10 @@ The range of the data is usually between 5s and 6s (i.e. x̅ ± 2.5s to x̅ ± 3
 In this case the mean is about {@mean_real@} and you should be able to estimate the standard deviation close to the real value of {@mr1@}.
 <p>Click here to learn more on how estimate standard deviation <a href="https://ecampus.idems.international/mod/resource/view.php?id=13393" download="">"Estimating Standard deviation".</a></p><p></p>]]></text>
     </generalfeedback>
-    <defaultgrade>1.0000000</defaultgrade>
-    <penalty>0.1000000</penalty>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
     <hidden>0</hidden>
-    <idnumber></idnumber>
+    <idnumber/>
     <stackversion>
       <text>2023060500</text>
     </stackversion>
@@ -86,7 +86,7 @@ for i:2 thru ds1 do if dorx1[i]=dorx1[i-1] then (j:j+1, dory[i]:j) else (j:1, do
 sd = {@sd1@}</text>
     </questionnote>
     <questiondescription format="moodle_auto_format">
-      <text></text>
+      <text/>
     </questiondescription>
     <questionsimplify>1</questionsimplify>
     <assumepositive>0</assumepositive>
@@ -109,7 +109,7 @@ sd = {@sd1@}</text>
     <logicsymbol>lang</logicsymbol>
     <matrixparens>[</matrixparens>
     <isbroken>0</isbroken>
-    <variantsselectionseed></variantsselectionseed>
+    <variantsselectionseed/>
     <input>
       <name>ans1</name>
       <type>numerical</type>
@@ -117,16 +117,16 @@ sd = {@sd1@}</text>
       <boxsize>8</boxsize>
       <strictsyntax>1</strictsyntax>
       <insertstars>0</insertstars>
-      <syntaxhint></syntaxhint>
+      <syntaxhint/>
       <syntaxattribute>0</syntaxattribute>
-      <forbidwords></forbidwords>
-      <allowwords></allowwords>
+      <forbidwords/>
+      <allowwords/>
       <forbidfloat>0</forbidfloat>
       <requirelowestterms>0</requirelowestterms>
       <checkanswertype>0</checkanswertype>
       <mustverify>0</mustverify>
       <showvalidation>0</showvalidation>
-      <options></options>
+      <options/>
     </input>
     <prt>
       <name>prt1</name>
@@ -134,11 +134,11 @@ sd = {@sd1@}</text>
       <autosimplify>1</autosimplify>
       <feedbackstyle>1</feedbackstyle>
       <feedbackvariables>
-        <text></text>
+        <text/>
       </feedbackvariables>
       <node>
         <name>0</name>
-        <description></description>
+        <description/>
         <answertest>NumRelative</answertest>
         <sans>ans1</sans>
         <tans>m1</tans>
@@ -146,7 +146,7 @@ sd = {@sd1@}</text>
         <quiet>0</quiet>
         <truescoremode>=</truescoremode>
         <truescore>1</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt1-1-T</trueanswernote>
         <truefeedback format="html">
@@ -158,12 +158,12 @@ sd = {@sd1@}</text>
         <falsenextnode>1</falsenextnode>
         <falseanswernote>prt1-1-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
         <name>1</name>
-        <description></description>
+        <description/>
         <answertest>NumRelative</answertest>
         <sans>ans1</sans>
         <tans>m1</tans>
@@ -171,7 +171,7 @@ sd = {@sd1@}</text>
         <quiet>0</quiet>
         <truescoremode>+</truescoremode>
         <truescore>0.5</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt1-2-T</trueanswernote>
         <truefeedback format="html">
@@ -179,7 +179,7 @@ sd = {@sd1@}</text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>-1</falsenextnode>
         <falseanswernote>prt1-2-F</falseanswernote>
         <falsefeedback format="html">
@@ -209,7 +209,7 @@ sd = {@sd1@}</text>
     <deployedseed>643940405</deployedseed>
     <qtest>
       <testcase>1</testcase>
-      <description></description>
+      <description/>
       <testinput>
         <name>ans1</name>
         <value>mr1</value>

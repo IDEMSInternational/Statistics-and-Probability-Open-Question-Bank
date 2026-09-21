@@ -63,12 +63,12 @@ exportToCsv = function(file_name) {
 </script>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text></text>
+      <text/>
     </generalfeedback>
-    <defaultgrade>1.0000000</defaultgrade>
-    <penalty>0.1000000</penalty>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
     <hidden>0</hidden>
-    <idnumber></idnumber>
+    <idnumber/>
     <stackversion>
       <text>2023060500</text>
     </stackversion>
@@ -282,7 +282,7 @@ corr_yield_list: create_list(abs(x), x, yield_list);
 age_yield_plot: makelist([corr_age_list[i], corr_yield_list[i]], i, 1, number_rows);]]></text>
     </questionvariables>
     <specificfeedback format="html">
-      <text></text>
+      <text/>
     </specificfeedback>
     <questionnote format="moodle_auto_format">
       <text><![CDATA[<p>1. What is the mean yield of this data set?
@@ -321,7 +321,7 @@ age_yield_plot: makelist([corr_age_list[i], corr_yield_list[i]], i, 1, number_ro
     <logicsymbol>lang</logicsymbol>
     <matrixparens>[</matrixparens>
     <isbroken>0</isbroken>
-    <variantsselectionseed></variantsselectionseed>
+    <variantsselectionseed/>
     <input>
       <name>ans1</name>
       <type>algebraic</type>
@@ -329,16 +329,16 @@ age_yield_plot: makelist([corr_age_list[i], corr_yield_list[i]], i, 1, number_ro
       <boxsize>15</boxsize>
       <strictsyntax>1</strictsyntax>
       <insertstars>0</insertstars>
-      <syntaxhint></syntaxhint>
+      <syntaxhint/>
       <syntaxattribute>0</syntaxattribute>
-      <forbidwords></forbidwords>
-      <allowwords></allowwords>
+      <forbidwords/>
+      <allowwords/>
       <forbidfloat>0</forbidfloat>
       <requirelowestterms>0</requirelowestterms>
       <checkanswertype>0</checkanswertype>
       <mustverify>1</mustverify>
       <showvalidation>3</showvalidation>
-      <options></options>
+      <options/>
     </input>
     <input>
       <name>ans2</name>
@@ -347,16 +347,16 @@ age_yield_plot: makelist([corr_age_list[i], corr_yield_list[i]], i, 1, number_ro
       <boxsize>15</boxsize>
       <strictsyntax>1</strictsyntax>
       <insertstars>0</insertstars>
-      <syntaxhint></syntaxhint>
+      <syntaxhint/>
       <syntaxattribute>0</syntaxattribute>
-      <forbidwords></forbidwords>
-      <allowwords></allowwords>
+      <forbidwords/>
+      <allowwords/>
       <forbidfloat>0</forbidfloat>
       <requirelowestterms>0</requirelowestterms>
       <checkanswertype>0</checkanswertype>
       <mustverify>1</mustverify>
       <showvalidation>3</showvalidation>
-      <options></options>
+      <options/>
     </input>
     <input>
       <name>ans3</name>
@@ -365,16 +365,16 @@ age_yield_plot: makelist([corr_age_list[i], corr_yield_list[i]], i, 1, number_ro
       <boxsize>15</boxsize>
       <strictsyntax>1</strictsyntax>
       <insertstars>0</insertstars>
-      <syntaxhint></syntaxhint>
+      <syntaxhint/>
       <syntaxattribute>0</syntaxattribute>
-      <forbidwords></forbidwords>
-      <allowwords></allowwords>
+      <forbidwords/>
+      <allowwords/>
       <forbidfloat>1</forbidfloat>
       <requirelowestterms>0</requirelowestterms>
       <checkanswertype>0</checkanswertype>
       <mustverify>1</mustverify>
       <showvalidation>3</showvalidation>
-      <options></options>
+      <options/>
     </input>
     <input>
       <name>ans4</name>
@@ -383,16 +383,16 @@ age_yield_plot: makelist([corr_age_list[i], corr_yield_list[i]], i, 1, number_ro
       <boxsize>15</boxsize>
       <strictsyntax>1</strictsyntax>
       <insertstars>0</insertstars>
-      <syntaxhint></syntaxhint>
+      <syntaxhint/>
       <syntaxattribute>0</syntaxattribute>
-      <forbidwords></forbidwords>
-      <allowwords></allowwords>
+      <forbidwords/>
+      <allowwords/>
       <forbidfloat>1</forbidfloat>
       <requirelowestterms>0</requirelowestterms>
       <checkanswertype>0</checkanswertype>
       <mustverify>0</mustverify>
       <showvalidation>0</showvalidation>
-      <options></options>
+      <options/>
     </input>
     <prt>
       <name>prt1</name>
@@ -400,7 +400,7 @@ age_yield_plot: makelist([corr_age_list[i], corr_yield_list[i]], i, 1, number_ro
       <autosimplify>1</autosimplify>
       <feedbackstyle>1</feedbackstyle>
       <feedbackvariables>
-        <text></text>
+        <text/>
       </feedbackvariables>
       <node>
         <name>0</name>
@@ -412,7 +412,7 @@ age_yield_plot: makelist([corr_age_list[i], corr_yield_list[i]], i, 1, number_ro
         <quiet>0</quiet>
         <truescoremode>=</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt1-1-T</trueanswernote>
         <truefeedback format="html">
@@ -420,11 +420,11 @@ age_yield_plot: makelist([corr_age_list[i], corr_yield_list[i]], i, 1, number_ro
         </truefeedback>
         <falsescoremode>=</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>-1</falsenextnode>
         <falseanswernote>prt1-1-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -437,7 +437,7 @@ age_yield_plot: makelist([corr_age_list[i], corr_yield_list[i]], i, 1, number_ro
         <quiet>0</quiet>
         <truescoremode>=</truescoremode>
         <truescore>1</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt1-2-T</trueanswernote>
         <truefeedback format="html">
@@ -446,11 +446,11 @@ age_yield_plot: makelist([corr_age_list[i], corr_yield_list[i]], i, 1, number_ro
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>2</falsenextnode>
         <falseanswernote>prt1-2-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -463,7 +463,7 @@ age_yield_plot: makelist([corr_age_list[i], corr_yield_list[i]], i, 1, number_ro
         <quiet>0</quiet>
         <truescoremode>=</truescoremode>
         <truescore>1</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt1-3-T</trueanswernote>
         <truefeedback format="html">
@@ -472,11 +472,11 @@ age_yield_plot: makelist([corr_age_list[i], corr_yield_list[i]], i, 1, number_ro
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>0</falsenextnode>
         <falseanswernote>prt1-3-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
     </prt>
@@ -486,7 +486,7 @@ age_yield_plot: makelist([corr_age_list[i], corr_yield_list[i]], i, 1, number_ro
       <autosimplify>1</autosimplify>
       <feedbackstyle>1</feedbackstyle>
       <feedbackvariables>
-        <text></text>
+        <text/>
       </feedbackvariables>
       <node>
         <name>0</name>
@@ -498,7 +498,7 @@ age_yield_plot: makelist([corr_age_list[i], corr_yield_list[i]], i, 1, number_ro
         <quiet>0</quiet>
         <truescoremode>=</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt2-1-T</trueanswernote>
         <truefeedback format="html">
@@ -506,11 +506,11 @@ age_yield_plot: makelist([corr_age_list[i], corr_yield_list[i]], i, 1, number_ro
         </truefeedback>
         <falsescoremode>=</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>-1</falsenextnode>
         <falseanswernote>prt2-1-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -523,7 +523,7 @@ age_yield_plot: makelist([corr_age_list[i], corr_yield_list[i]], i, 1, number_ro
         <quiet>0</quiet>
         <truescoremode>=</truescoremode>
         <truescore>1</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt2-2-T</trueanswernote>
         <truefeedback format="html">
@@ -532,11 +532,11 @@ age_yield_plot: makelist([corr_age_list[i], corr_yield_list[i]], i, 1, number_ro
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>2</falsenextnode>
         <falseanswernote>prt2-2-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -549,7 +549,7 @@ age_yield_plot: makelist([corr_age_list[i], corr_yield_list[i]], i, 1, number_ro
         <quiet>0</quiet>
         <truescoremode>=</truescoremode>
         <truescore>1</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt2-3-T</trueanswernote>
         <truefeedback format="html">
@@ -558,11 +558,11 @@ age_yield_plot: makelist([corr_age_list[i], corr_yield_list[i]], i, 1, number_ro
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>0</falsenextnode>
         <falseanswernote>prt2-3-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
     </prt>
@@ -584,11 +584,11 @@ node2_test: if member(ans3, number_some_alt_names) then 1 else 0;</text>
         <answertest>AlgEquiv</answertest>
         <sans>node1_test</sans>
         <tans>1</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>=</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt3-1-T</trueanswernote>
         <truefeedback format="html">
@@ -596,11 +596,11 @@ node2_test: if member(ans3, number_some_alt_names) then 1 else 0;</text>
         </truefeedback>
         <falsescoremode>=</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>-1</falsenextnode>
         <falseanswernote>prt3-1-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -609,11 +609,11 @@ node2_test: if member(ans3, number_some_alt_names) then 1 else 0;</text>
         <answertest>AlgEquiv</answertest>
         <sans>node2_test</sans>
         <tans>1</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>=</truescoremode>
         <truescore>0.5</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt3-2-T</trueanswernote>
         <truefeedback format="html">
@@ -621,11 +621,11 @@ node2_test: if member(ans3, number_some_alt_names) then 1 else 0;</text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>0</falsenextnode>
         <falseanswernote>prt3-2-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -634,11 +634,11 @@ node2_test: if member(ans3, number_some_alt_names) then 1 else 0;</text>
         <answertest>AlgEquiv</answertest>
         <sans>ans3</sans>
         <tans>number_all_alt_names</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>=</truescoremode>
         <truescore>1</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt3-3-T</trueanswernote>
         <truefeedback format="html">
@@ -646,11 +646,11 @@ node2_test: if member(ans3, number_some_alt_names) then 1 else 0;</text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>1</falsenextnode>
         <falseanswernote>prt3-3-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
     </prt>
@@ -660,7 +660,7 @@ node2_test: if member(ans3, number_some_alt_names) then 1 else 0;</text>
       <autosimplify>1</autosimplify>
       <feedbackstyle>1</feedbackstyle>
       <feedbackvariables>
-        <text></text>
+        <text/>
       </feedbackvariables>
       <node>
         <name>0</name>
@@ -668,11 +668,11 @@ node2_test: if member(ans3, number_some_alt_names) then 1 else 0;</text>
         <answertest>AlgEquiv</answertest>
         <sans>ans4</sans>
         <tans><![CDATA["No"]]></tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>=</truescoremode>
         <truescore>1</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt4-1-T</trueanswernote>
         <truefeedback format="html">
@@ -696,7 +696,7 @@ plot(
         </truefeedback>
         <falsescoremode>=</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>-1</falsenextnode>
         <falseanswernote>prt4-1-F</falseanswernote>
         <falsefeedback format="html">

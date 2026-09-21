@@ -30,12 +30,12 @@
 <p>[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text></text>
+      <text/>
     </generalfeedback>
-    <defaultgrade>1.0000000</defaultgrade>
-    <penalty>0.0000000</penalty>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
     <hidden>0</hidden>
-    <idnumber></idnumber>
+    <idnumber/>
     <stackversion>
       <text>2023060500</text>
     </stackversion>
@@ -43,13 +43,13 @@
       <text><![CDATA[ta: random_permutation([[1, false, "Both data sets will look more-or-less the same when graphically plotted."], [2, false, "Dataset A and dataset B are the same data set."], [3, false, "Dataset A and dataset B have identical scatter plots when plotting A against B."], [4, true, "The variance is larger for y than x in both data sets."], [5, false, "A scatter plot between A and B will show a strong linear relationship for both data sets."]]);]]></text>
     </questionvariables>
     <specificfeedback format="html">
-      <text></text>
+      <text/>
     </specificfeedback>
     <questionnote format="moodle_auto_format">
       <text><![CDATA[<p> Option order: {#map(lambda([i], i[1]), ta)#}. Correct options: {#[4]#}. </p>]]></text>
     </questionnote>
     <questiondescription format="html">
-      <text></text>
+      <text/>
     </questiondescription>
     <questionsimplify>1</questionsimplify>
     <assumepositive>0</assumepositive>
@@ -72,7 +72,7 @@
     <logicsymbol>lang</logicsymbol>
     <matrixparens>[</matrixparens>
     <isbroken>0</isbroken>
-    <variantsselectionseed></variantsselectionseed>
+    <variantsselectionseed/>
     <input>
       <name>ans1</name>
       <type>checkbox</type>
@@ -80,16 +80,16 @@
       <boxsize>15</boxsize>
       <strictsyntax>1</strictsyntax>
       <insertstars>0</insertstars>
-      <syntaxhint></syntaxhint>
+      <syntaxhint/>
       <syntaxattribute>0</syntaxattribute>
-      <forbidwords></forbidwords>
-      <allowwords></allowwords>
+      <forbidwords/>
+      <allowwords/>
       <forbidfloat>1</forbidfloat>
       <requirelowestterms>0</requirelowestterms>
       <checkanswertype>0</checkanswertype>
       <mustverify>0</mustverify>
       <showvalidation>0</showvalidation>
-      <options></options>
+      <options/>
     </input>
     <prt>
       <name>prt1</name>
@@ -106,11 +106,11 @@ opt: map(lambda([i], if member(i, ans1) then 1 else 0), [1, 2, 3, 4, 5]);</text>
         <answertest>AlgEquiv</answertest>
         <sans>opt[1]</sans>
         <tans>1</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>+</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>1</truenextnode>
         <trueanswernote>prt1-2-T</trueanswernote>
         <truefeedback format="html">
@@ -118,11 +118,11 @@ opt: map(lambda([i], if member(i, ans1) then 1 else 0), [1, 2, 3, 4, 5]);</text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>1</falsenextnode>
         <falseanswernote>prt1-2-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -131,11 +131,11 @@ opt: map(lambda([i], if member(i, ans1) then 1 else 0), [1, 2, 3, 4, 5]);</text>
         <answertest>AlgEquiv</answertest>
         <sans>opt[2]</sans>
         <tans>1</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>+</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>2</truenextnode>
         <trueanswernote>prt1-3-T</trueanswernote>
         <truefeedback format="html">
@@ -143,11 +143,11 @@ opt: map(lambda([i], if member(i, ans1) then 1 else 0), [1, 2, 3, 4, 5]);</text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>2</falsenextnode>
         <falseanswernote>prt1-3-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -156,11 +156,11 @@ opt: map(lambda([i], if member(i, ans1) then 1 else 0), [1, 2, 3, 4, 5]);</text>
         <answertest>AlgEquiv</answertest>
         <sans>opt[3]</sans>
         <tans>1</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>+</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>3</truenextnode>
         <trueanswernote>prt1-4-T</trueanswernote>
         <truefeedback format="html">
@@ -168,11 +168,11 @@ opt: map(lambda([i], if member(i, ans1) then 1 else 0), [1, 2, 3, 4, 5]);</text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>3</falsenextnode>
         <falseanswernote>prt1-4-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -181,11 +181,11 @@ opt: map(lambda([i], if member(i, ans1) then 1 else 0), [1, 2, 3, 4, 5]);</text>
         <answertest>AlgEquiv</answertest>
         <sans>opt[4]</sans>
         <tans>1</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>+</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>4</truenextnode>
         <trueanswernote>prt1-5-T</trueanswernote>
         <truefeedback format="html">
@@ -193,11 +193,11 @@ opt: map(lambda([i], if member(i, ans1) then 1 else 0), [1, 2, 3, 4, 5]);</text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>4</falsenextnode>
         <falseanswernote>prt1-5-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -206,11 +206,11 @@ opt: map(lambda([i], if member(i, ans1) then 1 else 0), [1, 2, 3, 4, 5]);</text>
         <answertest>AlgEquiv</answertest>
         <sans>opt[5]</sans>
         <tans>1</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>+</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>5</truenextnode>
         <trueanswernote>prt1-6-T</trueanswernote>
         <truefeedback format="html">
@@ -218,11 +218,11 @@ opt: map(lambda([i], if member(i, ans1) then 1 else 0), [1, 2, 3, 4, 5]);</text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>5</falsenextnode>
         <falseanswernote>prt1-6-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -231,11 +231,11 @@ opt: map(lambda([i], if member(i, ans1) then 1 else 0), [1, 2, 3, 4, 5]);</text>
         <answertest>AlgEquiv</answertest>
         <sans>ans1</sans>
         <tans>mcq_correct(ta)</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>1</quiet>
         <truescoremode>+</truescoremode>
         <truescore>1</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt1-7-T</trueanswernote>
         <truefeedback format="html">
@@ -245,7 +245,7 @@ opt: map(lambda([i], if member(i, ans1) then 1 else 0), [1, 2, 3, 4, 5]);</text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>-1</falsenextnode>
         <falseanswernote>prt1-7-F</falseanswernote>
         <falsefeedback format="html">
@@ -277,7 +277,7 @@ opt: map(lambda([i], if member(i, ans1) then 1 else 0), [1, 2, 3, 4, 5]);</text>
     <deployedseed>1179113784</deployedseed>
     <qtest>
       <testcase>1</testcase>
-      <description></description>
+      <description/>
       <testinput>
         <name>ans1</name>
         <value>mcq_correct(ta)</value>

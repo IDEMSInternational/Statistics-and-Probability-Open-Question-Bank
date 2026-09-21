@@ -11,12 +11,12 @@
  <p>Which of the following would you say is true?</p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text></text>
+      <text/>
     </generalfeedback>
-    <defaultgrade>1.0000000</defaultgrade>
+    <defaultgrade>1</defaultgrade>
     <penalty>0.3333333</penalty>
     <hidden>0</hidden>
-    <idnumber></idnumber>
+    <idnumber/>
     <single>true</single>
     <shuffleanswers>true</shuffleanswers>
     <answernumbering>123</answernumbering>

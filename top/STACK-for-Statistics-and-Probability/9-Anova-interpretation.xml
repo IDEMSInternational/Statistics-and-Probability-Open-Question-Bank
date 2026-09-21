@@ -42,10 +42,10 @@
 </table><br><p></p><p>A percentage {1:NUMERICAL:=70.7} % (1 decimal place) of variation in the yield of wheat is explained by differences in wheat variety.</p><br><p></p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text></text>
+      <text/>
     </generalfeedback>
     <penalty>0.3333333</penalty>
     <hidden>0</hidden>
-    <idnumber></idnumber>
+    <idnumber/>
   </question>
 </quiz>

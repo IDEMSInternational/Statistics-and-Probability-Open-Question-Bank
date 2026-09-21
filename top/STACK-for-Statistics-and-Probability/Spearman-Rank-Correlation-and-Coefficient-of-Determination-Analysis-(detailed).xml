@@ -189,8 +189,7 @@ ta3:random_permutation([[1,true,"There is a moderate negative association betwee
 ta_21: if ta1 > 0 then "There is a positive association between the two sets of variables." elseif ta1 < 0 then "There is a negative association between the two sets of variables." elseif ta1 = 0 then "No correlation" else "None of the options apply";
 ta_22: if ta1 > 0 then " There is a negative association between the two sets of variables." elseif ta1 < 0 then "TThere is a positive association between the two sets of variables." else "None of the options apply";
  
-ta3:random_permutation([[ta_21, true],[ta_22, false],["No correlation", false]]);
-]]></text>
+ta3:random_permutation([[ta_21, true],[ta_22, false],["No correlation", false]]);]]></text>
     </questionvariables>
     <specificfeedback format="html">
       <text/>

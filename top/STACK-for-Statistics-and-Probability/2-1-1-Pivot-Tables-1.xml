@@ -51,10 +51,10 @@ exportToCsv = function(file_name) {
     <generalfeedback format="html">
       <text><![CDATA[<p>Full details on how to create and use Pivot tables can be found <a href="https://docs.google.com/document/d/1Q349NXt0AkStgVHHVkkDGBZVS-KT5Gl_IcdnSTemhEQ/edit?usp=sharing"  target="_blank">here</a>.]]></text>
     </generalfeedback>
-    <defaultgrade>1.0000000</defaultgrade>
-    <penalty>0.1000000</penalty>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
     <hidden>0</hidden>
-    <idnumber></idnumber>
+    <idnumber/>
     <stackversion>
       <text>2023060500</text>
     </stackversion>
@@ -170,7 +170,7 @@ ta_3: decimalplaces(if quest_expr3="mean" then mean(fert1_var1_yields)
     else if quest_expr3="median" then median(fert1_var1_yields), 2);]]></text>
     </questionvariables>
     <specificfeedback format="html">
-      <text></text>
+      <text/>
     </specificfeedback>
     <questionnote format="moodle_auto_format">
       <text><![CDATA[<p>What is the {@quest_expr1@} yield? Give to \(2\text{dp}\) = {@ta_1@}</p>
@@ -205,7 +205,7 @@ ta_3: decimalplaces(if quest_expr3="mean" then mean(fert1_var1_yields)
     <logicsymbol>lang</logicsymbol>
     <matrixparens>[</matrixparens>
     <isbroken>0</isbroken>
-    <variantsselectionseed></variantsselectionseed>
+    <variantsselectionseed/>
     <input>
       <name>ans1</name>
       <type>algebraic</type>
@@ -213,16 +213,16 @@ ta_3: decimalplaces(if quest_expr3="mean" then mean(fert1_var1_yields)
       <boxsize>10</boxsize>
       <strictsyntax>1</strictsyntax>
       <insertstars>0</insertstars>
-      <syntaxhint></syntaxhint>
+      <syntaxhint/>
       <syntaxattribute>0</syntaxattribute>
-      <forbidwords></forbidwords>
-      <allowwords></allowwords>
+      <forbidwords/>
+      <allowwords/>
       <forbidfloat>0</forbidfloat>
       <requirelowestterms>0</requirelowestterms>
       <checkanswertype>0</checkanswertype>
       <mustverify>1</mustverify>
       <showvalidation>3</showvalidation>
-      <options></options>
+      <options/>
     </input>
     <input>
       <name>ans2</name>
@@ -231,16 +231,16 @@ ta_3: decimalplaces(if quest_expr3="mean" then mean(fert1_var1_yields)
       <boxsize>10</boxsize>
       <strictsyntax>1</strictsyntax>
       <insertstars>0</insertstars>
-      <syntaxhint></syntaxhint>
+      <syntaxhint/>
       <syntaxattribute>0</syntaxattribute>
-      <forbidwords></forbidwords>
-      <allowwords></allowwords>
+      <forbidwords/>
+      <allowwords/>
       <forbidfloat>0</forbidfloat>
       <requirelowestterms>0</requirelowestterms>
       <checkanswertype>0</checkanswertype>
       <mustverify>1</mustverify>
       <showvalidation>3</showvalidation>
-      <options></options>
+      <options/>
     </input>
     <input>
       <name>ans3</name>
@@ -249,16 +249,16 @@ ta_3: decimalplaces(if quest_expr3="mean" then mean(fert1_var1_yields)
       <boxsize>10</boxsize>
       <strictsyntax>1</strictsyntax>
       <insertstars>0</insertstars>
-      <syntaxhint></syntaxhint>
+      <syntaxhint/>
       <syntaxattribute>0</syntaxattribute>
-      <forbidwords></forbidwords>
-      <allowwords></allowwords>
+      <forbidwords/>
+      <allowwords/>
       <forbidfloat>0</forbidfloat>
       <requirelowestterms>0</requirelowestterms>
       <checkanswertype>0</checkanswertype>
       <mustverify>1</mustverify>
       <showvalidation>3</showvalidation>
-      <options></options>
+      <options/>
     </input>
     <prt>
       <name>prt1</name>
@@ -285,7 +285,7 @@ node3_test: if member(ans1, all_summaries) then 1 else 0;</text>
         <quiet>1</quiet>
         <truescoremode>=</truescoremode>
         <truescore>1</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt1-1-T</trueanswernote>
         <truefeedback format="html">
@@ -293,11 +293,11 @@ node3_test: if member(ans1, all_summaries) then 1 else 0;</text>
         </truefeedback>
         <falsescoremode>=</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>1</falsenextnode>
         <falseanswernote>prt1-1-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -310,7 +310,7 @@ node3_test: if member(ans1, all_summaries) then 1 else 0;</text>
         <quiet>1</quiet>
         <truescoremode>=</truescoremode>
         <truescore>0.5</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt1-2-T</trueanswernote>
         <truefeedback format="html">
@@ -318,11 +318,11 @@ node3_test: if member(ans1, all_summaries) then 1 else 0;</text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>2</falsenextnode>
         <falseanswernote>prt1-2-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -331,11 +331,11 @@ node3_test: if member(ans1, all_summaries) then 1 else 0;</text>
         <answertest>AlgEquiv</answertest>
         <sans>node3_test</sans>
         <tans>1</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>1</quiet>
         <truescoremode>=</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt1-3-T</trueanswernote>
         <truefeedback format="html">
@@ -344,7 +344,7 @@ node3_test: if member(ans1, all_summaries) then 1 else 0;</text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>-1</falsenextnode>
         <falseanswernote>prt1-3-F</falseanswernote>
         <falsefeedback format="html">
@@ -385,7 +385,7 @@ node4_mist: decimalplaces(if quest_expr2="mean" then mean(all_yields)
         <quiet>0</quiet>
         <truescoremode>=</truescoremode>
         <truescore>1</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt2-1-T</trueanswernote>
         <truefeedback format="html">
@@ -393,11 +393,11 @@ node4_mist: decimalplaces(if quest_expr2="mean" then mean(all_yields)
         </truefeedback>
         <falsescoremode>=</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>1</falsenextnode>
         <falseanswernote>prt2-1-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -410,7 +410,7 @@ node4_mist: decimalplaces(if quest_expr2="mean" then mean(all_yields)
         <quiet>0</quiet>
         <truescoremode>=</truescoremode>
         <truescore>0.5</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt2-2-T</trueanswernote>
         <truefeedback format="html">
@@ -418,11 +418,11 @@ node4_mist: decimalplaces(if quest_expr2="mean" then mean(all_yields)
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>2</falsenextnode>
         <falseanswernote>prt2-2-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -431,11 +431,11 @@ node4_mist: decimalplaces(if quest_expr2="mean" then mean(all_yields)
         <answertest>AlgEquiv</answertest>
         <sans>node3_test</sans>
         <tans>1</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>=</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt2-3-T</trueanswernote>
         <truefeedback format="html">
@@ -444,11 +444,11 @@ node4_mist: decimalplaces(if quest_expr2="mean" then mean(all_yields)
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>3</falsenextnode>
         <falseanswernote>prt2-3-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -457,11 +457,11 @@ node4_mist: decimalplaces(if quest_expr2="mean" then mean(all_yields)
         <answertest>AlgEquiv</answertest>
         <sans>ans2</sans>
         <tans>node4_mist</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>+</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt2-4-T</trueanswernote>
         <truefeedback format="html">
@@ -470,7 +470,7 @@ node4_mist: decimalplaces(if quest_expr2="mean" then mean(all_yields)
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>-1</falsenextnode>
         <falseanswernote>prt2-4-F</falseanswernote>
         <falsefeedback format="html">
@@ -520,7 +520,7 @@ node5_mist: decimalplaces(if quest_expr3="mean" then mean(fert2_var1_yields)
         <quiet>0</quiet>
         <truescoremode>=</truescoremode>
         <truescore>1</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt3-1-T</trueanswernote>
         <truefeedback format="html">
@@ -528,11 +528,11 @@ node5_mist: decimalplaces(if quest_expr3="mean" then mean(fert2_var1_yields)
         </truefeedback>
         <falsescoremode>=</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>1</falsenextnode>
         <falseanswernote>prt3-1-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -545,7 +545,7 @@ node5_mist: decimalplaces(if quest_expr3="mean" then mean(fert2_var1_yields)
         <quiet>0</quiet>
         <truescoremode>=</truescoremode>
         <truescore>0.5</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt3-2-T</trueanswernote>
         <truefeedback format="html">
@@ -553,11 +553,11 @@ node5_mist: decimalplaces(if quest_expr3="mean" then mean(fert2_var1_yields)
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>2</falsenextnode>
         <falseanswernote>prt3-2-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -566,11 +566,11 @@ node5_mist: decimalplaces(if quest_expr3="mean" then mean(fert2_var1_yields)
         <answertest>AlgEquiv</answertest>
         <sans>node_3</sans>
         <tans>true</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>=</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt3-3-T</trueanswernote>
         <truefeedback format="html">
@@ -579,11 +579,11 @@ node5_mist: decimalplaces(if quest_expr3="mean" then mean(fert2_var1_yields)
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>3</falsenextnode>
         <falseanswernote>prt3-3-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -592,11 +592,11 @@ node5_mist: decimalplaces(if quest_expr3="mean" then mean(fert2_var1_yields)
         <answertest>AlgEquiv</answertest>
         <sans>ans3</sans>
         <tans>node4_mist</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>+</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt3-4-T</trueanswernote>
         <truefeedback format="html">
@@ -605,11 +605,11 @@ node5_mist: decimalplaces(if quest_expr3="mean" then mean(fert2_var1_yields)
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>4</falsenextnode>
         <falseanswernote>prt3-4-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -618,11 +618,11 @@ node5_mist: decimalplaces(if quest_expr3="mean" then mean(fert2_var1_yields)
         <answertest>AlgEquiv</answertest>
         <sans>ans3</sans>
         <tans>node5_mist</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>+</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt3-5-T</trueanswernote>
         <truefeedback format="html">
@@ -630,7 +630,7 @@ node5_mist: decimalplaces(if quest_expr3="mean" then mean(fert2_var1_yields)
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>-1</falsenextnode>
         <falseanswernote>prt3-5-F</falseanswernote>
         <falsefeedback format="html">
@@ -711,7 +711,7 @@ node5_mist: decimalplaces(if quest_expr3="mean" then mean(fert2_var1_yields)
     <deployedseed>278389719</deployedseed>
     <qtest>
       <testcase>1</testcase>
-      <description></description>
+      <description/>
       <testinput>
         <name>ans1</name>
         <value>ta_1</value>

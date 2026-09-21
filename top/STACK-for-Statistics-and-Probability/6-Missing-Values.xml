@@ -58,12 +58,12 @@ exportToCsv = function(file_name) {
 </script>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text></text>
+      <text/>
     </generalfeedback>
-    <defaultgrade>1.0000000</defaultgrade>
-    <penalty>0.1000000</penalty>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
     <hidden>0</hidden>
-    <idnumber></idnumber>
+    <idnumber/>
     <stackversion>
       <text>2023060500</text>
     </stackversion>
@@ -75,7 +75,7 @@ q2_crop: rand(["Maize", "Sorghum", "Millet"]);
 ta_3: if q2_crop="Maize" then 78.17708 elseif q2_crop="Sorghum" then 66.15116 elseif q2_crop="Millet" then 90.45833;]]></text>
     </questionvariables>
     <specificfeedback format="html">
-      <text></text>
+      <text/>
     </specificfeedback>
     <questionnote format="moodle_auto_format">
       <text><![CDATA[<p>Use the data provided to determine:</p>
@@ -110,7 +110,7 @@ ta_3: if q2_crop="Maize" then 78.17708 elseif q2_crop="Sorghum" then 66.15116 el
     <logicsymbol>lang</logicsymbol>
     <matrixparens>[</matrixparens>
     <isbroken>0</isbroken>
-    <variantsselectionseed></variantsselectionseed>
+    <variantsselectionseed/>
     <input>
       <name>ans1</name>
       <type>dropdown</type>
@@ -118,16 +118,16 @@ ta_3: if q2_crop="Maize" then 78.17708 elseif q2_crop="Sorghum" then 66.15116 el
       <boxsize>10</boxsize>
       <strictsyntax>1</strictsyntax>
       <insertstars>0</insertstars>
-      <syntaxhint></syntaxhint>
+      <syntaxhint/>
       <syntaxattribute>0</syntaxattribute>
-      <forbidwords></forbidwords>
-      <allowwords></allowwords>
+      <forbidwords/>
+      <allowwords/>
       <forbidfloat>1</forbidfloat>
       <requirelowestterms>0</requirelowestterms>
       <checkanswertype>0</checkanswertype>
       <mustverify>0</mustverify>
       <showvalidation>0</showvalidation>
-      <options></options>
+      <options/>
     </input>
     <input>
       <name>ans2</name>
@@ -136,16 +136,16 @@ ta_3: if q2_crop="Maize" then 78.17708 elseif q2_crop="Sorghum" then 66.15116 el
       <boxsize>10</boxsize>
       <strictsyntax>1</strictsyntax>
       <insertstars>0</insertstars>
-      <syntaxhint></syntaxhint>
+      <syntaxhint/>
       <syntaxattribute>0</syntaxattribute>
-      <forbidwords></forbidwords>
-      <allowwords></allowwords>
+      <forbidwords/>
+      <allowwords/>
       <forbidfloat>1</forbidfloat>
       <requirelowestterms>0</requirelowestterms>
       <checkanswertype>0</checkanswertype>
       <mustverify>0</mustverify>
       <showvalidation>0</showvalidation>
-      <options></options>
+      <options/>
     </input>
     <input>
       <name>ans3</name>
@@ -154,16 +154,16 @@ ta_3: if q2_crop="Maize" then 78.17708 elseif q2_crop="Sorghum" then 66.15116 el
       <boxsize>10</boxsize>
       <strictsyntax>1</strictsyntax>
       <insertstars>0</insertstars>
-      <syntaxhint></syntaxhint>
+      <syntaxhint/>
       <syntaxattribute>0</syntaxattribute>
-      <forbidwords></forbidwords>
-      <allowwords></allowwords>
+      <forbidwords/>
+      <allowwords/>
       <forbidfloat>0</forbidfloat>
       <requirelowestterms>0</requirelowestterms>
       <checkanswertype>0</checkanswertype>
       <mustverify>0</mustverify>
       <showvalidation>0</showvalidation>
-      <options></options>
+      <options/>
     </input>
     <prt>
       <name>prt1</name>
@@ -188,7 +188,7 @@ node8_test: if ans1="Millet" and ans2="Sorghum" then 1 else 0;]]></text>
         <quiet>0</quiet>
         <truescoremode>=</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt1-3-T</trueanswernote>
         <truefeedback format="html">
@@ -198,11 +198,11 @@ node8_test: if ans1="Millet" and ans2="Sorghum" then 1 else 0;]]></text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>3</falsenextnode>
         <falseanswernote>prt1-3-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -215,7 +215,7 @@ node8_test: if ans1="Millet" and ans2="Sorghum" then 1 else 0;]]></text>
         <quiet>0</quiet>
         <truescoremode>=</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt1-4-T</trueanswernote>
         <truefeedback format="html">
@@ -223,11 +223,11 @@ node8_test: if ans1="Millet" and ans2="Sorghum" then 1 else 0;]]></text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>4</falsenextnode>
         <falseanswernote>prt1-4-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -240,7 +240,7 @@ node8_test: if ans1="Millet" and ans2="Sorghum" then 1 else 0;]]></text>
         <quiet>0</quiet>
         <truescoremode>=</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt1-5-T</trueanswernote>
         <truefeedback format="html">
@@ -248,11 +248,11 @@ node8_test: if ans1="Millet" and ans2="Sorghum" then 1 else 0;]]></text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>5</falsenextnode>
         <falseanswernote>prt1-5-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -265,7 +265,7 @@ node8_test: if ans1="Millet" and ans2="Sorghum" then 1 else 0;]]></text>
         <quiet>0</quiet>
         <truescoremode>=</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt1-6-T</trueanswernote>
         <truefeedback format="html">
@@ -273,11 +273,11 @@ node8_test: if ans1="Millet" and ans2="Sorghum" then 1 else 0;]]></text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>6</falsenextnode>
         <falseanswernote>prt1-6-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -290,7 +290,7 @@ node8_test: if ans1="Millet" and ans2="Sorghum" then 1 else 0;]]></text>
         <quiet>0</quiet>
         <truescoremode>=</truescoremode>
         <truescore>0</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt1-7-T</trueanswernote>
         <truefeedback format="html">
@@ -298,11 +298,11 @@ node8_test: if ans1="Millet" and ans2="Sorghum" then 1 else 0;]]></text>
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>7</falsenextnode>
         <falseanswernote>prt1-7-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
       <node>
@@ -311,11 +311,11 @@ node8_test: if ans1="Millet" and ans2="Sorghum" then 1 else 0;]]></text>
         <answertest>AlgEquiv</answertest>
         <sans>node8_test</sans>
         <tans>1</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>=</truescoremode>
         <truescore>1</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt1-8-T</trueanswernote>
         <truefeedback format="html">
@@ -324,11 +324,11 @@ If instead an individual never grew a crop, we can ignore their missing values.<
         </truefeedback>
         <falsescoremode>-</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>-1</falsenextnode>
         <falseanswernote>prt1-8-F</falseanswernote>
         <falsefeedback format="html">
-          <text></text>
+          <text/>
         </falsefeedback>
       </node>
     </prt>
@@ -347,11 +347,11 @@ node1_test: if member(ans3, corr_ans_list) then 1 else 0;</text>
         <answertest>AlgEquiv</answertest>
         <sans>node1_test</sans>
         <tans>1</tans>
-        <testoptions></testoptions>
+        <testoptions/>
         <quiet>0</quiet>
         <truescoremode>=</truescoremode>
         <truescore>1</truescore>
-        <truepenalty></truepenalty>
+        <truepenalty/>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt3-1-T</trueanswernote>
         <truefeedback format="html">
@@ -361,7 +361,7 @@ node1_test: if member(ans3, corr_ans_list) then 1 else 0;</text>
         </truefeedback>
         <falsescoremode>=</falsescoremode>
         <falsescore>0</falsescore>
-        <falsepenalty></falsepenalty>
+        <falsepenalty/>
         <falsenextnode>-1</falsenextnode>
         <falseanswernote>prt3-1-F</falseanswernote>
         <falsefeedback format="html">

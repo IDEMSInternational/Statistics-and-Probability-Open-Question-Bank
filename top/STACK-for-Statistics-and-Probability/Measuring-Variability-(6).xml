@@ -8,12 +8,12 @@
       <text><![CDATA[<p dir="ltr" style="text-align: left;"><strong></strong></p><p dir="ltr"><span id="docs-internal-guid-9b8be657-7fff-1596-2fcb-78f64a1944e3">You are evaluating two crop varieties, Variety A and Variety B, both grown in the same region.</span></p><p dir="ltr"><span id="docs-internal-guid-9b8be657-7fff-1596-2fcb-78f64a1944e3">After analysing the data, you find that Variety A has a high mean yield and Variety B has a high mean yield.</span></p><p dir="ltr"><span id="docs-internal-guid-9b8be657-7fff-1596-2fcb-78f64a1944e3" style="font-size: 0.9375rem;">You also find that Variety A has a low variability in its yield, and Variety B has a low variability.</span></p><span id="docs-internal-guid-2f08092f-7fff-8cb1-a0f4-c98645a2d2d4"><p dir="ltr" style="">Which of the following would you say is true?</p></span><br><p></p>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text></text>
+      <text/>
     </generalfeedback>
-    <defaultgrade>1.0000000</defaultgrade>
+    <defaultgrade>1</defaultgrade>
     <penalty>0.3333333</penalty>
     <hidden>0</hidden>
-    <idnumber></idnumber>
+    <idnumber/>
     <single>true</single>
     <shuffleanswers>true</shuffleanswers>
     <answernumbering>123</answernumbering>

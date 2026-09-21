@@ -149,8 +149,7 @@ y5:y4-50;
 y6:y5+42;
 y7:y6-34;
 y8:y7+13;
-ta1:0.143;
-</text>
+ta1:0.143;</text>
     </questionvariables>
     <specificfeedback format="html">
       <text/>
