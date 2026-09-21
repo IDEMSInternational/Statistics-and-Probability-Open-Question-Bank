@@ -1,0 +1,994 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Observing Variability</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[<p>Below are boxplots and histograms for two generated data sets A and B. Which of A and B would you say has the highest variability?</p>
+
+[[jsxgraph]]
+function plot_histogram(data, numbars, board) {
+
+    var min_bound = Math.floor(Math.min.apply(Math, data));
+    var max_bound = Math.ceil(Math.max.apply(Math, data));
+    var range = max_bound - min_bound;
+
+    var numbars = Math.abs(Math.ceil(numbars));
+
+    if (numbars == 0) {
+        numbars = 1;
+    }
+    var barwidth = range / numbars;
+
+    /*var tot = data.reduce((a, b) => a + b, 0);*/
+
+
+    var relfreq = [];
+    for (var b = 0; b < numbars; b++) {
+        var data_in_bar = data.filter(function (d) {
+            if (b == 0) {
+                return (d >= min_bound + b * barwidth) && (d <= min_bound + (b + 1) * barwidth)
+            } else {
+                return (d > min_bound + b * barwidth) && (d <= min_bound + (b + 1) * barwidth)
+            }
+        });
+        relfreq.push(data_in_bar.length)
+    }
+
+
+
+    var ymax = Math.max.apply(Math, relfreq) / barwidth;
+
+
+    board.setBoundingBox([min_bound - 0.05 * range, ymax * 1.25, max_bound + 0.05 * range, -(ymax * 0.2)], false);
+
+    /* create axes*/
+    var origin = board.create('point', [min_bound - 0.1 * min_bound, 0], {
+        face: '',
+        visible: false,
+        size: 2,
+        name: '',
+        fixed: true
+    });
+    var y_end = board.create('point', [min_bound - 0.1 * min_bound, ymax * 1.1], {
+        face: '',
+        visible: false,
+        size: 2,
+        name: '',
+        fixed: true
+    });
+    var x_end = board.create('point', [max_bound * 1.1, 0], {
+        face: '',
+        visible: false,
+        size: 2,
+        name: '',
+        fixed: true
+    });
+    var x_axis = board.create('segment', [origin, x_end], {
+        strokeColor: 'black',
+        strokeWidth: 1
+    });
+
+
+  var Lx = Math.ceil(range / 3);
+  var x_tick_pos = [min_bound, min_bound + Lx, min_bound + 2 * Lx, min_bound + 3 * Lx];
+  var x_tick_label = [min_bound, min_bound + Lx, min_bound + 2 * Lx, min_bound + 3 * Lx];
+  x_tick_pos.forEach(function(el, index, arr) {
+    arr[index] = el - 0.9 * min_bound
+  });
+  var t_x = board.create('ticks', [x_axis, x_tick_pos], {
+    drawLabels: true,
+    labels: x_tick_label,
+    minorTicks: 0,
+    label: {
+      autoPosition: true,
+      offset: [-7.5, -12.5]
+    }
+  });
+
+
+    /*plot histogram*/
+    for (var i = 0; i < numbars; i++) {
+
+        var p0 = board.create('point', [min_bound + (i) * barwidth, 0], {
+            face: '',
+            visible: false,
+            size: 2,
+            name: '',
+            fixed: true
+
+        });
+
+        var p1 = board.create('point', [min_bound + (i) * barwidth, relfreq[i] / barwidth], {
+            face: '',
+            visible: false,
+            size: 2,
+            name: '',
+            fixed: true
+
+        });
+
+        var p2 = board.create('point', [min_bound + (i + 1) * barwidth, 0], {
+            face: '',
+            visible: false,
+            size: 2,
+            name: '',
+            fixed: true
+
+        });
+
+        var p3 = board.create('point', [min_bound + (i + 1) * barwidth, relfreq[i] / barwidth], {
+            face: '',
+            visible: false,
+            size: 2,
+            name: '',
+            fixed: true
+
+        });
+        board.create('polygon', [p0, p1, p3, p2], {
+            borders: {
+                strokeColor: 'blue'
+            },
+            fillColor: ''
+        })
+    }
+    return ymax;
+}
+
+var data = {#data_a#};
+
+var numbars = {#numbars#};
+
+var board = JXG.JSXGraph.initBoard(divid, {
+    axis: false,
+    keepaspectratio: false,
+    showCopyright: false,
+    showNavigation: false,
+    pan: { enable: false }
+});
+
+var maxy = plot_histogram(data, numbars, board);
+
+
+/* Creating box plot*/
+
+/* Define parameters from histogram for box plot*/
+var min_x = Math.floor(Math.min.apply(Math, data));
+var max_x = Math.ceil(Math.max.apply(Math, data));
+var max_y = maxy * 1.2;
+var mid_y = maxy * 1.15;
+var min_y = maxy * 1.1;
+var lq_x = min_x + (max_x - min_x) / 4;
+var med_x = min_x + (max_x - min_x) / 2;
+var uq_x = min_x + 3 * (max_x - min_x) / 4;
+
+/*create upper and lower bounds for the box plot*/
+var bot_line = board.create('line', [[0, min_y], [1, min_y]], {
+    straightFirst: true,
+    straightLast: true,
+    strokeWidth: 2,
+    visible: false,
+    fixed: true
+});
+var top_line = board.create('line', [[0, max_y], [1, max_y]], {
+    straightFirst: true,
+    straightLast: true,
+    strokeWidth: 2,
+    visible: false,
+    fixed: true
+});
+
+
+/* lq vertical and left horizontal lines start*/
+var top_lq = board.create('point', [lq_x, max_y], {
+    name: '',
+    visible: false
+});
+
+var bot_lq = board.create('point', [lq_x, min_y], {
+    name: '',
+    visible: false
+});
+
+var mid_lq = board.create('point', [lq_x, mid_y], {
+    name: '',
+    visible: false
+});
+
+var mid_min = board.create('point', [min_x, mid_y], {
+    name: '',
+    visible: false
+});
+
+var lq_line = board.create('segment', [top_lq, bot_lq], {
+    strokeWidth: 2,
+    visible: true,
+    fixed: true
+});
+
+var mid_line_left = board.create('segment', [mid_lq, mid_min], {
+    strokeWidth: 2,
+    visible: true,
+    fixed: true
+});
+/*lq vertical and left horizontal lines end*/
+
+
+/*med vertical line start*/
+var top_med = board.create('point', [med_x, max_y], {
+    name: '',
+    visible: false
+});
+
+var bot_med = board.create('point', [med_x, min_y], {
+    name: '',
+    visible: false
+});
+
+var med_line = board.create('segment', [top_med, bot_med], {
+    strokeWidth: 2,
+    visible: true,
+    fixed: true
+});
+/*med vertical line end*/
+
+/*uq vertical and right horizontal lines start*/
+var top_uq = board.create('point', [uq_x, max_y], {
+    name: '',
+    visible: false
+});
+
+var bot_uq = board.create('point', [uq_x, min_y], {
+    name: '',
+    visible: false
+});
+
+var uq_line = board.create('segment', [top_uq, bot_uq], {
+    strokeWidth: 2,
+    visible: true,
+    fixed: true
+});
+
+var mid_uq = board.create('point', [uq_x, mid_y], {
+    name: '',
+    visible: false
+});
+
+var mid_max = board.create('point', [max_x, mid_y], {
+    name: '',
+    visible: false
+});
+
+var mid_line_right = board.create('segment', [mid_uq, mid_max], {
+    strokeWidth: 2,
+    visible: true,
+    fixed: true
+});
+/*uq vertical and right horizontal lines end*/
+
+
+/*top horizontal line start*/
+var top_line = board.create('segment', [top_lq, top_uq], {
+    strokeWidth: 2,
+    visible: true,
+    fixed: true
+});
+/*top horizontal line end*/
+
+/*bottom horizontal line start*/
+var bot_line = board.create('segment', [bot_lq, bot_uq], {
+    strokeWidth: 2,
+    visible: true,
+    fixed: true
+});
+/*top horizontal line end*/
+
+/*max and min lines*/
+var min_line = board.create('segment', [[min_x, min_y], [min_x, max_y]], {
+    strokeWidth: 2,
+    visible: true,
+    fixed: true
+});
+
+var max_line = board.create('segment', [[max_x, min_y], [max_x, max_y]], {
+    strokeWidth: 2,
+    visible: true,
+    fixed: true
+});
+
+var data_name = board.create('text',[min_x, -0.1*maxy,"Data A"],{
+    fixed:true,
+    fontSize:16
+});
+[[/jsxgraph]]
+
+<br>
+
+[[jsxgraph]]
+function plot_histogram(data, numbars, board) {
+
+    var min_bound = Math.floor(Math.min.apply(Math, data));
+    var max_bound = Math.ceil(Math.max.apply(Math, data));
+    var range = max_bound - min_bound;
+
+    var numbars = Math.abs(Math.ceil(numbars));
+
+    if (numbars == 0) {
+        numbars = 1;
+    }
+    var barwidth = range / numbars;
+
+    /*var tot = data.reduce((a, b) => a + b, 0);*/
+
+
+    var relfreq = [];
+    for (var b = 0; b < numbars; b++) {
+        var data_in_bar = data.filter(function (d) {
+            if (b == 0) {
+                return (d >= min_bound + b * barwidth) && (d <= min_bound + (b + 1) * barwidth)
+            } else {
+                return (d > min_bound + b * barwidth) && (d <= min_bound + (b + 1) * barwidth)
+            }
+        });
+        relfreq.push(data_in_bar.length)
+    }
+
+
+
+    var ymax = Math.max.apply(Math, relfreq) / barwidth;
+
+
+    board.setBoundingBox([min_bound - 0.05 * range, ymax * 1.25, max_bound + 0.05 * range, -(ymax * 0.2)], false);
+
+    /* create axes*/
+    var origin = board.create('point', [min_bound - 0.1 * min_bound, 0], {
+        face: '',
+        visible: false,
+        size: 2,
+        name: '',
+        fixed: true
+    });
+    var y_end = board.create('point', [min_bound - 0.1 * min_bound, ymax * 1.1], {
+        face: '',
+        visible: false,
+        size: 2,
+        name: '',
+        fixed: true
+    });
+    var x_end = board.create('point', [max_bound * 1.1, 0], {
+        face: '',
+        visible: false,
+        size: 2,
+        name: '',
+        fixed: true
+    });
+    var x_axis = board.create('segment', [origin, x_end], {
+        strokeColor: 'black',
+        strokeWidth: 1
+    });
+    var y_axis = board.create('segment', [origin, y_end], {
+        strokeColor: 'black',
+        strokeWidth: 1
+    });
+
+  var Lx = Math.ceil(range / 3);
+  var x_tick_pos = [min_bound, min_bound + Lx, min_bound + 2 * Lx, min_bound + 3 * Lx];
+  var x_tick_label = [min_bound, min_bound + Lx, min_bound + 2 * Lx, min_bound + 3 * Lx];
+  x_tick_pos.forEach(function(el, index, arr) {
+    arr[index] = el - 0.9 * min_bound
+  });
+  var t_x = board.create('ticks', [x_axis, x_tick_pos], {
+    drawLabels: true,
+    labels: x_tick_label,
+    minorTicks: 0,
+    label: {
+      autoPosition: true,
+      offset: [-7.5, -12.5]
+    }
+  });
+
+  var Ly = Math.ceil(ymax);
+  var y_tick_pos = [0, Ly, 2 * Ly, Math.ceil(ymax)];
+
+  var t_y = board.create('ticks', [y_axis, y_tick_pos], {
+    labels: y_tick_pos,
+    drawLabels: true,
+    minorTicks: 0,
+    label: {
+      autoPosition: true,
+      offset: [-25, 0]
+    }
+  });
+
+
+    /*plot histogram*/
+    for (var i = 0; i < numbars; i++) {
+
+        var p0 = board.create('point', [min_bound + (i) * barwidth, 0], {
+            face: '',
+            visible: false,
+            size: 2,
+            name: '',
+            fixed: true
+
+        });
+
+        var p1 = board.create('point', [min_bound + (i) * barwidth, relfreq[i] / barwidth], {
+            face: '',
+            visible: false,
+            size: 2,
+            name: '',
+            fixed: true
+
+        });
+
+        var p2 = board.create('point', [min_bound + (i + 1) * barwidth, 0], {
+            face: '',
+            visible: false,
+            size: 2,
+            name: '',
+            fixed: true
+
+        });
+
+        var p3 = board.create('point', [min_bound + (i + 1) * barwidth, relfreq[i] / barwidth], {
+            face: '',
+            visible: false,
+            size: 2,
+            name: '',
+            fixed: true
+
+        });
+        board.create('polygon', [p0, p1, p3, p2], {
+            borders: {
+                strokeColor: 'blue'
+            },
+            fillColor: ''
+        })
+    }
+    return ymax;
+}
+
+var data = {#data_b#};
+
+var numbars = {#numbars#};
+
+var board = JXG.JSXGraph.initBoard(divid, {
+    axis: false,
+    keepaspectratio: false,
+    showCopyright: false,
+    showNavigation: false,
+    pan: { enable: false }
+});
+
+var maxy = plot_histogram(data, numbars, board);
+
+
+/* Creating box plot*/
+
+/* Define parameters from histogram for box plot*/
+var min_x = Math.floor(Math.min.apply(Math, data));
+var max_x = Math.ceil(Math.max.apply(Math, data));
+var max_y = maxy * 1.2;
+var mid_y = maxy * 1.15;
+var min_y = maxy * 1.1;
+var lq_x = min_x + (max_x - min_x) / 4;
+var med_x = min_x + (max_x - min_x) / 2;
+var uq_x = min_x + 3 * (max_x - min_x) / 4;
+
+/*create upper and lower bounds for the box plot*/
+var bot_line = board.create('line', [[0, min_y], [1, min_y]], {
+    straightFirst: true,
+    straightLast: true,
+    strokeWidth: 2,
+    visible: false,
+    fixed: true
+});
+var top_line = board.create('line', [[0, max_y], [1, max_y]], {
+    straightFirst: true,
+    straightLast: true,
+    strokeWidth: 2,
+    visible: false,
+    fixed: true
+});
+
+
+/* lq vertical and left horizontal lines start*/
+var top_lq = board.create('point', [lq_x, max_y], {
+    name: '',
+    visible: false
+});
+
+var bot_lq = board.create('point', [lq_x, min_y], {
+    name: '',
+    visible: false
+});
+
+var mid_lq = board.create('point', [lq_x, mid_y], {
+    name: '',
+    visible: false
+});
+
+var mid_min = board.create('point', [min_x, mid_y], {
+    name: '',
+    visible: false
+});
+
+var lq_line = board.create('segment', [top_lq, bot_lq], {
+    strokeWidth: 2,
+    visible: true,
+    fixed: true
+});
+
+var mid_line_left = board.create('segment', [mid_lq, mid_min], {
+    strokeWidth: 2,
+    visible: true,
+    fixed: true
+});
+/*lq vertical and left horizontal lines end*/
+
+
+/*med vertical line start*/
+var top_med = board.create('point', [med_x, max_y], {
+    name: '',
+    visible: false
+});
+
+var bot_med = board.create('point', [med_x, min_y], {
+    name: '',
+    visible: false
+});
+
+var med_line = board.create('segment', [top_med, bot_med], {
+    strokeWidth: 2,
+    visible: true,
+    fixed: true
+});
+/*med vertical line end*/
+
+/*uq vertical and right horizontal lines start*/
+var top_uq = board.create('point', [uq_x, max_y], {
+    name: '',
+    visible: false
+});
+
+var bot_uq = board.create('point', [uq_x, min_y], {
+    name: '',
+    visible: false
+});
+
+var uq_line = board.create('segment', [top_uq, bot_uq], {
+    strokeWidth: 2,
+    visible: true,
+    fixed: true
+});
+
+var mid_uq = board.create('point', [uq_x, mid_y], {
+    name: '',
+    visible: false
+});
+
+var mid_max = board.create('point', [max_x, mid_y], {
+    name: '',
+    visible: false
+});
+
+var mid_line_right = board.create('segment', [mid_uq, mid_max], {
+    strokeWidth: 2,
+    visible: true,
+    fixed: true
+});
+/*uq vertical and right horizontal lines end*/
+
+
+/*top horizontal line start*/
+var top_line = board.create('segment', [top_lq, top_uq], {
+    strokeWidth: 2,
+    visible: true,
+    fixed: true
+});
+/*top horizontal line end*/
+
+/*bottom horizontal line start*/
+var bot_line = board.create('segment', [bot_lq, bot_uq], {
+    strokeWidth: 2,
+    visible: true,
+    fixed: true
+});
+/*top horizontal line end*/
+
+/*max and min lines*/
+var min_line = board.create('segment', [[min_x, min_y], [min_x, max_y]], {
+    strokeWidth: 2,
+    visible: true,
+    fixed: true
+});
+
+var max_line = board.create('segment', [[max_x, min_y], [max_x, max_y]], {
+    strokeWidth: 2,
+    visible: true,
+    fixed: true
+});
+
+var data_name = board.create('text',[min_x, -0.1*maxy,"Data B"],{
+    fixed:true,
+    fontSize:16
+});
+[[/jsxgraph]]
+
+
+<p>[[input:ans1]] [[validation:ans1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/*Generate data sets*/
+/*Generate random standard deviations for the datasets*/
+sd_a:rand(50)+1;
+sd_b:rand(50)+1;
+/* Data Size */
+data_num:100;
+/*Mean*/
+mean_value:200;
+/*Generate 100 points with the specified mean and standard deviation*/
+data_a: sort(makelist(float(quantile_normal(rand(1.0),mean_value, sd_a)), i, 1, data_num));
+data_b: sort(makelist(float(quantile_normal(rand(1.0),mean_value, sd_b)), i, 1, data_num));
+
+/*Variables for histograms*/
+/* Number of bars in histogram */
+numbars: 30;
+
+
+/*Options and answer calculation*/
+answer_1:if abs(sd_a - sd_b) >= 1 then (if sd_a > sd_b then true else false) else false;
+answer_2:if abs(sd_a - sd_b) >= 1 then (if sd_a < sd_b then true else false) else false;
+answer_3:if abs(sd_a - sd_b) < 1 then true else false;
+ta:[[1,answer_1,"Data set A"],[2,answer_2,"Data set B"],[3,answer_3,"They are virtually the same"]];]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text>[[feedback:prt1]]</text>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p>Standard deviations: {@[sd_a,sd_b]@}</p>
+<p>First element of each data set: {@[first(data_a),first(data_b)]@}</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text>TODO: Question test
+TODO: Find out how to do question tests in this scenario
+TODO: Poor inefficient PRT</text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>radio</type>
+      <tans>ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>nonotanswered</options>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Check correct answered selected</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mcq_correct(ta)[1]</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>4</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Classification: are the SDs different enough? </description>
+        <answertest>AlgEquiv</answertest>
+        <sans>answer_3</sans>
+        <tans>false</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>2</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>SDs are different and chose A or B?</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>member(ans1,[1,2])</sans>
+        <tans>true</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Not quite, have a look at the \(x\) axes in the plots and compare which one has the wider range. The range is one way to measure variability from a plot.<p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>SDs are similar and chose A or B?</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>member(ans1,[1,2])</sans>
+        <tans>true</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Not quite. The standard deviations were actually similar. If your plots didn't show this, then this is due to the nature of randomly generated data. Have another go.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>4</name>
+        <description>Classification: are the SDs different enough? </description>
+        <answertest>AlgEquiv</answertest>
+        <sans>answer_3</sans>
+        <tans>false</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>5</truenextnode>
+        <trueanswernote>prt1-5-T</trueanswernote>
+        <truefeedback format="html">
+          <text></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>6</falsenextnode>
+        <falseanswernote>prt1-5-F</falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>5</name>
+        <description>SDs are different and chose A or B?</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>member(ans1,[1,2])</sans>
+        <tans>true</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-6-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Well done. We can see the range from the boxplots and histograms by looking at the difference between the highest and smallest point. This is one way to measure variability from a plot.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-6-F</falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>6</name>
+        <description>SDs are similar and chose A or B?</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>member(ans1,[1,2])</sans>
+        <tans>true</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-7-T</trueanswernote>
+        <truefeedback format="html">
+          <text></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-7-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Well done, there is no perceptible difference in variability from the graphs.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>529882588</deployedseed>
+    <deployedseed>1325282273</deployedseed>
+    <deployedseed>1607151645</deployedseed>
+    <deployedseed>1503774308</deployedseed>
+    <deployedseed>2143651429</deployedseed>
+    <deployedseed>917894646</deployedseed>
+    <deployedseed>913535209</deployedseed>
+    <deployedseed>1811806836</deployedseed>
+    <deployedseed>1774054062</deployedseed>
+    <deployedseed>1621049690</deployedseed>
+    <deployedseed>1584235883</deployedseed>
+    <deployedseed>1692117086</deployedseed>
+    <deployedseed>1352602560</deployedseed>
+    <deployedseed>1903462975</deployedseed>
+    <deployedseed>943665215</deployedseed>
+    <deployedseed>1136300925</deployedseed>
+    <deployedseed>1801784870</deployedseed>
+    <deployedseed>1379266858</deployedseed>
+    <deployedseed>1891026024</deployedseed>
+    <deployedseed>213732488</deployedseed>
+    <deployedseed>1736745310</deployedseed>
+    <deployedseed>1308212614</deployedseed>
+    <deployedseed>1233224337</deployedseed>
+    <deployedseed>666241739</deployedseed>
+    <deployedseed>39589024</deployedseed>
+    <deployedseed>854362112</deployedseed>
+    <deployedseed>1471124126</deployedseed>
+    <deployedseed>2119825184</deployedseed>
+    <deployedseed>1027244936</deployedseed>
+    <deployedseed>1189300829</deployedseed>
+    <deployedseed>1874430650</deployedseed>
+    <deployedseed>1474141492</deployedseed>
+    <deployedseed>1531147265</deployedseed>
+    <deployedseed>219426844</deployedseed>
+    <deployedseed>215319593</deployedseed>
+    <deployedseed>1586707912</deployedseed>
+    <deployedseed>2037758600</deployedseed>
+    <deployedseed>20664802</deployedseed>
+    <deployedseed>1820816027</deployedseed>
+    <deployedseed>481708960</deployedseed>
+    <deployedseed>760576243</deployedseed>
+    <deployedseed>288466132</deployedseed>
+    <deployedseed>760138885</deployedseed>
+    <deployedseed>1989633180</deployedseed>
+    <deployedseed>1149823015</deployedseed>
+    <deployedseed>425001390</deployedseed>
+    <deployedseed>1058991640</deployedseed>
+    <deployedseed>1467788418</deployedseed>
+    <deployedseed>751162799</deployedseed>
+    <deployedseed>1702870970</deployedseed>
+    <deployedseed>896981615</deployedseed>
+    <deployedseed>1529316157</deployedseed>
+    <deployedseed>531892511</deployedseed>
+    <deployedseed>1639539645</deployedseed>
+    <deployedseed>1585484273</deployedseed>
+    <deployedseed>110824089</deployedseed>
+    <deployedseed>368142716</deployedseed>
+    <deployedseed>554331803</deployedseed>
+    <deployedseed>463973768</deployedseed>
+    <deployedseed>1494153876</deployedseed>
+    <deployedseed>614841806</deployedseed>
+    <deployedseed>1604400591</deployedseed>
+    <deployedseed>1104425941</deployedseed>
+    <deployedseed>886756862</deployedseed>
+    <deployedseed>1046481706</deployedseed>
+    <deployedseed>1604054291</deployedseed>
+    <deployedseed>188523939</deployedseed>
+    <deployedseed>738321915</deployedseed>
+    <deployedseed>1912889869</deployedseed>
+    <deployedseed>2107777621</deployedseed>
+    <deployedseed>1936788332</deployedseed>
+    <deployedseed>1348596401</deployedseed>
+    <deployedseed>1555540215</deployedseed>
+    <deployedseed>369398460</deployedseed>
+    <deployedseed>722113259</deployedseed>
+    <deployedseed>1867616099</deployedseed>
+    <deployedseed>1303592903</deployedseed>
+    <deployedseed>1055216099</deployedseed>
+    <deployedseed>181546416</deployedseed>
+    <deployedseed>164742006</deployedseed>
+    <deployedseed>1410515680</deployedseed>
+    <deployedseed>913436136</deployedseed>
+    <deployedseed>2137678352</deployedseed>
+    <deployedseed>339346646</deployedseed>
+    <deployedseed>797176162</deployedseed>
+    <deployedseed>1329767158</deployedseed>
+    <deployedseed>1934991751</deployedseed>
+    <deployedseed>1250871506</deployedseed>
+    <deployedseed>1136439836</deployedseed>
+    <deployedseed>1033634378</deployedseed>
+    <deployedseed>1131416964</deployedseed>
+    <deployedseed>321921084</deployedseed>
+    <deployedseed>997129873</deployedseed>
+    <deployedseed>176141027</deployedseed>
+    <deployedseed>954367511</deployedseed>
+    <deployedseed>1241850373</deployedseed>
+    <deployedseed>664189054</deployedseed>
+    <deployedseed>1525885168</deployedseed>
+    <deployedseed>734971231</deployedseed>
+    <deployedseed>1078856162</deployedseed>
+  </question>
+</quiz>

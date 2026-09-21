@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>7: Observing Variability</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Consider two datasets, Dataset A and Dataset B which both contain two numerical variables: x and y. The summary statistics for both datasets are provided:</p>
+
+<ul>
+<li>Dataset A:</li>
+<ul>
+<li>Mean of x: 54.26</li>
+<li>Mean of y: 47.83</li>
+<li>Standard Deviation of x: 16.77</li>
+<li>Standard Deviation of y: 26.94</li>
+<li>Correlation coefficient: 0.816</li>
+</ul>
+<li>Dataset B:</li>
+<ul>
+<li>Mean of x: 54.26</li>
+<li>Mean of y: 47.83</li>
+<li>Standard Deviation of x: 16.77</li>
+<li>Standard Deviation of y: 26.94</li>
+<li>Correlation coefficient: 0.816</li>
+</ul>
+</ul>
+<p><strong> Based on the provided summary statistics, which of the following statements are true? Choose the options that you believe represent the relationship between Dataset A and Dataset B based on their summary statistics.</strong></p>
+
+<p>[[input:ans1]] [[validation:ans1]][[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.0000000</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[ta: random_permutation([[1, false, "Both data sets will look more-or-less the same when graphically plotted."], [2, false, "Dataset A and dataset B are the same data set."], [3, false, "Dataset A and dataset B have identical scatter plots when plotting A against B."], [4, true, "The variance is larger for y than x in both data sets."], [5, false, "A scatter plot between A and B will show a strong linear relationship for both data sets."]]);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text></text>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text><![CDATA[<p> Option order: {#map(lambda([i], i[1]), ta)#}. Correct options: {#[4]#}. </p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>checkbox</type>
+      <tans>ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>/* opt[i] is 1 if option i has been selected, else 0, for i = 1, 2, 3, 4, 5. We use opt[i] to give feedback in Node i + 1. */
+opt: map(lambda([i], if member(i, ans1) then 1 else 0), [1, 2, 3, 4, 5]);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Choice 1 (Both data sets will look more-or-less the same when graphically plotted.) selected?</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>opt[1]</sans>
+        <tans>1</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You selected "Both data sets will look more-or-less the same when graphically plotted.", which is not quite correct. Even though the summary statistics are the same, the datasets can have vastly different shapes and patterns. Always visualize the data to understand the true relationship.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Choice 2 (Dataset X and Dataset Y are the same data set.) selected?</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>opt[2]</sans>
+        <tans>1</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>2</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p> You selected "Dataset X and Dataset Y are the same data set.", which is not quite correct. The datasets are different, but their summary statistics happen to be identical. This highlights the importance of not relying solely on summary statistics for drawing conclusions about the underlying data.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>Choice 3 ( Dataset X and Dataset Y have identical scatter plots when plotting A against B.) selected?</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>opt[3]</sans>
+        <tans>1</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>3</truenextnode>
+        <trueanswernote>prt1-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p> You selected " Dataset X and Dataset Y have identical scatter plots when plotting A against B.", which is not quite correct. Datasets with the same summary statistics can exhibit different patterns. Visual inspection is crucial for understanding the data.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt1-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>Choice 4 (The variance is larger for y than x in both data sets.) selected?</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>opt[4]</sans>
+        <tans>1</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>4</truenextnode>
+        <trueanswernote>prt1-5-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p> You selected "The variance is larger for y than x in both data sets.", which is correct! Since the standard deviation is larger for y than for x in both data sets, then the variance will be too. This is because the variance is the standard deviation squared. </p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>4</falsenextnode>
+        <falseanswernote>prt1-5-F</falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>4</name>
+        <description>Choice 5 (A scatter plot between A and B will show a strong linear relationship for both data sets.) selected?</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>opt[5]</sans>
+        <tans>1</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>5</truenextnode>
+        <trueanswernote>prt1-6-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p> You selected "A scatter plot between A and B will show a strong linear relationship for both data sets.", which is not quite correct. While the correlation coefficient is the same for both datasets, the datasets can have different shapes even with similar correlation coefficients. Visualizing the data is essential for a comprehensive understanding.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>5</falsenextnode>
+        <falseanswernote>prt1-6-F</falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>5</name>
+        <description>Check all correct options were selected</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>mcq_correct(ta)</tans>
+        <testoptions></testoptions>
+        <quiet>1</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-7-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p><strong>Even though the summary statistics are the same, the datasets can have vastly different shapes and patterns. This highlights the importance of not relying solely on summary statistics for drawing conclusions about the underlying data.</strong></p>
+
+<p><strong>Always visualise the data to understand the true relationship. We illustrate this with the datasaurus dozen in Topic 7.</strong></p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-7-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p><strong>Even though the summary statistics are the same, the datasets can have vastly different shapes and patterns. This highlights the importance of not relying solely on summary statistics for drawing conclusions about the underlying data.</strong></p>
+
+<p><strong>Always visualise the data to understand the true relationship. We illustrate this with the datasaurus dozen in Topic 7.</strong></p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>743633801</deployedseed>
+    <deployedseed>361171032</deployedseed>
+    <deployedseed>2115145971</deployedseed>
+    <deployedseed>361506949</deployedseed>
+    <deployedseed>1296790429</deployedseed>
+    <deployedseed>286357980</deployedseed>
+    <deployedseed>49694989</deployedseed>
+    <deployedseed>397241881</deployedseed>
+    <deployedseed>1773632010</deployedseed>
+    <deployedseed>90004839</deployedseed>
+    <deployedseed>651206135</deployedseed>
+    <deployedseed>515312901</deployedseed>
+    <deployedseed>2042491261</deployedseed>
+    <deployedseed>208939933</deployedseed>
+    <deployedseed>605996894</deployedseed>
+    <deployedseed>1134024971</deployedseed>
+    <deployedseed>919368736</deployedseed>
+    <deployedseed>1160832840</deployedseed>
+    <deployedseed>425759953</deployedseed>
+    <deployedseed>1179113784</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description></description>
+      <testinput>
+        <name>ans1</name>
+        <value>mcq_correct(ta)</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-7-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>

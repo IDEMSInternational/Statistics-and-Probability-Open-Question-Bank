@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="cloze">
+    <name>
+      <text>9: Anova interpretation</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p dir="ltr" style="text-align: left;"></p><p>An experiment was conducted to assess how different varieties of wheat affect yield. A field was split into plots of equal area and the varieties were randomly allocated to plots with the resulting yield of wheat recorded in tonnes per hectare from each plot. The ANOVA table below summarizes the results. Use the information in it to complete the statement underneath.</p><table>
+<caption></caption>
+<thead>
+<tr>
+<th scope="col" style="text-align: center;"></th>
+<th scope="col" style="text-align: center;">&nbsp; &nbsp;&nbsp;DF&nbsp; &nbsp;&nbsp;</th>
+<th scope="col" style="text-align: center;">&nbsp; &nbsp;&nbsp;SS&nbsp; &nbsp;&nbsp;</th>
+<th scope="col" style="text-align: center;">&nbsp; &nbsp;&nbsp;MS&nbsp; &nbsp;&nbsp;</th>
+<th scope="col" style="text-align: center;">&nbsp; &nbsp;&nbsp;F&nbsp; &nbsp;&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Between Variables</strong></td>
+<td style="text-align: center;">&nbsp; &nbsp;&nbsp;3&nbsp; &nbsp;&nbsp;</td>
+<td style="text-align: center;">&nbsp; &nbsp; 1.387&nbsp; &nbsp;&nbsp;</td>
+<td style="text-align: center;">&nbsp; &nbsp;&nbsp;0.462&nbsp; &nbsp;&nbsp;</td>
+<td style="text-align: center;">&nbsp; &nbsp;&nbsp;16.11&nbsp; &nbsp;&nbsp;</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Residuals</strong></td>
+<td style="text-align: center;">&nbsp; &nbsp;&nbsp;20&nbsp; &nbsp;&nbsp;</td>
+<td style="text-align: center;">&nbsp; &nbsp;&nbsp;0.574&nbsp; &nbsp;&nbsp;</td>
+<td style="text-align: center;">&nbsp; &nbsp;&nbsp;0.029&nbsp; &nbsp;&nbsp;</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: center;">&nbsp; &nbsp;&nbsp;23&nbsp; &nbsp;&nbsp;</td>
+<td style="text-align: center;">&nbsp; &nbsp;&nbsp;1.961&nbsp; &nbsp;&nbsp;</td>
+<td style="text-align: center;">&nbsp; &nbsp;&nbsp;0.085&nbsp; &nbsp;&nbsp;</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table><br><p></p><p>A percentage {1:NUMERICAL:=70.7} % (1 decimal place) of variation in the yield of wheat is explained by differences in wheat variety.</p><br><p></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+  </question>
+</quiz>

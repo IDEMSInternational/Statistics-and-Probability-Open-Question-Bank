@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="multichoice">
+    <name>
+      <text>Measuring Variability (10)</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>You are evaluating two crop varieties, Variety A and Variety B, both grown in the same region.</p>
+<p>After analysing the data, you find that Variety A has a low mean yield and Variety B has a high&nbsp;mean yield.</p>
+<p>You also find that Variety A has a high&nbsp;variability in its yield, and Variety B has a low variability.</p>
+<p>Which of the following would you say is true?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>123</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Your answer is correct.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Your answer is partially correct.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Your answer is incorrect.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Both are equally good, from the information given.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[<p>The two varieties do not perform similarly, we can see this from their differences in average and/or variability. Have another go.</p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>We cannot answer this without more contextual information.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[<p>Not quite. More information is always nice to build a better understanding, but from the information given we can estimate that variety A is better than B.
+This is because the mean yield is better for A than for B, and the variability is either more consistent, or just as consistent.</p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Variety A outperforms Variety B.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[<p>Not quite. This question draws attention to the variability associated with Variety A and B. Variability can impact the predictability and reliability of crop yields, and it's important to consider this factor in your decision.</p>
+    <p>Say one variety had a mean of 80 (high), and a range between 70 and 90 (low)</p>
+    <p>Another variety had a mean of 30 (low), and a range from 25 to 35 (low), we would prefer variety A.</p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>Variety B outperforms Variety A.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[<p>Correct! This question draws attention to the variability associated with Variety A and B. Variability can impact the predictability and reliability of crop yields, and it's important to consider this factor in your decision.</p>
+<p>Say one variety had a mean of 80 (high), and a range between 70 and 90 (low)</p>
+<p>Another variety had a mean of 30 (low), and a range from 25 to 35 (low), from this information, we might prefer variety A.</p>]]></text>
+      </feedback>
+    </answer>
+  </question>
+</quiz>

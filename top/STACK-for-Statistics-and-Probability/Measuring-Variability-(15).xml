@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="multichoice">
+    <name>
+      <text>Measuring Variability (15)</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>You are evaluating two crop varieties, Variety A and Variety B, both grown in the same region.</p>
+<p>After analysing the data, you find that Variety A has a low mean yield and Variety B has a low mean yield.</p>
+<p>You also find that Variety A has a low variability in its yield, and Variety B has a high variability.</p>
+ <p>Which of the following would you say is true?</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>123</answernumbering>
+    <showstandardinstruction>0</showstandardinstruction>
+    <correctfeedback format="html">
+      <text>Your answer is correct.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Your answer is partially correct.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Your answer is incorrect.</text>
+    </incorrectfeedback>
+    <shownumcorrect/>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Both are equally good, from the information given.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[<p><strong></strong></p><p dir="ltr"><span id="docs-internal-guid-10fbeab3-7fff-993d-9e51-329a0317dfcb">Not quite. This question draws attention to the variability associated with Variety A and B. Variability can impact the predictability and reliability of crop yields, and it's important to consider this factor in your decision.</span></p><span id="docs-internal-guid-10fbeab3-7fff-993d-9e51-329a0317dfcb"><br><p dir="ltr">If the mean yield and variability are both high, then we need to know how high is that variability, and how high is that yield?</p><p dir="ltr">Say one variety had a mean of 50, and a range between 0 and 100.</p><p dir="ltr">Another variety had a mean of 10, but a range from 5 to 15. We might then choose the first variety.</p><br><p dir="ltr">What if instead, the second variety had a mean of 40, and a range of 25 to 55. Is this then better than the first variability?</p><br><p dir="ltr">How about if the first variety had a mean of 80, and a range from 75 to 85;</p><p dir="ltr">The second variety had a mean of 80, and a range from 50 to 110?</p><br><p dir="ltr">What do we value more in this context? Do we value that consistency here?&nbsp; In agriculture, lower variability is often preferred as it signifies more consistent and predictable yields, but is that the case in this instance?</p><p dir="ltr">We want to know more about this variability, and more about what to value for the given context. These are the sort of questions to ask for us to know more.</p></span><br><p></p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text><![CDATA[<p>We cannot answer this without more contextual information.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[<p><strong></strong></p><p dir="ltr"><span id="docs-internal-guid-7e443854-7fff-5965-b34e-07550a46e6ee">Correct! Variability can impact the predictability and reliability of crop yields, and it's important to consider this factor in your decision. In agriculture, lower variability is often preferred as it signifies more consistent and predictable yields.</span></p><span id="docs-internal-guid-7e443854-7fff-5965-b34e-07550a46e6ee"><br><p dir="ltr">If the mean yield and variability are both high, then we need to know how high is that variability, and how high is that yield?</p><p dir="ltr">Say one variety had a mean of 50, and a range between 0 and 100.</p><p dir="ltr">Another variety had a mean of 10, but a range from 5 to 15. We might then choose the first variety.</p><br><p dir="ltr">What if instead, the second variety had a mean of 40, and a range of 25 to 55. Is this then better than the first variability? What do we value more in this context? These are the sort of questions to ask.</p><br><p dir="ltr">You can go again to try a new scenario.</p></span><br><p></p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Variety A outperforms Variety B.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[<p></p><p dir="ltr"><span id="docs-internal-guid-10fbeab3-7fff-993d-9e51-329a0317dfcb">Not quite. This question draws attention to the variability associated with Variety A and B. Variability can impact the predictability and reliability of crop yields, and it's important to consider this factor in your decision.</span></p><span id="docs-internal-guid-10fbeab3-7fff-993d-9e51-329a0317dfcb"><br><p dir="ltr">If the mean yield and variability are both high, then we need to know how high is that variability, and how high is that yield?</p><p dir="ltr">Say one variety had a mean of 50, and a range between 0 and 100.</p><p dir="ltr">Another variety had a mean of 10, but a range from 5 to 15. We might then choose the first variety.</p><br><p dir="ltr">What if instead, the second variety had a mean of 40, and a range of 25 to 55. Is this then better than the first variability?</p><br><p dir="ltr">How about if the first variety had a mean of 80, and a range from 75 to 85;</p><p dir="ltr">The second variety had a mean of 80, and a range from 50 to 110?</p><br><p dir="ltr">What do we value more in this context? Do we value that consistency here?&nbsp; In agriculture, lower variability is often preferred as it signifies more consistent and predictable yields, but is that the case in this instance?</p><p dir="ltr">We want to know more about this variability, and more about what to value for the given context. These are the sort of questions to ask for us to know more.</p></span><br><p></p>]]></text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text><![CDATA[<p>Variety B outperforms Variety A.</p>]]></text>
+      <feedback format="html">
+        <text><![CDATA[<p></p><p dir="ltr"><span id="docs-internal-guid-10fbeab3-7fff-993d-9e51-329a0317dfcb">Not quite. This question draws attention to the variability associated with Variety A and B. Variability can impact the predictability and reliability of crop yields, and it's important to consider this factor in your decision.</span></p><span id="docs-internal-guid-10fbeab3-7fff-993d-9e51-329a0317dfcb"><br><p dir="ltr">If the mean yield and variability are both high, then we need to know how high is that variability, and how high is that yield?</p><p dir="ltr">Say one variety had a mean of 50, and a range between 0 and 100.</p><p dir="ltr">Another variety had a mean of 10, but a range from 5 to 15. We might then choose the first variety.</p><br><p dir="ltr">What if instead, the second variety had a mean of 40, and a range of 25 to 55. Is this then better than the first variability?</p><br><p dir="ltr">How about if the first variety had a mean of 80, and a range from 75 to 85;</p><p dir="ltr">The second variety had a mean of 80, and a range from 50 to 110?</p><br><p dir="ltr">What do we value more in this context? Do we value that consistency here?&nbsp; In agriculture, lower variability is often preferred as it signifies more consistent and predictable yields, but is that the case in this instance?</p><p dir="ltr">We want to know more about this variability, and more about what to value for the given context. These are the sort of questions to ask for us to know more.</p></span><br><p></p>]]></text>
+      </feedback>
+    </answer>
+  </question>
+</quiz>

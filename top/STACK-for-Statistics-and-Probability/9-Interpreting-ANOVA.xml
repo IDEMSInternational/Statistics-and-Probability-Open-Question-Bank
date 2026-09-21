@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>9: Interpreting ANOVA</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>An experiment is conducted on {@plots@} plots to understand the effect of several factors on the yield of millet.</p>
+<p>The factors are: {@variety@} varieties of millet, {@weeding@} types of weeding and {@fert@} different levels of
+    fertiliser.</p>
+<p><b>Give the values to \(1\) decimal place.</b></p>
+<br>
+<table>
+    <thead>
+        <tr>
+            <th scope="col" width="100">Term</th>
+            <th scope="col" width="100">Df</th>
+            <th scope="col" width="100">Sum Sq</th>
+            <th scope="col" width="100">Mean Sq</th>
+            <th scope="col" width="100">F Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Variety</td>
+            <td>{@variety_df@}<br></td>
+            <td>{@variety_ss@}</td>
+            <td>{@variety_ms@}</td>
+            <td>{@variety_f@}</td>
+        </tr>
+        <tr>
+            <td>Weeding</td>
+            <td>{@weeding_df@}<br></td>
+            <td>{@weeding_ss@}</td>
+            <td>{@weeding_ms@}</td>
+            <td>{@weeding_f@}</td>
+        </tr>
+        <tr>
+            <td>Fertiliser</td>
+            <td>{@fert_df@}</td>
+            <td>{@fert_ss@}</td>
+            <td>{@fert_ms@}<br></td>
+            <td>{@fert_f@}</td>
+        </tr>
+        <tr>
+            <td>Residuals</td>
+            <td>{@resid_df@}</td>
+            <td>{@resid_ss@}</td>
+            <td>{@resid_ms@}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Total</td>
+            <td>{@total_df@}<br></td>
+            <td>{@total_ss@}</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+<br>
+<p>What percentage (to one decimal place) of variation in the yield is explained by differences in variety?</p>
+<p>[[input:ans_variety]] [[validation:ans_variety]] [[feedback:prt1_variety]]</p>
+<p>What percentage (to one decimal place) of variation in the yield is not accounted for?</p>
+<p>[[input:ans_unaccounted]] [[validation:ans_unaccounted]] [[feedback:prt1_unaccounted]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text>dp(x, n) := float(round((x+10^(-8))*10^n)/10^n);
+
+plots: 30+rand(10);
+variety: 4+rand(3);
+weeding: 2+rand(2);
+fert: 3+rand(2);
+variety_df:variety-1;
+weeding_df: weeding-1;
+fert_df: fert-1;
+total_df: plots-1;
+resid_df: total_df-weeding_df-variety_df-fert_df;
+
+variety_ss: dp(float((rand(10)/10)+(rand(10)+20)),1);
+weeding_ss: dp(float((rand(10)/10)+(rand(10)+10)),1);
+fert_ss: dp(float((rand(10)/10)+rand(6)+40),1);
+resid_ss: dp(float((rand(10)/10)+(rand(20)+65)),1);
+total_ss: dp(variety_ss+weeding_ss+fert_ss+resid_ss,1);
+
+variety_ms: dp(variety_ss/variety_df,1);
+weeding_ms: dp(weeding_ss/weeding_df,1);
+fert_ms: dp(fert_ss/fert_df,1);
+resid_ms: dp(resid_ss/resid_df,1);
+
+variety_f: dp(variety_ms/resid_ms,1);
+weeding_f: dp(weeding_ms/resid_ms,1);
+fert_f: dp(fert_ms/resid_ms,1);
+
+variety_variation: dp(variety_ss/total_ss * 100, 1)
+unaccounted_variation: dp(resid_ss/total_ss * 100, 1)
+
+ta1: variety_variation;
+ta2: unaccounted_variation;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text></text>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>1</text>
+    </questionnote>
+    <questiondescription format="html">
+      <text></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans_unaccounted</name>
+      <type>numerical</type>
+      <tans>ta2</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options></options>
+    </input>
+    <input>
+      <name>ans_variety</name>
+      <type>numerical</type>
+      <tans>ta1</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>prt1_unaccounted</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description></description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans_unaccounted</sans>
+        <tans>ta2</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1_unaccounted-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1_unaccounted-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p dir="ltr" style="text-align: left;">The unaccounted for variability can be found by looking at the residual SS / total SS (then multiplied by 100 to get the percentage)<br></p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt1_variety</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description></description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans_variety</sans>
+        <tans>ta1</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1_variety-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p dir="ltr" style="text-align: left;">Variety accounts for {@variety_ss@}/{@total_ss@} * 100 of variation in the yield.&nbsp;</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+  </question>
+</quiz>

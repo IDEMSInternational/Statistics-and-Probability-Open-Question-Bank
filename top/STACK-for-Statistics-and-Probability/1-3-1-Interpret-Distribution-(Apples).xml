@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>1.3.1: Interpret Distribution (Apples)</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>The stacked dot plot below shows the weights of {@n@} apples in grams.</p>
+<p>What would you conclude from the shape of the distribution?</p> 
+
+<p>[[jsxgraph]] 
+// Create empty list of points
+var p = [];
+
+// Create board
+var board = JXG.JSXGraph.initBoard(divid, {
+  boundingbox: [{#xmin#}, {#ymax#}, {#xmax#}, {#ymin#}],
+  keepaspectratio: false,
+  showCopyright: false,
+  axis:true,
+  pan:{enabled:false}
+});
+
+//Create points of Data Set 4
+var lx4 = {#datx1#};
+var ly4 = {#daty1#};
+var i = 0;
+for (i = 0; i <= lx4.length - 1; i++) {
+  p[i] = board.create('point', [lx4[i], ly4[i]], {
+    face: 'x',
+    name: '',
+    size: 2,
+    fixed:true
+  });
+}
+
+[[/jsxgraph]]</p>
+
+<p>This would be the question about the data</p>
+
+<p>[[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text>{@feedback@}</text>
+    </generalfeedback>
+    <defaultgrade>1.0000000</defaultgrade>
+    <penalty>0.1000000</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <stackversion>
+      <text>2023060500</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[dat_min: rand(101)+200;
+dat_max: dat_min+90+rand(21);
+n: rand(41)+90;
+bin_width: floor((dat_max-dat_min)/30);
+ver_diff: 2;
+
+/* dat1: normal */
+dat1: makelist(float(quantile_normal(rand(1.0),0,1)),i,1,n);
+dat1: ((dat1-lmin(dat1))/(lmax(dat1)-lmin(dat1)))*(dat_max-dat_min)+dat_min;
+dat1: sort(dat1);
+dat1: round(dat1);
+datx1:makelist(1,i,1,n);
+for i:1 thru n do datx1[i]:bin_width*floor(dat1[i]/bin_width)+bin_width/2;
+
+/* dat2: bimodal (from two disjoint normals) */
+dat21: makelist(float(quantile_normal(rand(1.0),0,1)),i,1,floor(n/2));
+dat22: makelist(float(quantile_normal(rand(1.0),5,1)),i,1,ceiling(n/2));
+dat2: append(dat21,dat22);
+dat2: ((dat2-lmin(dat2))/(lmax(dat2)-lmin(dat2)))*(dat_max-dat_min)+dat_min;
+dat2: sort(dat2);
+dat2: round(dat2);
+datx2:makelist(1,i,1,n);
+for i:1 thru n do datx2[i]:bin_width*floor(dat2[i]/bin_width)+bin_width/2;
+
+/* dat3: gamma right skewed */
+dat3: makelist(float(quantile_gamma(rand(1.0),2,20)),i,1,n);
+dat3: ((dat3-lmin(dat3))/(lmax(dat3)-lmin(dat3)))*(dat_max-dat_min)+dat_min;
+dat3: sort(dat3);
+dat3: round(dat3);
+datx3:makelist(1,i,1,n);
+for i:1 thru n do datx3[i]:bin_width*floor(dat3[i]/bin_width)+bin_width/2;
+
+/* dat4: gamma left skewed */
+dat4: makelist(float(quantile_gamma(rand(1.0),2,20)),i,1,n);
+dat4: lmax(dat4)-lmin(dat4)+2-dat4;
+dat4: ((dat4-lmin(dat4))/(lmax(dat4)-lmin(dat4)))*(dat_max-dat_min)+dat_min;
+dat4: sort(dat4);
+dat4: round(dat4);
+datx4:makelist(1,i,1,n);
+for i:1 thru n do datx4[i]:bin_width*floor(dat4[i]/bin_width)+bin_width/2;
+
+/* dat5: normal with outlier */
+outval:1.5;
+dat5: makelist(float(quantile_normal(rand(1.0),0,1)),i,1,n);
+dat5: ((dat1-lmin(dat1))/(lmax(dat1)-lmin(dat1)))*(dat_max-dat_min)+dat_min;
+dat5: sort(dat5);
+dat5[n]:outval*dat5[n];
+dat5: round(dat5);
+datx5:makelist(1,i,1,n);
+for i:1 thru n do datx5[i]:bin_width*floor(dat5[i]/bin_width)+bin_width/2;
+
+
+/* Randomising the order of the graphs */
+dumlist1:[1,2,3,4,5];
+randdumlist1:random_permutation(dumlist1);
+datasetslist:[datx1,datx2,datx3,datx4,datx5];
+datx1:datasetslist[randdumlist1[1]];
+datx2:datasetslist[randdumlist1[2]];
+datx3:datasetslist[randdumlist1[3]];
+datx4:datasetslist[randdumlist1[4]];
+datx5:datasetslist[randdumlist1[5]];
+
+/* version number for each graph */
+normalans1:if randdumlist1[1] = 1 then 1 elseif randdumlist1[2]=1 then 2 elseif randdumlist1[3]=1 then 3 elseif randdumlist1[4]=1 then 4 else 5;
+bimodalans1:if randdumlist1[1] = 2 then 1 elseif randdumlist1[2]=2 then 2 elseif randdumlist1[3]=2 then 3 elseif randdumlist1[4]=2 then 4 else 5;
+rightskewans1:if randdumlist1[1] = 3 then 1 elseif randdumlist1[2]=3 then 2 elseif randdumlist1[3]=3 then 3 elseif randdumlist1[4]=3 then 4 else 5;
+leftskewans1:if randdumlist1[1] = 4 then 1 elseif randdumlist1[2]=4 then 2 elseif randdumlist1[3]=4 then 3 elseif randdumlist1[4]=4 then 4 else 5;
+outlierans1:if randdumlist1[1] = 5 then 1 elseif randdumlist1[2]=5 then 2 elseif randdumlist1[3]=5 then 3 elseif randdumlist1[4]=5 then 4 else 5;
+
+
+/* Calculate the maximun frequency of each data set */
+maxfreq1:0;
+k:1;
+for i:2 thru n do if datx1[i]=datx1[i-1] then (k:k+1, if maxfreq1 < k then maxfreq1:k) else k:1;
+
+maxfreq2:0;
+k:1;
+for i:2 thru n do if datx2[i]=datx2[i-1] then (k:k+1, if maxfreq2 < k then maxfreq2:k) else k:1;
+
+maxfreq3:0;
+k:1;
+for i:2 thru n do if datx3[i]=datx3[i-1] then (k:k+1, if maxfreq3 < k then maxfreq3:k) else k:1;
+
+maxfreq4:0;
+k:1;
+for i:2 thru n do if datx4[i]=datx4[i-1] then (k:k+1, if maxfreq4 < k then maxfreq4:k) else k:1;
+
+maxfreq5:0;
+k:1;
+for i:2 thru n do if datx5[i]=datx5[i-1] then (k:k+1, if maxfreq5 < k then maxfreq5:k) else k:1;
+
+/* Begin generating stacked dot plots */
+
+xmin:dat_min-2;
+xmax:if randdumlist1[1]=5 then outval*dat_max+2 else dat_max+2;
+ymin:-4;
+ymax: maxfreq1+3;
+
+/* Generate y-values for each data set to plot the stacked dots */
+j:1;
+daty1:makelist(0,i,1,n);
+daty1[1]:1;
+for i:2 thru n do if datx1[i]=datx1[i-1] then (j:j+1, daty1[i]:j) else (j:1, daty1[i]:j);
+
+j:1;
+daty2:makelist(0,i,1,n);
+daty2[1]:1;
+for i:2 thru n do if datx2[i]=datx2[i-1] then (j:j+1, daty2[i]:j) else (j:1, daty2[i]:j);
+
+j:1;
+daty3:makelist(0,i,1,n);
+daty3[1]:1;
+for i:2 thru n do if datx3[i]=datx3[i-1] then (j:j+1, daty3[i]:j) else (j:1, daty3[i]:j);
+
+j:1;
+daty4:makelist(0,i,1,n);
+daty4[1]:1;
+for i:2 thru n do if datx4[i]=datx4[i-1] then (j:j+1, daty4[i]:j) else (j:1, daty4[i]:j);
+
+j:1;
+daty5:makelist(0,i,1,n);
+daty5[1]:1;
+for i:2 thru n do if datx5[i]=datx5[i-1] then (j:j+1, daty5[i]:j) else (j:1, daty5[i]:j);
+
+/* End generating stacked dot plots */
+
+
+/* Options for teacher answers: */
+dist_type:if randdumlist1[1]=dumlist1[1] then "Normal" elseif randdumlist1[1]=dumlist1[2] then "Bimodal" elseif randdumlist1[1]=dumlist1[3] then "Right Skew" elseif randdumlist1[1]=dumlist1[4] then "Left Skew" else "Normal with Outlier";
+
+ta: [[1,is(dist_type="Normal"),"There is a reasonably large spread of weights for the apples, but nothing else stands out in their distribution."],[2,is(dist_type="Normal with Outlier"),"It looks as though one apple's weight may have been recorded wrongly."],[3,is(dist_type="Bimodal"),"There may be two different types of apple in the batch, or they could have come from two different trees or suppliers."],[4,is(dist_type="Left Skew"),"Most apples have fairly high weights but there are a few that are lighter."],[5,is(dist_type="Right Skew"),"Most apples have fairly low weights but there are a few that are heavier."]];
+ta: random_permutation(ta);
+ta_c: mcq_correct(ta)[1];
+
+feedback: if dist_type="Normal" then "The values are distributed reasonably symmetrically." elseif dist_type="Normal with Outlier" then "The values are reasonably symmetric, but there is one value that is much larger than the rest, and possibly a mistake in recording." elseif dist_type="Bimodal" then "There seems to be two clusters of values, possibly from two different types of apples." elseif dist_type="Left Skew" then "The distribution is skew with mainly high values and a long tail to the left." elseif dist_type="Right Skew" then "The distribution is skew with mainly low values and a long tail to the right."]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text></text>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>1</text>
+    </questionnote>
+    <questiondescription format="moodle_auto_format">
+      <text></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<p>Correct answer, well done.</p>]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<p>Your answer is partially correct.</p>]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<p>Incorrect answer.</p>]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>radio</type>
+      <tans>ta</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>nonotanswered</options>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text><![CDATA[is_skew: is(dist_type="Right Skew") or is(dist_type="Left Skew")]]></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description></description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta_c</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description></description>
+        <answertest>AlgEquiv</answertest>
+        <sans>is_skew</sans>
+        <tans>true</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>2</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description></description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>2</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.2</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text>There are some extreme values but they are still within a reasonable range from the rest of the data, so it's unlikely they are wrongly recorded values.</text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+    </prt>
+  </question>
+</quiz>
