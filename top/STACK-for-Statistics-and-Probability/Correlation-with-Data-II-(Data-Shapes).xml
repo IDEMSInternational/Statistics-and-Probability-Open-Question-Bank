@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Correlation with Data II (Data Shapes)</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<h3>River pollution and distance downstream</h3>
+
+<p>
+An environmental scientist collected water samples
+at 20 sites downstream from a pollution source
+to investigate the relationship between distance
+and pollutant concentration.
+</p>
+
+<p>
+Download the dataset. It contains four columns:
+</p>
+
+<ul>
+  <li><strong>Site:</strong> the sampling-site identifier.</li>
+  <li><strong>Distance_downstream_km:</strong> distance from
+      the pollution source, in kilometres.</li>
+  <li><strong>Recorded_concentration:</strong> the pollutant
+      concentration reported by the laboratory.</li>
+  <li><strong>Unit:</strong> the measurement unit for
+      the corresponding concentration.</li>
+</ul>
+
+<p>
+<a href='[[textdownload name="river_samples.csv"]]{@stack_csv_formatter(data,lab)@}[[/textdownload]]'>Download pollution_data.csv</a>
+</p>
+
+<p>
+<strong>Calculate Pearson's correlation coefficient</strong>
+between distance downstream and pollutant concentration.
+Give your answer to three decimal places.
+</p>
+
+<p>
+\(r=\) [[input:ans1]] [[validation:ans1]]
+</p>
+
+<p>
+How would you describe the relationship
+between the two variables?
+</p>
+
+<p>
+[[input:ans2]] [[validation:ans2]]
+</p>
+
+[[feedback:prt1]]]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Key lesson</h3>
+
+<p>
+Before calculating statistics, always
+check the meaning and units of your data.
+A column containing numerical values
+is not necessarily ready for analysis.
+</p>
+
+<p>
+<strong>Inconsistent units can produce
+a convincing but completely misleading
+correlation coefficient.</strong>
+</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2026063000</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/* River pollution: mixed measurement units */
+
+n: 20;
+
+/* Pearson correlation */
+pearson_calc(A,B):=block(
+    [m:length(A),ma,mb,sa,sb,sab],
+    ma:sum(A[k],k,1,m)/m,
+    mb:sum(B[k],k,1,m)/m,
+    sa:sum((A[k]-ma)^2,k,1,m),
+    sb:sum((B[k]-mb)^2,k,1,m),
+    sab:sum((A[k]-ma)*(B[k]-mb),k,1,m),
+    float(sab/sqrt(sa*sb))
+);
+
+/* Irregular sampling distances, to one decimal place */
+distances: makelist(
+    float(2*k+(rand(15)-7)/10),
+    k,1,n
+);
+
+/* Generate concentrations with a negative trend */
+base_conc: 12+rand(5);
+decline: (15+rand(11))/100;
+
+/* Random measurement variation */
+noise: makelist(
+    (rand(401)-200)/100,
+    k,1,n
+);
+
+clean_conc: makelist(
+    float(
+        round(
+            100*(base_conc-decline*k+noise[k])
+        )/100
+    ),
+    k,1,n
+);
+
+/* Trial correlations */
+r_clean: pearson_calc(
+    distances,
+    clean_conc
+);
+
+/* Retain a moderately scattered negative relationship */
+while not (
+    r_clean >= -0.90
+    and r_clean <= -0.80
+) do (
+    noise: makelist(
+        (rand(401)-200)/100,
+        k,1,n
+    ),
+
+    clean_conc: makelist(
+        float(
+            round(
+                100*(base_conc-decline*k+noise[k])
+            )/100
+        ),
+        k,1,n
+    ),
+
+    r_clean: pearson_calc(
+        distances,
+        clean_conc
+    )
+);
+
+/* First ten samples in mg/L;
+   last ten samples in micrograms/L */
+recorded_conc: makelist(
+    if k<=10
+    then clean_conc[k]
+    else 1000*clean_conc[k],
+    k,1,n
+);
+
+units: makelist(
+    if k<=10
+    then "mg/L"
+    else "ug/L",
+    k,1,n
+);
+
+/* Site identifiers */
+sites: makelist(
+    sconcat("S",k),
+    k,1,n
+);
+
+/* Downloadable CSV */
+lab: [
+    "Site",
+    "Distance_downstream_km",
+    "Recorded_concentration",
+    "Unit"
+];
+
+data: makelist(
+    [
+        sites[k],
+        distances[k],
+        recorded_conc[k],
+        units[k]
+    ],
+    k,1,n
+);
+
+/* Correlation before unit conversion */
+r_raw: pearson_calc(
+    distances,
+    recorded_conc
+);
+
+/* Three-decimal answers */
+r_raw_display:
+    float(round(1000*r_raw)/1000);
+
+r_clean_display:
+    float(round(1000*r_clean)/1000);
+
+/* Dropdown */
+options_final: [
+    [0,false,"No relationship"],
+    [1,false,"Weak positive linear relationship"],
+    [2,false,"Weak negative linear relationship"],
+    [3,false,"Strong positive linear relationship"],
+    [4,true,"Strong negative linear relationship"],
+    [5,false,"None of the above"]
+];
+
+ta_raw: 3;
+ta_clean: 4;]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="html">
+      <text>{@distances@}, {@clean_conc@}</text>
+    </questionnote>
+    <questiondescription format="html">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>numerical</type>
+      <tans>r_clean_display</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>dropdown</type>
+      <tans>options_final</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text><![CDATA[/* ECF classification of the student's coefficient */
+
+ecf_r: float(ans1);
+
+ecf_class:
+    if ecf_r < -1 or ecf_r > 1 then -1
+    elseif ecf_r <= -0.6 then 4
+    elseif ecf_r <= -0.1 then 2
+    elseif ecf_r >= 0.6 then 3
+    elseif ecf_r >= 0.1 then 1
+    else -1;
+
+
+options_final: [
+    [0,false,"No relationship"],
+    [1,false,"Weak positive linear relationship"],
+    [2,false,"Weak negative linear relationship"],
+    [3,false,"Strong positive linear relationship"],
+    [4,true,"Strong negative linear relationship"],
+    [5,false,"None of the above"]
+];]]></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans1</sans>
+        <tans>r_clean_display</tans>
+        <testoptions>0.002</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>2</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Correct! You have accounted for the differences in units before calculating the correlations</p>
+
+<p>
+If you did not clean the data, and just used the concentration values exactly as recorded in the file, 
+it would indicate a
+<strong>strong positive linear relationship</strong>:
+pollutant concentration seems to increase
+with distance downstream.
+</p>
+
+[[jsxgraph width="500px" height="350px"]]
+
+var xs = {#distances#};
+var ys = {#recorded_conc#};
+
+var xmin = Math.min.apply(null, xs);
+var xmax = Math.max.apply(null, xs);
+var ymin = 0;
+var ymax = Math.max.apply(null, ys);
+
+var xpad = (xmax-xmin)*0.1;
+var ypad = ymax*0.1;
+
+var board = JXG.JSXGraph.initBoard(divid, {
+    boundingbox: [
+        xmin-xpad,
+        ymax+ypad,
+        xmax+xpad,
+        -ypad
+    ],
+    axis: true,
+    showCopyright: false,
+    showNavigation: false
+});
+
+for (var i=0; i<xs.length; i++) {
+    var pointColor = i<10 ? '#2563eb' : '#dc2626';
+
+    board.create('point', [xs[i],ys[i]], {
+        name: '',
+        size: 3,
+        fixed: true,
+        highlight: false,
+        strokeColor: pointColor,
+        fillColor: pointColor
+    });
+}
+
+[[/jsxgraph]]
+
+<p>
+<span style="color:#2563eb;">●</span>
+Blue: measurements recorded in mg/L.
+<br>
+<span style="color:#dc2626;">●</span>
+Red: measurements recorded in &micro;g/L.
+</p>
+
+<p>
+Notice how the measurements recorded in
+&micro;g/L appear much larger simply because
+they are expressed in a different unit.
+</p>
+
+<p>
+After expressing all concentrations
+in mg/L, Pearson's correlation becomes
+</p>
+
+<p>
+\[
+r={@r_clean_display@}.
+\]
+</p>
+
+<p>
+as you correctly identified! It is then a <strong>strong negative linear relationship</strong>.
+Pollutant concentration generally decreases as distance downstream increases.
+</p>
+
+<p>
+After converting every concentration to mg/L,
+the scatterplot reveals the underlying relationship.
+</p>
+
+[[jsxgraph width="500px" height="350px"]]
+
+var xs = {#distances#};
+var ys = {#clean_conc#};
+
+var xmin = Math.min.apply(null, xs);
+var xmax = Math.max.apply(null, xs);
+var ymin = Math.min.apply(null, ys);
+var ymax = Math.max.apply(null, ys);
+
+var xpad = (xmax-xmin)*0.1;
+var ypad = Math.max((ymax-ymin)*0.1, 0.5);
+
+var board = JXG.JSXGraph.initBoard(divid, {
+    boundingbox: [
+        xmin-xpad,
+        ymax+ypad,
+        xmax+xpad,
+        ymin-ypad
+    ],
+    axis: true,
+    showCopyright: false,
+    showNavigation: false
+});
+
+for (var i=0; i<xs.length; i++) {
+    board.create('point', [xs[i],ys[i]], {
+        name: '',
+        size: 3,
+        fixed: true,
+        highlight: false,
+        strokeColor: '#16a34a',
+        fillColor: '#16a34a'
+    });
+}
+
+[[/jsxgraph]]
+
+<p>
+The data now show a strong negative
+linear relationship. The pollutant
+concentration generally decreases
+with distance downstream.
+</p>
+
+<p>
+<strong>Notice:</strong> No observations
+were removed. The measurements have
+simply been expressed in consistent units.
+</p>
+
+<hr>
+
+<h4>Why did the relationship reverse?</h4>
+
+<p>
+Pearson's correlation is sensitive
+to unusually large numerical values.
+In this dataset, the inconsistent
+measurement units created artificially
+large values in the concentration column.
+</p>
+
+<p>
+Because those values occurred at
+sampling sites farther downstream,
+the unconverted data appeared to show
+an increasing trend.
+</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans1</sans>
+        <tans>r_raw_display</tans>
+        <testoptions>0.002</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>2</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>
+Your coefficient matches the result obtained
+by using the recorded concentration values
+exactly as they appear in the dataset.
+</p>
+
+<p>
+However, there is something important
+about these measurements that you may
+have overlooked.
+</p>
+
+<p>
+Examine the columns carefully.
+Are all the concentration values
+directly comparable?
+</p>
+
+<p>
+The distance column is expressed consistently
+in kilometres. However, the concentration
+column contains measurements recorded in
+two different units:
+</p>
+
+<ul>
+  <li>Milligrams per litre (mg/L)</li>
+  <li>Micrograms per litre (&micro;g/L)</li>
+</ul>
+
+<p>
+These values cannot be compared directly
+without converting them to a common unit.
+</p>
+
+<p>
+There are 1000 micrograms in one milligram.
+Therefore,
+</p>
+
+<p>
+\[
+1\text{ mg/L}=1000\text{ &micro;g/L}.
+\]
+</p>
+
+<p>
+To express all concentrations in mg/L,
+divide every value recorded in
+&micro;g/L by 1000.
+</p>
+
+<p>
+Why not try plotting your two variables in a scatter plot to see if it still looks right?
+</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>
+Your correlation coefficient is not correct.
+Check which columns you have used and
+whether the values are suitable for
+direct comparison.
+</p>]]></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ecf_class</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>
+Your interpretation is consistent with
+the coefficient you calculated.
+</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+    </prt>
+  </question>
+</quiz>

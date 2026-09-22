@@ -5,7 +5,7 @@
       <text>Edit boxplot to match histogram distribution</text>
     </name>
     <questiontext format="moodle_auto_format">
-      <text><![CDATA[<p>Move the qualrtiles and median lines in the box plot so that it is representative of the data displayed in the histogram below.</p>
+      <text><![CDATA[<p>Move the quartiles and median lines in the box plot so that it is representative of the data displayed in the histogram below.</p>
 
 [[jsxgraph input-ref-ans1="sR1" input-ref-ans2="sR2" input-ref-ans3="sR3" input-ref-ans4="sR4" input-ref-ans5="sR5" input-ref-ans6="sR6" input-ref-ans7="sR7" input-ref-ans8="sR8"]]
 
@@ -395,7 +395,7 @@ board.unsuspendUpdate();
     <hidden>0</hidden>
     <idnumber/>
     <stackversion>
-      <text>2023060500</text>
+      <text>2026063000</text>
     </stackversion>
     <questionvariables>
       <text>/* bounds for data */

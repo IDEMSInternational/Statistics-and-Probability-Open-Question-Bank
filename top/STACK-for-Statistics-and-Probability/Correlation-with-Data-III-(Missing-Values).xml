@@ -1,0 +1,779 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Correlation with Data III (Missing Values)</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<h3>Butterfly populations along a transect</h3>
+
+<p>
+An ecologist organised butterfly surveys at
+22 monitoring sites at different distances
+from a nature reserve.
+</p>
+
+<p>
+Download the dataset. It contains four columns:
+</p>
+
+<ul>
+    <li>
+        <strong>Site:</strong>
+        the monitoring-site identifier.
+    </li>
+    <li>
+        <strong>Distance_km:</strong>
+        distance from the nature reserve,
+        in kilometres.
+    </li>
+    <li>
+        <strong>Butterfly_count:</strong>
+        the number of butterflies recorded.
+    </li>
+    <li>
+        <strong>Survey_status:</strong>
+        whether the survey was completed.
+    </li>
+</ul>
+
+<p>
+The field team recorded a blank in the count column
+when no butterflies were observed during
+a completed survey. 
+</p>
+
+<p>
+<a href = '[[textdownload name="butterfly_survey.csv"]]{@stack_csv_formatter(data,lab)@}[[/textdownload]]'>Download butterflies_data.csv</a>
+</p>
+
+<p>
+Calculate Pearson's correlation coefficient
+between distance from the nature reserve
+and butterfly count.
+</p>
+
+<p>
+Give your answer to three decimal places.
+</p>
+
+<p>
+\(r=\) [[input:ans1]] [[validation:ans1]]
+</p>
+
+[[feedback:prt1]]]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked solution: The missing butterflies</h3>
+
+<h4>1. What do the missing values mean?</h4>
+
+<p>
+Before calculating a correlation coefficient,
+we need to understand why some butterfly
+counts are recorded as NA.
+</p>
+
+<p>
+The survey status shows that every
+survey was completed. The field team's
+recording convention explains that NA
+in a completed survey means that no
+butterflies were observed.
+</p>
+
+<p>
+For this particular dataset, those
+missing counts should therefore be
+replaced with zero.
+</p>
+
+
+<h4>Why does the correlation change?</h4>
+
+<p>
+By omitting the NA rows, we excluded
+every site where no butterflies
+were observed.
+</p>
+
+<p>
+The remaining observations showed
+an increasing trend, but they did
+not represent the complete survey.
+</p>
+
+<p>
+Including the zero counts changes
+the relationship substantially.
+The apparent positive correlation
+becomes a negative correlation.
+</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2026063000</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/* Butterfly survey: two meanings of NA */
+
+n: 20;
+
+/* Pearson correlation */
+pearson_calc(A,B):=block(
+    [m:length(A),ma,mb,sa,sb,sab],
+    ma:sum(A[k],k,1,m)/m,
+    mb:sum(B[k],k,1,m)/m,
+    sa:sum((A[k]-ma)^2,k,1,m),
+    sb:sum((B[k]-mb)^2,k,1,m),
+    sab:sum((A[k]-ma)*(B[k]-mb),k,1,m),
+    float(sab/sqrt(sa*sb))
+);
+
+/* Twenty completed surveys */
+distances_sorted: makelist(
+    float(k+(rand(9)-4)/10),
+    k,1,n
+);
+
+/* Two uncompleted surveys near the reserve */
+incomplete_distances: [
+    float((1+rand(2))/10),
+    float((3+rand(2))/10)
+];
+
+/* The ten closest completed sites have numerical counts */
+observed_distances: makelist(
+    distances_sorted[k],
+    k,1,10
+);
+
+/* Generate realistic variation */
+base_count: 40+rand(11);
+increase: 1+rand(2);
+
+observed_counts: makelist(
+    base_count+increase*k+rand(31)-15,
+    k,1,10
+);
+
+/* Trial correlations */
+r_trial: pearson_calc(
+    observed_distances,
+    observed_counts
+);
+
+r_complete_trial: pearson_calc(
+    distances_sorted,
+    append(observed_counts,makelist(0,k,1,10))
+);
+
+r_all_zero_trial: pearson_calc(
+    append(distances_sorted,incomplete_distances),
+    append(
+        observed_counts,
+        makelist(0,k,1,12)
+    )
+);
+
+/* Keep variants with distinguishable results */
+while not (
+    r_trial >= 0.2
+    and r_trial <= 0.45
+    and r_complete_trial <= -0.6
+    and abs(r_all_zero_trial-r_complete_trial) >= 0.02
+) do (
+    observed_counts: makelist(
+        base_count+increase*k+rand(31)-15,
+        k,1,10
+    ),
+
+    r_trial: pearson_calc(
+        observed_distances,
+        observed_counts
+    ),
+
+    r_complete_trial: pearson_calc(
+        distances_sorted,
+        append(observed_counts,makelist(0,k,1,10))
+    ),
+
+    r_all_zero_trial: pearson_calc(
+        append(distances_sorted,incomplete_distances),
+        append(
+            observed_counts,
+            makelist(0,k,1,12)
+        )
+    )
+);
+
+/* Completed surveys */
+clean_counts_sorted: append(
+    observed_counts,
+    makelist(0,k,1,10)
+);
+
+recorded_counts_sorted: append(
+    observed_counts,
+    makelist("",k,1,10)
+);
+
+/* Add the two uncompleted surveys */
+all_distances: append(
+    distances_sorted,
+    incomplete_distances
+);
+
+all_recorded_counts: append(
+    recorded_counts_sorted,
+    ["",""]
+);
+
+all_statuses: append(
+    makelist("Completed",k,1,20),
+    ["Not completed","Not completed"]
+);
+
+/* Shuffle all 22 rows together */
+row_order: random_permutation(
+    makelist(k,k,1,22)
+);
+
+distances_csv: makelist(
+    all_distances[row_order[k]],
+    k,1,22
+);
+
+recorded_counts: makelist(
+    all_recorded_counts[row_order[k]],
+    k,1,22
+);
+
+survey_status: makelist(
+    all_statuses[row_order[k]],
+    k,1,22
+);
+
+sites: makelist(
+    sconcat("S",k),
+    k,1,22
+);
+
+/* Downloadable CSV */
+lab: [
+    "Site",
+    "Distance_km",
+    "Butterfly_count",
+    "Survey_status"
+];
+
+data: makelist(
+    [
+        sites[k],
+        distances_csv[k],
+        recorded_counts[k],
+        survey_status[k]
+    ],
+    k,1,22
+);
+
+/* Correlation after deleting every NA row */
+r_omitted: pearson_calc(
+    observed_distances,
+    observed_counts
+);
+
+/* Correct: completed surveys only, with documented zeros */
+r_clean: pearson_calc(
+    distances_sorted,
+    clean_counts_sorted
+);
+
+/* Incorrect: replace absolutely every NA with zero */
+r_all_zero: pearson_calc(
+    all_distances,
+    append(clean_counts_sorted,[0,0])
+);
+
+/* Rounded answers */
+r_omitted_display:
+    float(round(1000*r_omitted)/1000);
+
+r_clean_display:
+    float(round(1000*r_clean)/1000);
+
+r_all_zero_display:
+    float(round(1000*r_all_zero)/1000);
+
+/* Variables for the correct scatterplot */
+plot_distances: distances_sorted;
+plot_counts: clean_counts_sorted;
+
+/* Variables for the incorrect all-zero scatterplot */
+plot_all_distances: all_distances;
+
+plot_all_counts: append(
+    clean_counts_sorted,
+    [0,0]
+);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="html">
+      <text>{@distances_csv@}, {@recorded_counts@}, {@survey_status@}</text>
+    </questionnote>
+    <questiondescription format="html">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>numerical</type>
+      <tans>r_clean_display</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text><![CDATA[ecf_r: float(ans1);
+
+ecf_class:
+    if ecf_r < -1 or ecf_r > 1 then -1
+    elseif ecf_r <= -0.6 then 4
+    elseif ecf_r <= -0.1 then 2
+    elseif ecf_r >= 0.6 then 3
+    elseif ecf_r >= 0.1 then 1
+    else -1;]]></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans1</sans>
+        <tans>r_clean_display</tans>
+        <testoptions>0.002</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>
+Correct! Replacing the NA values with zero,
+in accordance with the survey's
+recording convention, allows us
+to include all 20 sites.
+</p>
+
+<p>
+This indicates a
+<strong>strong negative linear relationship</strong>
+between distance from the nature
+reserve and butterfly count.
+</p>
+
+<p>
+Note however that the complete scatterplot reveals
+a very different pattern.
+</p>
+
+[[jsxgraph width="500px" height="350px"]]
+
+var xs = {#plot_distances#};
+var ys = {#plot_counts#};
+
+var xmin = Math.min.apply(null, xs);
+var xmax = Math.max.apply(null, xs);
+var ymin = 0;
+var ymax = Math.max.apply(null, ys);
+
+var xpad = (xmax-xmin)*0.1;
+var ypad = Math.max(ymax*0.1, 1);
+
+var board = JXG.JSXGraph.initBoard(divid, {
+    boundingbox: [
+        xmin-xpad,
+        ymax+ypad,
+        xmax+xpad,
+        -ypad
+    ],
+    axis: true,
+    showCopyright: false,
+    showNavigation: false
+});
+
+for (var i=0; i<xs.length; i++) {
+    var pointColor = ys[i] === 0 ? '#16a34a' : '#2563eb';
+
+    board.create('point', [xs[i],ys[i]], {
+        name: '',
+        size: 3,
+        fixed: true,
+        highlight: false,
+        strokeColor: pointColor,
+        fillColor: pointColor
+    });
+}
+
+[[/jsxgraph]]
+
+<p>
+<span style="color:#2563eb;">●</span>
+Blue: numerical counts in the original CSV.
+<br>
+<span style="color:#16a34a;">●</span>
+Green: completed surveys where NA
+represents zero butterflies.
+</p>
+
+<p>
+The complete dataset shows that
+butterflies were absent at the
+more distant monitoring sites.
+</p>
+
+<hr>
+
+<p> This is important to handle correctly. If you omitted the NA rows, you would get a very different looking plot, correlation, and draw different conclusions</p>
+
+<p>
+The resulting Pearson correlation
+coefficient would be
+\(r={@r_omitted_display@}\), suggesting a
+<strong>weak positive linear relationship</strong>:
+butterfly counts tend to increase
+with distance from the nature reserve,
+although the observations are quite scattered.
+</p>
+
+[[jsxgraph width="500px" height="350px"]]
+
+var xs = {#observed_distances#};
+var ys = {#observed_counts#};
+
+var xmin = Math.min.apply(null, xs);
+var xmax = Math.max.apply(null, xs);
+var ymin = Math.min.apply(null, ys);
+var ymax = Math.max.apply(null, ys);
+
+var xpad = (xmax-xmin)*0.1;
+var ypad = Math.max((ymax-ymin)*0.1, 1);
+
+var board = JXG.JSXGraph.initBoard(divid, {
+    boundingbox: [
+        xmin-xpad,
+        ymax+ypad,
+        xmax+xpad,
+        ymin-ypad
+    ],
+    axis: true,
+    showCopyright: false,
+    showNavigation: false
+});
+
+for (var i=0; i<xs.length; i++) {
+    board.create('point', [xs[i],ys[i]], {
+        name: '',
+        size: 3,
+        fixed: true,
+        highlight: false,
+        strokeColor: '#dc2626',
+        fillColor: '#dc2626'
+    });
+}
+
+[[/jsxgraph]]
+
+<p>
+However, this analysis would exclude a large chunk of the monitoring sites. Those sites
+were surveyed, and zero butterflies
+were observed there.
+</p>
+
+<hr>
+
+
+<h3>Key lesson: Not all NA values mean the same thing</h3>
+
+<p>
+In this dataset, NA has two different meanings:
+</p>
+
+<ul>
+    <li>
+        <strong>Completed survey:</strong>
+        NA means no butterflies were observed,
+        so the count is zero.
+    </li>
+    <li>
+        <strong>Not completed:</strong>
+        NA means the count is unknown.
+        It must not be replaced with zero.
+    </li>
+</ul>
+
+<p>
+The two uncompleted surveys should retain
+their NA values in the cleaned dataset.
+They cannot be included in the Pearson
+correlation calculation because their
+butterfly counts are unknown.
+</p>
+
+<p>
+Neither deleting every NA row nor replacing
+every NA with zero is appropriate here.
+</p>
+
+<p>
+<strong>Always investigate why data are
+missing before deciding how to handle them.</strong>
+</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description/>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans1</sans>
+        <tans>r_omitted_display</tans>
+        <testoptions>0.002</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>
+Your coefficient matches the result obtained
+when every row containing NA is deleted.
+However, some of these surveys were completed.
+Check the recording convention to determine
+what NA means in those cases.
+</p>
+
+<p>
+If we exclude every row containing NA,
+we retain only the sites where a numerical
+butterfly count was recorded.
+</p>
+
+<p>
+The resulting Pearson correlation
+coefficient is
+\(r={@r_omitted_display@}\).
+</p>
+
+<p>
+This suggests a
+<strong>weak positive linear relationship</strong>:
+butterfly counts tend to increase
+with distance from the nature reserve,
+although the observations are quite scattered.
+</p>
+
+<p>
+The scatterplot shows why.
+</p>
+
+[[jsxgraph width="500px" height="350px"]]
+
+var xs = {#observed_distances#};
+var ys = {#observed_counts#};
+
+var xmin = Math.min.apply(null, xs);
+var xmax = Math.max.apply(null, xs);
+var ymin = Math.min.apply(null, ys);
+var ymax = Math.max.apply(null, ys);
+
+var xpad = (xmax-xmin)*0.1;
+var ypad = Math.max((ymax-ymin)*0.1, 1);
+
+var board = JXG.JSXGraph.initBoard(divid, {
+    boundingbox: [
+        xmin-xpad,
+        ymax+ypad,
+        xmax+xpad,
+        ymin-ypad
+    ],
+    axis: true,
+    showCopyright: false,
+    showNavigation: false
+});
+
+for (var i=0; i<xs.length; i++) {
+    board.create('point', [xs[i],ys[i]], {
+        name: '',
+        size: 3,
+        fixed: true,
+        highlight: false,
+        strokeColor: '#dc2626',
+        fillColor: '#dc2626'
+    });
+}
+
+[[/jsxgraph]]
+
+<p>
+However, this analysis excludes half
+the monitoring sites. Those sites
+were surveyed, and zero butterflies
+were observed there.
+</p>]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>
+Your correlation coefficient is not correct.
+Check which observations you included
+and how you handled the NA values.
+</p>]]></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description/>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans1</sans>
+        <tans>r_all_zero_display</tans>
+        <testoptions>0.002</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>0.2</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>
+Your coefficient matches the result obtained
+when every NA is replaced with zero.
+</p>
+
+<p>
+But two surveys were not completed.
+Their butterfly counts are unknown:
+we cannot assume that no butterflies
+would have been observed.
+</p>
+
+<p>
+Use the survey status to distinguish
+genuine zero counts from genuinely
+missing observations.
+</p>
+
+<p>
+The following scatterplot incorrectly
+places those two sites on the horizontal axis.
+</p>
+
+[[jsxgraph width="500px" height="350px"]]
+
+var xs = {#plot_all_distances#};
+var ys = {#plot_all_counts#};
+
+var xmin = Math.min.apply(null, xs);
+var xmax = Math.max.apply(null, xs);
+var ymin = 0;
+var ymax = Math.max.apply(null, ys);
+
+var xpad = (xmax-xmin)*0.1;
+var ypad = Math.max(ymax*0.1, 1);
+
+var board = JXG.JSXGraph.initBoard(divid, {
+    boundingbox: [
+        xmin-xpad,
+        ymax+ypad,
+        xmax+xpad,
+        -ypad
+    ],
+    axis: true,
+    showCopyright: false,
+    showNavigation: false
+});
+
+for (var i=0; i<xs.length; i++) {
+    var pointColor = ys[i] === 0 ? '#16a34a' : '#2563eb';
+
+    board.create('point', [xs[i],ys[i]], {
+        name: '',
+        size: 3,
+        fixed: true,
+        highlight: false,
+        strokeColor: pointColor,
+        fillColor: pointColor
+    });
+}
+
+[[/jsxgraph]]]]></text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>
+Your coefficient does not match the expected
+result. Check how you handled the NA values
+and which surveys you included in the calculation.
+</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+  </question>
+</quiz>
