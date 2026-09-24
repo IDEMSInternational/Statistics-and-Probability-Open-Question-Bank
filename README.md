@@ -47,3 +47,7 @@ own conventions (see its `.gitignore` entries). To work with this repo:
 
 See that project's docs for the full workflow (`createrepo.md`, `importrepotomoodle.md`,
 `exportrepofrommoodle.md`).
+
+## Caveats
+
+To be used within PreTeXt, all questions that feature randomization must contain deployed variants.
