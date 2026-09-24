@@ -325,5 +325,13 @@ mean1 = {@mean1@}, mean2 = {@mean2@}</text>
         </falsefeedback>
       </node>
     </prt>
+    <deployedseed>1</deployedseed>
+    <deployedseed>2</deployedseed>
+    <deployedseed>3</deployedseed>
+    <deployedseed>4</deployedseed>
+    <deployedseed>5</deployedseed>
+    <deployedseed>6</deployedseed>
+    <deployedseed>7</deployedseed>
+    <deployedseed>8</deployedseed>
   </question>
 </quiz>
