@@ -418,6 +418,16 @@ for i:2 thru ds1 do if dorx1[i]=dorx1[i-1] then (j:j+1, dory[i]:j) else (j:1, do
         </falsefeedback>
       </node>
     </prt>
+    <deployedseed>500658793</deployedseed>
+    <deployedseed>1877756616</deployedseed>
+    <deployedseed>649047687</deployedseed>
+    <deployedseed>1079166671</deployedseed>
+    <deployedseed>2105621786</deployedseed>
+    <deployedseed>660532723</deployedseed>
+    <deployedseed>1564904070</deployedseed>
+    <deployedseed>2146382722</deployedseed>
+    <deployedseed>594104514</deployedseed>
+    <deployedseed>1243418203</deployedseed>
     <tags>
       <tag><text>Stacked Dot Plot</text>
 </tag>

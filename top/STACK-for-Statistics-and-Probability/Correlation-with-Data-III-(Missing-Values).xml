@@ -44,7 +44,7 @@ a completed survey.
 </p>
 
 <p>
-<a href = '[[textdownload name="butterfly_survey.csv"]]{@stack_csv_formatter(data,lab)@}[[/textdownload]]'>Download butterflies_data.csv</a>
+<a href = "[[textdownload name="butterfly_survey.csv"]]{@stack_csv_formatter(data,lab)@}[[/textdownload]]">Download butterflies_data.csv</a>
 </p>
 
 <p>

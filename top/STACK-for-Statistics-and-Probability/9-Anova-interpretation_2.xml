@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="numerical">
+    <name>
+      <text>9: Anova interpretation</text>
+    </name>
+    <questiontext format="html">
+      <text>{1:NUMERICAL:=70.7}</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <answer fraction="100" format="moodle_auto_format">
+      <text>70.7</text>
+      <feedback format="html">
+        <text/>
+      </feedback>
+      <tolerance>0</tolerance>
+    </answer>
+    <unitgradingtype>0</unitgradingtype>
+    <unitpenalty>1.0000000</unitpenalty>
+    <showunits>3</showunits>
+    <unitsleft>0</unitsleft>
+  </question>
+</quiz>

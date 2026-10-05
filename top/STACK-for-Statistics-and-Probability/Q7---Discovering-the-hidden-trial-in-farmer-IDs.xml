@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Q7 - Discovering the hidden trial in farmer IDs</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<h3>Rescuing a hidden variable: two cassava trials</h3><p>In the Nigeria example in the chapter, the frequencies of <code>option_a</code>
+initially seem unbalanced. Looking more closely at the <code>id</code> column reveals
+that the data come from two trials: <strong>Osun</strong> and <strong>Benue</strong>.</p><p>Here is a smaller <strong>illustrative dataset</strong> with three farmers and three varieties.
+Each farmer has one preferred variety recorded in <code>option_a</code>.</p><table class="table table-bordered"><thead><tr><th>Example ID</th><th>option_a</th></tr></thead><tbody><tr><td>Osun-{@idstart@}</td><td>Variety A</td></tr><tr><td>Osun-{@idstart+1@}</td><td>Variety B</td></tr><tr><td>Benue-{@idstart+2@}</td><td>Variety C</td></tr></tbody></table><p>In the full illustrative dataset, the frequencies are:</p><table class="table table-bordered"><thead><tr><th>Trial</th><th>Variety A</th><th>Variety B</th><th>Variety C</th><th>Total</th></tr></thead><tbody><tr><th>Osun</th><td>{@osun_each@}</td><td>{@osun_each@}</td><td>{@osun_each@}</td><td>{@osun_total@}</td></tr><tr><th>Benue</th><td>{@benue_a@}</td><td>{@benue_b@}</td><td>{@benue_c@}</td><td>{@benue_total@}</td></tr><tr><th>All records</th><td>{@pooled_a@}</td><td>{@pooled_b@}</td><td>{@pooled_c@}</td><td>{@grand_total@}</td></tr></tbody></table><h4>A. Predict</h4><p>Why might the pooled <code>option_a</code> frequencies be misleading?
+[[input:predict]] [[validation:predict]] [[feedback:prtpredict]]</p><h4>B. Rescue the hidden variable</h4><p>Which part of the ID identifies the trial?
+[[input:idpart]] [[validation:idpart]] [[feedback:prtidpart]]</p><p>What kind of column would be suitable for a new <code>trial</code>
+variable in R-Instat?
+[[input:trialtype]] [[validation:trialtype]] [[feedback:prttrialtype]]</p><h4>C. Investigate the frequencies</h4><p>How many farmers are in the <strong>Osun</strong> trial?
+[[input:osuncount]] [[validation:osuncount]] [[feedback:prtosuncount]]</p><p>How many farmers chose <strong>Variety C</strong> in the <strong>Benue</strong> trial?
+[[input:benueccount]] [[validation:benueccount]] [[feedback:prtbenueccount]]</p><p>If you make a frequency table of <code>option_a</code><strong>without filtering
+by trial</strong>, how many farmers chose <strong>Variety A</strong>?
+[[input:pooledacount]] [[validation:pooledacount]] [[feedback:prtpooledacount]]</p>
+[[hint title="Hint: pooled frequencies"]]
+<p>A pooled frequency is the sum of the frequencies for that variety
+in Osun and Benue.</p>
+[[/hint]]
+<h4>D. Interpret</h4><p>After filtering the data to <strong>Osun only</strong>, which statement is true?
+[[input:osuninterpret]] [[validation:osuninterpret]]
+[[feedback:prtosuninterpret]]</p><p>Which is the most appropriate next step if you want to investigate
+whether the variety choices differ between the two trials?
+[[input:nextstep]] [[validation:nextstep]] [[feedback:prtnextstep]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked solution</h3><p>The ID contains the trial name before the hyphen.
+Splitting the ID on the hyphen allows us to create a <code>trial</code>
+column. Since the values Osun and Benue are categories, a factor
+is suitable for this column.</p><p>In this illustrative dataset, Osun has {@osun_each@} observations
+for each of the three varieties, giving
+\(3\times {@osun_each@}={@osun_total@}\) farmers in total.</p><p>Benue has {@benue_a@}, {@benue_b@} and {@benue_c@} observations
+for Varieties A, B and C respectively. In particular, Variety C
+has {@benue_c@} observations in Benue.</p><p>Pooling both trials gives
+\({@osun_each@}+{@benue_a@}={@pooled_a@}\)
+observations for Variety A.</p><p>The pooled frequencies differ because the two trials have different
+frequency patterns. Filtering to Osun reveals equal frequencies
+for the three varieties. For an investigation of the two trials,
+create the trial factor and compare separate frequency tables
+or a table grouped by trial.</p><p>In the chapter's larger Nigeria dataset, splitting the ID
+reveals Osun and Benue. Filtering to Osun gives 300 observations
+across eight cassava varieties, with 37 or 38 farmers per variety.
+The smaller numbers above are for practice, not the chapter's
+actual data.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>12</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2026063000</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/* Illustrative three-variety version of the Osun/Benue example. */
+idstart:rand(70)+101;
+osun_each:rand(4)+8;
+benue_a:rand(3)+2;
+benue_b:rand(3)+5;
+benue_c:rand(3)+10;
+
+osun_total:3*osun_each;
+benue_total:benue_a+benue_b+benue_c;
+pooled_a:osun_each+benue_a;
+pooled_b:osun_each+benue_b;
+pooled_c:osun_each+benue_c;
+grand_total:osun_total+benue_total;
+
+/* Choices are shuffled; the integer keys are the assessed answers. */
+tapredict:random_permutation([
+ [1,true,"The pooled table combines observations from two trials that have different frequency patterns."],
+ [2,false,"A frequency table is never useful for a factor variable."],
+ [3,false,"A pooled table always contains fewer observations than either trial."],
+ [4,false,"The ID numbers prove that some farmers have been counted twice."]
+]);
+taidpart:random_permutation([
+ [1,true,"The text before the hyphen (Osun or Benue)."],
+ [2,false,"The digits after the hyphen."],
+ [3,false,"The name of the variety in option_a."],
+ [4,false,"The number of letters in the ID."]
+]);
+tatrialtype:random_permutation([
+ [1,true,"Factor, with levels Osun and Benue."],
+ [2,false,"Numeric, because the trial name appears in an ID."],
+ [3,false,"Ordered factor, because Osun must come before Benue."],
+ [4,false,"A measured quantity obtained by averaging the IDs."]
+]);
+taosuninterpret:random_permutation([
+ [1,true,"The three varieties have equal frequencies in the Osun subset."],
+ [2,false,"Variety C has the highest frequency in the Osun subset."],
+ [3,false,"The Osun subset includes all Benue farmers."],
+ [4,false,"Filtering to Osun makes option_a a numeric variable."]
+]);
+tanextstep:random_permutation([
+ [1,true,"Create a trial factor and compare option_a frequencies separately by trial."],
+ [2,false,"Delete the trial information and compare only the pooled totals."],
+ [3,false,"Calculate the mean of the ID column."],
+ [4,false,"Treat the pooled counts as if they came from one trial."]
+]);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="html">
+      <text>{@idstart@}-{@osun_each@}-{@benue_a@}-{@benue_b@}-{@benue_c@}</text>
+    </questionnote>
+    <questiondescription format="html">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text>Correct.</text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text>Partly correct.</text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text>Not yet correct.</text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>benueccount</name>
+      <type>numerical</type>
+      <tans>benue_c</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>idpart</name>
+      <type>radio</type>
+      <tans>taidpart</tans>
+      <boxsize>12</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>nextstep</name>
+      <type>radio</type>
+      <tans>tanextstep</tans>
+      <boxsize>12</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>osuncount</name>
+      <type>numerical</type>
+      <tans>osun_total</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>osuninterpret</name>
+      <type>radio</type>
+      <tans>taosuninterpret</tans>
+      <boxsize>12</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>pooledacount</name>
+      <type>numerical</type>
+      <tans>pooled_a</tans>
+      <boxsize>10</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>predict</name>
+      <type>radio</type>
+      <tans>tapredict</tans>
+      <boxsize>12</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>trialtype</name>
+      <type>radio</type>
+      <tans>tatrialtype</tans>
+      <boxsize>12</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prtbenueccount</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>benueccount</sans>
+        <tans>benue_c</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prtbenueccount-0-T</trueanswernote>
+        <truefeedback format="html">
+          <text>Correct. Read the Variety C entry in the Benue row.</text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prtbenueccount-0-F</falseanswernote>
+        <falsefeedback format="html">
+          <text>Use the Benue row, not the pooled row, for Variety C.</text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prtidpart</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>idpart</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prtidpart-0-T</trueanswernote>
+        <truefeedback format="html">
+          <text>Correct. Splitting on the hyphen recovers the trial name.</text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prtidpart-0-F</falseanswernote>
+        <falsefeedback format="html">
+          <text>The text Osun or Benue appears before the hyphen.</text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prtnextstep</name>
+      <value>2.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>nextstep</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prtnextstep-0-T</trueanswernote>
+        <truefeedback format="html">
+          <text>Correct. Separate or grouped tables retain the trial information.</text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prtnextstep-0-F</falseanswernote>
+        <falsefeedback format="html">
+          <text>To investigate differences between trials, keep the trial variable in the analysis.</text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prtosuncount</name>
+      <value>2.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>osuncount</sans>
+        <tans>osun_total</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prtosuncount-0-T</trueanswernote>
+        <truefeedback format="html">
+          <text>Correct. Add the three Osun frequencies.</text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prtosuncount-0-F</falseanswernote>
+        <falsefeedback format="html">
+          <text>The Osun total is three times the frequency of each variety in Osun.</text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prtosuninterpret</name>
+      <value>2.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>osuninterpret</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prtosuninterpret-0-T</trueanswernote>
+        <truefeedback format="html">
+          <text>Correct. Osun is balanced across the three illustrative varieties.</text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prtosuninterpret-0-F</falseanswernote>
+        <falsefeedback format="html">
+          <text>Check the Osun row: the three variety counts are identical.</text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prtpooledacount</name>
+      <value>2.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>pooledacount</sans>
+        <tans>pooled_a</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prtpooledacount-0-T</trueanswernote>
+        <truefeedback format="html">
+          <text>Correct. Add the Variety A counts from both trials.</text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prtpooledacount-0-F</falseanswernote>
+        <falsefeedback format="html">
+          <text>Add Variety A in Osun and Variety A in Benue.</text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prtpredict</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>predict</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prtpredict-0-T</trueanswernote>
+        <truefeedback format="html">
+          <text>Correct. Pooling can hide important differences between trials.</text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prtpredict-0-F</falseanswernote>
+        <falsefeedback format="html">
+          <text>Look at the Osun and Benue rows before interpreting the pooled totals.</text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prttrialtype</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>trialtype</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prttrialtype-0-T</trueanswernote>
+        <truefeedback format="html">
+          <text>Correct. Osun and Benue are categories with no inherent order.</text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prttrialtype-0-F</falseanswernote>
+        <falsefeedback format="html">
+          <text>A factor is appropriate for a fixed set of unordered trial names.</text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>875914171</deployedseed>
+    <deployedseed>1759864515</deployedseed>
+    <deployedseed>16735879</deployedseed>
+    <deployedseed>160144456</deployedseed>
+    <deployedseed>312487785</deployedseed>
+    <deployedseed>1814837579</deployedseed>
+    <deployedseed>836444563</deployedseed>
+    <deployedseed>243923408</deployedseed>
+    <deployedseed>1724646363</deployedseed>
+    <deployedseed>463318901</deployedseed>
+  </question>
+</quiz>

@@ -1,0 +1,1401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Grammar of Graphics: Scatterplot</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Explore a randomised forest dataset. Each row represents one tree. Start with a blank graph: choose variables for both axes, then explore colour, point size and treatment panels.</p>
+
+<p><a href="[[textdownload name="forest_graphics.csv"]]{@stack_csv_formatter(tree_data,lab)@}[[/textdownload]]">You can download the CSV dataset here or</a> you can also inspect the exact measurements of any tree using the selector in the controls above the graph.</p>
+
+<p><strong>Use the dropdown menus and checkboxes above the plot</strong> to choose your visual mappings. Each point is labelled with its Tree_ID.
+<strong>Click a point or use the “Inspect exact measurements” dropdown</strong> to see its height, growth and diameter in the information panel in the controls above the graph.
+The numerical mapping fields below the graph record your selections automatically; please use the visual controls rather than typing into those fields.</p>
+
+[[jsxgraph width="95%" height="1100px" input-ref-mapx="refx" input-ref-mapy="refy" input-ref-mapc="refc" input-ref-maps="refs" input-ref-mapp="refp"]]
+var H=[{#heights[1]#},{#heights[2]#},{#heights[3]#},{#heights[4]#},{#heights[5]#},{#heights[6]#},{#heights[7]#},{#heights[8]#},{#heights[9]#},{#heights[10]#},{#heights[11]#},{#heights[12]#}], G=[{#growth[1]#},{#growth[2]#},{#growth[3]#},{#growth[4]#},{#growth[5]#},{#growth[6]#},{#growth[7]#},{#growth[8]#},{#growth[9]#},{#growth[10]#},{#growth[11]#},{#growth[12]#}], D=[{#diameters[1]#},{#diameters[2]#},{#diameters[3]#},{#diameters[4]#},{#diameters[5]#},{#diameters[6]#},{#diameters[7]#},{#diameters[8]#},{#diameters[9]#},{#diameters[10]#},{#diameters[11]#},{#diameters[12]#}], T=[{#treat[1]#},{#treat[2]#},{#treat[3]#},{#treat[4]#},{#treat[5]#},{#treat[6]#},{#treat[7]#},{#treat[8]#},{#treat[9]#},{#treat[10]#},{#treat[11]#},{#treat[12]#}], P=[{#plots[1]#},{#plots[2]#},{#plots[3]#},{#plots[4]#},{#plots[5]#},{#plots[6]#},{#plots[7]#},{#plots[8]#},{#plots[9]#},{#plots[10]#},{#plots[11]#},{#plots[12]#}];
+var fields=['Height (m)','Annual growth (cm)','Trunk diameter (cm)'];
+var values=[H,G,D],palette=['#2563eb','#d97706','#059669','#9333ea','#dc2626','#0891b2'];
+var refsList=[refx,refy,refc,refs,refp];
+var defaults=[0,0,0,0,0],state=defaults.slice();
+var boardDiv=document.getElementById(divid);
+/* The CASText height belongs to the outer iframe. Keep the actual graph
+   compact, leaving the rest of that iframe for controls and the inspector. */
+boardDiv.style.width='100%';
+boardDiv.style.height='510px';
+boardDiv.style.minHeight='510px';
+boardDiv.style.maxHeight='510px';
+boardDiv.style.boxSizing='border-box';
+var controls=document.createElement('div');
+controls.style.cssText='display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;padding:14px;margin-bottom:12px;border:1px solid #cbd5e1;border-radius:9px;background:#f8fafc;color:#1e293b;font-family:Arial,sans-serif;font-size:14px;';
+boardDiv.parentNode.insertBefore(controls,boardDiv);
+function addSelect(title,choices,idx){
+ var wrap=document.createElement('label');
+ wrap.style.cssText='display:flex;flex-direction:column;gap:5px;font-weight:600;';
+ var caption=document.createElement('span');caption.textContent=title;
+ var sel=document.createElement('select');
+ sel.style.cssText='padding:7px;border:1px solid #94a3b8;border-radius:5px;background:white;color:#1e293b;width:100%;';
+ choices.forEach(function(item,i){
+  var opt=document.createElement('option');opt.value=String(i);
+  opt.textContent=item;sel.appendChild(opt);
+ });
+ sel.value=String(state[idx]);
+ sel.addEventListener('change',function(){state[idx]=Number(sel.value);save(idx);draw();});
+ wrap.appendChild(caption);wrap.appendChild(sel);controls.appendChild(wrap);
+ return sel;
+}
+function addCheck(title,idx){
+ var wrap=document.createElement('label');wrap.style.cssText='display:flex;align-items:center;gap:9px;font-weight:500;cursor:pointer;';
+ var cb=document.createElement('input');cb.type='checkbox';cb.checked=state[idx]===1;
+ cb.addEventListener('change',function(){state[idx]=cb.checked?1:0;save(idx);draw();});
+ var caption=document.createElement('span');caption.textContent=title;
+ wrap.appendChild(cb);wrap.appendChild(caption);controls.appendChild(wrap);return cb;
+}
+function restore(){
+ refsList.forEach(function(ref,i){
+  var input=document.getElementById(ref);
+  if(input&&input.value.trim()!==''){
+   var v=Number(input.value);
+   if(Number.isInteger(v)&&v>=0&&v<=(i<2?3:i===2?2:1))state[i]=v;
+  }
+ });
+}
+function save(i){
+ var input=document.getElementById(refsList[i]);
+ if(input){input.value=String(state[i]);input.dispatchEvent(new Event('change',{bubbles:true}));}
+}
+restore();
+var xsel=addSelect('Horizontal axis',['Choose an axis…'].concat(fields),0);
+var ysel=addSelect('Vertical axis',['Choose an axis…'].concat(fields),1);
+var csel=addSelect('Colour points by',['One colour','Fertiliser treatment','Forest plot'],2);
+var scheck=addCheck('Show trunk diameter using point size',3);
+var pcheck=addCheck('Separate panels for each treatment',4);
+var reset=document.createElement('button');
+reset.type='button';reset.textContent='Reset visualisation';
+reset.style.cssText='padding:8px 12px;border:1px solid #64748b;border-radius:5px;background:white;font-weight:bold;cursor:pointer;';
+reset.addEventListener('click',function(){
+ state=[0,0,0,0,0];xsel.value='0';ysel.value='0';csel.value='0';
+ scheck.checked=false;pcheck.checked=false;
+ refsList.forEach(function(ref,i){save(i);});draw();
+});
+controls.appendChild(reset);
+var legend=document.createElement('div');
+legend.style.cssText='grid-column:1/-1;display:flex;gap:18px;flex-wrap:wrap;font-size:15px;font-weight:700;';
+controls.appendChild(legend);
+var inspector=document.createElement('div');
+inspector.style.cssText='grid-column:1/-1;padding:10px;border:1px solid #93c5fd;border-radius:6px;background:#eff6ff;';
+var inspectLabel=document.createElement('label');inspectLabel.textContent='Inspect exact measurements: ';
+inspectLabel.style.fontWeight='700';
+var inspectSelect=document.createElement('select');
+inspectSelect.style.cssText='padding:6px;font-size:15px;margin-left:8px;';
+var blank=document.createElement('option');blank.value='';blank.textContent='Choose a tree…';
+inspectSelect.appendChild(blank);
+for(var n=1;n<=12;n++){
+ var opt=document.createElement('option');opt.value=String(n-1);opt.textContent='T'+n;
+ inspectSelect.appendChild(opt);
+}
+inspectLabel.appendChild(inspectSelect);inspector.appendChild(inspectLabel);
+var readout=document.createElement('div');
+readout.style.cssText='font-weight:700;margin-top:9px;font-size:15px;';
+readout.textContent='Choose a tree or click a point to see exact measurements.';
+inspector.appendChild(readout);controls.appendChild(inspector);
+function inspectTree(i){
+ inspectSelect.value=String(i);
+ readout.textContent='T'+(i+1)+' · P'+P[i]+' · '+(T[i]?'Fertilised':'Control')+
+  ' | Height '+H[i]+' m | Growth '+G[i]+' cm | Diameter '+D[i]+' cm';
+}
+inspectSelect.addEventListener('change',function(){
+ if(this.value!=='')inspectTree(Number(this.value));
+});
+function updateLegend(){
+ legend.textContent='';
+ var items=state[2]===1?[['#2563eb','Blue = Control'],['#d97706','Orange = Fertilised']]:
+  state[2]===2?palette.map(function(c,i){return [c,'Plot P'+(i+1)];}):
+  [['#64748b','All points: same colour']];
+ items.forEach(function(item){
+  var span=document.createElement('span');
+  span.textContent='● '+item[1];span.style.color=item[0];
+  legend.appendChild(span);
+ });
+ if(state[3]===1){
+  var note=document.createElement('span');
+  note.textContent='Circle size represents trunk diameter';legend.appendChild(note);
+ }
+}
+
+xsel.value=String(state[0]);ysel.value=String(state[1]);csel.value=String(state[2]);
+/* Store the initial visualisation configuration, including unchanged defaults. */
+refsList.forEach(function(ref,i){
+ var input=document.getElementById(ref);
+ if(input&&input.value.trim()==='')save(i);
+});
+var board=JXG.JSXGraph.initBoard(divid,{
+ boundingbox:[-1,31,27,-2],axis:false,showCopyright:false,
+ showNavigation:false,pan:{enabled:false},zoom:{enabled:false},
+ keepaspectratio:false
+});
+board.suspendUpdate();
+var marks=[],decor=[];
+function clear(){
+ marks.forEach(function(o){board.removeObject(o);});
+ decor.forEach(function(o){board.removeObject(o);});
+ marks=[];decor=[];
+}
+function text(x,y,label,options){
+ var o=board.create('text',[x,y,label],Object.assign({fixed:true,highlight:false,fontSize:12},options||{}));
+ decor.push(o);return o;
+}
+function segment(a,b,options){
+ var o=board.create('segment',[a,b],Object.assign({fixed:true,highlight:false,strokeColor:'#64748b',strokeWidth:1},options||{}));
+ decor.push(o);return o;
+}
+function draw(){
+ board.suspendUpdate();clear();
+ updateLegend();
+ if(state[0]===0||state[1]===0){
+  text(13,17,'Choose both axes to display the data.',{anchorX:'middle',fontSize:16});
+  board.unsuspendUpdate();board.update();return;
+ }
+ var faceted=state[4]===1;
+ var panels=faceted?[0,1]:[-1];
+ var xdata=values[state[0]-1],ydata=values[state[1]-1];
+ var xmin=Math.min.apply(null,xdata),xmax=Math.max.apply(null,xdata);
+ var ymin=Math.min.apply(null,ydata),ymax=Math.max.apply(null,ydata);
+ panels.forEach(function(group,panelIndex){
+  var left=faceted?(panelIndex===0?2:15):2;
+  var width=faceted?10:23;
+  segment([left,3],[left,26]);segment([left,3],[left+width,3]);
+  for(var tick=0;tick<=4;tick++){
+   var ty=3+tick*23/4;
+   segment([left,ty],[left+width,ty],{strokeColor:'#e2e8f0',strokeWidth:.6});
+   text(left-.4,ty,String(Math.round((ymin+(ymax-ymin)*tick/4)*10)/10),
+    {anchorX:'right',fontSize:10});
+  }
+  text(left+width/2,28,group===-1?'All trees':group===0?'Control':'Fertilised',
+   {anchorX:'middle',fontSize:14});
+  text(left+width/2,1.2,fields[state[0]-1],{anchorX:'middle',fontSize:11});
+  for(var i=0;i<12;i++){
+   if(group!==-1&&T[i]!==group)continue;
+   var xx=left+0.7+(width-1.4)*(xdata[i]-xmin)/(xmax-xmin||1);
+   var yy=3.7+21.5*(ydata[i]-ymin)/(ymax-ymin||1);
+   var colour=state[2]===1?(T[i]===1?'#d97706':'#2563eb'):
+              state[2]===2?palette[P[i]-1]:'#64748b';
+   var dmin=Math.min.apply(null,D),dmax=Math.max.apply(null,D);
+   var size=state[3]===1?3+12*(D[i]-dmin)/(dmax-dmin||1):4;
+   (function(j){
+    var point=board.create('point',[xx,yy],{
+     name:'T'+(j+1),size:size,strokeColor:colour,fillColor:colour,
+     fixed:true,highlight:false,showInfobox:false,
+     label:{fontSize:13,offset:[6,5],cssStyle:'font-weight:bold;'}
+    });
+    point.on('down',function(){inspectTree(j);});
+    point.on('over',function(){inspectTree(j);});
+    marks.push(point);
+   })(i);
+  }
+ });
+ text(0,16,fields[state[1]-1],{fontSize:11,rotate:90,anchorX:'middle'});
+ board.unsuspendUpdate();board.update();
+}
+draw();
+[[/jsxgraph]]
+
+<h4>Investigations</h4>
+<p>Plot tree height against annual growth. What is the <em>height (m)</em> of the tree with the greatest annual growth? (Click the highest-growth point (or select its Tree_ID in the inspector) to read its exact height).</p>
+<p>[[input:ans1]] [[validation:ans1]]</p>
+
+<p>What is the <em>greatest annual growth (cm)</em> among control trees? What is the greatest annual growth among fertilised trees? (Hint: Colour by Treatment)</p>
+
+<p>Control: [[input:ans2]] [[validation:ans2]] &nbsp; Fertilised: [[input:ans3]] [[validation:ans3]]</p>
+
+<p>Map trunk diameter to point size.
+What is the <em>diameter (cm)</em> of the tallest tree? What is the <em>height (m)</em> of the thickest tree?</p>
+<p>Diameter of tallest: [[input:ans4]] [[validation:ans4]] &nbsp; Height of thickest: [[input:ans5]] [[validation:ans5]]</p>
+
+<p>Configure the graph to investigate the relationship between tree height and annual growth across treatments, while showing trunk diameter and splitting the display into treatment panels. Submit your configuration.</p>
+<p><small>Recorded mapping codes (automatically updated by the visual controls): X [[input:mapx]] [[validation:mapx]]; Y [[input:mapy]] [[validation:mapy]]; colour [[input:mapc]] [[validation:mapc]]; size [[input:maps]] [[validation:maps]]; panels [[input:mapp]] [[validation:mapp]].</small></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p><strong>Position:</strong> Put height on one axis and annual growth on the other. Read the Tree_ID beside the highest-growth point, then look up its height. The fastest-growing tree is T{@ta_fastest_tree@}, with height {@ta_height_fastest@} m and growth {@ta_growth_fastest@} cm.</p>
+<p><strong>Colour:</strong> Treatment is categorical: colour distinguishes fertilised and control trees. The maximum growth values are {@ta_control_max@} cm for control trees and {@ta_fert_max@} cm for fertilised trees. These are maxima, not treatment-group means.</p>
+<p><strong>Size:</strong> Larger circles represent greater trunk diameter. The tallest tree has diameter {@ta_tallest_diameter@} cm, whereas the thickest tree has height {@ta_thickest_height@} m. They are different trees in this variant.</p>
+<p><strong>Panels:</strong> Faceting by treatment shows the same variables in two separate displays, making within-group patterns easier to inspect. A suitable final graph uses growth on X, height on Y, treatment for colour, diameter for size and treatment panels. Multiple visual properties can encode distinct variables at once.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>10</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2026063000</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/* Randomised measurements; unique maxima are deliberate. */
+hshift:rand(5)-2;
+gshift:rand(5)-2;
+dshift:rand(5)-2;
+heights:makelist(8+2*k+hshift,k,1,12);
+growth0:[5,7,8,6,10,9,8,9,12,11,14,13];
+growth:makelist(growth0[k]+gshift,k,1,12);
+diam0:[12,17,13,21,15,19,18,14,25,16,22,20];
+diameters:makelist(diam0[k]+dshift,k,1,12);
+treat:makelist(if k<=6 then 0 else 1,k,1,12);
+plots:makelist(ceiling(k/2),k,1,12);
+tree_data:makelist([sconcat("T",k),sconcat("P",plots[k]),if treat[k]=1 then "Fertilised" else "Control",heights[k],growth[k],diameters[k]],k,1,12);
+tree_data:random_permutation(tree_data);
+lab:["Tree_ID","Plot_ID","Treatment","Height_m","Growth_cm","Diameter_cm"];
+ta_fastest_tree:11;
+ta_height_fastest:heights[11];
+ta_growth_fastest:growth[11];
+ta_tallest_tree:12;
+ta_tallest_height:heights[12];
+ta_thickest_tree:9;
+ta_thickest_diameter:diameters[9];
+ta_control_max:growth[5];
+ta_control_max_tree:5;
+ta_control_max_height:heights[5];
+ta_control_mean:sum(growth[k],k,1,6)/6;
+ta_fert_max:growth[11];
+ta_fert_max_tree:11;
+ta_fert_max_height:heights[11];
+ta_fert_mean:sum(growth[k],k,7,12)/6;
+ta_tallest_diameter:diameters[12];
+ta_tallest_growth:growth[12];
+ta_thickest_height:heights[9];
+ta_thickest_growth:growth[9];
+/* Mapping codes: x=1 height; y=2 growth; colour=1 treatment;
+   size=1 diameter; panels=1 treatment. */
+ta_mapx:2;
+ta_mapy:1;
+ta_mapc:1;
+ta_maps:1;
+ta_mapp:1;]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text>[[feedback:prt1]] [[feedback:prt2]] [[feedback:prt3]] [[feedback:prt4]] [[feedback:prt5]] [[feedback:prt6]] [[feedback:prt7]] [[feedback:prt8]] [[feedback:prt9]] [[feedback:prt10]]</text>
+    </specificfeedback>
+    <questionnote format="html">
+      <text>height shift: {@hshift@}; growth shift: {@gshift@}; diameter shift: {@dshift@}</text>
+    </questionnote>
+    <questiondescription format="html">
+      <text>Interactive JSXGraph mastery question: map variables to position, colour, size and facets, then investigate tree measurements.</text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>numerical</type>
+      <tans>ta_height_fastest</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>numerical</type>
+      <tans>ta_control_max</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>numerical</type>
+      <tans>ta_fert_max</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>numerical</type>
+      <tans>ta_tallest_diameter</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans5</name>
+      <type>numerical</type>
+      <tans>ta_thickest_height</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>mapc</name>
+      <type>numerical</type>
+      <tans>ta_mapc</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>mapp</name>
+      <type>numerical</type>
+      <tans>ta_mapp</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>maps</name>
+      <type>numerical</type>
+      <tans>ta_maps</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>mapx</name>
+      <type>numerical</type>
+      <tans>ta_mapx</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>mapy</name>
+      <type>numerical</type>
+      <tans>ta_mapy</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Height of tree with maximum growth</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta_height_fastest</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Correct. You identified the tree with greatest annual growth and read its height.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Diagnostic: ta_growth_fastest</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta_growth_fastest</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>That is the <strong>growth measurement</strong> of the fastest-growing tree. The question asks for its height in metres.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>Diagnostic: ta_tallest_height</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta_tallest_height</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>That is the <strong>height of the tallest tree</strong>. The fastest-growing tree is not necessarily the tallest.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>Diagnostic: ta_fastest_tree</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta_fastest_tree</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>That looks like the <strong>Tree_ID number</strong> of the fastest-growing tree. Inspect that tree to read its height.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>4</falsenextnode>
+        <falseanswernote>prt1-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>4</name>
+        <description>Diagnostic: ta_tallest_growth</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta_tallest_growth</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>That is the tallest tree’s <strong>growth measurement</strong>. Locate the maximum growth first, then read that tree’s height.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>5</falsenextnode>
+        <falseanswernote>prt1-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>5</name>
+        <description>General guidance</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>0</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-fallback-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Find the highest annual growth on the graph. Click that point, or select its Tree_ID in the inspector above the graph, then enter its exact height in metres.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-fallback-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Find the highest annual growth on the graph. Click that point, or select its Tree_ID in the inspector above the graph, then enter its exact height in metres.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt10</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Panel mapping.</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>mapp</sans>
+        <tans>ta_mapp</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt10-T</trueanswernote>
+        <truefeedback format="html">
+          <text>Correct. Panel mapping.</text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt10-F</falseanswernote>
+        <falsefeedback format="html">
+          <text>Split the plot into treatment panels (code 1).</text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Control maximum growth.</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta_control_max</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-T</trueanswernote>
+        <truefeedback format="html">
+          <text>Correct. Control maximum growth.</text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Diagnostic: ta_fert_max</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta_fert_max</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>That is the maximum for the <strong>fertilised</strong> group. Look at the blue control points or the control panel.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>Diagnostic: ta_control_max_height</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta_control_max_height</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>That is the <strong>height</strong> of the control tree with greatest growth. This question asks for its growth in cm.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt2-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>Diagnostic: ta_control_max_tree</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta_control_max_tree</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>That is the Tree_ID number of the fastest-growing control tree. Enter its <strong>growth measurement</strong> instead.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>4</falsenextnode>
+        <falseanswernote>prt2-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>4</name>
+        <description>Diagnostic: ta_control_mean</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta_control_mean</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>That looks like the <strong>mean</strong> control growth. Find the single greatest growth measurement among control trees.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>5</falsenextnode>
+        <falseanswernote>prt2-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>5</name>
+        <description>General guidance</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>0</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-fallback-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Colour by treatment or facet the plot. Click the highest-growth control point and enter its growth in cm.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-fallback-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Colour by treatment or facet the plot. Click the highest-growth control point and enter its growth in cm.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Fertilised maximum growth.</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>ta_fert_max</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-T</trueanswernote>
+        <truefeedback format="html">
+          <text>Correct. Fertilised maximum growth.</text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Diagnostic: ta_control_max</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>ta_control_max</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>That is the maximum growth for the <strong>control</strong> group. Find the fertilised maximum instead.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>Diagnostic: ta_fert_max_height</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>ta_fert_max_height</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>That is the <strong>height</strong> of the fastest-growing fertilised tree. Enter its annual growth in cm.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt3-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>Diagnostic: ta_fert_max_tree</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>ta_fert_max_tree</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>That is the Tree_ID number of the fastest-growing fertilised tree. Enter its <strong>growth measurement</strong>.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>4</falsenextnode>
+        <falseanswernote>prt3-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>4</name>
+        <description>Diagnostic: ta_fert_mean</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>ta_fert_mean</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-4-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>That looks like the <strong>mean</strong> fertilised growth. Find the single greatest growth measurement.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>5</falsenextnode>
+        <falseanswernote>prt3-4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>5</name>
+        <description>General guidance</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>0</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-fallback-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Colour by treatment or facet the plot. Click the highest-growth fertilised point and enter its growth in cm.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-fallback-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Colour by treatment or facet the plot. Click the highest-growth fertilised point and enter its growth in cm.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Diameter of tallest tree.</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>ta_tallest_diameter</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-T</trueanswernote>
+        <truefeedback format="html">
+          <text>Correct. Diameter of tallest tree.</text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt4-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Diagnostic: ta_tallest_height</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>ta_tallest_height</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>That is the tallest tree’s <strong>height</strong>. The question asks for its <strong>trunk diameter</strong>.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt4-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>Diagnostic: ta_thickest_diameter</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>ta_thickest_diameter</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>That is the diameter of the <strong>thickest</strong> tree. Identify the tallest tree first; it is a different observation.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt4-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>Diagnostic: ta_tallest_growth</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>ta_tallest_growth</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>That is the tallest tree’s <strong>annual growth</strong>. Click the same tree and read its trunk diameter.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>4</falsenextnode>
+        <falseanswernote>prt4-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>4</name>
+        <description>General guidance</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>0</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt4-fallback-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Identify the tallest tree using height, then click it and read its trunk diameter.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt4-fallback-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Identify the tallest tree using height, then click it and read its trunk diameter.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt5</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Height of thickest tree.</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5</sans>
+        <tans>ta_thickest_height</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5-T</trueanswernote>
+        <truefeedback format="html">
+          <text>Correct. Height of thickest tree.</text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt5-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Diagnostic: ta_thickest_diameter</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5</sans>
+        <tans>ta_thickest_diameter</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>That is the thickest tree’s <strong>diameter</strong>. The question asks for its <strong>height</strong>.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt5-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>Diagnostic: ta_tallest_height</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5</sans>
+        <tans>ta_tallest_height</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>That is the <strong>tallest tree’s height</strong>. Find the thickest tree first; the two are different observations.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>prt5-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>Diagnostic: ta_thickest_growth</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5</sans>
+        <tans>ta_thickest_growth</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5-3-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>That is the thickest tree’s <strong>annual growth</strong>. Read its height instead.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>4</falsenextnode>
+        <falseanswernote>prt5-3-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>4</name>
+        <description>General guidance</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5</sans>
+        <tans>0</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt5-fallback-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Use point size or the diameter axis to find the thickest tree, then click it and read its height.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt5-fallback-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Use point size or the diameter axis to find the thickest tree, then click it and read its height.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt6</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>X-axis mapping.</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>mapx</sans>
+        <tans>ta_mapx</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt6-T</trueanswernote>
+        <truefeedback format="html">
+          <text>Correct. X-axis mapping.</text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt6-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Set the horizontal axis to annual growth.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt7</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Y-axis mapping.</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>mapy</sans>
+        <tans>ta_mapy</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt7-T</trueanswernote>
+        <truefeedback format="html">
+          <text>Correct. Y-axis mapping.</text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt7-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Set the vertical axis to tree height.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt8</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Colour mapping.</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>mapc</sans>
+        <tans>ta_mapc</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt8-T</trueanswernote>
+        <truefeedback format="html">
+          <text>Correct. Colour mapping.</text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt8-F</falseanswernote>
+        <falsefeedback format="html">
+          <text>Map treatment to colour (code 1), so the groups can be distinguished.</text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt9</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Size mapping.</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>maps</sans>
+        <tans>ta_maps</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt9-T</trueanswernote>
+        <truefeedback format="html">
+          <text>Correct. Size mapping.</text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt9-F</falseanswernote>
+        <falsefeedback format="html">
+          <text>Map trunk diameter to point size (code 1).</text>
+        </falsefeedback>
+      </node>
+    </prt>
+  </question>
+</quiz>

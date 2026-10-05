@@ -29,7 +29,7 @@ Download the dataset. It contains four columns:
 </ul>
 
 <p>
-<a href='[[textdownload name="river_samples.csv"]]{@stack_csv_formatter(data,lab)@}[[/textdownload]]'>Download pollution_data.csv</a>
+<a href="[[textdownload name="river_samples.csv"]]{@stack_csv_formatter(data,lab)@}[[/textdownload]]">Download pollution_data.csv</a>
 </p>
 
 <p>

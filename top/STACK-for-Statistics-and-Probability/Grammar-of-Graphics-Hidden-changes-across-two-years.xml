@@ -1,0 +1,1593 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Grammar of Graphics: Hidden changes across two years</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Researchers counted the books in school libraries across <strong>three villages</strong> in Year 1 and Year 2. The same schools were visited in both years. Explore the two boxplots to find out what changed.</p><p>The graph starts with only the boxplots. You can add individual schools, connect paired measurements, colour by village, and inspect exact values. Decide which layers you need for each investigation.</p>
+
+
+[[jsxgraph width="95%" height="1020px"]]
+
+var IDS = [
+    {#ids[1]#},{#ids[2]#},{#ids[3]#},
+    {#ids[4]#},{#ids[5]#},{#ids[6]#},
+    {#ids[7]#},{#ids[8]#},{#ids[9]#},
+    {#ids[10]#},{#ids[11]#},{#ids[12]#},
+    {#ids[13]#},{#ids[14]#},{#ids[15]#},
+    {#ids[16]#},{#ids[17]#},{#ids[18]#}
+];
+
+var V = [
+    {#villages[1]#},{#villages[2]#},{#villages[3]#},
+    {#villages[4]#},{#villages[5]#},{#villages[6]#},
+    {#villages[7]#},{#villages[8]#},{#villages[9]#},
+    {#villages[10]#},{#villages[11]#},{#villages[12]#},
+    {#villages[13]#},{#villages[14]#},{#villages[15]#},
+    {#villages[16]#},{#villages[17]#},{#villages[18]#}
+];
+
+var B = [
+    {#before[1]#},{#before[2]#},{#before[3]#},
+    {#before[4]#},{#before[5]#},{#before[6]#},
+    {#before[7]#},{#before[8]#},{#before[9]#},
+    {#before[10]#},{#before[11]#},{#before[12]#},
+    {#before[13]#},{#before[14]#},{#before[15]#},
+    {#before[16]#},{#before[17]#},{#before[18]#}
+];
+
+var A = [
+    {#after[1]#},{#after[2]#},{#after[3]#},
+    {#after[4]#},{#after[5]#},{#after[6]#},
+    {#after[7]#},{#after[8]#},{#after[9]#},
+    {#after[10]#},{#after[11]#},{#after[12]#},
+    {#after[13]#},{#after[14]#},{#after[15]#},
+    {#after[16]#},{#after[17]#},{#after[18]#}
+];
+
+var data = IDS.map(function(id, i) {
+    return {
+        id: id,
+        v: V[i],
+        before: B[i],
+        after: A[i]
+    };
+}).filter(function(d) {
+    return d.id > 0;
+});
+
+/* Graph dimensions */
+
+var boardDiv = document.getElementById(divid);
+
+boardDiv.style.width = '100%';
+boardDiv.style.height = '500px';
+boardDiv.style.minHeight = '500px';
+boardDiv.style.maxHeight = '500px';
+
+/* Controls */
+
+var ui = document.createElement('div');
+
+ui.style.cssText =
+    'font:14px Arial,sans-serif;' +
+    'color:#1e293b;' +
+    'border:1px solid #cbd5e1;' +
+    'background:#f8fafc;' +
+    'padding:14px;' +
+    'border-radius:9px;' +
+    'margin-bottom:12px;';
+
+boardDiv.parentNode.insertBefore(ui, boardDiv);
+
+var intro = document.createElement('div');
+
+intro.textContent =
+    'Explore the plot by adding visual layers. ' +
+    'Click a point or connecting line to inspect a school.';
+
+intro.style.cssText =
+    'font-weight:600;margin-bottom:12px;';
+
+ui.appendChild(intro);
+
+var controlRow = document.createElement('div');
+
+controlRow.style.cssText =
+    'display:flex;' +
+    'flex-wrap:wrap;' +
+    'gap:16px;' +
+    'margin-bottom:12px;';
+
+ui.appendChild(controlRow);
+
+var state = {
+    points: false,
+    lines: false,
+    villages: false
+};
+
+var check = {};
+
+function checkbox(key, title) {
+
+    var lab = document.createElement('label');
+
+    lab.style.cssText =
+        'display:flex;' +
+        'gap:7px;' +
+        'align-items:center;' +
+        'cursor:pointer;';
+
+    var el = document.createElement('input');
+
+    el.type = 'checkbox';
+
+    check[key] = el;
+
+    el.addEventListener('change', function() {
+
+        state[key] = el.checked;
+
+        if (key === 'points' && !state.points) {
+            state.lines = false;
+            state.villages = false;
+        }
+
+        if (
+            (key === 'lines' || key === 'villages') &&
+            state[key]
+        ) {
+            state.points = true;
+        }
+
+        sync();
+        draw();
+    });
+
+    lab.appendChild(el);
+    lab.appendChild(document.createTextNode(title));
+
+    controlRow.appendChild(lab);
+}
+
+checkbox('points', 'Show individual schools');
+
+checkbox('lines', 'Connect paired observations');
+
+checkbox('villages', 'Colour by village');
+
+function sync() {
+
+    Object.keys(check).forEach(function(k) {
+        check[k].checked = state[k];
+    });
+}
+
+/* School inspector */
+
+var tools = document.createElement('div');
+
+tools.style.cssText =
+    'display:flex;' +
+    'flex-wrap:wrap;' +
+    'align-items:center;' +
+    'gap:10px;' +
+    'margin-bottom:12px;';
+
+ui.appendChild(tools);
+
+var sel = document.createElement('select');
+
+sel.style.cssText =
+    'padding:7px;' +
+    'max-width:100%;' +
+    'border:1px solid #94a3b8;' +
+    'border-radius:5px;';
+
+var empty = document.createElement('option');
+
+empty.value = '';
+empty.textContent = 'Inspect a school…';
+
+sel.appendChild(empty);
+
+data.slice().sort(function(a, b) {
+    return a.id - b.id;
+}).forEach(function(d) {
+
+    var o = document.createElement('option');
+
+    o.value = String(d.id);
+    o.textContent = 'School ' + d.id;
+
+    sel.appendChild(o);
+});
+
+sel.addEventListener('change', function() {
+    inspect(Number(sel.value));
+});
+
+var selLabel = document.createElement('label');
+
+selLabel.textContent = 'Exact measurements: ';
+
+selLabel.appendChild(sel);
+tools.appendChild(selLabel);
+
+/* Reset */
+
+var reset = document.createElement('button');
+
+reset.type = 'button';
+reset.textContent = 'Reset layers';
+
+reset.style.cssText =
+    'padding:7px 12px;' +
+    'border:1px solid #64748b;' +
+    'border-radius:5px;' +
+    'background:white;' +
+    'cursor:pointer;';
+
+tools.appendChild(reset);
+
+var inspector = document.createElement('div');
+
+inspector.style.cssText =
+    'min-height:46px;' +
+    'padding:9px 11px;' +
+    'border-radius:6px;' +
+    'background:white;' +
+    'border:1px solid #cbd5e1;' +
+    'margin-bottom:10px;' +
+    'line-height:1.5;';
+
+inspector.textContent =
+    'Select a school to see its paired measurements.';
+
+ui.appendChild(inspector);
+
+/* Village legend */
+
+var legend = document.createElement('div');
+
+legend.style.cssText =
+    'display:none;' +
+    'gap:16px;' +
+    'flex-wrap:wrap;' +
+    'margin-top:8px;' +
+    'font-weight:600;';
+
+ui.appendChild(legend);
+
+var colors = [
+    '#2563eb',
+    '#ea580c',
+    '#059669'
+];
+
+[
+    'Village A',
+    'Village B',
+    'Village C'
+].forEach(function(t, i) {
+
+    var x = document.createElement('span');
+
+    x.style.color = colors[i];
+    x.textContent = '● ' + t;
+
+    legend.appendChild(x);
+});
+
+function inspect(id) {
+
+    var d = data.find(function(x) {
+        return x.id === id;
+    });
+
+    if (!d) {
+        return;
+    }
+
+    sel.value = String(id);
+
+    var delta = d.after - d.before;
+
+    inspector.textContent =
+        'School ' + d.id +
+        ' · Village ' + ['A', 'B', 'C'][d.v - 1] +
+        ' · Year 1: ' + d.before + ' books' +
+        ' · Year 2: ' + d.after + ' books' +
+        ' · Change: ' +
+        (delta > 0 ? '+' : '') + delta + ' books' +
+        (
+            delta > 0 ? ' (increase)' :
+            delta < 0 ? ' (decrease)' :
+            ' (unchanged)'
+        );
+}
+
+/* Adaptive vertical axis */
+
+var allValues = data.reduce(function(a, d) {
+    a.push(d.before, d.after);
+    return a;
+}, []);
+
+var dataMin = Math.min.apply(null, allValues);
+var dataMax = Math.max.apply(null, allValues);
+
+var padding = Math.max(
+    5,
+    (dataMax - dataMin) * 0.2
+);
+
+var yMin = Math.floor(dataMin - padding * 1.5);
+var yMax = Math.ceil(dataMax + padding);
+
+/* Board */
+
+var board = JXG.JSXGraph.initBoard(divid, {
+
+    boundingbox: [
+        -0.65,
+        yMax,
+        2.65,
+        yMin
+    ],
+
+    axis: false,
+
+    showCopyright: false,
+    showNavigation: false,
+
+    pan: {
+        enabled: false
+    },
+
+    zoom: {
+        enabled: false
+    },
+
+    keepaspectratio: false
+});
+
+/* Drawing helpers */
+
+var marks = [];
+
+function line(p, q, opts) {
+
+    var o = board.create(
+        'line',
+        [p, q],
+        Object.assign({
+
+            straightFirst: false,
+            straightLast: false,
+
+            fixed: true,
+            highlight: false,
+
+            strokeColor: '#64748b',
+            strokeWidth: 1.5
+
+        }, opts || {})
+    );
+
+    marks.push(o);
+
+    return o;
+}
+
+function txt(x, y, t, opts) {
+
+    var o = board.create(
+        'text',
+        [x, y, t],
+        Object.assign({
+
+            fixed: true,
+            highlight: false,
+
+            fontSize: 12,
+            anchorX: 'middle',
+
+            strokeColor: '#334155'
+
+        }, opts || {})
+    );
+
+    marks.push(o);
+
+    return o;
+}
+
+/* Boxplots */
+
+function boxplot(x, values, color) {
+
+    var s = values.slice().sort(function(a, b) {
+        return a - b;
+    });
+
+    function quantile(p) {
+
+        var h = (s.length - 1) * p;
+
+        var lo = Math.floor(h);
+        var hi = Math.ceil(h);
+
+        return s[lo] +
+            (s[hi] - s[lo]) * (h - lo);
+    }
+
+    var lo = s[0];
+    var q1 = quantile(.25);
+    var med = quantile(.5);
+    var q3 = quantile(.75);
+    var hi = s[s.length - 1];
+
+    line([x, lo], [x, hi], {
+        strokeColor: color,
+        strokeWidth: 2
+    });
+
+    line([x - .14, lo], [x + .14, lo], {
+        strokeColor: color,
+        strokeWidth: 2
+    });
+
+    line([x - .14, hi], [x + .14, hi], {
+        strokeColor: color,
+        strokeWidth: 2
+    });
+
+    var poly = board.create('polygon', [
+
+        [x - .25, q1],
+        [x + .25, q1],
+        [x + .25, q3],
+        [x - .25, q3]
+
+    ], {
+
+        fillColor: color,
+        fillOpacity: .22,
+
+        borders: {
+            strokeColor: color,
+            strokeWidth: 2
+        },
+
+        vertices: {
+            visible: false
+        },
+
+        fixed: true,
+        highlight: false,
+        hasInnerPoints: false
+    });
+
+    marks.push(poly);
+
+    line(
+        [x - .25, med],
+        [x + .25, med],
+        {
+            strokeColor: color,
+            strokeWidth: 3
+        }
+    );
+}
+
+/* Main drawing function */
+
+function draw() {
+
+    board.suspendUpdate();
+
+    marks.forEach(function(o) {
+        board.removeObject(o);
+    });
+
+    marks = [];
+
+    legend.style.display =
+        state.villages ? 'flex' : 'none';
+
+    /* Gridlines */
+
+    var bottom = Math.ceil(yMin / 10) * 10;
+    var top = Math.floor(yMax / 10) * 10;
+
+    for (var y = bottom; y <= top; y += 10) {
+
+        line(
+            [-.2, y],
+            [2.2, y],
+            {
+                strokeColor: '#e2e8f0',
+                strokeWidth: 1
+            }
+        );
+
+        txt(
+            -.28,
+            y,
+            String(y),
+            {
+                anchorX: 'right',
+                fontSize: 11
+            }
+        );
+    }
+
+    /* Axis title */
+
+    txt(
+        -.48,
+        (dataMin + dataMax) / 2,
+        'Books',
+        {
+            rotate: 90,
+            anchorX: 'middle',
+            fontSize: 14
+        }
+    );
+
+    /* Boxplots */
+
+    boxplot(
+        .5,
+        data.map(function(d) {
+            return d.before;
+        }),
+        '#2563eb'
+    );
+
+    boxplot(
+        1.5,
+        data.map(function(d) {
+            return d.after;
+        }),
+        '#ea580c'
+    );
+
+    /* Year labels */
+
+    var labelY =
+        yMin + (yMax - yMin) * .055;
+
+    txt(
+        .5,
+        labelY,
+        'Year 1',
+        {
+            fontSize: 15
+        }
+    );
+
+    txt(
+        1.5,
+        labelY,
+        'Year 2',
+        {
+            fontSize: 15
+        }
+    );
+
+    /* Paired lines */
+
+    if (state.lines) {
+
+        data.forEach(function(d) {
+
+            var color = state.villages
+                ? colors[d.v - 1]
+                : '#64748b';
+
+            var obj = line(
+                [.5, d.before],
+                [1.5, d.after],
+                {
+                    strokeColor: color,
+                    strokeWidth: 2,
+                    strokeOpacity: .7
+                }
+            );
+
+            obj.on('down', function() {
+                inspect(d.id);
+            });
+
+            obj.on('over', function() {
+                inspect(d.id);
+            });
+        });
+    }
+
+    /* Individual observations */
+
+    if (state.points) {
+
+        data.forEach(function(d) {
+
+            var color = state.villages
+                ? colors[d.v - 1]
+                : '#475569';
+
+            [
+                [.5, d.before],
+                [1.5, d.after]
+
+            ].forEach(function(pos) {
+
+                var o = board.create(
+                    'point',
+                    pos,
+                    {
+
+                        name: '',
+                        size: 4.5,
+
+                        strokeColor: '#ffffff',
+                        strokeWidth: 1.2,
+
+                        fillColor: color,
+
+                        fixed: true,
+                        highlight: false,
+
+                        showInfobox: false
+                    }
+                );
+
+                o.on('down', function() {
+                    inspect(d.id);
+                });
+
+                o.on('over', function() {
+                    inspect(d.id);
+                });
+
+                marks.push(o);
+            });
+        });
+    }
+
+    board.unsuspendUpdate();
+    board.update();
+}
+
+/* Reset behaviour */
+
+reset.addEventListener('click', function() {
+
+    state = {
+        points: false,
+        lines: false,
+        villages: false
+    };
+
+    sel.value = '';
+
+    inspector.textContent =
+        'Select a school to see its paired measurements.';
+
+    sync();
+    draw();
+});
+
+/* Initial display */
+
+draw();
+
+[[/jsxgraph]]
+
+<h4>Investigations</h4><p><strong>1.</strong> How many schools gained books from Year 1 to Year 2?</p><p>[[input:ans1]] [[validation:ans1]]</p><p><strong>2.</strong> How many schools had exactly the same number of books in both years?</p><p>[[input:ans2]] [[validation:ans2]]</p><p><strong>3.</strong> Which village had the largest <em>average increase</em> in books per school?</p><p>[[input:ans3]] [[validation:ans3]]</p><p><strong>4.</strong> How many books did the school with the largest individual increase gain?</p><p>[[input:ans4]] [[validation:ans4]]</p><p><strong>5.</strong> What do the plots and the additional visual layers tell us about change between the two years?</p><p>[[input:ans5]] [[validation:ans5]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>The two boxplots have identical distributions because the Year 2 values are a rearrangement of the Year 1 values. This does not mean every school stayed the same. Paired lines show which schools gained, lost or retained books; village colours show how the changes differ across villages.</p><p>To interpret paired data, distinguish the distribution in each year from the changes within individual schools. The additional visual dimensions expose relationships the marginal boxplots cannot show.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>10</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2026063000</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/* Number of schools in each village. */
+na:4+rand(3);
+nb:4+rand(3);
+nc:4+rand(3);
+n:na+nb+nc;
+
+/* Randomise which village gains, loses or remains stable. */
+village_codes:random_permutation([1,2,3]);
+
+/* All three villages have overlapping Year 1 values. */
+
+/* Generate n distinct measurements, with small irregular gaps. */
+base:60+rand(11);
+
+gaps:makelist(1+rand(3),i,1,n-1);
+
+book_levels:makelist(
+    base+sum(gaps[j],j,1,i-1),
+    i,1,n
+);
+
+/* Randomise which measurements belong to each village. */
+mixed:random_permutation(book_levels);
+
+/* Sort measurements so that the gaining village starts
+   with two low values and the losing village with two high values. */
+ordered:sort(mixed);
+
+low_values:[ordered[1],ordered[2]];
+high_values:[ordered[n-1],ordered[n]];
+
+/* Distribute the remaining measurements among all three villages. */
+middle:random_permutation(
+    makelist(ordered[i],i,3,n-2)
+);
+
+a0:append(
+    low_values,
+    makelist(middle[i],i,1,na-2)
+);
+
+b0:append(
+    high_values,
+    makelist(middle[na-2+i],i,1,nb-2)
+);
+
+c0:makelist(
+    middle[na+nb-4+i],
+    i,1,nc
+);
+
+/* Exchange low and high values between villages.
+   Shuffle within villages to create individual changes. */
+a1:random_permutation(
+    append(
+        high_values,
+        makelist(a0[i],i,3,na)
+    )
+);
+
+b1:random_permutation(
+    append(
+        low_values,
+        makelist(b0[i],i,3,nb)
+    )
+);
+
+c1:random_permutation(c0);
+
+/* Construct the school records. */
+ra:makelist(
+    [i,village_codes[1],a0[i],a1[i]],
+    i,1,na
+);
+
+rb:makelist(
+    [na+i,village_codes[2],b0[i],b1[i]],
+    i,1,nb
+);
+
+rc:makelist(
+    [na+nb+i,village_codes[3],c0[i],c1[i]],
+    i,1,nc
+);
+
+rows:random_permutation(append(ra,rb,rc));
+
+/* Arrays for JSXGraph, padded to 18 schools. */
+ids:makelist(
+    if i<=n then rows[i][1] else 0,
+    i,1,18
+);
+
+villages:makelist(
+    if i<=n then rows[i][2] else 0,
+    i,1,18
+);
+
+before:makelist(
+    if i<=n then rows[i][3] else 0,
+    i,1,18
+);
+
+after:makelist(
+    if i<=n then rows[i][4] else 0,
+    i,1,18
+);
+
+/* Individual changes. */
+changes:makelist(
+    rows[i][4]-rows[i][3],
+    i,1,n
+);
+
+/* Numerical answers. */
+ta_gained:sum(
+    if changes[i]>0 then 1 else 0,
+    i,1,n
+);
+
+ta_lost:sum(
+    if changes[i]<0 then 1 else 0,
+    i,1,n
+);
+
+ta_unchanged:sum(
+    if changes[i]=0 then 1 else 0,
+    i,1,n
+);
+
+ta_maxgain:lmax(changes);
+ta_maxloss:-lmin(changes);
+
+ta_total_schools:n;
+ta_unequal_schools:ta_gained+ta_lost;
+
+/* Village-level mean changes. */
+ta_mean_gain:
+    (sum(a1[i],i,1,na)-sum(a0[i],i,1,na))/na;
+
+ta_mean_loss:
+    (sum(b1[i],i,1,nb)-sum(b0[i],i,1,nb))/nb;
+
+ta_mean_stable:0;
+
+/* The gaining village always has the largest mean increase. */
+ta_village:village_codes[1];
+ta_villageB:village_codes[2];
+ta_villageC:village_codes[3];
+
+/* Values for diagnostic feedback. */
+ta_year1_max:lmax(append(a0,b0,c0));
+ta_max_year2:lmax(append(a1,b1,c1));
+
+/* Dropdown for Question 3. */
+ta_village_options:[
+    [1,is(ta_village=1),"Village A"],
+    [2,is(ta_village=2),"Village B"],
+    [3,is(ta_village=3),"Village C"]
+];
+
+/* Final conceptual dropdown. */
+ta_conclusion_options:[
+    [1,false,
+     "The identical boxplots mean every school stayed roughly the same."],
+    [2,false,
+     "Every school experienced approximately the same change."],
+    [3,true,
+     "The overall distributions are identical, but individual and village-level changes can differ."],
+    [4,false,
+     "The village with the most books in Year 2 necessarily had the largest increase."]
+];]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text>[[feedback:prt1]] [[feedback:prt2]] [[feedback:prt3]] [[feedback:prt4]] [[feedback:prt5]]</text>
+    </specificfeedback>
+    <questionnote format="html">
+      <text>{@ra@}; {@rb@}; {@rc@}; {@book_increment@}; {@offset@}; {@aoffset@}; {@boffset@}; {@village_codes@}; {@swapA@}; {@swapB@}; {@rows@}</text>
+    </questionnote>
+    <questiondescription format="html">
+      <text>Interactive JSXGraph mastery question: map variables to position, colour, size and facets, then investigate tree measurements.</text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>numerical</type>
+      <tans>ta_gained</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>numerical</type>
+      <tans>ta_unchanged</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>dropdown</type>
+      <tans>ta_village_options</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>numerical</type>
+      <tans>ta_maxgain</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans5</name>
+      <type>dropdown</type>
+      <tans>ta_conclusion_options</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>correct-gained</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta_gained</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>correct-gained-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Correct. These are the schools whose paired lines rise from Year 1 to Year 2.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>correct-gained-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>not-gained</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta_lost+ta_unchanged</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>not-gained-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>You may have counted schools that did not gain books. Count only upward-sloping paired lines.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>not-gained-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>all-schools</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta_total_schools</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>all-schools-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>This is the total number of schools, not the number that gained books.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>all-schools-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>unchanged-instead</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta_unchanged</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>unchanged-instead-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>These schools have horizontal paired lines. Count the upward-sloping lines instead.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>4</falsenextnode>
+        <falseanswernote>unchanged-instead-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>4</name>
+        <description>all-changed</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta_unequal_schools</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>all-changed-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>This counts schools that changed in either direction. The question asks only about gains.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>all-changed-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Connect the measurements and count only schools with Year 2 above Year 1.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>correct-unchanged</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta_unchanged</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>correct-unchanged-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Correct. Horizontal paired lines indicate no change.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>correct-unchanged-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>gained-instead</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta_gained</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>gained-instead-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>This counts schools that gained books, not schools with no change.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>gained-instead-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>changed-instead</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta_unequal_schools</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>changed-instead-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>This counts schools that changed in either direction. Look for horizontal lines.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>changed-instead-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>all-instead</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta_total_schools</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>all-instead-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Not every school stayed unchanged. Reveal the paired lines.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>4</falsenextnode>
+        <falseanswernote>all-instead-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>4</name>
+        <description>none-instead</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>0</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>none-instead-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Some paired lines are horizontal. Colour by village or inspect the schools to find them.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>none-instead-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>A school is unchanged only when its Year 1 and Year 2 measurements are equal.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>correct-village</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>ta_village</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>correct-village-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Correct. This village has the largest average positive change, visible in its upward paired lines.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>correct-village-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>decreasing-village</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>ta_villageB</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>decreasing-village-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>This village has the largest average decrease, not increase. Check the direction of its paired lines.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>decreasing-village-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>stable-village</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>ta_villageC</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>stable-village-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>This village is comparatively stable. Compare the average vertical change, not the final height of the points.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>stable-village-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Colour the points by village, then compare the average upward or downward changes for each village.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>correct-max-gain</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>ta_maxgain</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>correct-max-gain-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Correct. You subtracted Year 1 from Year 2 for the school with the largest increase.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>correct-max-gain-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>year2-not-change</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>ta_max_year2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>year2-not-change-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>That is the largest Year 2 measurement. The question asks how many books were gained, so subtract the two measurements for one school.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>year2-not-change-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>year1-not-change</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>ta_year1_max</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>year1-not-change-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>That is the largest Year 1 measurement, not an individual change.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>year1-not-change-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>mean-not-individual</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>ta_mean_gain</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>mean-not-individual-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>That is the average gain across schools in the gaining village. Find the largest gain for a single school.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>4</falsenextnode>
+        <falseanswernote>mean-not-individual-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>4</name>
+        <description>decrease-not-increase</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>ta_max_individual_decrease</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>decrease-not-increase-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>The sign indicates a decrease. Find the largest positive difference instead.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>decrease-not-increase-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Inspect a rising line and calculate Year 2 minus Year 1. Find the largest such difference.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt5</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>correct-conclusion</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5</sans>
+        <tans>3</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>correct-conclusion-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Correct. Similar marginal boxplots can conceal individual changes and differences among villages.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>correct-conclusion-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>marginals-confused</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>marginals-confused-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Similar boxplots do not mean the same schools kept the same number of books. Reveal and connect the paired measurements.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>marginals-confused-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>uniform-change</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5</sans>
+        <tans>2</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>uniform-change-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>The paired lines have different slopes and directions. Schools did not all experience the same change.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>3</falsenextnode>
+        <falseanswernote>uniform-change-F</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>3</name>
+        <description>level-vs-change</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans5</sans>
+        <tans>4</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>level-vs-change-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>A high Year 2 value is not the same as a large increase. Compare each school with its own Year 1 measurement.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>level-vs-change-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Compare the boxplots with the connected, village-coloured observations. Which information appears only after adding layers?</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+  </question>
+</quiz>
