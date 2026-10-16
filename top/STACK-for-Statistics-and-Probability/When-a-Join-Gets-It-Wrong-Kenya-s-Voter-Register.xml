@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>When a Join Gets It Wrong: Kenya's Voter Register</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>Before an election, Kenya's Independent Electoral and Boundaries Commission (IEBC) needs to check the accuracy of its voter register. A 2022 KPMG audit reported duplicated or blank ID/passport numbers, records for deceased voters, and names that did not agree with government identity records.</p>
+<p>You are checking a small fictional extract of the voter register against government identity records. Every record in the register is a different person.</p>
+
+<h4>Choosing the key</h4>
+<p><strong>Voter register</strong></p>
+<table border="1" cellpadding="6" style="border-collapse:collapse;">
+<tr><th>National ID</th><th>Name</th><th>County</th></tr>
+<tr><td>{#ids[1]#}</td><td>{#nm[1]#}</td><td>{#cty[1]#}</td></tr>
+<tr><td>{#ids[2]#}</td><td>{#nm[2]#}</td><td>{#cty[2]#}</td></tr>
+<tr><td>{#ids[3]#}</td><td>{#nm[3]#}</td><td>{#cty[3]#}</td></tr>
+<tr><td>{#ids[4]#}</td><td>{#nm[4]#}</td><td>{#cty[4]#}</td></tr>
+<tr><td>{#ids[5]#}</td><td>{#nm[5]#}</td><td>{#cty[5]#}</td></tr>
+<tr><td>{#ids[6]#}</td><td>{#nm[6]#}</td><td>{#cty[6]#}</td></tr>
+</table>
+<p><strong>Government identity records</strong></p>
+<table border="1" cellpadding="6" style="border-collapse:collapse;">
+<tr><th>National ID</th><th>Name</th><th>Year of birth</th></tr>
+<tr><td>{#ids[gp[1]]#}</td><td>{#nm[gp[1]]#}</td><td>{#yb[gp[1]]#}</td></tr>
+<tr><td>{#ids[gp[2]]#}</td><td>{#nm[gp[2]]#}</td><td>{#yb[gp[2]]#}</td></tr>
+<tr><td>{#ids[gp[3]]#}</td><td>{#nm[gp[3]]#}</td><td>{#yb[gp[3]]#}</td></tr>
+<tr><td>{#ids[gp[4]]#}</td><td>{#nm[gp[4]]#}</td><td>{#yb[gp[4]]#}</td></tr>
+<tr><td>{#ids[gp[5]]#}</td><td>{#nm[gp[5]]#}</td><td>{#yb[gp[5]]#}</td></tr>
+<tr><td>{#ids[gp[6]]#}</td><td>{#nm[gp[6]]#}</td><td>{#yb[gp[6]]#}</td></tr>
+</table>
+
+<p><strong>1.</strong> Which column is the most suitable key for adding year of birth to the voter register? Select one answer from the dropdown.</p>
+<p>[[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>
+
+<p><strong>2.</strong> If you perform an ordinary left join of the voter register to the government records using <em>Name</em> instead of <em>National ID</em>, how many rows will the result contain?</p>
+<p>[[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</p>
+
+<p><strong>3.</strong> Suppose you keep only one record for each name in the voter register and delete all the others, merely because the names are identical. How many distinct people are wrongly removed from this small register?</p>
+<p>[[input:ans3]] [[validation:ans3]] [[feedback:prt3]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Worked solution</h3>
+<p><strong>1. The key.</strong> A join key must appear in <em>both</em> tables and must identify one person only. <em>County</em> is not in the government records at all, and several voters share a county. <em>Row position</em> is not a property of a person: the two tables list people in different orders. <em>Name</em> is in both tables but is shared by different people. <em>National ID</em> is in both tables and different for every person, so it is the key.</p>
+
+<p><strong>2. Joining on Name.</strong> A left join keeps one result row for every pair (register row, government row) with the same name. A name that appears <em>k</em> times in each table therefore gives <em>k</em> &times; <em>k</em> rows, not <em>k</em>.</p>
+[[if test="is(scen=0)"]]
+<p><strong>{#pool[1]#}</strong> appears twice in each table, giving \(2\times 2 = 4\) rows. The other four names each appear once and give \(4\times 1 = 4\) rows. Total: \(4+4={@jrows@}\) rows.</p>
+[[elif test="is(scen=1)"]]
+<p><strong>{#pool[1]#}</strong> appears three times in each table, giving \(3\times 3 = 9\) rows. The other three names each appear once and give \(3\) rows. Total: \(9+3={@jrows@}\) rows.</p>
+[[else]]
+<p><strong>{#pool[1]#}</strong> and <strong>{#pool[2]#}</strong> each appear twice in each table, giving \(2\times 2 = 4\) rows each. The other two names each appear once and give \(2\) rows. Total: \(4+4+2={@jrows@}\) rows.</p>
+[[/if]]
+<p>The register has only 6 people, so the result is wrong: the join has invented rows by pairing people who are not the same person.</p>
+
+<p><strong>3. Removing "duplicates" by name.</strong> Every register record has a different National ID, so they are different people. Keeping one record per name deletes all the others.</p>
+[[if test="is(scen=0)"]]
+<p>Two people are called {#pool[1]#}, so one of them is deleted: <strong>{@removed@}</strong> person wrongly removed.</p>
+[[elif test="is(scen=1)"]]
+<p>Three people are called {#pool[1]#}, so two of them are deleted: <strong>{@removed@}</strong> people wrongly removed.</p>
+[[else]]
+<p>Two people are called {#pool[1]#} and two are called {#pool[2]#}, so one of each pair is deleted: <strong>{@removed@}</strong> people wrongly removed.</p>
+[[/if]]
+<p>The lesson: a name can look like a duplicate when the records are different people. Match on a value that identifies one person, and check that it is unique and not blank before you join or delete.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>3</defaultgrade>
+    <penalty>0</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text/>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[scen: rand(3);
+pat: [[1,1,2,3,4,5],[1,1,1,2,3,4],[1,1,2,2,3,4]][scen+1];
+pool: random_permutation(["Mary Wanjiku","John Otieno","Peter Mwangi","Grace Achieng","Samuel Kipchoge","Faith Njeri","Hassan Abdi","Esther Chebet","David Mutua","Amina Hussein"]);
+perm: random_permutation(pat);
+nm: makelist(pool[perm[i]],i,1,6);
+cpool: random_permutation(["Nairobi","Kisumu","Kiambu","Nakuru","Mombasa","Eldoret"]);
+cty: makelist(cpool[1+rand(4)],i,1,6);
+id0: 10400+rand(500);
+ids: makelist(id0+i,i,1,6);
+yb: random_permutation(makelist(1960+k,k,0,43));
+gp: random_permutation([1,2,3,4,5,6]);
+jrows: [8,12,10][scen+1];
+removed: [1,2,2][scen+1];
+dupn: [2,3,4][scen+1];
+nrows: 6;
+key_options: random_permutation([[kid,true,"National ID"],[kname,false,"Name"],[kcounty,false,"County"],[krow,false,"Row position (first row to first row)"]]);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="moodle_auto_format">
+      <text>scen={@scen@}, pattern={@perm@}, join rows={@jrows@}, removed={@removed@}</text>
+    </questionnote>
+    <questiondescription format="html">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>dropdown</type>
+      <tans>key_options</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>jrows</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords>inf,minf,infinity,und,ind</forbidwords>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>removed</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords>inf,minf,infinity,und,ind</forbidwords>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>sa1: ans1;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>kid</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Correct. National ID is in both tables and is different for every person.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[[[if test="is(sa1=kname)"]]
+<p>Not quite. Name is in both tables, but different people can share a name, so a name does not identify one person.</p>
+[[elif test="is(sa1=kcounty)"]]
+<p>Not quite. County is not a column of the government records, so there is nothing to match it with. Many voters also share a county.</p>
+[[else]]
+<p>Not quite. The two tables list people in different orders, so matching row to row would pair the wrong people. A key must identify the same person in both tables.</p>
+[[/if]]]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>sa2: ans2;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>jrows</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Correct. A name that appears <em>k</em> times in each table gives <em>k</em>&times;<em>k</em> rows, so the join has {@jrows@} rows even though the register has only 6 people.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[[[if test="is(sa2=6)"]]
+<p>Not quite. A left join keeps every register row, but it also adds a row for <em>each</em> government record with a matching name. A name shared by people in both tables gives extra rows.</p>
+[[else]]
+<p>Not quite. Count the rows name by name: a name that appears <em>k</em> times in each table gives <em>k</em>&times;<em>k</em> rows, and a name that appears once gives 1 row.</p>
+[[/if]]]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>sa3: ans3;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>removed</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Correct. Each person after the first with a given name is deleted, and they are all different people.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[[[if test="is(sa3=dupn)"]]
+<p>Not quite. {@dupn@} people share a name, but you keep one record for each name, so one person of each name stays in the register.</p>
+[[elif test="is(sa3=0)"]]
+<p>Not quite. Every record has a different National ID, so the people with the same name are different people, and deleting one of them removes a real voter.</p>
+[[else]]
+<p>Not quite. For each name, count how many records share it and subtract the one you keep. Add these up over all the names.</p>
+[[/if]]]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <qtest>
+      <testcase>1</testcase>
+      <description>Correct answers</description>
+      <testinput>
+        <name>ans1</name>
+        <value>kid</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>jrows</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>removed</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <description>Correct numbers written unusually</description>
+      <testinput>
+        <name>ans1</name>
+        <value>kid</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>(jrows+1)-1</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>2*removed-removed</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>3</testcase>
+      <description>Wrong key; row count equal to the register size; zero removed</description>
+      <testinput>
+        <name>ans1</name>
+        <value>kname</value>
+      </testinput>
+      <testinput>
+        <name>ans2</name>
+        <value>6</value>
+      </testinput>
+      <testinput>
+        <name>ans3</name>
+        <value>0</value>
+      </testinput>
+      <expected>
+        <name>prt1</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt1-1-F</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt2</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt2-1-F</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prt3</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prt3-1-F</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+</quiz>
