@@ -291,6 +291,16 @@ key_options: random_permutation([[kid,true,"National ID"],[kname,false,"Name"],[
         </falsefeedback>
       </node>
     </prt>
+    <deployedseed>1287692000</deployedseed>
+    <deployedseed>2051462846</deployedseed>
+    <deployedseed>594170855</deployedseed>
+    <deployedseed>2097525108</deployedseed>
+    <deployedseed>1491717069</deployedseed>
+    <deployedseed>1401066986</deployedseed>
+    <deployedseed>126770111</deployedseed>
+    <deployedseed>2076220634</deployedseed>
+    <deployedseed>64792021</deployedseed>
+    <deployedseed>1173655512</deployedseed>
     <qtest>
       <testcase>1</testcase>
       <description>Correct answers</description>
