@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>RMS Book - Ch1Q3 - Match evidence to methods</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<h3>Mission 3: Build the investigation</h3><p>The team has a promising research question but wants to start laying out plots immediately.</p><p><strong>Drag the five planning decisions into a defensible order.</strong> The point is not to memorise a recipe: make the research question determine what evidence and design are needed.</p>
+[[parsons input="ans1"]]
+{#parsons_encode(proof_steps)#}
+[[/parsons]]
+<p>[[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>
+[[hint title="Planning hint"]]<p>Begin with what you need to learn, then decide what would count as evidence. Interpretation and limitations come after observations.</p>[[/hint]]]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Debrief: question before design</h3><p>One defensible sequence is: identify the gap; specify evidence; design the comparisons; collect outcomes and relevant contextual measurements; interpret the contrasts with limitations.</p><p>The precise order of some planning activities can be iterative in real research. This exercise emphasizes the logical dependency between the question and the design, not a rigid administrative timeline.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2026063000</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[stack_include("contribl://prooflib.mac");
+proof_steps:[
+["gap","Identify the uncertainty: do varieties respond differently to water?"],
+["evidence","Specify evidence: compare varieties at each irrigation level."],
+["design","Plan a feasible trial that crosses variety with irrigation and uses replication."],
+["measure","Measure yields and relevant conditions that may influence interpretation."],
+["infer","Compare varietal contrasts across irrigation regimes, then state limitations."]
+];
+ta:proof("gap","evidence","design","measure","infer");
+proof_steps:random_permutation(proof_steps);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="html">
+      <text>{@map(first,proof_steps)@}</text>
+    </questionnote>
+    <questiondescription format="html">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>1</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<p>Correct.</p>]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<p>Partially correct.</p>]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<p>Review your answer and try again.</p>]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>parsons</type>
+      <tans>[ta,proof_steps]</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>sa:parsons_decode(ans1);</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>sa</sans>
+        <tans>ta</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Correct</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Correct.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>Incorrect</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Reconsider what the evidence can establish.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>671689635</deployedseed>
+    <deployedseed>2094789522</deployedseed>
+    <deployedseed>1809660386</deployedseed>
+    <deployedseed>557394688</deployedseed>
+    <deployedseed>1096888601</deployedseed>
+    <deployedseed>1992421941</deployedseed>
+  </question>
+</quiz>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>RMS Book - Ch1Q4 - Before collecting more data</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<h3>Mission 4: Spend the research budget wisely</h3><p>A maize research team is considering a new study. Existing trials have already established a general irrigation response, and 25 years of daily climate records may be available.</p>
+[[if test="is(scenario=0)"]]
+<p>The team wants to understand how maize performance could vary across unusually dry years. The available climate records are sufficiently complete, and a crop model has been appropriately validated for the intended use.</p>
+[[else]]
+<p>The team wants to understand which variety characteristics farmers consider important, but the team does not yet know the relevant categories.</p>
+[[/if]]
+<p><strong>Which next step is best justified by the stated knowledge gap?</strong></p><p>[[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>
+[[hint title="What would make this study worthwhile?"]]<p>Choose the method that resolves the stated uncertainty, rather than assuming a new field trial is always necessary.</p>[[/hint]]]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[[[if test="is(scenario=0)"]]<p><strong>Answer: 2.</strong> Existing climate data and a suitably validated model can help explore variation across years without automatically requiring a new trial for every year. Check access, completeness and suitability before using records.</p>
+[[else]]<p><strong>Answer: 3.</strong> When the relevant farmer priorities are unknown, open discussions can uncover them before a fixed-response survey or a tightly specified experiment is designed.</p>[[/if]]
+<p>The method follows the uncertainty that remains, not the team's disciplinary habits.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2026063000</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[scenario:rand(2);
+ta1:if scenario=0 then 2 else 3;
+options1:random_permutation([
+[1,false,"Repeat the same irrigation trial without changing its objective"],
+[2,is(scenario=0),"Use the existing climate series with an appropriately validated crop model"],
+[3,is(scenario=1),"Conduct exploratory discussions with farmers to identify their priorities"],
+[4,false,"Choose the most elaborate experimental layout before deciding what to learn"]
+]);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="html">
+      <text>Ch1-Q4-{@scenario@}</text>
+    </questionnote>
+    <questiondescription format="html">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>1</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<p>Correct.</p>]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<p>Partially correct.</p>]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<p>Review your answer and try again.</p>]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>radio</type>
+      <tans>options1</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Correct</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Correct.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>Incorrect</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Reconsider what the evidence can establish.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>112172164</deployedseed>
+    <deployedseed>1598614654</deployedseed>
+  </question>
+</quiz>

@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>RMS Book - Ch1Q2 - Interpreting varietal response</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<h3>Mission 2: Let the evidence challenge your question</h3><p>The following are <strong>simulated mean yields</strong> (tonnes per hectare) from an illustrative trial. They are not observations from the chapter.</p><table border="1" cellpadding="6"><tr><th>Irrigation</th><th>Variety A</th><th>Variety B</th></tr><tr><td>Low</td><td>{@aL/10@}</td><td>{@bL/10@}</td></tr><tr><td>Medium</td><td>{@aM/10@}</td><td>{@bM/10@}</td></tr><tr><td>High</td><td>{@aH/10@}</td><td>{@bH/10@}</td></tr></table><p>1. Calculate B minus A at <strong>low</strong> irrigation (t/ha): [[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p><p>2. Calculate B minus A at <strong>high</strong> irrigation (t/ha): [[input:ans2]] [[validation:ans2]] [[feedback:prt2]]</p><p>3. Calculate (B minus A at high irrigation) minus (B minus A at low irrigation): [[input:ans3]] [[validation:ans3]] [[feedback:prt3]]</p><p><strong>Decision checkpoint:</strong> What do the calculated contrasts suggest?</p><p>[[input:ans4]] [[validation:ans4]] [[feedback:prt4]]</p>
+[[hint title="Hint: compare contrasts"]]<p>A difference-in-differences of zero means the two endpoint contrasts agree; a positive or negative value means the contrast has changed.</p>[[/hint]]
+<p><em>These are simulated means. An apparent interaction is not a statistical significance test.</em></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>At low irrigation, B minus A is {@ta1@} t/ha. At high irrigation, B minus A is {@ta2@} t/ha. Their difference is {@ta3@} t/ha.</p>
+[[if test="is(pattern=0)"]]<p>The variety advantage is constant across the two endpoints. These means do not show a change in the varietal contrast between low and high irrigation.</p>
+[[elif test="is(pattern=1)"]]<p>The preferred variety reverses: B leads at low irrigation, while A leads at high irrigation.</p>
+[[else]]<p>B leads at both irrigation levels, but the size of its advantage changes. That is an interaction in the observed means.</p>[[/if]]
+<p>To assess whether a population-level interaction is supported, we would need information on replication and variability and an appropriate analysis.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2026063000</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[/* Three deliberately distinct response patterns, in tenths of t/ha. */
+pattern:rand(3);
+base:rand(9)+28;
+aL:base;
+bL:base+8;
+aM:base+17;
+aH:base+34;
+bM:if pattern=0 then base+17 else if pattern=1 then base+13 else base+22;
+bH:if pattern=0 then base+42 else if pattern=1 then base+26 else base+50;
+ta1:(bL-aL)/10;
+ta2:(bH-aH)/10;
+ta3:ta2-ta1;
+ta4:if pattern=0 then 1 else if pattern=1 then 2 else 3;
+options4:random_permutation([
+[1,is(pattern=0),"The variety contrast is unchanged between low and high irrigation"],
+[2,is(pattern=1),"Variety B's advantage becomes smaller at high irrigation"],
+[3,is(pattern=2),"Variety B's advantage becomes larger at high irrigation"]
+]);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="html">
+      <text>Ch1-Q2-{@pattern@}-{@base@}</text>
+    </questionnote>
+    <questiondescription format="html">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>1</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<p>Correct.</p>]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<p>Partially correct.</p>]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<p>Review your answer and try again.</p>]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>numerical</type>
+      <tans>ta1</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>numerical</type>
+      <tans>ta2</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>numerical</type>
+      <tans>ta3</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans4</name>
+      <type>radio</type>
+      <tans>options4</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>0.2500000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Correct</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Correct.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>Incorrect</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Reconsider what the evidence can establish.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>0.2500000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Correct</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Correct.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>Incorrect</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Reconsider what the evidence can establish.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>0.2500000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>ta3</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Correct</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Correct.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>Incorrect</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Reconsider what the evidence can establish.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt4</name>
+      <value>0.2500000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans4</sans>
+        <tans>ta4</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Correct</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Correct.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>Incorrect</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Reconsider what the evidence can establish.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1577978609</deployedseed>
+    <deployedseed>5856413</deployedseed>
+    <deployedseed>1057001137</deployedseed>
+    <deployedseed>157627671</deployedseed>
+    <deployedseed>1235452535</deployedseed>
+  </question>
+</quiz>

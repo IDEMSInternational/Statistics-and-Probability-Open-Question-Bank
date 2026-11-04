@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>RMS Book - Ch1Q1 - A worthwhile research objective</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<h3>Mission 1: Find the knowledge gap</h3><p>The proposed dry-season maize trial has three irrigation regimes, four blocks and one variety. Earlier research already establishes the general water–yield relationship.</p><p><strong>You are the research director. Which objective would make the most worthwhile contribution?</strong></p><p>[[input:ans1]] [[validation:ans1]] [[feedback:prt1]]</p>
+[[hint title="Need a clue?"]]<p>Ask what is already known, and what a new comparison could reveal that would change a decision.</p>[[/hint]]]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<h3>Research director's debrief</h3><p>Comparing varietal responses across irrigation regimes investigates an <strong>interaction</strong>: the effect of irrigation may depend on the variety. This could inform decisions about which varieties to grow under different water conditions.</p><p>Before committing resources, articulate the knowledge gap and identify what evidence would close it.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2026063000</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[ta1:2;
+options1:random_permutation([
+[1,false,"Confirm that more irrigation increases maize yield"],
+[2,true,"Find out whether varieties differ in their response to irrigation"],
+[3,false,"Record the yield of one variety without a comparison"],
+[4,false,"Show that a four-block layout is possible"]
+]);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="html">
+      <text>Ch1-Q1</text>
+    </questionnote>
+    <questiondescription format="html">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>1</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<p>Correct.</p>]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<p>Partially correct.</p>]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<p>Review your answer and try again.</p>]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>radio</type>
+      <tans>options1</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>Correct</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Correct.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>Incorrect</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Reconsider what the evidence can establish.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>289499885</deployedseed>
+  </question>
+</quiz>
