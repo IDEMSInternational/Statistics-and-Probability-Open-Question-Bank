@@ -2,63 +2,45 @@
 <quiz>
   <question type="stack">
     <name>
-      <text>Ch10 Ten Minutes Away: accounting for journey time</text>
+      <text>Accounting for Variability: accounting for journey time</text>
     </name>
     <questiontext format="html">
       <text><![CDATA[<div style="background:#f6f1e3;border-left:4px solid #c4562b;border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:12px">
-<p style="margin:0 0 4px"><b>A traveller needs to get from somewhere in Nairobi to JKIA airport. How many minutes should they allow for the trip?</b></p>
-<p style="margin:0">With no information at all, the <b>typical trip takes 60 minutes</b>. Six clue cards each tell you something about this particular trip, but you may only turn over <b>two</b> of them.</p>
+<p style="margin:0 0 4px"><b>A traveller is catching a long-distance bus to Kisumu, which leaves from the city centre. How many minutes should they allow to get there?</b></p>
+<p style="margin:0">With no information at all, the <b>typical trip into town takes 60 minutes</b>. Six clue cards each tell you something about this particular trip. <b>Two cards are free</b>; you can turn over more, but each extra card costs some marks.</p>
 </div>
 
 <h4 style="margin:14px 0 6px">How to play</h4>
 <ol style="margin-top:0">
-<li><b>Turn over two cards</b> by clicking them. You can't turn them back, so choose the two you think will tell you most.</li>
-<li><b>Work out your prediction</b> using the chart below: start at 60 minutes and add the adjustment for each of your two cards.</li>
-<li><b>Decide how many minutes to allow.</b> The four face-down cards and plain chance can still change the trip, so you may want some spare time.</li>
+<li><b>Turn over cards</b> by clicking them. Two are free. Each extra card takes 10% off your marks for Step 3, and cards can't be turned back.</li>
+<li><b>Work out your prediction</b> with the charts below: start at 60 minutes and add the adjustment for each card you turned over.</li>
+<li><b>Decide how many minutes to allow.</b> Any cards still face down, and plain chance, can still change the trip, so you may want some spare time.</li>
 <li><b>Press Check.</b> All six cards and the actual journey time are then revealed.</li>
 </ol>
-<p style="font-size:0.95em"><b>Scoring.</b> Getting to the airport with anything from 0 to 45 minutes to spare is a good result. More than 45 minutes is a long wait, so it gets half marks. Arriving after the time you allowed means a missed flight and no marks.</p>
+<p style="font-size:0.95em"><b>Scoring.</b> Reaching the bus with anything from 0 to 60 minutes to spare is a good result. More than 60 minutes is a long wait, so it gets half marks. Arriving after the time you allowed means a missed bus and no marks.</p>
 
 <h4 style="margin:14px 0 6px">What a local driver knows</h4>
-<p style="margin-top:0;font-size:0.95em">This chart shows how much each clue adds to or takes off the typical 60 minutes. Clues add together. For example, <b>17:30 on a Friday</b> is \(60 + 20 + 10 = 90\) minutes before you know anything else.</p>
-<table style="border-collapse:collapse;font-size:0.92em;width:100%;max-width:640px;margin-bottom:6px">
-<tr><td style="padding:6px 8px 2px 0;font-weight:600;vertical-align:top;width:110px">Time of day</td><td style="padding:4px 0">
-<span style="display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:12px;background:#d8ebe2;color:#1d5c46">05:30 &minus;15</span>
-<span style="display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:12px;background:#f3d9cc;color:#8a3517">08:00 +10</span>
-<span style="display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:12px;background:#d8ebe2;color:#1d5c46">13:00 &minus;5</span>
-<span style="display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:12px;background:#e9b39a;color:#6e2a10">17:30 +20</span>
-<span style="display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:12px;background:#f3d9cc;color:#8a3517">19:30 +10</span>
-<span style="display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:12px;background:#b9dccb;color:#14473a">23:00 &minus;20</span>
-</td></tr>
-<tr><td style="padding:6px 8px 2px 0;font-weight:600;vertical-align:top">Day</td><td style="padding:4px 0">
-<span style="display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:12px;background:#eee9dc;color:#4a4a40">Mon&ndash;Thu 0</span>
-<span style="display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:12px;background:#f3d9cc;color:#8a3517">Friday +10</span>
-<span style="display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:12px;background:#d8ebe2;color:#1d5c46">Sat/Sun &minus;5</span>
-</td></tr>
-<tr><td style="padding:6px 8px 2px 0;font-weight:600;vertical-align:top">Pickup point</td><td style="padding:4px 0">
-<span style="display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:12px;background:#f3d9cc;color:#8a3517">CBD +10</span>
-<span style="display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:12px;background:#f8e9e1;color:#8a3517">Westlands +5</span>
-<span style="display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:12px;background:#eee9dc;color:#4a4a40">Kilimani 0</span>
-<span style="display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:12px;background:#f8e9e1;color:#8a3517">Karen +5</span>
-<span style="display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:12px;background:#f3d9cc;color:#8a3517">Ruaka +10</span>
-<span style="display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:12px;background:#d8ebe2;color:#1d5c46">Embakasi &minus;10</span>
-</td></tr>
-<tr><td style="padding:6px 8px 2px 0;font-weight:600;vertical-align:top">Weather</td><td style="padding:4px 0">
-<span style="display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:12px;background:#eee9dc;color:#4a4a40">Dry 0</span>
-<span style="display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:12px;background:#f8e9e1;color:#8a3517">Light rain +5</span>
-<span style="display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:12px;background:#e9b39a;color:#6e2a10">Heavy rain +15</span>
-</td></tr>
-<tr><td style="padding:6px 8px 2px 0;font-weight:600;vertical-align:top">Traffic news</td><td style="padding:4px 0">
-<span style="display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:12px;background:#eee9dc;color:#4a4a40">No incidents 0</span>
-<span style="display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:12px;background:#e9b39a;color:#6e2a10">Any incident +20</span>
-</td></tr>
-<tr><td style="padding:6px 8px 2px 0;font-weight:600;vertical-align:top">Driver rating</td><td style="padding:4px 0">
-<span style="display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:12px;background:#eee9dc;color:#4a4a40">Any rating 0</span>
-</td></tr>
-</table>
-<p style="font-size:0.92em;color:#6b6a5e">Even with all six cards, the trip can still come out up to 5 minutes either way. No card can tell you that part.</p>
+<p style="margin-top:0;font-size:0.95em"><b>Day and time of day.</b> Each cell shows how much that day and time adds to or takes off the typical 60 minutes.</p>
+<ul style="margin-top:0;font-size:0.95em">
+<li>If you turned over <b>both</b> the Day and Time of day cards, use the cell where they meet.</li>
+<li>If you turned over <b>only one</b> of them, use its average at the edge of the chart.</li>
+</ul>
+<p style="margin-top:0;font-size:0.95em">For example, if you know it is a Friday at 17:30, add +35. If you only know it is a Friday, add the Friday average of +8.</p>
+<table style="border-collapse:separate;border-spacing:2px;font-size:0.9em;margin:4px 0 4px">
+<tr><th></th><th style="padding:2px 4px;font-weight:600">05:30</th><th style="padding:2px 4px;font-weight:600">08:00</th><th style="padding:2px 4px;font-weight:600">13:00</th><th style="padding:2px 4px;font-weight:600">17:30</th><th style="padding:2px 4px;font-weight:600">19:30</th><th style="padding:2px 4px;font-weight:600">23:00</th><th style="padding:2px 6px;font-weight:600;border-left:2px solid #1f2a24">Day average</th></tr>
+<tr><th style="text-align:right;padding:2px 8px 2px 0;font-weight:600">Monday</th><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#9fd0b8;color:#123f33;min-width:42px">&minus;15</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#f0c3ad;color:#7a2e12;min-width:42px">+15</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#e1f0e8;color:#1d5c46;min-width:42px">&minus;5</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#e39a78;color:#5e220b;min-width:42px">+20</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#f0c3ad;color:#7a2e12;min-width:42px">+10</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#9fd0b8;color:#123f33;min-width:42px">&minus;20</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;border-left:2px solid #1f2a24;font-weight:700">+1</td></tr>
+<tr><th style="text-align:right;padding:2px 8px 2px 0;font-weight:600">Tuesday</th><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#9fd0b8;color:#123f33;min-width:42px">&minus;15</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#f0c3ad;color:#7a2e12;min-width:42px">+10</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#e1f0e8;color:#1d5c46;min-width:42px">&minus;5</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#e39a78;color:#5e220b;min-width:42px">+20</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#f0c3ad;color:#7a2e12;min-width:42px">+10</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#9fd0b8;color:#123f33;min-width:42px">&minus;20</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;border-left:2px solid #1f2a24;font-weight:700">0</td></tr>
+<tr><th style="text-align:right;padding:2px 8px 2px 0;font-weight:600">Wednesday</th><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#9fd0b8;color:#123f33;min-width:42px">&minus;15</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#f0c3ad;color:#7a2e12;min-width:42px">+10</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#e1f0e8;color:#1d5c46;min-width:42px">&minus;5</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#e39a78;color:#5e220b;min-width:42px">+20</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#f0c3ad;color:#7a2e12;min-width:42px">+10</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#9fd0b8;color:#123f33;min-width:42px">&minus;20</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;border-left:2px solid #1f2a24;font-weight:700">0</td></tr>
+<tr><th style="text-align:right;padding:2px 8px 2px 0;font-weight:600">Thursday</th><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#9fd0b8;color:#123f33;min-width:42px">&minus;15</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#f0c3ad;color:#7a2e12;min-width:42px">+10</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#e1f0e8;color:#1d5c46;min-width:42px">&minus;5</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#e39a78;color:#5e220b;min-width:42px">+25</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#f0c3ad;color:#7a2e12;min-width:42px">+15</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#9fd0b8;color:#123f33;min-width:42px">&minus;20</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;border-left:2px solid #1f2a24;font-weight:700">+2</td></tr>
+<tr><th style="text-align:right;padding:2px 8px 2px 0;font-weight:600">Friday</th><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#9fd0b8;color:#123f33;min-width:42px">&minus;15</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#f0c3ad;color:#7a2e12;min-width:42px">+10</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#f1ede3;color:#4a4a40;min-width:42px">0</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#cf6c44;color:#ffffff;min-width:42px">+35</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#cf6c44;color:#ffffff;min-width:42px">+30</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#c4e3d3;color:#1d5c46;min-width:42px">&minus;10</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;border-left:2px solid #1f2a24;font-weight:700">+8</td></tr>
+<tr><th style="text-align:right;padding:2px 8px 2px 0;font-weight:600">Saturday</th><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#9fd0b8;color:#123f33;min-width:42px">&minus;20</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#c4e3d3;color:#1d5c46;min-width:42px">&minus;10</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#f1ede3;color:#4a4a40;min-width:42px">0</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#f8e4da;color:#8a3517;min-width:42px">+5</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#f8e4da;color:#8a3517;min-width:42px">+5</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#9fd0b8;color:#123f33;min-width:42px">&minus;15</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;border-left:2px solid #1f2a24;font-weight:700">&minus;6</td></tr>
+<tr><th style="text-align:right;padding:2px 8px 2px 0;font-weight:600">Sunday</th><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#9fd0b8;color:#123f33;min-width:42px">&minus;20</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#9fd0b8;color:#123f33;min-width:42px">&minus;15</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#c4e3d3;color:#1d5c46;min-width:42px">&minus;10</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#e1f0e8;color:#1d5c46;min-width:42px">&minus;5</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#f1ede3;color:#4a4a40;min-width:42px">0</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;background:#9fd0b8;color:#123f33;min-width:42px">&minus;20</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;border-left:2px solid #1f2a24;font-weight:700">&minus;12</td></tr>
+<tr><th style="text-align:right;padding:4px 8px 2px 0;font-weight:600;border-top:2px solid #1f2a24">Time average</th><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;border-top:2px solid #1f2a24;font-weight:700">&minus;16</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;border-top:2px solid #1f2a24;font-weight:700">+4</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;border-top:2px solid #1f2a24;font-weight:700">&minus;4</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;border-top:2px solid #1f2a24;font-weight:700">+17</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;border-top:2px solid #1f2a24;font-weight:700">+11</td><td style="padding:5px 4px;text-align:center;font-family:monospace;font-size:0.95em;border-top:2px solid #1f2a24;font-weight:700">&minus;18</td><td style="border-top:2px solid #1f2a24"></td></tr></table>
+<p style="margin:12px 0 4px;font-size:0.95em"><b>Other clues</b> add on top of the day and time.</p>
+<table style="border-collapse:collapse;font-size:0.92em;width:100%;max-width:660px;margin-bottom:6px"><tr><td style="padding:6px 8px 2px 0;font-weight:600;vertical-align:top;width:110px">Pickup point</td><td style="padding:4px 0"><span style="display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:12px;background:#c4e3d3;color:#1d5c46">Westlands &minus;10</span><span style="display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:12px;background:#c4e3d3;color:#1d5c46">Kilimani &minus;10</span><span style="display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:12px;background:#f1ede3;color:#4a4a40">Embakasi 0</span><span style="display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:12px;background:#f1ede3;color:#4a4a40">Kasarani 0</span><span style="display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:12px;background:#f8e4da;color:#8a3517">Karen +5</span><span style="display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:12px;background:#f8e4da;color:#8a3517">Ruaka +5</span><span style="display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:12px;background:#f0c3ad;color:#7a2e12">Rongai +15</span></td></tr><tr><td style="padding:6px 8px 2px 0;font-weight:600;vertical-align:top;width:110px">Weather</td><td style="padding:4px 0"><span style="display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:12px;background:#e1f0e8;color:#1d5c46">Dry &minus;5</span><span style="display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:12px;background:#f8e4da;color:#8a3517">Light rain +5</span><span style="display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:12px;background:#f0c3ad;color:#7a2e12">Heavy rain +15</span></td></tr><tr><td style="padding:6px 8px 2px 0;font-weight:600;vertical-align:top;width:110px">Traffic news</td><td style="padding:4px 0"><span style="display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:12px;background:#e1f0e8;color:#1d5c46">No incidents &minus;5</span><span style="display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:12px;background:#f0c3ad;color:#7a2e12">Any incident +15</span></td></tr><tr><td style="padding:6px 8px 2px 0;font-weight:600;vertical-align:top;width:110px">Driver rating</td><td style="padding:4px 0"><span style="display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:12px;background:#f1ede3;color:#4a4a40">Any rating 0</span></td></tr></table>
+<p style="font-size:0.92em;color:#6b6a5e">Even with all six cards turned over, the trip can still come out up to 5 minutes either way. No card can tell you that part.</p>
 
-<h4 style="margin:14px 0 6px">Step 1: turn over two cards</h4>
+<h4 style="margin:14px 0 6px">Step 1: turn over cards</h4>
 [[jsxgraph width="640px" height="290px" input-ref-ans1="ans1Ref"]]
 var cardn = {#cardn#};
 var cardv = {#cardv#};
@@ -69,27 +51,29 @@ var raw = String(input.value || '').replace(/[^0-9,]/g, '');
 if (raw.length > 0) {
   raw.split(',').forEach(function (s) {
     var n = parseInt(s, 10);
-    if (n >= 1 && n <= 6 && chosen.indexOf(n) < 0 && chosen.length < 2) { chosen.push(n); }
+    if (n >= 1 && n <= 6 && chosen.indexOf(n) < 0) { chosen.push(n); }
   });
 }
 board.create('text', [0.6, 19.9, function () {
-  var left = 2 - chosen.length;
-  return left > 0 ? 'Click a card to turn it over. Cards left to turn: ' + left : 'You have turned over your two cards.';
+  var n = chosen.length;
+  if (n < 2) { return 'Click a card to turn it over. Free cards left: ' + (2 - n); }
+  if (n === 2) { return 'You have used your two free cards. Any more will cost marks.'; }
+  return 'Cards turned over: ' + n + ' (' + (n - 2) + ' extra, costing ' + (10 * (n - 2)) + '% of the Step 3 marks)';
 }], {fixed: true, fontSize: 14, highlight: false, strokeColor: '#1f2a24'});
 var polys = [];
 var vtexts = [];
 function paint(i) {
   var open = chosen.indexOf(i + 1) >= 0;
-  var locked = !open && chosen.length >= 2;
-  polys[i].setAttribute({fillColor: open ? '#ffffff' : (locked ? '#ece6d8' : '#d9d1bd')});
+  var paid = !open && chosen.length >= 2;
+  polys[i].setAttribute({fillColor: open ? '#ffffff' : (paid ? '#e8dfcb' : '#d9d1bd')});
   polys[i].borders.forEach(function (b) {
-    b.setAttribute({strokeColor: open ? '#2c8063' : '#bdb39b', strokeWidth: open ? 3 : 1.5});
+    b.setAttribute({strokeColor: open ? '#2c8063' : (paid ? '#c4562b' : '#bdb39b'), strokeWidth: open ? 3 : 1.5, dash: paid ? 2 : 0});
   });
-  vtexts[i].setText(open ? cardv[i] : (locked ? '' : '?'));
+  vtexts[i].setText(open ? cardv[i] : (paid ? '? (costs 10%)' : '?'));
 }
 function turn(i) {
   if (input.readOnly || input.disabled) { return; }
-  if (chosen.indexOf(i + 1) >= 0 || chosen.length >= 2) { return; }
+  if (chosen.indexOf(i + 1) >= 0) { return; }
   chosen.push(i + 1);
   input.value = '[' + chosen.join(',') + ']';
   input.dispatchEvent(new Event('change'));
@@ -125,16 +109,17 @@ board.update();
 <div style="display:none">[[input:ans1]] [[validation:ans1]]</div>
 
 <h4 style="margin:14px 0 6px">Step 2: your prediction</h4>
-<p>Start at 60 minutes and add the adjustments for your two cards. Your prediction is [[input:ans2]] minutes. [[validation:ans2]]</p>
+<p>Start at 60 minutes and add the adjustments for the cards you turned over. Your prediction is [[input:ans2]] minutes. [[validation:ans2]]</p>
 [[feedback:prt1]]
 
 <h4 style="margin:14px 0 6px">Step 3: how long should the traveller allow?</h4>
-<p>Allow [[input:ans3]] minutes for the trip. [[validation:ans3]]</p>
+<p>Allow [[input:ans3]] minutes to get to the bus. [[validation:ans3]]</p>
 [[feedback:prt2]]]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text><![CDATA[<p>The two most useful cards are usually <b>time of day</b>, which can move the trip anywhere from 20 minutes shorter to 20 minutes longer, and <b>traffic news</b>, which adds 20 minutes when there is an incident. Pickup point and weather come next. <b>Driver rating never changes the trip</b>, so turning it over accounts for none of the variation.</p>
-<p>Whatever two cards you choose, the other four are still face down. Their effects are real and knowable, but your prediction leaves them out: that is <b>unaccounted-for variability</b>. The final few minutes either way are <b>natural variability</b>, which no card could predict. This is why a sensible allowance is your prediction plus some spare time.</p>]]></text>
+      <text><![CDATA[<p>The cards that can move the trip most are <b>day and time of day</b> (together, from 20 minutes quicker to 35 minutes slower) and <b>traffic news</b> (a 20-minute swing between no incidents and an incident). Pickup point and weather come next. <b>Driver rating never changes the trip</b>, so turning it over accounts for none of the variation.</p>
+<p>The heatmap's edges show what you can account for with only one of the day or time cards. Friday's average is +8, but a Friday evening is much worse than a Friday morning. Knowing both cards accounts for more.</p>
+<p>Any cards left face down are real, known causes, but your prediction leaves them out: that is <b>unaccounted-for variability</b>. The final few minutes either way are <b>natural variability</b>, which no card could predict. A sensible allowance is your prediction plus some spare time. You can do well with two cards and a good buffer, without paying for more.</p>]]></text>
     </generalfeedback>
     <defaultgrade>2</defaultgrade>
     <penalty>0.1</penalty>
@@ -147,48 +132,54 @@ board.update();
       <text><![CDATA[/* Typical trip with no information */
 typical: 60;
 
-/* Clue levels and the minutes each adds to the typical trip */
-timeL: ["05:30", "08:00", "13:00", "17:30", "19:30", "23:00"];
-timeE: [-15, 10, -5, 20, 10, -20];
+/* Day x time adjustments (rows = days Mon..Sun, columns = times) and their rounded averages */
 dayL: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-dayE: [0, 0, 0, 0, 10, -5, -5];
-areaL: ["CBD", "Westlands", "Kilimani", "Karen", "Ruaka", "Embakasi"];
-areaE: [10, 5, 0, 5, 10, -10];
+timeL: ["05:30", "08:00", "13:00", "17:30", "19:30", "23:00"];
+H: [[-15, 15, -5, 20, 10, -20], [-15, 10, -5, 20, 10, -20], [-15, 10, -5, 20, 10, -20], [-15, 10, -5, 25, 15, -20], [-15, 10, 0, 35, 30, -10], [-20, -10, 0, 5, 5, -15], [-20, -15, -10, -5, 0, -20]];
+dayM: [1, 0, 0, 2, 8, -6, -12];
+timeM: [-16, 4, -4, 17, 11, -18];
+
+/* Other clues and the minutes each adds to the typical trip */
+areaL: ["Westlands", "Kilimani", "Embakasi", "Kasarani", "Karen", "Ruaka", "Rongai"];
+areaE: [-10, -10, 0, 0, 5, 5, 15];
 wxL: ["Dry", "Light rain", "Heavy rain"];
-wxE: [0, 5, 15];
-newsL: ["No incidents", "Lorry stuck on Mombasa Rd", "Roadworks on Ngong Rd", "Crash on Uhuru Highway"];
-newsE: [0, 20, 20, 20];
+wxE: [-5, 5, 15];
+newsL: ["No incidents", "Crash on Thika Road", "Roadworks on Ngong Road", "Burst water main, Haile Selassie Ave"];
+newsE: [-5, 15, 15, 15];
 rateL: ["4.6 stars", "4.7 stars", "4.8 stars", "4.9 stars"];
 
-/* Random trip: weighted so incidents and heavy rain are less common */
-ti: rand(6) + 1;
+/* Random trip: incidents and heavy rain are less common */
 di: rand(7) + 1;
-ai: rand(6) + 1;
+ti: rand(6) + 1;
+ai: rand(7) + 1;
 wi: rand([1, 1, 1, 2, 3]);
 ni: rand([1, 1, 1, 1, 1, 1, 2, 3, 4]);
 ri: rand(4) + 1;
 noise: rand_with_step(-5, 5, 1);
 
-cardn: ["Time of day", "Day", "Pickup point", "Weather", "Traffic news", "Driver rating"];
-cardv: [timeL[ti], dayL[di], areaL[ai], wxL[wi], newsL[ni], rateL[ri]];
-eff: [timeE[ti], dayE[di], areaE[ai], wxE[wi], newsE[ni], 0];
-actual: typical + apply("+", eff) + noise;
+/* Card order: 1 Day, 2 Time of day, 3 Pickup point, 4 Weather, 5 Traffic news, 6 Driver rating */
+cardn: ["Day", "Time of day", "Pickup point", "Weather", "Traffic news", "Driver rating"];
+cardv: [dayL[di], timeL[ti], areaL[ai], wxL[wi], newsL[ni], rateL[ri]];
+dt: H[di][ti];
+eff: [0, 0, areaE[ai], wxE[wi], newsE[ni], 0];
+actual: typical + dt + eff[3] + eff[4] + eff[5] + noise;
 
 /* Signed strings for display, e.g. "+10", "-5", "0" */
 sgnS: lambda([x], if x > 0 then sconcat("+", x) else if x < 0 then sconcat("-", -x) else "0");
 Es: map(sgnS, eff);
+dtS: sgnS(dt);
 noiseS: sgnS(noise);
 
-/* Teacher's answers: time of day and traffic news are the most informative pair */
-ta1: [1, 5];
-ta2: typical + eff[1] + eff[5];
-ta3: actual + 10;]]></text>
+/* Teacher's answers: day, time and traffic news */
+ta1: [1, 2, 5];
+ta2: typical + dt + eff[5];
+ta3: actual + 15;]]></text>
     </questionvariables>
     <specificfeedback format="html">
       <text/>
     </specificfeedback>
     <questionnote format="moodle_auto_format">
-      <text>{@[ti, di, ai, wi, ni, ri, noise]@}, actual = {@actual@}</text>
+      <text>{@[di, ti, ai, wi, ni, ri, noise]@}, actual = {@actual@}</text>
     </questionnote>
     <questiondescription format="html">
       <text/>
@@ -219,7 +210,7 @@ ta3: actual + 10;]]></text>
       <name>ans1</name>
       <type>algebraic</type>
       <tans>ta1</tans>
-      <boxsize>10</boxsize>
+      <boxsize>12</boxsize>
       <strictsyntax>1</strictsyntax>
       <insertstars>0</insertstars>
       <syntaxhint/>
@@ -277,13 +268,22 @@ ta3: actual + 10;]]></text>
       <feedbackvariables>
         <text><![CDATA[sel: if listp(ans1) then ans1 else [];
 sel: unique(sublist(sel, lambda([x], integerp(x) and x >= 1 and x <= 6)));
-accMin: apply("+", cons(0, map(lambda([k], eff[k]), sel)));
+hasD: member(1, sel);
+hasT: member(2, sel);
+whenAcc: if hasD and hasT then dt else if hasD then dayM[di] else if hasT then timeM[ti] else 0;
+whenRem: dt - whenAcc;
+otherAcc: apply("+", cons(0, map(lambda([k], eff[k]), sublist(sel, lambda([k], k >= 3)))));
+accMin: whenAcc + otherAcc;
 pred: typical + accMin;
-accS: sgnS(accMin);]]></text>
+accS: sgnS(accMin);
+whenAccS: sgnS(whenAcc);
+whenRemS: sgnS(whenRem);
+ncards: length(sel);
+extra: max(0, ncards - 2);]]></text>
       </feedbackvariables>
       <node>
         <name>0</name>
-        <description>Prediction equals 60 plus the student's own two cards</description>
+        <description>Prediction equals 60 plus the student's own cards</description>
         <answertest>NumAbsolute</answertest>
         <sans>ans2</sans>
         <tans>pred</tans>
@@ -295,7 +295,7 @@ accS: sgnS(accMin);]]></text>
         <truenextnode>-1</truenextnode>
         <trueanswernote>prt1-1-T</trueanswernote>
         <truefeedback format="html">
-          <text><![CDATA[<p>Right. Your two cards add {@accS@} minutes to the typical 60, so your prediction is {@pred@} minutes. That part of the trip is now <b>accounted for</b>.</p>]]></text>
+          <text><![CDATA[<p>Right. Your cards add {@accS@} minutes to the typical 60, so your prediction is {@pred@} minutes. That part of the trip is now <b>accounted for</b>.</p>]]></text>
         </truefeedback>
         <falsescoremode>=</falsescoremode>
         <falsescore>0</falsescore>
@@ -303,7 +303,7 @@ accS: sgnS(accMin);]]></text>
         <falsenextnode>-1</falsenextnode>
         <falseanswernote>prt1-1-F</falseanswernote>
         <falsefeedback format="html">
-          <text><![CDATA[<p>Not quite. [[if test="length(sel)=2"]]Your cards were <b>{@cardn[sel[1]]@}: {@cardv[sel[1]]@}</b> ({@Es[sel[1]]@}) and <b>{@cardn[sel[2]]@}: {@cardv[sel[2]]@}</b> ({@Es[sel[2]]@}).[[else]]You turned over {@length(sel)@} card(s).[[/if]] Starting from 60 and adding {@accS@} gives a prediction of {@pred@} minutes.</p>]]></text>
+          <text><![CDATA[<p>Not quite. [[if test="hasD and hasT"]]You turned over both Day and Time of day, so use the heatmap cell for <b>{@cardv[1]@} at {@cardv[2]@}</b>: {@whenAccS@}. [[elif test="hasD"]]You turned over Day but not Time of day, so use the <b>{@cardv[1]@}</b> average: {@whenAccS@}. [[elif test="hasT"]]You turned over Time of day but not Day, so use the <b>{@cardv[2]@}</b> average: {@whenAccS@}. [[/if]][[foreach k="sublist(sel, lambda([x], x >= 3))"]]{@cardn[k]@}: {@cardv[k]@} is {@Es[k]@}. [[/foreach]]Altogether your cards add {@accS@}, so your prediction is {@pred@} minutes.</p>]]></text>
         </falsefeedback>
       </node>
     </prt>
@@ -315,27 +315,42 @@ accS: sgnS(accMin);]]></text>
       <feedbackvariables>
         <text><![CDATA[sel: if listp(ans1) then ans1 else [];
 sel: unique(sublist(sel, lambda([x], integerp(x) and x >= 1 and x <= 6)));
-hid: sublist([1, 2, 3, 4, 5, 6], lambda([k], not member(k, sel)));
-accMin: apply("+", cons(0, map(lambda([k], eff[k]), sel)));
-unaccMin: apply("+", cons(0, map(lambda([k], eff[k]), hid)));
+hasD: member(1, sel);
+hasT: member(2, sel);
+whenAcc: if hasD and hasT then dt else if hasD then dayM[di] else if hasT then timeM[ti] else 0;
+whenRem: dt - whenAcc;
+otherAcc: apply("+", cons(0, map(lambda([k], eff[k]), sublist(sel, lambda([k], k >= 3)))));
+accMin: whenAcc + otherAcc;
 pred: typical + accMin;
 accS: sgnS(accMin);
+whenAccS: sgnS(whenAcc);
+whenRemS: sgnS(whenRem);
+ncards: length(sel);
+extra: max(0, ncards - 2);
+hid: sublist([3, 4, 5, 6], lambda([k], not member(k, sel)));
+unaccMin: whenRem + apply("+", cons(0, map(lambda([k], eff[k]), hid)));
 unaccS: sgnS(unaccMin);
 wait: ans3 - actual;
 late: actual - ans3;
-hidAbs: map(lambda([k], abs(eff[k])), hid);
-big: if hid = [] then 0 else (if lmax(hidAbs) = 0 then 0 else hid[first(sublist_indices(hidAbs, lambda([x], x = lmax(hidAbs))))]);]]></text>
+cost: 0.1 * extra;
+sFull: max(0, 1 - cost);
+sHalf: max(0, 0.5 - cost);
+/* biggest single face-down contribution */
+candN: append(if whenRem # 0 then ["Day and time of day"] else [], map(lambda([k], cardn[k]), hid));
+candV: append(if whenRem # 0 then [whenRem] else [], map(lambda([k], eff[k]), hid));
+candA: map(abs, candV);
+bigI: if candA = [] then 0 else (if lmax(candA) = 0 then 0 else first(sublist_indices(candA, lambda([x], x = lmax(candA)))));]]></text>
       </feedbackvariables>
       <node>
         <name>0</name>
-        <description>Made the flight?</description>
+        <description>Made the bus?</description>
         <answertest>GTE</answertest>
         <sans>ans3</sans>
         <tans>actual</tans>
         <testoptions/>
         <quiet>0</quiet>
         <truescoremode>=</truescoremode>
-        <truescore>1</truescore>
+        <truescore>sFull</truescore>
         <truepenalty/>
         <truenextnode>1</truenextnode>
         <trueanswernote>prt2-1-T</trueanswernote>
@@ -348,32 +363,32 @@ big: if hid = [] then 0 else (if lmax(hidAbs) = 0 then 0 else hid[first(sublist_
         <falsenextnode>2</falsenextnode>
         <falseanswernote>prt2-1-F</falseanswernote>
         <falsefeedback format="html">
-          <text><![CDATA[<p><b>Missed the flight.</b> You allowed {@ans3@} minutes, but the trip took {@actual@}, which is {@late@} minutes longer.</p>]]></text>
+          <text><![CDATA[<p><b>Missed the bus.</b> You allowed {@ans3@} minutes, but the trip took {@actual@}, which is {@late@} minutes longer.</p>]]></text>
         </falsefeedback>
       </node>
       <node>
         <name>1</name>
-        <description>No more than 45 minutes to spare?</description>
+        <description>No more than 60 minutes to spare?</description>
         <answertest>GTE</answertest>
-        <sans>actual + 45</sans>
+        <sans>actual + 60</sans>
         <tans>ans3</tans>
         <testoptions/>
         <quiet>0</quiet>
         <truescoremode>=</truescoremode>
-        <truescore>1</truescore>
+        <truescore>sFull</truescore>
         <truepenalty/>
         <truenextnode>2</truenextnode>
         <trueanswernote>prt2-2-T</trueanswernote>
         <truefeedback format="html">
-          <text><![CDATA[<p><b>Made it, with {@wait@} minutes to spare.</b> That's a sensible margin for catching a flight.</p>]]></text>
+          <text><![CDATA[<p><b>Made it, with {@wait@} minutes to spare.</b> That is a sensible margin for catching a bus.</p>]]></text>
         </truefeedback>
         <falsescoremode>=</falsescoremode>
-        <falsescore>0.5</falsescore>
+        <falsescore>sHalf</falsescore>
         <falsepenalty/>
         <falsenextnode>2</falsenextnode>
         <falseanswernote>prt2-2-F</falseanswernote>
         <falsefeedback format="html">
-          <text><![CDATA[<p><b>Made it, with {@wait@} minutes to spare.</b> That is a long wait at the gate. The traveller could safely have left later.</p>]]></text>
+          <text><![CDATA[<p><b>Made it, with {@wait@} minutes to spare.</b> That is over an hour of waiting. The traveller could safely have left later.</p>]]></text>
         </falsefeedback>
       </node>
       <node>
@@ -392,15 +407,17 @@ big: if hid = [] then 0 else (if lmax(hidAbs) = 0 then 0 else hid[first(sublist_
         <truefeedback format="html">
           <text><![CDATA[<p style="margin-top:10px"><b>Where the time went</b></p>
 <table style="border-collapse:collapse;font-size:0.92em;margin:4px 0 10px">
-<tr style="border-bottom:1px solid #ddd5c2"><th style="text-align:left;padding:4px 12px 4px 0">Card</th><th style="text-align:left;padding:4px 12px 4px 0">This trip</th><th style="text-align:right;padding:4px 12px 4px 0">Minutes</th><th style="text-align:left;padding:4px 0"></th></tr>
+<tr style="border-bottom:1px solid #ddd5c2"><th style="text-align:left;padding:3px 12px 3px 0">Card</th><th style="text-align:left;padding:3px 12px 3px 0">This trip</th><th style="text-align:right;padding:3px 12px 3px 0">Minutes</th><th style="text-align:left;padding:3px 0"></th></tr>
 <tr><td style="padding:3px 12px 3px 0">Typical trip</td><td></td><td style="text-align:right;padding:3px 12px 3px 0">60</td><td></td></tr>
-[[foreach k="[1,2,3,4,5,6]"]]<tr><td style="padding:3px 12px 3px 0">{@cardn[k]@}</td><td style="padding:3px 12px 3px 0">{@cardv[k]@}</td><td style="text-align:right;padding:3px 12px 3px 0">{@Es[k]@}</td><td style="padding:3px 0">[[if test="member(k, sel)"]]<span style="color:#2c8063">turned over, so accounted for</span>[[else]]<span style="color:#c4562b">face down, so not accounted for</span>[[/if]]</td></tr>[[/foreach]]
+<tr><td style="padding:3px 12px 3px 0">Day and time of day</td><td style="padding:3px 12px 3px 0">{@cardv[1]@} at {@cardv[2]@}</td><td style="text-align:right;padding:3px 12px 3px 0">{@dtS@}</td><td style="padding:3px 0">[[if test="hasD and hasT"]]<span style="color:#2c8063">both turned over, so accounted for</span>[[elif test="hasD or hasT"]]<span style="color:#2c8063">{@whenAccS@} accounted for by the average</span>, <span style="color:#c4562b">{@whenRemS@} not accounted for</span>[[else]]<span style="color:#c4562b">face down, so not accounted for</span>[[/if]]</td></tr>
+[[foreach k="[3,4,5,6]"]]<tr><td style="padding:3px 12px 3px 0">{@cardn[k]@}</td><td style="padding:3px 12px 3px 0">{@cardv[k]@}</td><td style="text-align:right;padding:3px 12px 3px 0">{@Es[k]@}</td><td style="padding:3px 0">[[if test="member(k, sel)"]]<span style="color:#2c8063">turned over, so accounted for</span>[[else]]<span style="color:#c4562b">face down, so not accounted for</span>[[/if]]</td></tr>[[/foreach]]
 <tr><td style="padding:3px 12px 3px 0">Natural variation</td><td style="padding:3px 12px 3px 0;color:#6b6a5e">no card shows this</td><td style="text-align:right;padding:3px 12px 3px 0">{@noiseS@}</td><td style="padding:3px 0;color:#6b6a5e">natural</td></tr>
-<tr style="border-top:1px solid #ddd5c2"><td style="padding:4px 12px 4px 0"><b>Actual trip</b></td><td></td><td style="text-align:right;padding:4px 12px 4px 0"><b>{@actual@}</b></td><td></td></tr>
+<tr style="border-top:1px solid #ddd5c2"><td style="padding:3px 12px 3px 0"><b>Actual trip</b></td><td></td><td style="text-align:right;padding:3px 12px 3px 0"><b>{@actual@}</b></td><td></td></tr>
 </table>
-<p>Your two cards <b>accounted for</b> {@accS@} minutes. The four face-down cards added {@unaccS@} minutes between them. Those are real, known causes of delay, but they weren't in your prediction because you could only see two cards. That is what <b>unaccounted-for variability</b> means: it isn't random, it just hasn't been included. The last {@noiseS@} minutes were <b>natural variability</b>: even with every card turned over, no one could have predicted them.</p>
-[[if test="big # 0"]]<p>This time the face-down card that made the biggest difference was <b>{@cardn[big]@}: {@cardv[big]@}</b> ({@Es[big]@} minutes). With only two cards, something will always be left out. Your spare time is what covers it.</p>[[/if]]
-[[if test="member(6, sel)"]]<p>You turned over the <b>driver rating</b>. It never changes the journey time, so that card accounted for nothing. A piece of information can be interesting without accounting for any of the variation.</p>[[/if]]]]></text>
+<p>Your cards <b>accounted for</b> {@accS@} minutes. The rest of the clues added {@unaccS@} minutes. Those are real, known causes of delay, but they weren't in your prediction because those cards were face down. That is what <b>unaccounted-for variability</b> means: it isn't random, it just hasn't been included. The last {@noiseS@} minutes were <b>natural variability</b>: even with every card turned over, no one could have predicted them.</p>
+[[if test="bigI # 0"]]<p>This time the biggest difference you couldn't see came from <b>{@candN[bigI]@}</b> ({@sgnS(candV[bigI])@} minutes). Whichever cards you choose, something will usually be left out. Your spare time is what covers it.</p>[[/if]]
+[[if test="member(6, sel)"]]<p>You turned over the <b>driver rating</b>. It never changes the journey time, so that card accounted for nothing. A piece of information can be interesting without accounting for any of the variation.</p>[[/if]]
+[[if test="extra > 0"]]<p>You turned over {@ncards@} cards, so {@extra@} extra card(s) cost {@10*extra@}% of the marks for this step.</p>[[/if]]]]></text>
         </truefeedback>
         <falsescoremode>+</falsescoremode>
         <falsescore>0</falsescore>
@@ -412,5 +429,55 @@ big: if hid = [] then 0 else (if lmax(hidAbs) = 0 then 0 else hid[first(sublist_
         </falsefeedback>
       </node>
     </prt>
+    <deployedseed>642545719</deployedseed>
+    <deployedseed>505729830</deployedseed>
+    <deployedseed>905890587</deployedseed>
+    <deployedseed>31458249</deployedseed>
+    <deployedseed>968126709</deployedseed>
+    <deployedseed>643252083</deployedseed>
+    <deployedseed>740161618</deployedseed>
+    <deployedseed>1975426821</deployedseed>
+    <deployedseed>756222312</deployedseed>
+    <deployedseed>395387744</deployedseed>
+    <deployedseed>1765844177</deployedseed>
+    <deployedseed>1577255442</deployedseed>
+    <deployedseed>216538759</deployedseed>
+    <deployedseed>1544569769</deployedseed>
+    <deployedseed>903836087</deployedseed>
+    <deployedseed>423163141</deployedseed>
+    <deployedseed>2146922082</deployedseed>
+    <deployedseed>448705891</deployedseed>
+    <deployedseed>781873547</deployedseed>
+    <deployedseed>1174900579</deployedseed>
+    <deployedseed>1901536915</deployedseed>
+    <deployedseed>333100601</deployedseed>
+    <deployedseed>784441291</deployedseed>
+    <deployedseed>989141673</deployedseed>
+    <deployedseed>713664867</deployedseed>
+    <deployedseed>706072457</deployedseed>
+    <deployedseed>1268499373</deployedseed>
+    <deployedseed>700662788</deployedseed>
+    <deployedseed>20996320</deployedseed>
+    <deployedseed>903889001</deployedseed>
+    <deployedseed>1139238007</deployedseed>
+    <deployedseed>1254223166</deployedseed>
+    <deployedseed>1816335841</deployedseed>
+    <deployedseed>994903571</deployedseed>
+    <deployedseed>1281469310</deployedseed>
+    <deployedseed>2123565595</deployedseed>
+    <deployedseed>1557771661</deployedseed>
+    <deployedseed>203988369</deployedseed>
+    <deployedseed>96973431</deployedseed>
+    <deployedseed>1931770162</deployedseed>
+    <deployedseed>126516196</deployedseed>
+    <deployedseed>1432484037</deployedseed>
+    <deployedseed>49490108</deployedseed>
+    <deployedseed>1532681791</deployedseed>
+    <deployedseed>1854715154</deployedseed>
+    <deployedseed>926883107</deployedseed>
+    <deployedseed>1288602453</deployedseed>
+    <deployedseed>2077735808</deployedseed>
+    <deployedseed>1107308646</deployedseed>
+    <deployedseed>1410631410</deployedseed>
   </question>
 </quiz>
