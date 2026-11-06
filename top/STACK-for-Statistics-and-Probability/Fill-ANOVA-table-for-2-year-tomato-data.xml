@@ -172,7 +172,7 @@ ta10:variety_f;</text>
       <text/>
     </specificfeedback>
     <questionnote format="moodle_auto_format">
-      <text>1</text>
+      <text>light_ss = {@light_ss@}, heat_ss = {@heat_ss@}, variety_ss = {@variety_ss@}, resid_ss = {@resid_ss@}</text>
     </questionnote>
     <questiondescription format="moodle_auto_format">
       <text/>
@@ -869,5 +869,25 @@ ta10:variety_f;</text>
         </falsefeedback>
       </node>
     </prt>
+    <deployedseed>1312476029</deployedseed>
+    <deployedseed>1519205539</deployedseed>
+    <deployedseed>916692908</deployedseed>
+    <deployedseed>1048148248</deployedseed>
+    <deployedseed>1834592777</deployedseed>
+    <deployedseed>173522521</deployedseed>
+    <deployedseed>421875757</deployedseed>
+    <deployedseed>1671338034</deployedseed>
+    <deployedseed>1405718014</deployedseed>
+    <deployedseed>770731828</deployedseed>
+    <deployedseed>623654494</deployedseed>
+    <deployedseed>567184677</deployedseed>
+    <deployedseed>1577524415</deployedseed>
+    <deployedseed>253252501</deployedseed>
+    <deployedseed>1296462927</deployedseed>
+    <deployedseed>768773391</deployedseed>
+    <deployedseed>238792232</deployedseed>
+    <deployedseed>423058458</deployedseed>
+    <deployedseed>557869538</deployedseed>
+    <deployedseed>960331863</deployedseed>
   </question>
 </quiz>

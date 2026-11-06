@@ -191,7 +191,7 @@ feedback: if dist_type="Normal" then "The values are distributed reasonably symm
       <text/>
     </specificfeedback>
     <questionnote format="moodle_auto_format">
-      <text>1</text>
+      <text>{@dist_type@}, order = {@randdumlist1@}</text>
     </questionnote>
     <questiondescription format="moodle_auto_format">
       <text/>
@@ -320,5 +320,25 @@ feedback: if dist_type="Normal" then "The values are distributed reasonably symm
         </falsefeedback>
       </node>
     </prt>
+    <deployedseed>1208088284</deployedseed>
+    <deployedseed>598076858</deployedseed>
+    <deployedseed>1588335662</deployedseed>
+    <deployedseed>531778586</deployedseed>
+    <deployedseed>253178010</deployedseed>
+    <deployedseed>1987017204</deployedseed>
+    <deployedseed>881337724</deployedseed>
+    <deployedseed>1641136131</deployedseed>
+    <deployedseed>996495004</deployedseed>
+    <deployedseed>1270865336</deployedseed>
+    <deployedseed>1025536549</deployedseed>
+    <deployedseed>1671259187</deployedseed>
+    <deployedseed>266372158</deployedseed>
+    <deployedseed>440806832</deployedseed>
+    <deployedseed>1782042293</deployedseed>
+    <deployedseed>1773662405</deployedseed>
+    <deployedseed>989388363</deployedseed>
+    <deployedseed>292187830</deployedseed>
+    <deployedseed>1316388044</deployedseed>
+    <deployedseed>705011261</deployedseed>
   </question>
 </quiz>

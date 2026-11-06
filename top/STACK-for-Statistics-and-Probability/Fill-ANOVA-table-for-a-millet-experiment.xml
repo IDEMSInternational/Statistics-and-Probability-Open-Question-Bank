@@ -179,7 +179,7 @@ ta13: total_df;</text>
       <text/>
     </specificfeedback>
     <questionnote format="moodle_auto_format">
-      <text>1</text>
+      <text>plots = {@plots@}, variety = {@variety@}, weeding = {@weeding@}, fert = {@fert@}; variety_ss = {@variety_ss@}, weeding_ss = {@weeding_ss@}, fert_ss = {@fert_ss@}, resid_ss = {@resid_ss@}</text>
     </questionnote>
     <questiondescription format="moodle_auto_format">
       <text/>
@@ -1083,5 +1083,25 @@ ta13: total_df;</text>
         </falsefeedback>
       </node>
     </prt>
+    <deployedseed>261104358</deployedseed>
+    <deployedseed>707382732</deployedseed>
+    <deployedseed>1790712929</deployedseed>
+    <deployedseed>501424250</deployedseed>
+    <deployedseed>811318521</deployedseed>
+    <deployedseed>459462212</deployedseed>
+    <deployedseed>1282245868</deployedseed>
+    <deployedseed>606550203</deployedseed>
+    <deployedseed>719253528</deployedseed>
+    <deployedseed>1572523928</deployedseed>
+    <deployedseed>1779926666</deployedseed>
+    <deployedseed>474594772</deployedseed>
+    <deployedseed>1015114894</deployedseed>
+    <deployedseed>1873482404</deployedseed>
+    <deployedseed>1451422131</deployedseed>
+    <deployedseed>1506968775</deployedseed>
+    <deployedseed>1811218763</deployedseed>
+    <deployedseed>1842821896</deployedseed>
+    <deployedseed>1391870855</deployedseed>
+    <deployedseed>1749014578</deployedseed>
   </question>
 </quiz>
