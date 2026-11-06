@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Observing Variability - Harvest Hunt</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<h3>🌾 Harvest Hunt: Investigating Variability</h3><p>Explore a field of <strong>100 plots</strong> using exactly <strong>15 measurements</strong>.
+Click a grey square to reveal its crop yield. Plots sharing an edge differ by
+<strong>no more than 5 yield units</strong>.</p><p>After the fifteenth measurement, your <strong>observed range</strong> is recorded automatically and used
+as an estimate of the whole-field range. Then click <strong>REVEAL THE FULL FIELD</strong> to uncover
+all 100 plots and compare the two ranges. Your measured plots stay outlined in blue.</p>
+[[jsxgraph width="100%" aspect-ratio="1.6" input-ref-ans1="answerId" input-ref-stateStore="stateId" input-ref-revealFlag="revealId"]]
+var answer=document.getElementById(answerId);
+var store=document.getElementById(stateId);
+var revealInput=document.getElementById(revealId);
+var BASE={#base#}, PH={#ph#}, PD={#pd#}, HX={#hx#}, HY={#hy#}, CX={#cx#}, CY={#cy#};
+var BUDGET=15, picks=[], picked=[], locked=false, hint=0;
+try {
+ var saved=JSON.parse(store.value);
+ if(saved&&Array.isArray(saved.picks))
+  picks=saved.picks.filter(function(v,i,a){return Number.isInteger(v)&&v>=0&&v<100&&a.indexOf(v)===i;}).slice(0,BUDGET);
+ if(saved&&saved.locked===true&&picks.length===BUDGET)locked=true;
+ if(saved&&Number.isInteger(saved.hint))hint=Math.max(0,Math.min(3,saved.hint));
+} catch(e){}
+picks.forEach(function(i){picked[i]=true;});
+
+function val(i){
+ var x=i%10,y=Math.floor(i/10);
+ var dh=Math.floor(Math.max(0,2*PH-Math.abs(x-HX)-Math.abs(y-HY))/2);
+ var dc=Math.floor(Math.max(0,2*PD-Math.abs(x-CX)-Math.abs(y-CY))/2);
+ return BASE+5*(dh-dc);
+}
+var values=Array.from({length:100},function(_,i){return val(i);});
+var lo=Math.min.apply(null,values), hi=Math.max.apply(null,values);
+function observedRange(){
+ if(picks.length<2)return 0;
+ var a=picks.map(function(i){return values[i];});
+ return Math.max.apply(null,a)-Math.min.apply(null,a);
+}
+function shade(v){
+ var t=Math.max(0,Math.min(1,(v-lo)/Math.max(1,hi-lo)));
+ return 'hsl('+Math.round(210-185*t)+',60%,'+Math.round(76-15*t)+'%)';
+}
+
+/* ---------- Build the interface once, as plain HTML (no JSXGraph objects) ---------- */
+var root=document.getElementById(divid);
+var nBins=Math.round((hi-lo)/5)+1;
+var axisHtml='', barHtml='';
+for(var b=0;b<nBins;b++){barHtml+='<div class="hh-bar"></div>';axisHtml+='<span>'+(lo+5*b)+'</span>';}
+root.innerHTML=
+ '<style>'+
+ '.hh{display:flex;gap:2.5%;height:100%;box-sizing:border-box;padding:1%;color:#172554;font-family:system-ui,sans-serif;line-height:1.25}'+
+ '.hh p{margin:0}'+
+ '.hh-field{height:100%;aspect-ratio:1;flex:none;display:grid;grid-template-columns:repeat(10,1fr);grid-template-rows:repeat(10,1fr);gap:2px}'+
+ '.hh-cell{border:0;margin:0;padding:0;background:#cbd5e1;color:#172554;font:inherit;font-size:.8em;cursor:pointer;border-radius:2px;position:relative;min-width:0}'+
+ '.hh-cell:hover{filter:brightness(.92)}'+
+ '.hh-cell:focus-visible{outline:2px solid #0369a1;outline-offset:1px}'+
+ '.hh-done .hh-cell,.hh-cell.hh-m{cursor:default}'+
+ '.hh-cell.hh-m{box-shadow:inset 0 0 0 3px #1d4ed8;font-weight:700}'+
+ '.hh-cell.hh-x::after{content:"";position:absolute;top:-2px;left:-2px;right:-2px;bottom:-2px;border:2px dashed #b91c1c;border-radius:3px;pointer-events:none}'+
+ '.hh-side{flex:1;display:flex;flex-direction:column;gap:.45em;min-width:0}'+
+ '.hh-title{font-size:1.4em;font-weight:800;color:#365314}'+
+ '.hh-h{font-weight:700;color:#365314;margin-top:.3em}'+
+ '.hh-big{font-weight:700}'+
+ '.hh-hist{display:flex;align-items:flex-end;gap:3px;height:4.5em;border-bottom:1px solid #4d7c0f}'+
+ '.hh-bar{flex:1;background:#84cc16;border:1px solid #4d7c0f;border-bottom:0;height:0;transition:height .15s}'+
+ '.hh-axis{display:flex;gap:3px;font-size:.7em}.hh-axis span{flex:1;text-align:center}'+
+ '.hh-small{font-size:.8em}'+
+ '.hh-btn{font:inherit;padding:.3em .6em;cursor:pointer;border-radius:4px;border:1px solid #0369a1;background:#f0f9ff;color:#0369a1;align-self:flex-start}'+
+ '.hh-reveal{border-color:#b91c1c;background:#b91c1c;color:#fff;font-weight:700;font-size:1.05em}'+
+ '</style>'+
+ '<div class="hh">'+
+  '<div class="hh-field" role="grid" aria-label="Field of 100 plots"></div>'+
+  '<div class="hh-side">'+
+   '<div class="hh-title">HARVEST HUNT</div>'+
+   '<p id="hh-left"></p>'+
+   '<p class="hh-big" id="hh-obs"></p>'+
+   '<p class="hh-big" id="hh-act" style="color:#b91c1c"></p>'+
+   '<p class="hh-small" id="hh-legend"></p>'+
+   '<div class="hh-h">Sample histogram <span class="hh-small">(measured plots only)</span></div>'+
+   '<div class="hh-hist">'+barHtml+'</div><div class="hh-axis">'+axisHtml+'</div>'+
+   '<p class="hh-small" id="hh-hint"></p>'+
+   '<button type="button" class="hh-btn" id="hh-hintbtn">Show next hint</button>'+
+   '<p class="hh-small" id="hh-status"></p>'+
+   '<button type="button" class="hh-btn hh-reveal" id="hh-reveal" style="display:none">&#9654; REVEAL THE FULL FIELD</button>'+
+  '</div>'+
+ '</div>';
+
+function q(id){return root.querySelector('#'+id);}
+var fieldEl=root.querySelector('.hh-field'), bars=root.querySelectorAll('.hh-bar');
+var cells=[];
+for(var i=0;i<100;i++){
+ var c=document.createElement('button');
+ c.type='button';c.className='hh-cell';c.textContent='?';c.setAttribute('data-i',i);
+ fieldEl.appendChild(c);cells.push(c);
+}
+var hintText=[
+ 'Hints are available if you want a strategy.',
+ 'Hint 1: Begin with plots far apart.',
+ 'Hint 2: Found a high or low yield? Explore nearby.',
+ 'Hint 3: Each edge step changes yield by at most 5.'
+];
+
+function paintCell(i){
+ var c=cells[i], show=picked[i]||locked;
+ c.style.background=show?shade(values[i]):'';
+ c.textContent=show?String(values[i]):'?';
+ c.classList.toggle('hh-m',!!picked[i]);
+ c.classList.toggle('hh-x',locked&&(values[i]===lo||values[i]===hi));
+ c.setAttribute('aria-label','Plot row '+(Math.floor(i/10)+1)+' column '+(i%10+1)+
+  (show?', yield '+values[i]:', not measured')+(picked[i]?', measured':''));
+}
+function paintPanel(){
+ var n=picks.length, r=observedRange();
+ q('hh-left').textContent='Measurements left: '+(BUDGET-n)+'  ('+n+' / 100 plots measured)';
+ q('hh-obs').textContent=n>=2?'Your observed range: '+r+' units':'Observed range: measure at least 2 plots';
+ q('hh-act').textContent=locked?'Actual full-field range: '+(hi-lo)+' units':'';
+ q('hh-legend').textContent=locked?'Blue outline = your plots. Red dashes = the true highest and lowest plots.':'';
+ q('hh-hint').textContent=hintText[hint];
+ q('hh-hintbtn').style.display=locked?'none':'';
+ q('hh-status').textContent=locked?'All 100 plots are now visible. Answer the question below.':
+  (n===BUDGET?'15/15 measured. Your range estimate is recorded.':'Click grey plots to take measurements.');
+ q('hh-reveal').style.display=(!locked&&n===BUDGET)?'':'none';
+ fieldEl.classList.toggle('hh-done',locked||n>=BUDGET);
+ var counts=[];for(var b=0;b<nBins;b++)counts[b]=0;
+ picks.forEach(function(i){counts[Math.round((values[i]-lo)/5)]++;});
+ var top=Math.max(4,Math.max.apply(null,counts));
+ for(var b2=0;b2<nBins;b2++)bars[b2].style.height=(100*counts[b2]/top)+'%';
+}
+function setInput(el,v){
+ if(el&&el.value!==v){el.value=v;el.dispatchEvent(new Event('change',{bubbles:true}));}
+}
+function save(){
+ setInput(store,JSON.stringify({picks:picks,locked:locked,hint:hint}));
+ if(picks.length===BUDGET)setInput(answer,String(observedRange()));
+ setInput(revealInput,locked?'1':'0');
+}
+
+fieldEl.addEventListener('click',function(e){
+ var t=e.target.closest?e.target.closest('.hh-cell'):null;
+ if(!t)return;
+ var idx=+t.getAttribute('data-i');
+ if(locked||picks.length>=BUDGET||picked[idx])return;
+ picks.push(idx);picked[idx]=true;
+ paintCell(idx);paintPanel();save();
+});
+q('hh-hintbtn').addEventListener('click',function(){
+ if(locked)return;hint=(hint+1)%4;paintPanel();save();
+});
+q('hh-reveal').addEventListener('click',function(){
+ if(picks.length!==BUDGET||locked)return;
+ locked=true;
+ for(var k=0;k<100;k++)paintCell(k);
+ paintPanel();save();
+});
+
+function fitText(){root.style.fontSize=Math.max(9,Math.min(16,root.clientWidth/55))+'px';}
+fitText();window.addEventListener('resize',fitText);
+for(var k=0;k<100;k++)paintCell(k);
+paintPanel();save();
+[[/jsxgraph]]
+<h4>Your estimated range (70%)</h4><p>Your observed range from your 15 measured plots is shown in the field notes above and is recorded automatically. Are you within 5 yield units of the actual range?</p>
+
+<h4>After the reveal (30%)</h4><p>Measure 15 plots, press <strong>REVEAL THE FULL FIELD</strong>, then answer both parts. <em>You only receive marks for these parts once the full field has been revealed.</em></p>
+<p><strong>(a)</strong> Compare your observed range with the actual full-field range. By how many yield units did your observed range fall short?</p><p>[[input:ans3]] yield units [[validation:ans3]]</p>[[feedback:prt2]]
+<p><strong>(b)</strong> Tick <strong>all</strong> the statements that are true.</p><p>[[input:ans2]] [[validation:ans2]]</p>[[feedback:prt3]]<p style="display:none">[[input:ans1]] [[validation:ans1]]</p><p style="display:none">[[input:stateStore]] [[validation:stateStore]]</p><p style="display:none">[[input:revealFlag]] [[validation:revealFlag]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>The observed range is calculated from the 15 measured plots. It can never exceed the full-field range, because the most extreme values in a sample can be no more extreme than those in the whole field. The amount missed is the full-field range minus the observed range. In this field the highest and the lowest yields each occur in a single plot, so a sample of 15 can easily miss them, even though neighbouring plots differ by at most 5 units.</p>
+<p><strong>The statements in (b):</strong></p><ul>
+<li><em>The full-field range could be smaller than my observed range.</em> False: the sample range can never exceed the full-field range.</li>
+<li><em>Measuring extra plots can never make the observed range smaller.</em> True: a new plot either lies inside the current range or widens it.</li>
+<li><em>Plots close together are likely to miss the extremes.</em> True: neighbouring yields are similar, so clustered plots cover only a narrow band of values.</li>
+<li><em>A sample range is equally likely to overestimate or underestimate.</em> False: it can only underestimate the full-field range or match it exactly.</li></ul>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2026063000</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[base:35+5*rand(5);
+/* Peak height and dip depth, in steps of 5 yield units (2 to 4 steps each). */
+ph:2+rand(3);
+pd:2+rand(3);
+/* Keep peak and dip far enough apart that their slopes never touch, */
+/* so edge-adjacent plots always differ by at most 5. Re-roll both positions. */
+sep:2*ph+2*pd-2;
+hx:rand(10);
+hy:rand(10);
+cx:rand(10);
+cy:rand(10);
+while abs(hx-cx)+abs(hy-cy)<sep do (hx:rand(10),hy:rand(10),cx:rand(10),cy:rand(10));
+yield_at(i):=block([x,y,dh,dc],x:mod(i-1,10),y:floor((i-1)/10),
+ dh:floor(max(0,2*ph-abs(x-hx)-abs(y-hy))/2),
+ dc:floor(max(0,2*pd-abs(x-cx)-abs(y-cy))/2),
+ base+5*(dh-dc));
+field:makelist(yield_at(i),i,1,100);
+field_min:apply(min,field);
+field_max:apply(max,field);
+field_range:field_max-field_min;
+ta:field_range;
+statements:[[1,false,"The full-field range could be smaller than my observed range."],[2,true,"Measuring extra plots, in addition to the ones already measured, can never make the observed range smaller."],[3,true,"Measuring plots that are all close together is likely to miss the extremes, because neighbouring yields are similar."],[4,false,"A sample range is equally likely to overestimate or underestimate the full-field range."]];
+true_keys:[2,3];]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text>[[feedback:prt1]]</text>
+    </specificfeedback>
+    <questionnote format="html">
+      <text>base {@base@}, peak +{@5*ph@} at ({@hx@},{@hy@}), dip -{@5*pd@} at ({@cx@},{@cy@}), range {@field_range@}</text>
+    </questionnote>
+    <questiondescription format="html">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text>Excellent! Your estimate is within 5 yield units of the true field range.</text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text>Your estimate is close.</text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text>Compare your measured plots with the full field to see which extremes you missed.</text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>numerical</type>
+      <tans>field_range</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>hideanswer</options>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>checkbox</type>
+      <tans>statements</tans>
+      <boxsize>12</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options/>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>numerical</type>
+      <tans>field_range</tans>
+      <boxsize>5</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>hideanswer</options>
+    </input>
+    <input>
+      <name>revealFlag</name>
+      <type>numerical</type>
+      <tans>1</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>hideanswer</options>
+    </input>
+    <input>
+      <name>stateStore</name>
+      <type>string</type>
+      <tans><![CDATA[""]]></tans>
+      <boxsize>50</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>hideanswer</options>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>0.7000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text/>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans1</sans>
+        <tans>field_range</tans>
+        <testoptions>5</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-correct</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Your observed range is within 5 units of the full-field range.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-incorrect</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Your sample missed more than 5 yield units of the full-field range.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>0.1500000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>missed:field_range-ans1;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Has the full field been revealed?</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>revealFlag</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>1</truenextnode>
+        <trueanswernote>prt2-revealed</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-not-revealed</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Press <strong>REVEAL THE FULL FIELD</strong> in the plot first, then compare the two ranges.</p>]]></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Shortfall = full-field range minus observed range</description>
+        <answertest>NumAbsolute</answertest>
+        <sans>ans3</sans>
+        <tans>missed</tans>
+        <testoptions>0.01</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-correct</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Correct: the full-field range is {@field_range@} and your observed range was {@ans1@}, so you fell short by {@missed@} units.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-incorrect</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Not quite. Subtract your observed range from the full-field range: {@field_range@} &minus; {@ans1@} = {@missed@}.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>0.1500000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>nright:length(sublist([1,2,3,4],lambda([k],is(member(k,ans2)=member(k,true_keys)))));</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>Has the full field been revealed?</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>revealFlag</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0</truescore>
+        <truepenalty/>
+        <truenextnode>1</truenextnode>
+        <trueanswernote>prt3-revealed</trueanswernote>
+        <truefeedback format="html">
+          <text/>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-not-revealed</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Press <strong>REVEAL THE FULL FIELD</strong> in the plot before answering this part.</p>]]></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>All four statements classified correctly?</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>nright</sans>
+        <tans>4</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-4-right</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>All correct.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt3-not-all</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>Three of four statements classified correctly?</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>nright</sans>
+        <tans>3</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.5</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-3-right</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Three of the four statements are judged correctly. A sample range can never be larger than the full-field range, so it can only underestimate it or match it exactly.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-2orless-right</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Not quite. A sample range can never be larger than the full-field range, so it can only underestimate it or match it exactly. Adding plots can only keep the range the same or widen it.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>877895040</deployedseed>
+    <deployedseed>520912437</deployedseed>
+    <deployedseed>412626717</deployedseed>
+    <deployedseed>1448384029</deployedseed>
+    <deployedseed>391670210</deployedseed>
+    <deployedseed>1094745964</deployedseed>
+    <deployedseed>1485097391</deployedseed>
+    <deployedseed>1773268945</deployedseed>
+    <deployedseed>42168360</deployedseed>
+    <deployedseed>1210784728</deployedseed>
+    <deployedseed>944149869</deployedseed>
+    <deployedseed>85109308</deployedseed>
+    <deployedseed>381766444</deployedseed>
+    <deployedseed>1708207651</deployedseed>
+    <deployedseed>205958663</deployedseed>
+    <deployedseed>1777886840</deployedseed>
+    <deployedseed>87667235</deployedseed>
+    <deployedseed>1562920683</deployedseed>
+    <deployedseed>1367081108</deployedseed>
+    <deployedseed>229541283</deployedseed>
+    <deployedseed>100426439</deployedseed>
+    <deployedseed>1304261782</deployedseed>
+    <deployedseed>876396497</deployedseed>
+    <deployedseed>788133054</deployedseed>
+    <deployedseed>1980269174</deployedseed>
+    <deployedseed>1045966490</deployedseed>
+    <deployedseed>1172274546</deployedseed>
+    <deployedseed>52710210</deployedseed>
+    <deployedseed>400583160</deployedseed>
+    <deployedseed>1836586280</deployedseed>
+  </question>
+</quiz>

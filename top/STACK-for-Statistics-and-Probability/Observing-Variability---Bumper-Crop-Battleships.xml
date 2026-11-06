@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Observing Variability - Bumper Crop Battleships</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<h3>🚜 Bumper Crop Battleships</h3>
+<p>Somewhere in this field of <strong>{#N*N#} plots</strong> are <strong>three hidden bumper-crop patches</strong>. You have <strong>{#SHOTS#} shots</strong>. Each shot measures the crop yield in one plot.</p>
+<ul>
+<li>Yields rise by <strong>5 units for every step</strong> closer to the centre of a patch. Far from every patch the soil is <strong>poor</strong>, and yields are low.</li>
+<li>Hit the <strong>centre</strong> of a patch (its highest plot) to score a <strong>&#9733; HIT</strong>.</li>
+<li>So every shot tells you something: a low yield means you are far away, a higher one means you are getting closer. Follow the rise!</li>
+<li>After your last shot, the whole field is revealed.</li>
+</ul>
+[[jsxgraph width="100%" aspect-ratio="1.45" input-ref-picks="picksId"]]
+var picksInput=document.getElementById(picksId);
+var N={#N#}, SHOTS={#SHOTS#}, BASE={#base#}, H={#heights#}, C={#cidx#};
+var picks=[], picked=[], locked=false;
+try {
+ var saved=JSON.parse(picksInput.value);
+ if(Array.isArray(saved))
+  picks=saved.filter(function(v,i,a){return Number.isInteger(v)&&v>=0&&v<N*N&&a.indexOf(v)===i;}).slice(0,SHOTS);
+} catch(e){}
+if(picks.length===SHOTS)locked=true;
+picks.forEach(function(i){picked[i]=true;});
+
+function val(i){
+ var x=i%N,y=Math.floor(i/N),best=-2;
+ for(var k=0;k<C.length;k++){
+  var d=Math.abs(x-C[k]%N)+Math.abs(y-Math.floor(C[k]/N));
+  best=Math.max(best,H[k]-d);
+ }
+ return BASE+5*best;
+}
+var values=Array.from({length:N*N},function(_,i){return val(i);});
+var lo=Math.min.apply(null,values), hi=Math.max.apply(null,values);
+var isCentre=[];C.forEach(function(c){isCentre[c]=true;});
+function hits(){return C.filter(function(c){return picked[c];}).length;}
+function sampleVals(){return picks.map(function(i){return values[i];});}
+function mean(a){return a.length?a.reduce(function(s,v){return s+v;},0)/a.length:0;}
+function observedRange(){var a=sampleVals();return a.length>1?Math.max.apply(null,a)-Math.min.apply(null,a):0;}
+function shade(v){
+ var t=Math.max(0,Math.min(1,(v-lo)/Math.max(1,hi-lo)));
+ return 'hsl('+Math.round(120-75*t)+','+Math.round(35+30*t)+'%,'+Math.round(80-28*t)+'%)';
+}
+var lastMsg='Take your first shot: click any plot.';
+
+/* ---------- Interface: plain HTML, built once ---------- */
+var root=document.getElementById(divid);
+var nBins=Math.round((hi-lo)/5)+1, barHtml='', axisHtml='';
+for(var b=0;b<nBins;b++){barHtml+='<div class="bc-bar"></div>';axisHtml+='<span>'+(lo+5*b)+'</span>';}
+root.innerHTML=
+ '<style>'+
+ '.bc{display:flex;gap:2%;height:100%;box-sizing:border-box;padding:.6%;color:#1e293b;font-family:system-ui,sans-serif;line-height:1.25}'+
+ '.bc p{margin:0}'+
+ '.bc-field{height:100%;aspect-ratio:1;flex:none;display:grid;grid-template-columns:repeat('+N+',1fr);grid-template-rows:repeat('+N+',1fr);gap:1px;background:#e2e8f0;padding:1px;box-sizing:border-box;border-radius:4px}'+
+ '.bc-cell{border:0;margin:0;padding:0;background:#94a3b8;color:#1e293b;font:inherit;font-size:.62em;cursor:crosshair;position:relative;min-width:0;overflow:hidden}'+
+ '.bc-cell:hover{filter:brightness(1.15)}'+
+ '.bc-cell:focus-visible{outline:2px solid #0369a1;z-index:1}'+
+ '.bc-done .bc-cell,.bc-cell.bc-m{cursor:default}'+
+ '.bc-cell.bc-m{box-shadow:inset 0 0 0 2px #1d4ed8;font-weight:700}'+
+ '.bc-cell.bc-hit{box-shadow:inset 0 0 0 3px #ca8a04;background:#fde047 !important}'+
+ '.bc-cell.bc-last{outline:2px solid #dc2626;z-index:1}'+
+ '.bc-side{flex:1;display:flex;flex-direction:column;gap:.4em;min-width:0}'+
+ '.bc-title{font-size:1.35em;font-weight:800;color:#365314}'+
+ '.bc-score{display:flex;gap:.6em;font-weight:700}'+
+ '.bc-score span{background:#f1f5f9;border-radius:4px;padding:.2em .45em}'+
+ '.bc-msg{background:#f8fafc;border-left:4px solid #65a30d;padding:.35em .5em;min-height:2.6em}'+
+ '.bc-msg.bc-hitmsg{border-color:#ca8a04;background:#fefce8;font-weight:700}'+
+ '.bc-h{font-weight:700;color:#365314;margin-top:.2em}'+
+ '.bc-hist{display:flex;align-items:flex-end;gap:3px;height:4em;border-bottom:1px solid #4d7c0f}'+
+ '.bc-bar{flex:1;background:#84cc16;border:1px solid #4d7c0f;border-bottom:0;height:0;transition:height .15s}'+
+ '.bc-axis{display:flex;gap:3px;font-size:.68em}.bc-axis span{flex:1;text-align:center}'+
+ '.bc-small{font-size:.8em}'+
+ '.bc-star{font-size:1.6em;line-height:1;color:#a16207}'+
+ '</style>'+
+ '<div class="bc">'+
+  '<div class="bc-field" role="grid" aria-label="Field of plots"></div>'+
+  '<div class="bc-side">'+
+   '<div class="bc-title">BUMPER CROP BATTLESHIPS</div>'+
+   '<div class="bc-score"><span id="bc-shots"></span><span id="bc-hits"></span></div>'+
+   '<p class="bc-msg" id="bc-msg" aria-live="polite"></p>'+
+   '<p class="bc-small">Poor soil, far from any patch: <b>'+(BASE-10)+'</b> units. Each step closer to a patch centre adds 5.</p>'+
+   '<p id="bc-obs"></p>'+
+   '<p id="bc-field-stats" style="color:#b91c1c;font-weight:700"></p>'+
+   '<div class="bc-h">Your sample <span class="bc-small">(shots only)</span></div>'+
+   '<div class="bc-hist">'+barHtml+'</div><div class="bc-axis">'+axisHtml+'</div>'+
+   '<p class="bc-small" id="bc-legend"></p>'+
+  '</div>'+
+ '</div>';
+
+function q(id){return root.querySelector('#'+id);}
+var fieldEl=root.querySelector('.bc-field'), bars=root.querySelectorAll('.bc-bar');
+var cells=[];
+for(var i=0;i<N*N;i++){
+ var c=document.createElement('button');
+ c.type='button';c.className='bc-cell';c.setAttribute('data-i',i);
+ fieldEl.appendChild(c);cells.push(c);
+}
+function paintCell(i){
+ var c=cells[i], show=picked[i]||locked, hit=isCentre[i]&&(picked[i]||locked);
+ c.style.background=show?shade(values[i]):'';
+ if(hit)c.innerHTML='<span class="bc-star">&#9733;</span>';else c.textContent=show?String(values[i]):'';
+ c.classList.toggle('bc-m',!!picked[i]);
+ c.classList.toggle('bc-hit',!!hit);
+ c.setAttribute('aria-label','Plot row '+(Math.floor(i/N)+1)+' column '+(i%N+1)+
+  (show?', yield '+values[i]:', not measured')+(picked[i]?', your shot':'')+(hit?', patch centre':''));
+}
+function paintPanel(){
+ var n=picks.length, s=sampleVals();
+ q('bc-shots').textContent='Shots left: '+(SHOTS-n);
+ q('bc-hits').textContent='\u2605 Hits: '+hits()+' / 3';
+ var msg=q('bc-msg');msg.textContent=lastMsg;msg.classList.toggle('bc-hitmsg',lastMsg.indexOf('HIT')>=0);
+ q('bc-obs').textContent=n>=1?('Your sample: range '+observedRange()+', mean '+mean(s).toFixed(1)+' units'):'';
+ q('bc-field-stats').textContent=locked?('Whole field: range '+(hi-lo)+', mean '+mean(values).toFixed(1)+' units'):'';
+ q('bc-legend').textContent=locked?'Blue outline = your shots. \u2605 = patch centres.':'';
+ fieldEl.classList.toggle('bc-done',locked||n>=SHOTS);
+ var counts=[];for(var b=0;b<nBins;b++)counts[b]=0;
+ s.forEach(function(v){counts[Math.round((v-lo)/5)]++;});
+ var top=Math.max(5,Math.max.apply(null,counts));
+ for(var b2=0;b2<nBins;b2++)bars[b2].style.height=(100*counts[b2]/top)+'%';
+}
+function setInput(el,v){
+ if(el&&el.value!==v){el.value=v;el.dispatchEvent(new Event('change',{bubbles:true}));}
+}
+function save(){setInput(picksInput,'['+picks.join(',')+']');}
+function shotMessage(idx){
+ var v=values[idx], up=(v-BASE)/5, prev=picks.length>1?values[picks[picks.length-2]]:null;
+ var trend='';
+ if(prev!==null&&!isCentre[idx]){trend=v>prev?' Warmer than your last shot.':(v<prev?' Colder than your last shot.':' Same as your last shot.');}
+ if(isCentre[idx])return '\u2605 HIT! Patch centre found, yield '+v+'. ('+hits()+' of 3 found)';
+ if(up<=-2)return 'Cold: poor yield ('+v+'). No patch nearby.'+trend;
+ if(up===-1)return 'Cool: yield '+v+'. A patch is a few plots away.'+trend;
+ if(up===0)return 'Lukewarm: yield '+v+'. Getting closer.'+trend;
+ if(up===1)return 'Warm: yield '+v+'. You are near a patch.'+trend;
+ return 'Hot! Yield '+v+'. A patch centre is very close. Keep climbing.'+trend;
+}
+var lastCell=null;
+fieldEl.addEventListener('click',function(e){
+ var t=e.target.closest?e.target.closest('.bc-cell'):null;
+ if(!t)return;
+ var idx=+t.getAttribute('data-i');
+ if(locked||picks.length>=SHOTS||picked[idx])return;
+ picks.push(idx);picked[idx]=true;
+ lastMsg=shotMessage(idx);
+ if(lastCell!==null)cells[lastCell].classList.remove('bc-last');
+ lastCell=idx;t.classList.add('bc-last');
+ if(picks.length===SHOTS){
+  locked=true;
+  lastMsg+=' That was your last shot. Game over: you found '+hits()+' of 3 bumper crops. Here is the whole field.';
+  cells[idx].classList.remove('bc-last');
+  for(var k=0;k<N*N;k++)paintCell(k);
+ } else paintCell(idx);
+ paintPanel();save();
+});
+if(locked)lastMsg='Game over: you found '+hits()+' of 3 bumper crops.';
+else if(picks.length>0)lastMsg='Welcome back: '+(SHOTS-picks.length)+' shots left.';
+function fitText(){root.style.fontSize=Math.max(9,Math.min(16,root.clientWidth/55))+'px';}
+fitText();window.addEventListener('resize',fitText);
+for(var k=0;k<N*N;k++)paintCell(k);
+paintPanel();save();
+[[/jsxgraph]]
+<h4>Your score</h4><p>Marked automatically from your shots: one third of the marks for each bumper-crop centre you hit.</p>[[feedback:prt1]]
+<p style="display:none">[[input:picks]] [[validation:picks]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>Each bumper-crop patch raises the yield by 5 units for every step closer to its centre, down to poor soil of {@base-10@} far from every patch. Note, too, that shots aimed at high yields are <strong>not a random sample</strong>: they show far more high yields than the field really has.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2026063000</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[N:15;
+SHOTS:30;
+base:40+5*rand(5);
+/* Patch heights in 5-unit steps above base. Yield falls 5 per step away from a centre, */
+/* down to poor soil at base-10 far from every patch. Field range is 35 or 40. */
+heights:[4,5,5+rand(2)];
+/* Centres stay 2 or more plots from the edge so each patch's signal is not cut off, and are */
+/* far enough apart to be separate peaks. Re-roll until they are. */
+mdist(p,q):=abs(p[1]-q[1])+abs(p[2]-q[2]);
+apart(c):=is(mdist(c[1],c[2])>=max(heights[1],heights[2])+2 and mdist(c[1],c[3])>=max(heights[1],heights[3])+2 and mdist(c[2],c[3])>=max(heights[2],heights[3])+2);
+centres:makelist([2+rand(N-4),2+rand(N-4)],k,1,3);
+while not apart(centres) do centres:makelist([2+rand(N-4),2+rand(N-4)],k,1,3);
+/* Plot index (0-based, row by row) of each patch centre. */
+cidx:makelist(centres[k][2]*N+centres[k][1],k,1,3);
+yield_at(i):=block([x,y],x:mod(i,N),y:floor(i/N),
+ base+5*lmax(makelist(max(-2,heights[k]-abs(x-centres[k][1])-abs(y-centres[k][2])),k,1,3)));
+field:makelist(yield_at(i),i,0,N*N-1);
+field_min:lmin(field);
+field_max:lmax(field);
+field_range:field_max-field_min;
+/* Helpers used by the marking: clean up the list of shots and look up their yields. */
+clean_picks(p):=block([q],
+ q:if listp(p) then sublist(p,lambda([v],is(integerp(v) and v>=0 and v<N*N))) else [],
+ unique(makelist(q[k],k,1,min(SHOTS,length(q)))));]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text/>
+    </specificfeedback>
+    <questionnote format="html">
+      <text>base {@base@}, heights {@heights@}, centres {@cidx@}, range {@field_range@}</text>
+    </questionnote>
+    <questiondescription format="html">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text>Correct answer, well done.</text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text>Your answer is partially correct.</text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text>Incorrect answer.</text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>picks</name>
+      <type>algebraic</type>
+      <tans>cidx</tans>
+      <boxsize>60</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>hideanswer</options>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>pk:clean_picks(picks);
+nh:length(sublist(cidx,lambda([c],member(c,pk))));</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description>All three patch centres hit?</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>nh</sans>
+        <tans>3</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-3-hits</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>&#9733;&#9733;&#9733; You found all three bumper crops!</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-not-3</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description>Two hits?</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>nh</sans>
+        <tans>2</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.6667</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-hits</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>&#9733;&#9733; You found two of the three bumper crops.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>2</falsenextnode>
+        <falseanswernote>prt1-not-2</falseanswernote>
+        <falsefeedback format="html">
+          <text/>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>2</name>
+        <description>One hit?</description>
+        <answertest>AlgEquiv</answertest>
+        <sans>nh</sans>
+        <tans>1</tans>
+        <testoptions/>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>0.3333</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-hit</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>&#9733; You found one of the three bumper crops.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-0-hits</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>No bumper crops found this time. When a shot is higher than poor soil, try the neighbouring plots and follow the rise in yield.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+  </question>
+</quiz>

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+  <question type="stack">
+    <name>
+      <text>Observing Variability - Nairobi Commute Lab</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<h3>Nairobi Commute Lab</h3><p>Each dot represents one commuter. Drag the dots horizontally. Your challenge is to make the <strong>range as large as possible</strong>, while keeping the <strong>mean commute at {@target@} minutes</strong>. Each journey must be between 0 and 60 minutes.</p><p>Watch the histogram change as you move the dots. The bars show how many commuters fall in each ten-minute interval.</p>
+[[jsxgraph width="100%" aspect-ratio="2/1" input-ref-ans1="answerId"]]
+var N = {#n#}, TARGET = {#target#}, MAXRANGE = {#rmax#};
+var field = document.getElementById(answerId);
+// Begin with a modest spread (within +/-5 minutes), preserving the target mean.
+var offsets = [-5,5,-3,3,-1,1,-4,4,-2,2];
+var values = offsets.slice(0,N).map(function(d){return TARGET+d;});
+// Shuffle the starting positions so the pattern is less predictable.
+for (var z=values.length-1;z>0;z--) {
+  var j=Math.floor(Math.random()*(z+1));
+  var tmp=values[z];values[z]=values[j];values[j]=tmp;
+}
+try {
+  var old = JSON.parse(field.value);
+  if (Array.isArray(old) && old.length === N &&
+      old.every(function(v){return Number.isInteger(v) && v>=0 && v<=60;})) values = old;
+} catch(e) {}
+var board = JXG.JSXGraph.initBoard(divid, {
+  boundingbox:[-5,10,65,-1], axis:false, showCopyright:false,
+  showNavigation:false, keepaspectratio:false
+});
+board.suspendUpdate();
+for (var k=0;k<=60;k+=10) {
+  board.create('segment',[[k,0],[k,9.1]],{strokeColor:'#dddddd',strokeWidth:1,fixed:true});
+  board.create('text',[k,-0.55,String(k)],{fontSize:11,fixed:true,anchorX:'middle'});
+}
+board.create('segment',[[0,0],[60,0]],{strokeColor:'#555',fixed:true});
+board.create('segment',[[0,5.1],[60,5.1]],{strokeColor:'#555',fixed:true});
+board.create('text',[0,9.65,'COMMUTERS (drag horizontally)'],{fontSize:13,fixed:true});
+board.create('text',[0,4.65,'LIVE HISTOGRAM'],{fontSize:13,fixed:true});
+var bars=[];
+for(var b=0;b<6;b++){
+  var x0=b*10+0.4, x1=(b+1)*10-0.4;
+  var poly=board.create('polygon',[[x0,0],[x1,0],[x1,0.1],[x0,0.1]],{
+    fillColor:'#0d9488',fillOpacity:0.8,borders:{strokeColor:'#ffffff',strokeWidth:1},
+    vertices:{visible:false,fixed:true},fixed:true,hasInnerPoints:false
+  });
+  bars.push(poly);
+}
+var pts=[];
+var palette=['#2563eb','#0891b2','#7c3aed','#db2777','#16a34a','#ea580c'];
+function getMean(){return values.reduce(function(a,b){return a+b;},0)/N;}
+function getRange(){return Math.max.apply(null,values)-Math.min.apply(null,values);}
+var summary=board.create('text',[0,4.1,function(){
+ return 'Mean: '+getMean().toFixed(1)+' min (target '+TARGET+')    Range: '+getRange()+' min (maximum '+MAXRANGE+')';
+}],{fontSize:13,fixed:true});
+function redraw(){
+  var counts=[0,0,0,0,0,0];
+  values.forEach(function(v){counts[Math.min(5,Math.floor(v/10))]++;});
+  bars.forEach(function(poly,j){
+    var h=counts[j]*0.55;
+    poly.vertices[2].moveTo([j*10+9.6,h]);
+    poly.vertices[3].moveTo([j*10+0.4,h]);
+  });
+  field.value='['+values.join(',')+']';
+  field.dispatchEvent(new Event('change',{bubbles:true}));
+  board.update();
+}
+for(var i=0;i<N;i++){
+  (function(j){
+    var y=6.0+(j%5)*0.52;
+    var p=board.create('point',[values[j],y],{
+      name:'',size:4,fillColor:palette[j%palette.length],
+      strokeColor:'#ffffff',strokeWidth:1,
+      snapToGrid:false,showInfobox:false
+    });
+    p.on('drag',function(){
+      var x=Math.max(0,Math.min(60,Math.round(p.X())));
+      values[j]=x;
+      p.moveTo([x,y]);
+      redraw();
+    });
+    pts.push(p);
+  })(i);
+}
+board.unsuspendUpdate();
+redraw();
+[[/jsxgraph]]
+<p style="display:none">[[input:ans1]] [[validation:ans1]]</p><p><strong>When satisfied, submit your answer.</strong></p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text><![CDATA[<p>With {@n@} commuters, a target mean of {@target@} minutes means the total commuting time must be {@n*target@} minutes. Since individual commutes must be between 0 and 60 minutes, the greatest achievable range is {@rmax@} minutes. A smaller mean can limit the greatest possible range: for instance, if the total is less than 60 minutes, no individual commute can reach 60 minutes. The mean can stay fixed while the distribution and range change.</p>]]></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber/>
+    <stackversion>
+      <text>2026063000</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[n: 2*(rand(3)+3);
+targets: [5,10,20,30,35];
+target: targets[rand(5)+1];
+rmax: min(60,n*target,n*(60-target));
+rest: n*target-rmax;
+base: floor(rest/(n-2));
+extra: mod(rest,n-2);
+ta: append([0,rmax],makelist(base+(if i<=extra then 1 else 0),i,1,n-2));]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text>[[feedback:prt1]]</text>
+    </specificfeedback>
+    <questionnote format="html">
+      <text>n={@n@}; target={@target@}</text>
+    </questionnote>
+    <questiondescription format="html">
+      <text/>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text>Great work! You have created the required variability.</text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text>Nearly there.</text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text>Keep experimenting with the values and their mean.</text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>none</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <isbroken>0</isbroken>
+    <variantsselectionseed/>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>35</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint/>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords/>
+      <allowwords/>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>hideanswer</options>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text><![CDATA[valid: is(listp(ans1) and length(ans1)=n);
+ok: if valid then is(every(lambda([v],integerp(v) and v>=0 and v<=60),ans1) and sum(ans1[i],i,1,n)=n*target and apply(max,ans1)-apply(min,ans1)=rmax) else false;]]></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description/>
+        <answertest>AlgEquiv</answertest>
+        <sans>ok</sans>
+        <tans>true</tans>
+        <testoptions/>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty/>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>success</trueanswernote>
+        <truefeedback format="html">
+          <text><![CDATA[<p>Success! The overall mean does not tell us how different the observations are.</p>]]></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty/>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>try-again</falseanswernote>
+        <falsefeedback format="html">
+          <text><![CDATA[<p>Not yet. Check both the target mean and the spread, then try again.</p>]]></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1677034135</deployedseed>
+    <deployedseed>1506816430</deployedseed>
+    <deployedseed>254138029</deployedseed>
+    <deployedseed>694426552</deployedseed>
+    <deployedseed>1298032548</deployedseed>
+    <deployedseed>713784665</deployedseed>
+    <deployedseed>896929726</deployedseed>
+    <deployedseed>709249182</deployedseed>
+    <deployedseed>1256134746</deployedseed>
+    <deployedseed>1929881736</deployedseed>
+    <deployedseed>1380295866</deployedseed>
+    <deployedseed>130916620</deployedseed>
+    <deployedseed>530288297</deployedseed>
+    <deployedseed>1199990005</deployedseed>
+  </question>
+</quiz>
